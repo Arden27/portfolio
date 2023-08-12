@@ -20,7 +20,7 @@ export default function Home() {
                             src="/img/profile_picture.png"
                             alt="Profile Picture"
                             sizes="100vh"
-							className="h-[95%] w-auto"
+							className="h-[95%] w-auto object-cover"
                             width={2832}
                             height={4256}
                         />

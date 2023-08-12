@@ -15,14 +15,22 @@ export default function Home() {
                 id="home-section"
                 className="snap-start flex h-screen w-screen items-center justify-start p-12"
             >
-                <div className="flex h-screen w-full items-center">
+                <div className="flex flex-col md:flex-row md:h-screen w-full md:items-center items-start">
                         <Image
                             src="/img/profile_picture.png"
                             alt="Profile Picture"
                             sizes="100vh"
-							className="h-[95%] w-auto object-cover"
+							className="h-[95%] w-auto object-cover hidden md:block"
                             width={2832}
                             height={4256}
+                        />
+						<Image
+                            src="/img/about.jpeg"
+                            alt="Profile Picture"
+                            sizes="100vh"
+							className="h-[95%] w-auto object-cover block md:hidden"
+                            width={720}
+                            height={720}
                         />
                     <div className="ml-5">
                         <div className="mb-1 text-lg font-semibold text-orange-600">

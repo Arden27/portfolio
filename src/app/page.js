@@ -9,11 +9,11 @@ export default function Home() {
 	const mainRef = useRef();
 
     return (
-        <main ref={mainRef} className="scroll-smooth snap-y snap-mandatory overflow-scroll m-0 h-screen bg-gray-100 font-sans text-base text-gray-800">
+        <main ref={mainRef} className="scroll-smooth snap-y snap-mandatory overflow-scroll m-0 h-[100svh] bg-gray-100 font-sans text-base text-gray-800">
             <NavBar mainRef={mainRef} />
             <section
                 id="home-section"
-                className="snap-start flex h-screen w-screen items-center justify-start p-12"
+                className="snap-start flex h-[100svh] w-screen items-center justify-start p-12"
             >
                 <div className="flex flex-col md:flex-row md:h-screen w-full md:items-center items-start">
                         <Image
@@ -27,7 +27,7 @@ export default function Home() {
 						<Image
                             src="/img/about.jpeg"
                             alt="Profile Picture"
-                            sizes="100vh"
+                            sizes="50vh"
 							className="h-[95%] w-auto object-cover block md:hidden"
                             width={720}
                             height={720}
@@ -54,7 +54,7 @@ export default function Home() {
 
             <section
                 id="skills-section"
-                className="snap-start h-screen w-screen flex flex-col space-y-6 pt-16"
+                className="snap-start h-[100svh] w-screen flex flex-col space-y-6 pt-16"
             >
                 <h2 className="m-0 p-0 text-center text-4xl font-bold text-black">
                     Skills
@@ -172,7 +172,7 @@ export default function Home() {
 
             <section
                 id="portfolio-section"
-                className="snap-start h-screen w-screen flex flex-wrap items-center justify-start p-12"
+                className="snap-start h-[100svh] w-screen flex flex-wrap items-center justify-start p-12"
             >
                 <h2 className="mb-10 w-full text-center text-3xl font-bold">
                     Portfolio

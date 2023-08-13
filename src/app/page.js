@@ -64,37 +64,85 @@ export default function Home() {
                         <h3 className="m-0 p-0 text-2xl">Frontend</h3>
                         <div className="flex flex-wrap justify-center">
                             <div className="skill-card">
-                                <div className="skill-image ">
+                                <div className="skill-image-wrapper ">
                                     {/* <img className="w-full" src="{% static 'chatbot/img/skills/html.png' %}" alt="HTML icon"> */}
+                                    <Image
+                                        src="/img/skills/html.png"
+                                        alt="HTML icon"
+                                        // sizes="100%"
+                                        className="skill-image"
+                                        width={200}
+                                        height={200}
+                                    />
                                 </div>
                                 <p className="text-center">HTML</p>
                             </div>
                             <div className="skill-card">
-                                <div className="skill-image ">
+                                <div className="skill-image-wrapper ">
+                                    <Image
+                                        src="/img/skills/css.png"
+                                        alt="CSS icon"
+                                        // sizes="100%"
+                                        className="skill-image"
+                                        width={72}
+                                        height={72}
+                                    />
                                     {/* <img className="w-full" src="{% static 'chatbot/img/skills/css.png' %}" alt="css icon"> */}
                                 </div>
                                 <p className="text-center">CSS</p>
                             </div>
                             <div className="skill-card">
-                                <div className="skill-image ">
+                                <div className="skill-image-wrapper ">
+                                    <Image
+                                        src="/img/skills/js.png"
+                                        alt="JavaScript icon"
+                                        // sizes="100%"
+                                        className="skill-image"
+                                        width={72}
+                                        height={72}
+                                    />
                                     {/* <img className="w-full" src="{% static 'chatbot/img/skills/js.png' %}" alt="js icon"> */}
                                 </div>
                                 <p className="text-center">JavaScript</p>
                             </div>
                             <div className="skill-card">
-                                <div className="skill-image ">
+                                <div className="skill-image-wrapper ">
+                                    <Image
+                                        src="/img/skills/react.png"
+                                        alt="React icon"
+                                        // sizes="100%"
+                                        className="skill-image"
+                                        width={72}
+                                        height={72}
+                                    />
                                     {/* <img className="w-full" src="{% static 'chatbot/img/skills/react.png' %}" alt="react icon"> */}
                                 </div>
                                 <p className="text-center">React.js</p>
                             </div>
                             <div className="skill-card">
-                                <div className="skill-image ">
+                                <div className="skill-image-wrapper ">
+                                    <Image
+                                        src="/img/skills/tailwind.png"
+                                        alt="Tailwind icon"
+                                        // sizes="100%"
+                                        className="skill-image"
+                                        width={72}
+                                        height={72}
+                                    />
                                     {/* <img className="w-full" src="{% static 'chatbot/img/skills/tailwind.png' %}" alt="Tailwind icon"> */}
                                 </div>
                                 <p className="text-center">Tailwind</p>
                             </div>
                             <div className="skill-card">
-                                <div className="skill-image ">
+                                <div className="skill-image-wrapper ">
+                                    <Image
+                                        src="/img/skills/kivy.png"
+                                        alt="Kivy icon"
+                                        // sizes="100%"
+                                        className="skill-image"
+                                        width={512}
+                                        height={512}
+                                    />
                                     {/* <img className="w-full" src="{% static 'chatbot/img/skills/kivy.png' %}" alt="Kivy icon"> */}
                                 </div>
                                 <p className="text-center">Kivy</p>
@@ -105,37 +153,85 @@ export default function Home() {
                         <h3 className="m-0 p-0 text-2xl">Backend</h3>
                         <div className="flex flex-wrap justify-center">
                             <div className="skill-card">
-                                <div className="skill-image ">
+                                <div className="skill-image-wrapper ">
+                                    <Image
+                                        src="/img/skills/python.png"
+                                        alt="Python icon"
+                                        // sizes="100%"
+                                        className="skill-image"
+                                        width={72}
+                                        height={72}
+                                    />
                                     {/* <img className="w-full" src="{% static 'chatbot/img/skills/python.png' %}" alt="Python icon"> */}
                                 </div>
                                 <p className="text-center">Python</p>
                             </div>
                             <div className="skill-card">
-                                <div className="skill-image ">
+                                <div className="skill-image-wrapper ">
+                                    <Image
+                                        src="/img/skills/django.png"
+                                        alt="Django icon"
+                                        // sizes="100%"
+                                        className="skill-image"
+                                        width={96}
+                                        height={96}
+                                    />
                                     {/* <img className="w-full" src="{% static 'chatbot/img/skills/django.png' %}" alt="Django icon"> */}
                                 </div>
                                 <p className="text-center">Django</p>
                             </div>
                             <div className="skill-card">
-                                <div className="skill-image ">
+                                <div className="skill-image-wrapper ">
+                                    <Image
+                                        src="/img/skills/pytorch.png"
+                                        alt="PyTorch icon"
+                                        // sizes="100%"
+                                        className="skill-image"
+                                        width={96}
+                                        height={96}
+                                    />
                                     {/* <img className="w-full" src="{% static 'chatbot/img/skills/pytorch.png' %}" alt="PyTorch icon"> */}
                                 </div>
                                 <p className="text-center">PyTorch</p>
                             </div>
                             <div className="skill-card">
-                                <div className="skill-image ">
+                                <div className="skill-image-wrapper ">
+                                    <Image
+                                        src="/img/skills/mongodb.png"
+                                        alt="Mongo DB icon"
+                                        // sizes="100%"
+                                        className="skill-image"
+                                        width={72}
+                                        height={72}
+                                    />
                                     {/* <img className="w-full" src="{% static 'chatbot/img/skills/mongodb.png' %}" alt="MongoDB icon"> */}
                                 </div>
                                 <p className="text-center">MongoDB</p>
                             </div>
                             <div className="skill-card">
-                                <div className="skill-image ">
+                                <div className="skill-image-wrapper ">
+                                    <Image
+                                        src="/img/skills/mysql.png"
+                                        alt="MySQL icon"
+                                        // sizes="100%"
+                                        className="skill-image"
+                                        width={72}
+                                        height={72}
+                                    />
                                     {/* <img className="w-full" src="{% static 'chatbot/img/skills/mysql.png' %}" alt="MySQL icon"> */}
                                 </div>
                                 <p className="text-center">MySQL</p>
                             </div>
                             <div className="skill-card">
-                                <div className="skill-image ">
+                                <div className="skill-image-wrapper ">
+                                    <Image
+                                        src="/img/skills/solidity.png"
+                                        alt="S icon"
+                                        // sizes="100%"
+                                        className="skill-image"
+                                        width={96}
+                                        height={96}
+                                    />
                                     {/* <img className="w-full" src="{% static 'chatbot/img/skills/solidity.png' %}" alt="Solidity icon"> */}
                                 </div>
                                 <p className="text-center">Solidity</p>
@@ -148,19 +244,43 @@ export default function Home() {
                         <h3 className="m-0 p-0 text-2xl">Tools</h3>
                         <div className="flex flex-wrap justify-center">
                             <div className="skill-card">
-                                <div className="skill-image ">
+                                <div className="skill-image-wrapper ">
+                                    <Image
+                                        src="/img/skills/git.png"
+                                        alt="Git icon"
+                                        // sizes="100%"
+                                        className="skill-image"
+                                        width={72}
+                                        height={72}
+                                    />
                                     {/* <img className="w-full" src="{% static 'chatbot/img/skills/git.png' %}" alt="Git icon"> */}
                                 </div>
                                 <p className="text-center">Git</p>
                             </div>
                             <div className="skill-card">
-                                <div className="skill-image ">
+                                <div className="skill-image-wrapper ">
+                                    <Image
+                                        src="/img/skills/vscode.png"
+                                        alt="VS Code icon"
+                                        // sizes="100%"
+                                        className="skill-image"
+                                        width={72}
+                                        height={72}
+                                    />
                                     {/* <img className="w-full" src="{% static 'chatbot/img/skills/vscode.png' %}" alt="VSCode icon"> */}
                                 </div>
                                 <p className="text-center">VSCode</p>
                             </div>
                             <div className="skill-card">
-                                <div className="skill-image ">
+                                <div className="skill-image-wrapper ">
+                                    <Image
+                                        src="/img/skills/linux.png"
+                                        alt="Linux icon"
+                                        // sizes="100%"
+                                        className="skill-image"
+                                        width={72}
+                                        height={72}
+                                    />
                                     {/* <img className="w-full" src="{% static 'chatbot/img/skills/linux.png' %}" alt="Linux icon"> */}
                                 </div>
                                 <p className="text-center">Linux</p>

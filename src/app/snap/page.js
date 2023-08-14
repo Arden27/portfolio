@@ -14,9 +14,9 @@ export default function Home() {
             <NavBar mainRef={mainRef} />
             <section
                 id="home-section"
-                className="flex h-screen w-screen snap-start items-center justify-center bg-emerald-300 text-8xl"
+                className="flex h-screen w-screen snap-start items-center justify-center bg-emerald-300 text-4xl"
             >
-                Home
+                <h1>Home</h1>
             </section>
             <section
                 id="skills-section"
@@ -65,15 +65,15 @@ export default function Home() {
             </section>
             <section
                 id="portfolio-section"
-                className="flex h-screen w-screen snap-start items-center justify-center bg-emerald-300 text-8xl"
+                className="flex h-screen w-screen snap-start items-center justify-center bg-emerald-300 text-4xl"
             >
-                Portfolio
+                <h1>Portfolio</h1>
             </section>
             <section
                 id="about-section"
-                className="flex h-screen w-screen snap-start items-center justify-center bg-cyan-300 text-8xl"
+                className="flex h-screen w-screen snap-start items-center justify-center bg-cyan-300 text-4xl"
             >
-                About
+                <h1>About</h1>
             </section>
         </main>
     );

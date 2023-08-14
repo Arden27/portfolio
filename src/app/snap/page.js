@@ -9,7 +9,7 @@ export default function Home() {
     return (
         <main
             ref={mainRef}
-            className="h-screen w-screen snap-y snap-mandatory overflow-scroll"
+            className="h-[100svh] w-screen snap-y snap-mandatory overflow-scroll"
         >
             <NavBar mainRef={mainRef} />
             <section
@@ -20,7 +20,7 @@ export default function Home() {
             </section>
             <section
                 id="skills-section"
-                className="grid-rows-7 lg:grid-rows-10 grid h-[100svh] w-screen grid-cols-1 gap-4 bg-cyan-300 p-4 lg:grid-cols-2"
+                className="snap-start grid-rows-7 lg:grid-rows-10 grid h-[100svh] w-screen grid-cols-1 gap-4 bg-cyan-300 p-4 lg:grid-cols-2"
             >
                 <div className="col-span-1 row-span-3 flex flex-col lg:col-span-1 lg:row-span-6">
                     <h2 className="mb-2 text-center text-xl font-bold">

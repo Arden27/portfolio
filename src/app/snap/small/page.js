@@ -60,12 +60,12 @@ export default function Small() {
                 className="flex h-[100svh] w-screen snap-start flex-col bg-cyan-300 pt-14"
             >
                 <h1 className="mb-2 text-center text-4xl font-bold">Skills</h1>
-                <div className="max-sm:flex max-sm:snap-x max-sm:snap-mandatory max-sm:flex-row max-sm:overflow-scroll sm:grid-rows-7 lg:grid-rows-10 h-full w-full sm:grid sm:grid-cols-1 sm:gap-4 sm:px-4 sm:pb-4 lg:grid-cols-2">
-                    <div className="max-sm:flex-shrink-0 max-sm:snap-center max-sm:h-full max-sm:w-full flex sm:col-span-1 sm:row-span-3 flex-col lg:col-span-1 lg:row-span-6">
+                <div className="sm:grid-rows-7 md:grid-rows-10 h-full w-full max-sm:flex max-sm:snap-x max-sm:snap-mandatory max-sm:flex-row max-sm:overflow-scroll sm:grid sm:grid-cols-1 sm:gap-4 sm:px-4 sm:pb-4 md:grid-cols-2">
+                    <div className="max-sm:p-4 flex flex-col max-sm:h-full max-sm:w-full max-sm:flex-shrink-0 max-sm:snap-center sm:col-span-1 sm:row-span-3 md:col-span-1 md:row-span-6">
                         <h2 className="mb-2 text-center text-xl font-bold">
                             Frontend
                         </h2>
-                        <div className="h-full w-full rounded-2xl border-2 border-black bg-blue-200 p-2 grid grid-cols-3 grid-rows-2 gap-2">
+                        <div className="grid h-full w-full grid-cols-3 grid-rows-2 gap-2 rounded-2xl border-2 border-black bg-blue-200 p-2">
                             <div className="rounded-2xl border-2 border-black bg-purple-200"></div>
                             <div className="rounded-2xl border-2 border-black bg-yellow-200"></div>
                             <div className="rounded-2xl border-2 border-black bg-pink-200"></div>
@@ -74,11 +74,11 @@ export default function Small() {
                             <div className="rounded-2xl border-2 border-black bg-indigo-200"></div>
                         </div>
                     </div>
-                    <div className="max-sm:flex-shrink-0 max-sm:snap-center max-sm:h-full max-sm:w-full flex flex-col sm:col-span-1 sm:row-span-3 lg:col-span-1 lg:row-span-6">
+                    <div className="max-sm:p-4 flex flex-col max-sm:h-full max-sm:w-full max-sm:flex-shrink-0 max-sm:snap-center sm:col-span-1 sm:row-span-3 md:col-span-1 md:row-span-6">
                         <h2 className="mb-2 text-center text-xl font-bold">
                             Backend
                         </h2>
-                        <div className="h-full w-full rounded-2xl border-2 border-black bg-red-200 p-2 grid grid-cols-3 grid-rows-2 gap-2">
+                        <div className="grid h-full w-full grid-cols-3 grid-rows-2 gap-2 rounded-2xl border-2 border-black bg-red-200 p-2">
                             <div className="rounded-2xl border-2 border-black bg-green-300"></div>
                             <div className="rounded-2xl border-2 border-black bg-pink-300"></div>
                             <div className="rounded-2xl border-2 border-black bg-teal-200"></div>
@@ -87,11 +87,11 @@ export default function Small() {
                             <div className="rounded-2xl border-2 border-black bg-indigo-300"></div>
                         </div>
                     </div>
-                    <div className="max-sm:flex-shrink-0 max-sm:snap-center max-sm:h-full max-sm:w-full sm:col-span-1 sm:row-span-4 flex flex-col lg:col-span-2">
+                    <div className="max-sm:p-4 flex flex-col max-sm:h-full max-sm:w-full max-sm:flex-shrink-0 max-sm:snap-center sm:col-span-1 sm:row-span-4 md:col-span-2">
                         <h2 className="mb-2 text-center text-xl font-bold">
                             Other
                         </h2>
-                        <div className="grid h-full w-full max-sm:grid-rows-3 sm:grid-cols-3 gap-2 rounded-2xl border-2 border-black bg-green-200 p-2">
+                        <div className="grid h-full w-full gap-2 rounded-2xl border-2 border-black bg-green-200 p-2 max-sm:grid-rows-3 sm:grid-cols-3">
                             <div className="rounded-2xl border-2 border-black bg-red-300"></div>
                             <div className="rounded-2xl border-2 border-black bg-blue-300"></div>
                             <div className="rounded-2xl border-2 border-black bg-yellow-400"></div>

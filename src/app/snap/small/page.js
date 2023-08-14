@@ -42,8 +42,8 @@ export default function Small() {
                 className="flex h-[100svh] w-screen snap-start flex-col bg-cyan-300 pt-14"
             >
                 <h1 className="mb-2 text-center text-4xl font-bold">Skills</h1>
-                <div className="grid-rows-7 lg:grid-rows-10 grid h-full w-full grid-cols-1 gap-4 px-4 pb-4 lg:grid-cols-2">
-                    <div className="col-span-1 row-span-3 flex flex-col lg:col-span-1 lg:row-span-6">
+                <div className="sm:grid-rows-7 lg:grid-rows-10 sm:grid h-full w-full sm:grid-cols-1 gap-4 px-4 pb-4 lg:grid-cols-2">
+                    <div className="sm:col-span-1 sm:row-span-3 flex sm:flex-col lg:col-span-1 lg:row-span-6">
                         <h2 className="mb-2 text-center text-xl font-bold">
                             Frontend
                         </h2>

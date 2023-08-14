@@ -20,10 +20,10 @@ export default function Home() {
             </section>
             <section
                 id="skills-section"
-                className="snap-start h-[100svh] w-screen pt-14 flex flex-col"
+                className="snap-start h-[100svh] w-screen pt-14 bg-cyan-300 flex flex-col"
             >
                 <h1 className="text-4xl mb-2 font-bold text-center">Skills</h1>
-                <div className="h-full w-full grid-rows-7 lg:grid-rows-10 grid grid-cols-1 gap-4 bg-cyan-300 p-4 lg:grid-cols-2"
+                <div className="h-full w-full grid-rows-7 lg:grid-rows-10 grid grid-cols-1 gap-4 px-4 pb-4 lg:grid-cols-2"
                 >
                     <div className="col-span-1 row-span-3 flex flex-col lg:col-span-1 lg:row-span-6">
                         <h2 className="mb-2 text-center text-xl font-bold">

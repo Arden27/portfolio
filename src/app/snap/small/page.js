@@ -65,7 +65,7 @@ export default function Small() {
                         <h2 className="mb-2 text-center text-xl font-bold">
                             Frontend
                         </h2>
-                        <div className="h-full w-full rounded-2xl border-2 border-black bg-blue-200 p-2 grid grid-cols-3 grid-rows-2 sm:gap-2">
+                        <div className="h-full w-full rounded-2xl border-2 border-black bg-blue-200 p-2 grid grid-cols-3 grid-rows-2 gap-2">
                             <div className="rounded-2xl border-2 border-black bg-purple-200"></div>
                             <div className="rounded-2xl border-2 border-black bg-yellow-200"></div>
                             <div className="rounded-2xl border-2 border-black bg-pink-200"></div>
@@ -78,7 +78,7 @@ export default function Small() {
                         <h2 className="mb-2 text-center text-xl font-bold">
                             Backend
                         </h2>
-                        <div className="h-full w-full rounded-2xl border-2 border-black bg-red-200 p-2 sm:grid sm:grid-cols-3 sm:grid-rows-2 sm:gap-2">
+                        <div className="h-full w-full rounded-2xl border-2 border-black bg-red-200 p-2 grid grid-cols-3 grid-rows-2 gap-2">
                             <div className="rounded-2xl border-2 border-black bg-green-300"></div>
                             <div className="rounded-2xl border-2 border-black bg-pink-300"></div>
                             <div className="rounded-2xl border-2 border-black bg-teal-200"></div>
@@ -89,9 +89,9 @@ export default function Small() {
                     </div>
                     <div className="max-sm:flex-shrink-0 max-sm:snap-center max-sm:h-full max-sm:w-full sm:col-span-1 sm:row-span-4 flex flex-col lg:col-span-2">
                         <h2 className="mb-2 text-center text-xl font-bold">
-                            Backend
+                            Other
                         </h2>
-                        <div className="sm:grid h-full w-full sm:grid-cols-3 sm:gap-2 rounded-2xl border-2 border-black bg-green-200 p-2">
+                        <div className="grid h-full w-full max-sm:grid-rows-3 sm:grid-cols-3 gap-2 rounded-2xl border-2 border-black bg-green-200 p-2">
                             <div className="rounded-2xl border-2 border-black bg-red-300"></div>
                             <div className="rounded-2xl border-2 border-black bg-blue-300"></div>
                             <div className="rounded-2xl border-2 border-black bg-yellow-400"></div>

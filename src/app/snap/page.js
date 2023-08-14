@@ -9,7 +9,7 @@ export default function Home() {
     return (
         <main
             ref={mainRef}
-            className="h-[100svh] w-screen snap-y snap-mandatory overflow-scroll"
+            className="scroll-smooth h-[100svh] w-screen snap-y snap-mandatory overflow-scroll"
         >
             <NavBar mainRef={mainRef} />
             <section

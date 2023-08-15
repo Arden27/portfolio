@@ -52,7 +52,7 @@ const NavBar = ({ mainRef }) => {
 
     return (
         <nav
-            className={`fixed top-0 flex h-12 w-full items-center justify-around bg-red-300 sm:bg-yellow-300 md:bg-green-300 lg:bg-blue-300 bg-opacity-80 p-3 transition-shadow duration-300 ease-in-out md:justify-end ${
+            className={`fixed top-0 flex h-12 w-full items-center justify-around bg-red-300 sm:bg-yellow-300 md:bg-green-300 lg:bg-blue-300 xl:via-violet-300 bg-opacity-80 p-3 transition-shadow duration-300 ease-in-out md:justify-end ${
                 shadow ? "shadow-lg" : ""
             }`}
         >

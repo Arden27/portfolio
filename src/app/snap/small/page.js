@@ -59,11 +59,11 @@ export default function Small() {
             </section>
             <section
                 id="skills-section"
-                className="flex h-[100svh] w-screen snap-start flex-col bg-cyan-300 pt-14"
+                className="flex h-[100svh] w-screen snap-start flex-col bg-cyan-300 pt-16"
             >
                 <h1 className="mb-2 text-center text-4xl font-bold">Skills</h1>
                 <div 
-                    className="scroll-smooth sm:grid-rows-7 md:grid-rows-10 h-full w-full max-sm:flex max-sm:snap-x max-sm:snap-mandatory max-sm:flex-row max-sm:overflow-scroll scr sm:grid sm:grid-cols-1 sm:gap-4 sm:px-4 sm:pb-4 md:grid-cols-2"
+                    className="scroll-smooth sm:grid-rows-7 md:grid-rows-10 h-full w-full max-sm:flex max-sm:snap-x max-sm:snap-mandatory max-sm:flex-row max-sm:overflow-scroll scr sm:grid sm:grid-cols-1 sm:gap-4 md:px-4 md:pb-4 md:grid-cols-2"
                     ref={skillsRef}
                 >
                     <div 
@@ -106,7 +106,7 @@ export default function Small() {
                         <h2 className="mb-2 text-center text-xl font-bold">
                             Other
                         </h2>
-                        <div className="grid h-full w-full gap-2 rounded-2xl border-2 border-black bg-green-200 p-2 max-sm:grid-rows-3 sm:grid-cols-3">
+                        <div className="grid h-full w-full gap-2 rounded-2xl border-2 border-black bg-green-200 p-2 max-sm:grid-rows-3 md:grid-cols-3">
                             <div className="rounded-2xl border-2 border-black bg-red-300"></div>
                             <div className="rounded-2xl border-2 border-black bg-blue-300"></div>
                             <div className="rounded-2xl border-2 border-black bg-yellow-400"></div>

@@ -1,10 +1,12 @@
 "use client";
 
 import NavBar from "../nav";
+import SkillsNav from "../skillsNav";
 import { useRef } from "react";
 
 export default function Small() {
     const mainRef = useRef();
+    const skillsRef = useRef();
 
     return (
         <main
@@ -57,10 +59,14 @@ export default function Small() {
             </section>
             <section
                 id="skills-section"
-                className="flex h-[100svh] w-screen snap-start flex-col bg-cyan-300 pt-14"
+                ref={skillsRef}
+                className="scroll-smooth flex h-[100svh] w-screen snap-start flex-col bg-cyan-300 pt-14"
             >
                 <h1 className="mb-2 text-center text-4xl font-bold">Skills</h1>
-                <div className="sm:grid-rows-7 md:grid-rows-10 h-full w-full max-sm:flex max-sm:snap-x max-sm:snap-mandatory max-sm:flex-row max-sm:overflow-scroll sm:grid sm:grid-cols-1 sm:gap-4 sm:px-4 sm:pb-4 md:grid-cols-2">
+                <div 
+                    className="sm:grid-rows-7 md:grid-rows-10 h-full w-full max-sm:flex max-sm:snap-x max-sm:snap-mandatory max-sm:flex-row max-sm:overflow-scroll sm:grid sm:grid-cols-1 sm:gap-4 sm:px-4 sm:pb-4 md:grid-cols-2"
+                    id="frontend-skills"
+                >
                     <div className="max-sm:p-4 flex flex-col max-sm:h-full max-sm:w-full max-sm:flex-shrink-0 max-sm:snap-center sm:col-span-1 sm:row-span-3 md:col-span-1 md:row-span-6">
                         <h2 className="mb-2 text-center text-xl font-bold">
                             Frontend
@@ -74,7 +80,11 @@ export default function Small() {
                             <div className="rounded-2xl border-2 border-black bg-indigo-200"></div>
                         </div>
                     </div>
-                    <div className="max-sm:p-4 flex flex-col max-sm:h-full max-sm:w-full max-sm:flex-shrink-0 max-sm:snap-center sm:col-span-1 sm:row-span-3 md:col-span-1 md:row-span-6">
+                    <div 
+                        className="max-sm:p-4 flex flex-col max-sm:h-full max-sm:w-full max-sm:flex-shrink-0 max-sm:snap-center sm:col-span-1 sm:row-span-3 md:col-span-1 md:row-span-6"
+                        id="backend-skills"
+                    >
+                        
                         <h2 className="mb-2 text-center text-xl font-bold">
                             Backend
                         </h2>
@@ -87,7 +97,10 @@ export default function Small() {
                             <div className="rounded-2xl border-2 border-black bg-indigo-300"></div>
                         </div>
                     </div>
-                    <div className="max-sm:p-4 flex flex-col max-sm:h-full max-sm:w-full max-sm:flex-shrink-0 max-sm:snap-center sm:col-span-1 sm:row-span-4 md:col-span-2">
+                    <div 
+                        className="max-sm:p-4 flex flex-col max-sm:h-full max-sm:w-full max-sm:flex-shrink-0 max-sm:snap-center sm:col-span-1 sm:row-span-4 md:col-span-2"
+                        id="other-skills"
+                    >
                         <h2 className="mb-2 text-center text-xl font-bold">
                             Other
                         </h2>
@@ -98,6 +111,7 @@ export default function Small() {
                         </div>
                     </div>
                 </div>
+                <SkillsNav skillsRef={skillsRef}/>
             </section>
             <section
                 id="portfolio-section"

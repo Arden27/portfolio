@@ -56,47 +56,48 @@ const NavBar = ({ mainRef }) => {
                 shadow ? "shadow-lg" : ""
             }`}
         >
-            <a
-                href="#home-section"
-                className={`md:mx-4 ${
+            <div
+                onClick={() => window.location.hash = 'home-section'}
+                className={`md:mx-4 cursor-pointer ${
                     activeLink === "home-section"
                         ? "font-bold text-orange-600"
                         : ""
                 }`}
             >
                 Home
-            </a>
-            <a
-                href="#skills-section"
-                className={`md:mx-4 ${
+            </div>
+            <div
+                onClick={() => window.location.hash = 'skills-section'}
+                className={`md:mx-4 cursor-pointer ${
                     activeLink === "skills-section"
                         ? "font-bold text-orange-600"
                         : ""
                 }`}
             >
                 Skills
-            </a>
-            <a
-                href="#portfolio-section"
-                className={`md:mx-4 ${
+            </div>
+            <div
+                onClick={() => window.location.hash = 'portfolio-section'}
+                className={`md:mx-4 cursor-pointer ${
                     activeLink === "portfolio-section"
                         ? "font-bold text-orange-600"
                         : ""
                 }`}
             >
                 Portfolio
-            </a>
-            <a
-                href="#about-section"
-                className={`md:mx-4 md:mr-20 ${
+            </div>
+            <div
+                onClick={() => window.location.hash = 'about-section'}
+                className={`md:mx-4 md:mr-20 cursor-pointer ${
                     activeLink === "about-section"
                         ? "font-bold text-orange-600"
                         : ""
                 }`}
             >
                 About
-            </a>
+            </div>
         </nav>
+
     );
 };
 

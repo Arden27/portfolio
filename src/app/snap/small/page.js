@@ -59,15 +59,15 @@ export default function Small() {
             </section>
             <section
                 id="skills-section"
-                className="flex h-[100svh] w-screen snap-start flex-col bg-cyan-300 pt-16"
+                className="flex h-[100svh] w-screen snap-start flex-col bg-cyan-300 max-sm:pt-14 pt-16"
             >
-                <h1 className="mb-2 text-center text-4xl font-bold">Skills</h1>
+                <h1 className="mx-sm:mb-0 mb-2 text-center text-4xl font-bold">Skills</h1>
                 <div 
-                    className="scroll-smooth sm:grid-rows-7 md:grid-rows-10 h-full w-full max-sm:flex max-sm:snap-x max-sm:snap-mandatory max-sm:flex-row max-sm:overflow-scroll scr sm:grid sm:grid-cols-1 sm:gap-4 md:px-6 md:pb-6 md:grid-cols-2"
+                    className="scroll-smooth sm:grid-rows-7 md:grid-rows-10 h-full w-full max-sm:flex max-sm:snap-x max-sm:snap-mandatory max-sm:flex-row max-sm:overflow-scroll sm:grid sm:grid-cols-1 sm:gap-4 max-sm:px-1 max-sm:pb-1 md:px-6 md:pb-6 md:grid-cols-2"
                     ref={skillsRef}
                 >
                     <div 
-                        className="max-sm:p-4 flex flex-col max-sm:h-full max-sm:w-full max-sm:flex-shrink-0 max-sm:snap-center sm:col-span-1 sm:row-span-3 md:col-span-1 md:row-span-6"
+                        className="max-sm:pb-4 flex flex-col max-sm:h-full max-sm:w-full max-sm:flex-shrink-0 max-sm:snap-center sm:col-span-1 sm:row-span-3 md:col-span-1 md:row-span-6"
                         id="frontend-skills"
                     >
                         <h2 className="mb-2 text-center text-xl font-bold">

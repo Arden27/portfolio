@@ -42,7 +42,7 @@ const SkillsNav = ({ skillsRef }) => {
     }, [skillsRef]);
 
     return (
-        <nav className="md:hidden text-3xl flex h-12 w-full items-center justify-center bg-transparent bg-opacity-80 pb-6 transition-shadow duration-300 ease-in-out md:justify-end">
+        <nav className="md:hidden text-3xl flex max-sm:h-8 h-12 w-full items-center justify-center bg-transparent bg-opacity-80 pb-6 transition-shadow duration-300 ease-in-out md:justify-end">
             <div
                 onClick={() => window.location.hash = 'frontend-skills'}
                 className={`mx-2 cursor-pointer ${activeLink === "frontend-skills" ? "font-bold text-orange-600" : ""}`}

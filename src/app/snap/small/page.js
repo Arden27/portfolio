@@ -103,7 +103,7 @@ export default function Small() {
                         className="max-sm:p-4 flex flex-col max-sm:h-full max-sm:w-full max-sm:flex-shrink-0 max-sm:snap-center sm:col-span-1 sm:row-span-4 md:col-span-2 shadow-xl"
                         id="other-skills"
                     >
-                        <h2 className="mb-2 text-center text-xl font-bold">
+                        <h2 className="mb-2 text-center text-xl font-bold text-red">
                             Other
                         </h2>
                         <div className="grid h-full w-full gap-2 rounded-2xl border-2 border-black bg-green-200 p-2 max-sm:grid-rows-3 md:grid-cols-3">

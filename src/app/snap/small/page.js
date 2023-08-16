@@ -184,7 +184,7 @@ export default function Small() {
                             <div className="rounded-2xl border-2 border-black bg-yellow-100 flex flex-col items-center justify-center">
                                 <div className="aspect-square max-h-20 h-2/3 rounded-2xl">
                                     <Image
-                                        src="/img/skills/MySQL.png"
+                                        src="/img/skills/mysql.png"
                                         alt="MySQL icon"
                                         // sizes="100%"
                                         //className="skill-image"
@@ -198,15 +198,15 @@ export default function Small() {
                             <div className="rounded-2xl border-2 border-black bg-indigo-100 flex flex-col items-center justify-center">
                                 <div className="aspect-square max-h-20 h-2/3 rounded-2xl">
                                     <Image
-                                        src="/img/skills/solidity.png"
-                                        alt="HTML icon"
+                                        src="/img/skills/node.png"
+                                        alt="Node icon"
                                         // sizes="100%"
                                         //className="skill-image"
                                         width={200}
                                         height={200}
                                     />
                                 </div>
-                                <p>Solidity</p>
+                                <p>Node</p>
 
                             </div>
                         </div>
@@ -220,7 +220,7 @@ export default function Small() {
                         </h2>
                         <div className="grid h-full w-full gap-2 rounded-2xl border-2 border-black bg-green-200 p-2 max-sm:grid-rows-3 md:grid-cols-3">
                             <div className="rounded-2xl h-full border-2 border-black bg-red-300 flex flex-col items-center ">
-                                <p className="">Tools</p>
+                                <p className="font-bold">Tools</p>
                                 <div className="px-2 h-full w-full flex items-center justify-around">
                                     <div className="flex flex-col h-full items-center justify-center">
                                         <div className="aspect-square max-h-20 h-2/3 rounded-2xl">
@@ -265,7 +265,7 @@ export default function Small() {
                             </div>
                             
                             <div className="rounded-2xl h-full border-2 border-black bg-blue-300 flex flex-col items-center ">
-                                <p className="">Tools</p>
+                                <p className="font-bold">Tools</p>
                                 <div className="h-full w-full flex items-center justify-around">
                                 <div className="flex flex-col h-full items-center justify-center">
                                         <div className="aspect-square max-h-20 h-2/3 rounded-2xl">
@@ -310,7 +310,7 @@ export default function Small() {
                             </div>
 
                             <div className="rounded-2xl h-full border-2 border-black bg-yellow-400 flex flex-col items-center ">
-                                <p className="">Tools</p>
+                                <p className="font-bold">Tools</p>
                                 <div className="h-full w-full flex items-center justify-around">
                                 <div className="flex flex-col h-full items-center justify-center">
                                         <div className="aspect-square max-h-20 h-2/3 rounded-2xl">

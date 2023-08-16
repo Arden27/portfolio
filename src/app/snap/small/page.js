@@ -3,6 +3,7 @@
 import NavBar from "../nav";
 import SkillsNav from "../skillsNav";
 import { useRef } from "react";
+import Image from "next/image";
 
 export default function Small() {
     const mainRef = useRef();
@@ -18,44 +19,7 @@ export default function Small() {
                 id="home-section"
                 className="flex h-[100svh] w-screen snap-start items-center justify-center bg-emerald-300 text-4xl"
             >
-                <div className="flex snap-x snap-mandatory flex-row overflow-scroll">
-                    <div className="h-full w-full flex-shrink-0 snap-center">
-                        <img
-                            className="h-auto w-screen"
-                            src="https://images.unsplash.com/photo-1604999565976-8913ad2ddb7c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=160&q=80"
-                        />
-                    </div>
-                    <div className="h-full w-full flex-shrink-0 snap-center">
-                        <img
-                            className="h-auto w-screen"
-                            src="https://images.unsplash.com/photo-1540206351-d6465b3ac5c1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=160&q=80"
-                        />
-                    </div>
-                    <div className="h-full w-full flex-shrink-0 snap-center">
-                        <img
-                            className="h-auto w-screen"
-                            src="https://images.unsplash.com/photo-1622890806166-111d7f6c7c97?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=160&q=80"
-                        />
-                    </div>
-                    <div className="h-full w-full flex-shrink-0 snap-center">
-                        <img
-                            className="h-auto w-screen"
-                            src="https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=160&q=80"
-                        />
-                    </div>
-                    <div className="h-full w-full flex-shrink-0 snap-center">
-                        <img
-                            className="h-auto w-screen"
-                            src="https://images.unsplash.com/photo-1575424909138-46b05e5919ec?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=160&q=80"
-                        />
-                    </div>
-                    <div className="h-full w-full flex-shrink-0 snap-center">
-                        <img
-                            className="h-auto w-screen"
-                            src="https://images.unsplash.com/photo-1559333086-b0a56225a93c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=160&q=80"
-                        />
-                    </div>
-                </div>
+                Home
             </section>
             <section
                 id="skills-section"
@@ -74,12 +38,84 @@ export default function Small() {
                             Frontend
                         </h2>
                         <div className="grid h-full w-full max-sm:grid-cols-2 max-sm:grid-rows-3 grid-cols-3 grid-rows-2 gap-2 rounded-2xl border-2 border-black bg-blue-200 p-2">
-                            <div className="rounded-2xl border-2 border-black bg-purple-200 shadow-lg"></div>
-                            <div className="rounded-2xl border-2 border-black bg-yellow-200 shadow-lg"></div>
-                            <div className="rounded-2xl border-2 border-black bg-pink-200 shadow-lg"></div>
-                            <div className="rounded-2xl border-2 border-black bg-orange-200 shadow-lg"></div>
-                            <div className="rounded-2xl border-2 border-black bg-gray-200 shadow-lg"></div>
-                            <div className="rounded-2xl border-2 border-black bg-indigo-200 shadow-lg"></div>
+                            <div className="rounded-2xl border-2 border-black bg-purple-200 flex flex-col items-center justify-center">
+                                <div className="aspect-square max-h-20 h-2/3 rounded-2xl">
+                                    <Image
+                                        src="/img/skills/html.png"
+                                        alt="HTML icon"
+                                        // sizes="100%"
+                                        //className="skill-image"
+                                        width={200}
+                                        height={200}
+                                    />
+                                </div>
+                                <p>HTML</p>
+                            </div>
+                            <div className="rounded-2xl border-2 border-black bg-yellow-200 flex flex-col items-center justify-center">
+                                <div className="aspect-square flex items-center justify-center max-h-20 h-2/3 rounded-2xl">
+                                    <Image
+                                        src="/img/skills/css.png"
+                                        alt="HTML icon"
+                                        // sizes="100%"
+                                        //className="skill-image"
+                                        width={200}
+                                        height={200}
+                                    />
+                                </div>
+                                <p>CSS</p>
+                            </div>
+                            <div className="rounded-2xl border-2 border-black bg-pink-200 flex flex-col items-center justify-center">
+                                <div className="aspect-square flex items-center max-h-20 h-2/3 rounded-2xl">
+                                    <Image
+                                        src="/img/skills/tailwind.png"
+                                        alt="HTML icon"
+                                        // sizes="100%"
+                                        //className="skill-image"
+                                        width={200}
+                                        height={200}
+                                    />
+                                </div>
+                                <p>Tailwind</p>
+                            </div>
+                            <div className="rounded-2xl border-2 border-black bg-orange-200 flex flex-col items-center justify-center">
+                                <div className="aspect-square flex items-center max-h-20 h-2/3 rounded-2xl">
+                                    <Image
+                                        src="/img/skills/js.png"
+                                        alt="JavaScript icon"
+                                        // sizes="100%"
+                                        //className="skill-image"
+                                        width={200}
+                                        height={200}
+                                    />
+                                </div>
+                                <p>JavaScript</p>
+                            </div>
+                            <div className="rounded-2xl border-2 border-black bg-gray-200 flex flex-col items-center justify-center">
+                                <div className="aspect-square flex items-center max-h-20 h-2/3 rounded-2xl">
+                                    <Image
+                                        src="/img/skills/react.png"
+                                        alt="ReactJS icon"
+                                        // sizes="100%"
+                                        //className="skill-image"
+                                        width={200}
+                                        height={200}
+                                    />
+                                </div>
+                                <p>ReactJS</p>
+                            </div>
+                            <div className="rounded-2xl border-2 border-black bg-indigo-200 flex flex-col items-center justify-center">
+                                <div className="aspect-square flex items-center max-h-20 h-2/3 rounded-2xl">
+                                    <Image
+                                        src="/img/skills/next.png"
+                                        alt="NextJS icon"
+                                        // sizes="100%"
+                                        //className="skill-image"
+                                        width={200}
+                                        height={200}
+                                    />
+                                </div>
+                                <p>NextJS</p>
+                            </div>
                         </div>
                     </div>
                     <div 
@@ -91,12 +127,88 @@ export default function Small() {
                             Backend
                         </h2>
                         <div className="grid h-full w-full max-sm:grid-cols-2 max-sm:grid-rows-3 grid-cols-3 grid-rows-2 gap-2 rounded-2xl border-2 border-black bg-red-200 p-2">
-                            <div className="rounded-2xl border-2 border-black bg-green-300"></div>
-                            <div className="rounded-2xl border-2 border-black bg-pink-300"></div>
-                            <div className="rounded-2xl border-2 border-black bg-teal-200"></div>
-                            <div className="rounded-2xl border-2 border-black bg-purple-300"></div>
-                            <div className="rounded-2xl border-2 border-black bg-yellow-300"></div>
-                            <div className="rounded-2xl border-2 border-black bg-indigo-300"></div>
+                            <div className="rounded-2xl border-2 border-black bg- flex flex-col items-center justify-center">
+                                <div className="aspect-square flex items-center max-h-20 h-2/3 rounded-2xl">
+                                    <Image
+                                        src="/img/skills/python.png"
+                                        alt="HTML icon"
+                                        // sizes="100%"
+                                        //className="skill-image"
+                                        width={200}
+                                        height={200}
+                                    />
+                                </div>
+                                <p>Python</p>
+                            </div>
+                            <div className="rounded-2xl border-2 border-black bg-pink-300 flex flex-col items-center justify-center">
+                                <div className="aspect-square max-h-20 h-2/3 rounded-2xl">
+                                    <Image
+                                        src="/img/skills/django.png"
+                                        alt="HTML icon"
+                                        // sizes="100%"
+                                        //className="skill-image"
+                                        width={200}
+                                        height={200}
+                                    />
+                                </div>
+                                <p>Django</p>
+                            </div>
+                            <div className="rounded-2xl border-2 border-black bg-teal-100 flex flex-col items-center justify-center">
+                                <div className="aspect-square max-h-20 h-2/3 rounded-2xl">
+                                    <Image
+                                        src="/img/skills/pytorch.png"
+                                        alt="HTML icon"
+                                        // sizes="100%"
+                                        //className="skill-image"
+                                        width={200}
+                                        height={200}
+                                    />
+                                </div>
+                                <p>PyTorch</p>
+
+                            </div>
+                            <div className="rounded-2xl border-2 border-black bg-purple-100 flex flex-col items-center justify-center">
+                                <div className="aspect-square max-h-20 h-2/3 rounded-2xl">
+                                    <Image
+                                        src="/img/skills/mongodb.png"
+                                        alt="MongoDB icon"
+                                        // sizes="100%"
+                                        //className="skill-image"
+                                        width={200}
+                                        height={200}
+                                    />
+                                </div>
+                                <p>MongoDB</p>
+
+                            </div>
+                            <div className="rounded-2xl border-2 border-black bg-yellow-100 flex flex-col items-center justify-center">
+                                <div className="aspect-square max-h-20 h-2/3 rounded-2xl">
+                                    <Image
+                                        src="/img/skills/MySQL.png"
+                                        alt="MySQL icon"
+                                        // sizes="100%"
+                                        //className="skill-image"
+                                        width={200}
+                                        height={200}
+                                    />
+                                </div>
+                                <p>MySQL</p>
+
+                            </div>
+                            <div className="rounded-2xl border-2 border-black bg-indigo-100 flex flex-col items-center justify-center">
+                                <div className="aspect-square max-h-20 h-2/3 rounded-2xl">
+                                    <Image
+                                        src="/img/skills/solidity.png"
+                                        alt="HTML icon"
+                                        // sizes="100%"
+                                        //className="skill-image"
+                                        width={200}
+                                        height={200}
+                                    />
+                                </div>
+                                <p>Solidity</p>
+
+                            </div>
                         </div>
                     </div>
                     <div 
@@ -107,9 +219,141 @@ export default function Small() {
                             Other
                         </h2>
                         <div className="grid h-full w-full gap-2 rounded-2xl border-2 border-black bg-green-200 p-2 max-sm:grid-rows-3 md:grid-cols-3">
-                            <div className="rounded-2xl border-2 border-black bg-red-300"></div>
-                            <div className="rounded-2xl border-2 border-black bg-blue-300"></div>
-                            <div className="rounded-2xl border-2 border-black bg-yellow-400"></div>
+                            <div className="rounded-2xl h-full border-2 border-black bg-red-300 flex flex-col items-center ">
+                                <p className="">Tools</p>
+                                <div className="px-2 h-full w-full flex items-center justify-around">
+                                    <div className="flex flex-col h-full items-center justify-center">
+                                        <div className="aspect-square max-h-20 h-2/3 rounded-2xl">
+                                            <Image
+                                                src="/img/skills/git.png"
+                                                alt="HTML icon"
+                                                
+                                                //className="skill-image"
+                                                width={200}
+                                                height={200}
+                                            />
+                                        </div>
+                                        <p>Git</p>
+                                    </div>
+                                    <div className="flex flex-col h-full items-center justify-center">
+                                        <div className="aspect-square max-h-20 h-2/3 rounded-2xl">
+                                            <Image
+                                                src="/img/skills/vscode.png"
+                                                alt="VSCode icon"
+                                                
+                                                //className="skill-image"
+                                                width={200}
+                                                height={200}
+                                            />
+                                        </div>
+                                        <p>VSCode</p>
+                                    </div>
+                                    <div className="flex flex-col h-full items-center justify-center">
+                                        <div className="aspect-square max-h-20 h-2/3 rounded-2xl">
+                                            <Image
+                                                src="/img/skills/linux.png"
+                                                alt="Linux icon"
+                                                
+                                                //className="skill-image"
+                                                width={200}
+                                                height={200}
+                                            />
+                                        </div>
+                                        <p>Linux</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div className="rounded-2xl h-full border-2 border-black bg-blue-300 flex flex-col items-center ">
+                                <p className="">Tools</p>
+                                <div className="h-full w-full flex items-center justify-around">
+                                <div className="flex flex-col h-full items-center justify-center">
+                                        <div className="aspect-square max-h-20 h-2/3 rounded-2xl">
+                                            <Image
+                                                src="/img/skills/git.png"
+                                                alt="HTML icon"
+                                                
+                                                //className="skill-image"
+                                                width={200}
+                                                height={200}
+                                            />
+                                        </div>
+                                        <p>Git</p>
+                                    </div>
+                                    <div className="flex flex-col h-full items-center justify-center">
+                                        <div className="aspect-square max-h-20 h-2/3 rounded-2xl">
+                                            <Image
+                                                src="/img/skills/vscode.png"
+                                                alt="VSCode icon"
+                                                
+                                                //className="skill-image"
+                                                width={200}
+                                                height={200}
+                                            />
+                                        </div>
+                                        <p>VSCode</p>
+                                    </div>
+                                    <div className="flex flex-col h-full items-center justify-center">
+                                        <div className="aspect-square max-h-20 h-2/3 rounded-2xl">
+                                            <Image
+                                                src="/img/skills/linux.png"
+                                                alt="Linux icon"
+                                                
+                                                //className="skill-image"
+                                                width={200}
+                                                height={200}
+                                            />
+                                        </div>
+                                        <p>Linux</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="rounded-2xl h-full border-2 border-black bg-yellow-400 flex flex-col items-center ">
+                                <p className="">Tools</p>
+                                <div className="h-full w-full flex items-center justify-around">
+                                <div className="flex flex-col h-full items-center justify-center">
+                                        <div className="aspect-square max-h-20 h-2/3 rounded-2xl">
+                                            <Image
+                                                src="/img/skills/git.png"
+                                                alt="HTML icon"
+                                                
+                                                //className="skill-image"
+                                                width={200}
+                                                height={200}
+                                            />
+                                        </div>
+                                        <p>Git</p>
+                                    </div>
+                                    <div className="flex flex-col h-full items-center justify-center">
+                                        <div className="aspect-square max-h-20 h-2/3 rounded-2xl">
+                                            <Image
+                                                src="/img/skills/vscode.png"
+                                                alt="VSCode icon"
+                                                
+                                                //className="skill-image"
+                                                width={200}
+                                                height={200}
+                                            />
+                                        </div>
+                                        <p>VSCode</p>
+                                    </div>
+                                    <div className="flex flex-col h-full items-center justify-center">
+                                        <div className="aspect-square max-h-20 h-2/3 rounded-2xl">
+                                            <Image
+                                                src="/img/skills/linux.png"
+                                                alt="Linux icon"
+                                                
+                                                //className="skill-image"
+                                                width={200}
+                                                height={200}
+                                            />
+                                        </div>
+                                        <p>Linux</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
                         </div>
                     </div>
                 </div>

@@ -11,7 +11,7 @@ export default function Small() {
     return (
         <main
             ref={mainRef}
-            className="h-[100svh] w-screen snap-y snap-mandatory overflow-scroll scroll-smooth"
+            className="h-[100svh] w-screen snap-y snap-mandatory overflow-scroll scroll-smooth box-border"
         >
             <NavBar mainRef={mainRef} />
             <section
@@ -67,23 +67,23 @@ export default function Small() {
                     ref={skillsRef}
                 >
                     <div 
-                        className="max-sm:pb-4 flex flex-col max-sm:h-full max-sm:w-full max-sm:flex-shrink-0 max-sm:snap-center sm:col-span-1 sm:row-span-3 md:col-span-1 md:row-span-6"
+                        className="max-sm:pb-4 max-sm:px-1 flex flex-col max-sm:h-full max-sm:w-full max-sm:flex-shrink-0 max-sm:snap-center sm:col-span-1 sm:row-span-3 md:col-span-1 md:row-span-6"
                         id="frontend-skills"
                     >
                         <h2 className="mb-2 text-center text-xl font-bold">
                             Frontend
                         </h2>
-                        <div className="grid h-full w-full max-sm:grid-cols-2 max-sm:grid-rows-3 grid-cols-3 grid-rows-2 gap-2 rounded-2xl border-2 border-black bg-blue-200 p-2 shadow-xl">
-                            <div className="rounded-2xl border-2 border-black bg-purple-200 shadow-xl"></div>
-                            <div className="rounded-2xl border-2 border-black bg-yellow-200 shadow-xl"></div>
-                            <div className="rounded-2xl border-2 border-black bg-pink-200 shadow-xl"></div>
-                            <div className="rounded-2xl border-2 border-black bg-orange-200 shadow-xl"></div>
-                            <div className="rounded-2xl border-2 border-black bg-gray-200 shadow-xl"></div>
-                            <div className="rounded-2xl border-2 border-black bg-indigo-200 shadow-xl"></div>
+                        <div className="grid h-full w-full max-sm:grid-cols-2 max-sm:grid-rows-3 grid-cols-3 grid-rows-2 gap-2 rounded-2xl border-2 border-black bg-blue-200 p-2">
+                            <div className="rounded-2xl border-2 border-black bg-purple-200 shadow-lg"></div>
+                            <div className="rounded-2xl border-2 border-black bg-yellow-200 shadow-lg"></div>
+                            <div className="rounded-2xl border-2 border-black bg-pink-200 shadow-lg"></div>
+                            <div className="rounded-2xl border-2 border-black bg-orange-200 shadow-lg"></div>
+                            <div className="rounded-2xl border-2 border-black bg-gray-200 shadow-lg"></div>
+                            <div className="rounded-2xl border-2 border-black bg-indigo-200 shadow-lg"></div>
                         </div>
                     </div>
                     <div 
-                        className="max-sm:p-4 flex flex-col max-sm:h-full max-sm:w-full max-sm:flex-shrink-0 max-sm:snap-center sm:col-span-1 sm:row-span-3 md:col-span-1 md:row-span-6"
+                        className="max-sm:pb-4 max-sm:px-1 flex flex-col max-sm:h-full max-sm:w-full max-sm:flex-shrink-0 max-sm:snap-center sm:col-span-1 sm:row-span-3 md:col-span-1 md:row-span-6"
                         id="backend-skills"
                     >
                         
@@ -91,25 +91,25 @@ export default function Small() {
                             Backend
                         </h2>
                         <div className="grid h-full w-full max-sm:grid-cols-2 max-sm:grid-rows-3 grid-cols-3 grid-rows-2 gap-2 rounded-2xl border-2 border-black bg-red-200 p-2">
-                            <div className="rounded-2xl border-2 border-black bg-green-300 shadow-xl"></div>
-                            <div className="rounded-2xl border-2 border-black bg-pink-300 shadow-xl"></div>
-                            <div className="rounded-2xl border-2 border-black bg-teal-200 shadow-xl"></div>
-                            <div className="rounded-2xl border-2 border-black bg-purple-300 shadow-xl"></div>
-                            <div className="rounded-2xl border-2 border-black bg-yellow-300 shadow-xl"></div>
-                            <div className="rounded-2xl border-2 border-black bg-indigo-300 shadow-xl"></div>
+                            <div className="rounded-2xl border-2 border-black bg-green-300"></div>
+                            <div className="rounded-2xl border-2 border-black bg-pink-300"></div>
+                            <div className="rounded-2xl border-2 border-black bg-teal-200"></div>
+                            <div className="rounded-2xl border-2 border-black bg-purple-300"></div>
+                            <div className="rounded-2xl border-2 border-black bg-yellow-300"></div>
+                            <div className="rounded-2xl border-2 border-black bg-indigo-300"></div>
                         </div>
                     </div>
                     <div 
-                        className="max-sm:p-4 flex flex-col max-sm:h-full max-sm:w-full max-sm:flex-shrink-0 max-sm:snap-center sm:col-span-1 sm:row-span-4 md:col-span-2 shadow-xl"
+                        className="max-sm:pb-4 max-sm:px-1 flex flex-col max-sm:h-full max-sm:w-full max-sm:flex-shrink-0 max-sm:snap-center sm:col-span-1 sm:row-span-4 md:col-span-2"
                         id="other-skills"
                     >
                         <h2 className="mb-2 text-center text-xl font-bold">
                             Other
                         </h2>
                         <div className="grid h-full w-full gap-2 rounded-2xl border-2 border-black bg-green-200 p-2 max-sm:grid-rows-3 md:grid-cols-3">
-                            <div className="rounded-2xl border-2 border-black bg-red-300 shadow-xl"></div>
-                            <div className="rounded-2xl border-2 border-black bg-blue-300 shadow-xl"></div>
-                            <div className="rounded-2xl border-2 border-black bg-yellow-400 shadow-xl"></div>
+                            <div className="rounded-2xl border-2 border-black bg-red-300"></div>
+                            <div className="rounded-2xl border-2 border-black bg-blue-300"></div>
+                            <div className="rounded-2xl border-2 border-black bg-yellow-400"></div>
                         </div>
                     </div>
                 </div>

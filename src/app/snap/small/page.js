@@ -23,7 +23,7 @@ export default function Small() {
                 id="home-section"
                 className="flex h-[100svh] w-screen snap-start items-center justify-center max-sm:pt-14"
             >
-                <div className="flex flex-col md:flex-row md:h-screen h-full w-full md:items-center items-center justify-center">
+                <div className="flex flex-col md:flex-row md:h-screen h-[100svh] w-full items-center justify-center">
                     {/* <Image
                         src="/img/profile_picture.png"
                         alt="Profile Picture"
@@ -32,7 +32,7 @@ export default function Small() {
                         width={2832}
                         height={4256}
                     /> */}
-                    <div className="aspect-square flex items-center justify-center h-1/2 md:h-2/3">
+                    <div className="aspect-square flex items-center justify-center h-2/3">
                         <Image
                             src="/img/about.jpeg"
                             alt="Profile Picture"

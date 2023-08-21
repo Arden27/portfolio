@@ -17,13 +17,13 @@ export default function Small() {
             <NavBar mainRef={mainRef} />
             <section
                 id="home-section"
-                className="flex h-[100svh] w-screen snap-start items-center justify-center bg-emerald-300 text-4xl"
+                className="flex h-[100svh] w-screen snap-start items-center justify-center text-4xl"
             >
                 Home
             </section>
             <section
                 id="skills-section"
-                className="flex h-[100svh] w-screen snap-start flex-col bg-cyan-300 max-sm:pt-14 pt-16"
+                className="items-center justify-center flex h-[100svh] w-screen snap-start flex-col max-sm:pt-14 pt-16"
             >
                 <h1 className="mx-sm:mb-0 mb-2 text-center text-4xl font-bold">Skills</h1>
                 <div 
@@ -37,79 +37,77 @@ export default function Small() {
                         <h2 className="mb-2 text-center text-xl font-bold">
                             Frontend
                         </h2>
-                        <div className="grid h-full w-full max-sm:grid-cols-2 max-sm:grid-rows-3 grid-cols-3 grid-rows-2 gap-2 rounded-2xl border-2 border-black bg-blue-200 p-2">
-                            <div className="rounded-2xl border-2 border-black bg-purple-200 flex flex-col items-center justify-center">
+                        <div className="grid h-full w-full max-sm:grid-cols-2 max-sm:grid-rows-3 grid-cols-3 grid-rows-2 gap-2 rounded-2xl p-2">
+                            <div className="rounded-2xl border-2 border-black flex flex-col items-center justify-center">
                                 <div className="aspect-square max-h-20 h-2/3 rounded-2xl">
                                     <Image
                                         src="/img/skills/html.png"
                                         alt="HTML icon"
                                         // sizes="100%"
-                                        //className="skill-image"
+                                        
                                         width={200}
                                         height={200}
                                     />
                                 </div>
                                 <p>HTML</p>
                             </div>
-                            <div className="rounded-2xl border-2 border-black bg-yellow-200 flex flex-col items-center justify-center">
+                            <div className="rounded-2xl border-2 border-black flex flex-col items-center justify-center">
                                 <div className="aspect-square flex items-center justify-center max-h-20 h-2/3 rounded-2xl">
                                     <Image
                                         src="/img/skills/css.png"
                                         alt="HTML icon"
                                         // sizes="100%"
-                                        //className="skill-image"
+                                        
                                         width={200}
                                         height={200}
                                     />
                                 </div>
                                 <p>CSS</p>
                             </div>
-                            <div className="rounded-2xl border-2 border-black bg-pink-200 flex flex-col items-center justify-center">
+                            <div className="rounded-2xl border-2 border-black flex flex-col items-center justify-center">
                                 <div className="aspect-square flex items-center max-h-20 h-2/3 rounded-2xl">
                                     <Image
                                         src="/img/skills/tailwind.png"
                                         alt="HTML icon"
                                         // sizes="100%"
-                                        //className="skill-image"
                                         width={200}
                                         height={200}
                                     />
                                 </div>
                                 <p>Tailwind</p>
                             </div>
-                            <div className="rounded-2xl border-2 border-black bg-orange-200 flex flex-col items-center justify-center">
+                            <div className="rounded-2xl border-2 border-black flex flex-col items-center justify-center">
                                 <div className="aspect-square flex items-center max-h-20 h-2/3 rounded-2xl">
                                     <Image
                                         src="/img/skills/js.png"
                                         alt="JavaScript icon"
                                         // sizes="100%"
-                                        //className="skill-image"
+                                        
                                         width={200}
                                         height={200}
                                     />
                                 </div>
                                 <p>JavaScript</p>
                             </div>
-                            <div className="rounded-2xl border-2 border-black bg-gray-200 flex flex-col items-center justify-center">
+                            <div className="rounded-2xl border-2 border-black flex flex-col items-center justify-center">
                                 <div className="aspect-square flex items-center max-h-20 h-2/3 rounded-2xl">
                                     <Image
                                         src="/img/skills/react.png"
                                         alt="ReactJS icon"
                                         // sizes="100%"
-                                        //className="skill-image"
+                                        
                                         width={200}
                                         height={200}
                                     />
                                 </div>
                                 <p>ReactJS</p>
                             </div>
-                            <div className="rounded-2xl border-2 border-black bg-indigo-200 flex flex-col items-center justify-center">
+                            <div className="rounded-2xl border-2 border-black flex flex-col items-center justify-center">
                                 <div className="aspect-square flex items-center max-h-20 h-2/3 rounded-2xl">
                                     <Image
                                         src="/img/skills/next.png"
                                         alt="NextJS icon"
                                         // sizes="100%"
-                                        //className="skill-image"
                                         width={200}
                                         height={200}
                                     />
@@ -126,40 +124,39 @@ export default function Small() {
                         <h2 className="mb-2 text-center text-xl font-bold">
                             Backend
                         </h2>
-                        <div className="grid h-full w-full max-sm:grid-cols-2 max-sm:grid-rows-3 grid-cols-3 grid-rows-2 gap-2 rounded-2xl border-2 border-black bg-red-200 p-2">
+                        <div className="grid h-full w-full max-sm:grid-cols-2 max-sm:grid-rows-3 grid-cols-3 grid-rows-2 gap-2 rounded-2xl p-2">
                             <div className="rounded-2xl border-2 border-black bg- flex flex-col items-center justify-center">
                                 <div className="aspect-square flex items-center max-h-20 h-2/3 rounded-2xl">
                                     <Image
                                         src="/img/skills/python.png"
                                         alt="HTML icon"
                                         // sizes="100%"
-                                        //className="skill-image"
+                                        
                                         width={200}
                                         height={200}
                                     />
                                 </div>
                                 <p>Python</p>
                             </div>
-                            <div className="rounded-2xl border-2 border-black bg-pink-300 flex flex-col items-center justify-center">
+                            <div className="rounded-2xl border-2 border-black flex flex-col items-center justify-center">
                                 <div className="aspect-square max-h-20 h-2/3 rounded-2xl">
                                     <Image
                                         src="/img/skills/django.png"
                                         alt="HTML icon"
                                         // sizes="100%"
-                                        //className="skill-image"
                                         width={200}
                                         height={200}
                                     />
                                 </div>
                                 <p>Django</p>
                             </div>
-                            <div className="rounded-2xl border-2 border-black bg-teal-100 flex flex-col items-center justify-center">
+                            <div className="rounded-2xl border-2 border-black flex flex-col items-center justify-center">
                                 <div className="aspect-square max-h-20 h-2/3 rounded-2xl">
                                     <Image
                                         src="/img/skills/pytorch.png"
                                         alt="HTML icon"
                                         // sizes="100%"
-                                        //className="skill-image"
+                                        
                                         width={200}
                                         height={200}
                                     />
@@ -167,13 +164,13 @@ export default function Small() {
                                 <p>PyTorch</p>
 
                             </div>
-                            <div className="rounded-2xl border-2 border-black bg-purple-100 flex flex-col items-center justify-center">
+                            <div className="rounded-2xl border-2 border-black flex flex-col items-center justify-center">
                                 <div className="aspect-square max-h-20 h-2/3 rounded-2xl">
                                     <Image
                                         src="/img/skills/mongodb.png"
                                         alt="MongoDB icon"
                                         // sizes="100%"
-                                        //className="skill-image"
+                                        
                                         width={200}
                                         height={200}
                                     />
@@ -181,13 +178,13 @@ export default function Small() {
                                 <p>MongoDB</p>
 
                             </div>
-                            <div className="rounded-2xl border-2 border-black bg-yellow-100 flex flex-col items-center justify-center">
+                            <div className="rounded-2xl border-2 border-black flex flex-col items-center justify-center">
                                 <div className="aspect-square max-h-20 h-2/3 rounded-2xl">
                                     <Image
                                         src="/img/skills/mysql.png"
                                         alt="MySQL icon"
                                         // sizes="100%"
-                                        //className="skill-image"
+                                        
                                         width={200}
                                         height={200}
                                     />
@@ -195,18 +192,18 @@ export default function Small() {
                                 <p>MySQL</p>
 
                             </div>
-                            <div className="rounded-2xl border-2 border-black bg-indigo-100 flex flex-col items-center justify-center">
+                            <div className="rounded-2xl border-2 border-black flex flex-col items-center justify-center">
                                 <div className="aspect-square max-h-20 h-2/3 rounded-2xl">
                                     <Image
                                         src="/img/skills/node.png"
                                         alt="Node icon"
                                         // sizes="100%"
-                                        //className="skill-image"
+                                        
                                         width={200}
                                         height={200}
                                     />
                                 </div>
-                                <p>Node</p>
+                                <p>NodeJS</p>
 
                             </div>
                         </div>
@@ -218,53 +215,53 @@ export default function Small() {
                         <h2 className="mb-2 text-center text-xl font-bold">
                             Other
                         </h2>
-                        <div className="grid h-full w-full gap-2 rounded-2xl border-2 border-black bg-green-200 p-2 max-sm:grid-rows-3 md:grid-cols-3">
-                            <div className="rounded-2xl h-full border-2 border-black bg-red-300 flex flex-col items-center ">
-                                <p className="font-bold">Tools</p>
+                        <div className="grid h-full w-full gap-2 rounded-2xl p-2 max-sm:grid-rows-3 md:grid-cols-3">
+                            <div className="rounded-2xl h-full border-2 border-black flex flex-col items-center ">
+                                <p className="font-bold">Enhancements</p>
                                 <div className="px-2 h-full w-full flex items-center justify-around">
                                     <div className="flex flex-col h-full items-center justify-center">
                                         <div className="aspect-square max-h-20 h-2/3 rounded-2xl">
                                             <Image
-                                                src="/img/skills/git.png"
+                                                src="/img/skills/typescript.png"
                                                 alt="HTML icon"
                                                 
-                                                //className="skill-image"
+                                                
                                                 width={200}
                                                 height={200}
                                             />
                                         </div>
-                                        <p>Git</p>
+                                        <p>TypeScript</p>
                                     </div>
                                     <div className="flex flex-col h-full items-center justify-center">
                                         <div className="aspect-square max-h-20 h-2/3 rounded-2xl">
                                             <Image
-                                                src="/img/skills/vscode.png"
-                                                alt="VSCode icon"
+                                                src="/img/skills/redux.png"
+                                                alt="Redux icon"
                                                 
-                                                //className="skill-image"
+                                                
                                                 width={200}
                                                 height={200}
                                             />
                                         </div>
-                                        <p>VSCode</p>
+                                        <p>Redux</p>
                                     </div>
                                     <div className="flex flex-col h-full items-center justify-center">
                                         <div className="aspect-square max-h-20 h-2/3 rounded-2xl">
                                             <Image
-                                                src="/img/skills/linux.png"
-                                                alt="Linux icon"
+                                                src="/img/skills/responsive.png"
+                                                alt="Responsivity icon"
                                                 
-                                                //className="skill-image"
+                                                
                                                 width={200}
                                                 height={200}
                                             />
                                         </div>
-                                        <p>Linux</p>
+                                        <p>Responsive</p>
                                     </div>
                                 </div>
                             </div>
                             
-                            <div className="rounded-2xl h-full border-2 border-black bg-blue-300 flex flex-col items-center ">
+                            <div className="rounded-2xl h-full border-2 border-black flex flex-col items-center ">
                                 <p className="font-bold">Tools</p>
                                 <div className="h-full w-full flex items-center justify-around">
                                 <div className="flex flex-col h-full items-center justify-center">
@@ -273,7 +270,7 @@ export default function Small() {
                                                 src="/img/skills/git.png"
                                                 alt="HTML icon"
                                                 
-                                                //className="skill-image"
+                                                
                                                 width={200}
                                                 height={200}
                                             />
@@ -286,7 +283,7 @@ export default function Small() {
                                                 src="/img/skills/vscode.png"
                                                 alt="VSCode icon"
                                                 
-                                                //className="skill-image"
+                                                
                                                 width={200}
                                                 height={200}
                                             />
@@ -299,7 +296,7 @@ export default function Small() {
                                                 src="/img/skills/linux.png"
                                                 alt="Linux icon"
                                                 
-                                                //className="skill-image"
+                                                
                                                 width={200}
                                                 height={200}
                                             />
@@ -309,7 +306,7 @@ export default function Small() {
                                 </div>
                             </div>
 
-                            <div className="rounded-2xl h-full border-2 border-black bg-yellow-400 flex flex-col items-center ">
+                            <div className="rounded-2xl h-full border-2 border-black flex flex-col items-center ">
                                 <p className="font-bold">Tools</p>
                                 <div className="h-full w-full flex items-center justify-around">
                                 <div className="flex flex-col h-full items-center justify-center">
@@ -318,7 +315,7 @@ export default function Small() {
                                                 src="/img/skills/git.png"
                                                 alt="HTML icon"
                                                 
-                                                //className="skill-image"
+                                                
                                                 width={200}
                                                 height={200}
                                             />
@@ -328,15 +325,15 @@ export default function Small() {
                                     <div className="flex flex-col h-full items-center justify-center">
                                         <div className="aspect-square max-h-20 h-2/3 rounded-2xl">
                                             <Image
-                                                src="/img/skills/vscode.png"
-                                                alt="VSCode icon"
+                                                src="/img/skills/creativity.png"
+                                                alt="Ideation icon"
                                                 
-                                                //className="skill-image"
+                                                
                                                 width={200}
                                                 height={200}
                                             />
                                         </div>
-                                        <p>VSCode</p>
+                                        <p>Ideation</p>
                                     </div>
                                     <div className="flex flex-col h-full items-center justify-center">
                                         <div className="aspect-square max-h-20 h-2/3 rounded-2xl">
@@ -344,7 +341,7 @@ export default function Small() {
                                                 src="/img/skills/linux.png"
                                                 alt="Linux icon"
                                                 
-                                                //className="skill-image"
+                                                
                                                 width={200}
                                                 height={200}
                                             />
@@ -361,13 +358,13 @@ export default function Small() {
             </section>
             <section
                 id="portfolio-section"
-                className="flex h-[100svh] w-screen snap-start items-center justify-center bg-emerald-300 text-4xl"
+                className="flex h-[100svh] w-screen snap-start items-center justify-center text-4xl"
             >
                 <h1>Portfolio</h1>
             </section>
             <section
                 id="about-section"
-                className="flex h-[100svh] w-screen snap-start items-center justify-center bg-cyan-300 text-4xl"
+                className="flex h-[100svh] w-screen snap-start items-center justify-center text-4xl"
             >
                 <h1>About</h1>
             </section>

@@ -39,12 +39,10 @@ export default function Small() {
                         </h2>
                         <div className="grid h-full w-full max-sm:grid-cols-2 max-sm:grid-rows-3 grid-cols-3 grid-rows-2 gap-2 rounded-2xl p-2">
                             <div className="rounded-2xl border-2 border-black flex flex-col items-center justify-center">
-                                <div className="aspect-square max-h-20 h-2/3 rounded-2xl">
+                                <div className="aspect-square flex items-center justify-center max-h-20 h-2/3 rounded-2xl">
                                     <Image
                                         src="/img/skills/html.png"
                                         alt="HTML icon"
-                                        // sizes="100%"
-                                        
                                         width={200}
                                         height={200}
                                     />
@@ -55,9 +53,7 @@ export default function Small() {
                                 <div className="aspect-square flex items-center justify-center max-h-20 h-2/3 rounded-2xl">
                                     <Image
                                         src="/img/skills/css.png"
-                                        alt="HTML icon"
-                                        // sizes="100%"
-                                        
+                                        alt="CSS icon"
                                         width={200}
                                         height={200}
                                     />
@@ -65,11 +61,10 @@ export default function Small() {
                                 <p>CSS</p>
                             </div>
                             <div className="rounded-2xl border-2 border-black flex flex-col items-center justify-center">
-                                <div className="aspect-square flex items-center max-h-20 h-2/3 rounded-2xl">
+                                <div className="aspect-square flex items-center justify-center max-h-20 h-2/3 rounded-2xl">
                                     <Image
                                         src="/img/skills/tailwind.png"
-                                        alt="HTML icon"
-                                        // sizes="100%"
+                                        alt="Tailwind icon"
                                         width={200}
                                         height={200}
                                     />
@@ -77,12 +72,10 @@ export default function Small() {
                                 <p>Tailwind</p>
                             </div>
                             <div className="rounded-2xl border-2 border-black flex flex-col items-center justify-center">
-                                <div className="aspect-square flex items-center max-h-20 h-2/3 rounded-2xl">
+                                <div className="aspect-square flex items-center justify-center max-h-20 h-2/3 rounded-2xl">
                                     <Image
                                         src="/img/skills/js.png"
                                         alt="JavaScript icon"
-                                        // sizes="100%"
-                                        
                                         width={200}
                                         height={200}
                                     />
@@ -90,12 +83,10 @@ export default function Small() {
                                 <p>JavaScript</p>
                             </div>
                             <div className="rounded-2xl border-2 border-black flex flex-col items-center justify-center">
-                                <div className="aspect-square flex items-center max-h-20 h-2/3 rounded-2xl">
+                                <div className="aspect-square flex items-center justify-center max-h-20 h-2/3 rounded-2xl">
                                     <Image
                                         src="/img/skills/react.png"
                                         alt="ReactJS icon"
-                                        // sizes="100%"
-                                        
                                         width={200}
                                         height={200}
                                     />
@@ -103,11 +94,10 @@ export default function Small() {
                                 <p>ReactJS</p>
                             </div>
                             <div className="rounded-2xl border-2 border-black flex flex-col items-center justify-center">
-                                <div className="aspect-square flex items-center max-h-20 h-2/3 rounded-2xl">
+                                <div className="aspect-square flex items-center justify-center max-h-20 h-2/3 rounded-2xl">
                                     <Image
                                         src="/img/skills/next.png"
                                         alt="NextJS icon"
-                                        // sizes="100%"
                                         width={200}
                                         height={200}
                                     />
@@ -125,13 +115,11 @@ export default function Small() {
                             Backend
                         </h2>
                         <div className="grid h-full w-full max-sm:grid-cols-2 max-sm:grid-rows-3 grid-cols-3 grid-rows-2 gap-2 rounded-2xl p-2">
-                            <div className="rounded-2xl border-2 border-black bg- flex flex-col items-center justify-center">
-                                <div className="aspect-square flex items-center max-h-20 h-2/3 rounded-2xl">
+                            <div className="rounded-2xl border-2 border-black flex flex-col items-center justify-center">
+                                <div className="aspect-square flex items-center justify-center max-h-20 h-2/3 rounded-2xl">
                                     <Image
                                         src="/img/skills/python.png"
-                                        alt="HTML icon"
-                                        // sizes="100%"
-                                        
+                                        alt="Python icon"
                                         width={200}
                                         height={200}
                                     />
@@ -139,11 +127,10 @@ export default function Small() {
                                 <p>Python</p>
                             </div>
                             <div className="rounded-2xl border-2 border-black flex flex-col items-center justify-center">
-                                <div className="aspect-square max-h-20 h-2/3 rounded-2xl">
+                                <div className="aspect-square flex items-center justify-center max-h-20 h-2/3 rounded-2xl">
                                     <Image
                                         src="/img/skills/django.png"
-                                        alt="HTML icon"
-                                        // sizes="100%"
+                                        alt="Django icon"
                                         width={200}
                                         height={200}
                                     />
@@ -151,26 +138,21 @@ export default function Small() {
                                 <p>Django</p>
                             </div>
                             <div className="rounded-2xl border-2 border-black flex flex-col items-center justify-center">
-                                <div className="aspect-square max-h-20 h-2/3 rounded-2xl">
+                                <div className="aspect-square flex items-center justify-center max-h-20 h-2/3 rounded-2xl">
                                     <Image
                                         src="/img/skills/pytorch.png"
-                                        alt="HTML icon"
-                                        // sizes="100%"
-                                        
+                                        alt="PyTorch icon"
                                         width={200}
                                         height={200}
                                     />
                                 </div>
                                 <p>PyTorch</p>
-
                             </div>
                             <div className="rounded-2xl border-2 border-black flex flex-col items-center justify-center">
-                                <div className="aspect-square max-h-20 h-2/3 rounded-2xl">
+                                <div className="aspect-square flex items-center justify-center max-h-20 h-2/3 rounded-2xl">
                                     <Image
                                         src="/img/skills/mongodb.png"
                                         alt="MongoDB icon"
-                                        // sizes="100%"
-                                        
                                         width={200}
                                         height={200}
                                     />
@@ -179,32 +161,26 @@ export default function Small() {
 
                             </div>
                             <div className="rounded-2xl border-2 border-black flex flex-col items-center justify-center">
-                                <div className="aspect-square max-h-20 h-2/3 rounded-2xl">
+                                <div className="aspect-square flex items-center justify-center max-h-20 h-2/3 rounded-2xl">
                                     <Image
                                         src="/img/skills/mysql.png"
                                         alt="MySQL icon"
-                                        // sizes="100%"
-                                        
                                         width={200}
                                         height={200}
                                     />
                                 </div>
                                 <p>MySQL</p>
-
                             </div>
                             <div className="rounded-2xl border-2 border-black flex flex-col items-center justify-center">
-                                <div className="aspect-square max-h-20 h-2/3 rounded-2xl">
+                                <div className="aspect-square flex items-center justify-center max-h-20 h-2/3 rounded-2xl">
                                     <Image
                                         src="/img/skills/node.png"
-                                        alt="Node icon"
-                                        // sizes="100%"
-                                        
+                                        alt="NodeJS icon"
                                         width={200}
                                         height={200}
                                     />
                                 </div>
                                 <p>NodeJS</p>
-
                             </div>
                         </div>
                     </div>
@@ -220,12 +196,10 @@ export default function Small() {
                                 <p className="font-bold">Enhancements</p>
                                 <div className="px-2 h-full w-full flex items-center justify-around">
                                     <div className="flex flex-col h-full items-center justify-center">
-                                        <div className="aspect-square max-h-20 h-2/3 rounded-2xl">
+                                        <div className="aspect-square flex items-center justify-center max-h-20 h-2/3 rounded-2xl">
                                             <Image
                                                 src="/img/skills/typescript.png"
-                                                alt="HTML icon"
-                                                
-                                                
+                                                alt="TypeScript icon"
                                                 width={200}
                                                 height={200}
                                             />
@@ -233,12 +207,10 @@ export default function Small() {
                                         <p>TypeScript</p>
                                     </div>
                                     <div className="flex flex-col h-full items-center justify-center">
-                                        <div className="aspect-square max-h-20 h-2/3 rounded-2xl">
+                                        <div className="aspect-square flex items-center justify-center max-h-20 h-2/3 rounded-2xl">
                                             <Image
                                                 src="/img/skills/redux.png"
                                                 alt="Redux icon"
-                                                
-                                                
                                                 width={200}
                                                 height={200}
                                             />
@@ -246,12 +218,10 @@ export default function Small() {
                                         <p>Redux</p>
                                     </div>
                                     <div className="flex flex-col h-full items-center justify-center">
-                                        <div className="aspect-square max-h-20 h-2/3 rounded-2xl">
+                                        <div className="aspect-square flex items-center justify-center max-h-20 h-2/3 rounded-2xl">
                                             <Image
                                                 src="/img/skills/responsive.png"
-                                                alt="Responsivity icon"
-                                                
-                                                
+                                                alt="Responsive design icon"
                                                 width={200}
                                                 height={200}
                                             />
@@ -264,13 +234,11 @@ export default function Small() {
                             <div className="rounded-2xl h-full border-2 border-black flex flex-col items-center ">
                                 <p className="font-bold">Tools</p>
                                 <div className="h-full w-full flex items-center justify-around">
-                                <div className="flex flex-col h-full items-center justify-center">
-                                        <div className="aspect-square max-h-20 h-2/3 rounded-2xl">
+                                    <div className="flex flex-col h-full items-center justify-center">
+                                        <div className="aspect-square flex items-center justify-center max-h-20 h-2/3 rounded-2xl">
                                             <Image
                                                 src="/img/skills/git.png"
-                                                alt="HTML icon"
-                                                
-                                                
+                                                alt="Git icon"
                                                 width={200}
                                                 height={200}
                                             />
@@ -278,12 +246,10 @@ export default function Small() {
                                         <p>Git</p>
                                     </div>
                                     <div className="flex flex-col h-full items-center justify-center">
-                                        <div className="aspect-square max-h-20 h-2/3 rounded-2xl">
+                                        <div className="aspect-square flex items-center justify-center max-h-20 h-2/3 rounded-2xl">
                                             <Image
                                                 src="/img/skills/vscode.png"
                                                 alt="VSCode icon"
-                                                
-                                                
                                                 width={200}
                                                 height={200}
                                             />
@@ -291,12 +257,10 @@ export default function Small() {
                                         <p>VSCode</p>
                                     </div>
                                     <div className="flex flex-col h-full items-center justify-center">
-                                        <div className="aspect-square max-h-20 h-2/3 rounded-2xl">
+                                        <div className="aspect-square flex items-center justify-center max-h-20 h-2/3 rounded-2xl">
                                             <Image
                                                 src="/img/skills/linux.png"
                                                 alt="Linux icon"
-                                                
-                                                
                                                 width={200}
                                                 height={200}
                                             />
@@ -309,13 +273,11 @@ export default function Small() {
                             <div className="rounded-2xl h-full border-2 border-black flex flex-col items-center ">
                                 <p className="font-bold">Tools</p>
                                 <div className="h-full w-full flex items-center justify-around">
-                                <div className="flex flex-col h-full items-center justify-center">
-                                        <div className="aspect-square max-h-20 h-2/3 rounded-2xl">
+                                    <div className="flex flex-col h-full items-center justify-center">
+                                        <div className="aspect-square flex items-center justify-center max-h-20 h-2/3 rounded-2xl">
                                             <Image
                                                 src="/img/skills/git.png"
                                                 alt="HTML icon"
-                                                
-                                                
                                                 width={200}
                                                 height={200}
                                             />
@@ -323,25 +285,21 @@ export default function Small() {
                                         <p>Git</p>
                                     </div>
                                     <div className="flex flex-col h-full items-center justify-center">
-                                        <div className="aspect-square max-h-20 h-2/3 rounded-2xl">
+                                        <div className="aspect-square flex items-center justify-center max-h-20 h-2/3 rounded-2xl">
                                             <Image
                                                 src="/img/skills/creativity.png"
-                                                alt="Ideation icon"
-                                                
-                                                
+                                                alt="Creativity icon"
                                                 width={200}
                                                 height={200}
                                             />
                                         </div>
-                                        <p>Ideation</p>
+                                        <p>Creativity</p>
                                     </div>
                                     <div className="flex flex-col h-full items-center justify-center">
-                                        <div className="aspect-square max-h-20 h-2/3 rounded-2xl">
+                                        <div className="aspect-square flex items-center justify-center max-h-20 h-2/3 rounded-2xl">
                                             <Image
                                                 src="/img/skills/linux.png"
                                                 alt="Linux icon"
-                                                
-                                                
                                                 width={200}
                                                 height={200}
                                             />
@@ -350,7 +308,6 @@ export default function Small() {
                                     </div>
                                 </div>
                             </div>
-                            
                         </div>
                     </div>
                 </div>

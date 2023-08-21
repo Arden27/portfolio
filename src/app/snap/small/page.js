@@ -42,7 +42,7 @@ export default function Small() {
                             height={720}
                         />
                     </div>
-                    <div className="md:ml-5 max-sm:p-4 max-sm:flex max-sm:flex-col max-sm:items-center max-sm:justify-center">
+                    <div className="max-sm:h-1/3 md:ml-5 max-sm:p-4 max-sm:flex max-sm:flex-col max-sm:items-center max-sm:justify-center">
                         <div className="md:mb-1 text-lg font-semibold text-orange-600">
                             Hello, I'm
                         </div>
@@ -52,7 +52,7 @@ export default function Small() {
                         <p className="md:mb-1 text-lg font-medium text-green-600">
                             <span>Web Developer</span>
                         </p>
-                        <div className="md:mb-2 mb-1 max-sm:w-2/3 flex items-center justify-center">
+                        <div className="md:mb-2 mb-1 max-sm:w-3/4 flex items-center justify-center">
                             <p className="text-center">
                                 I specialize in the creation and deployment of email marketing campaigns.
                             </p>

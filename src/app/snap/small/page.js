@@ -23,7 +23,7 @@ export default function Small() {
                 id="home-section"
                 className="flex h-[100svh] w-screen snap-start items-center justify-center max-sm:pt-14"
             >
-                <div className="flex flex-col md:flex-row md:h-screen h-[100svh] w-full items-center justify-center">
+                <div className="flex flex-col md:flex-row md:h-screen h-5/6 w-full items-center justify-center">
                     {/* <Image
                         src="/img/profile_picture.png"
                         alt="Profile Picture"

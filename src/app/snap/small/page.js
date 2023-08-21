@@ -43,16 +43,16 @@ export default function Small() {
                         />
                     </div>
                     <div className="md:ml-5 max-sm:p-4 max-sm:flex max-sm:flex-col max-sm:items-center max-sm:justify-center">
-                        <div className="mb-1 text-lg font-semibold text-orange-600">
+                        <div className="md:mb-1 text-lg font-semibold text-orange-600">
                             Hello, I'm
                         </div>
-                        <h3 className="mb-1 text-3xl font-bold">
+                        <h3 className="md:mb-1 text-3xl font-bold">
                             Artem Furman
                         </h3>
-                        <p className="mb-1 text-lg font-medium text-green-600">
+                        <p className="md:mb-1 text-lg font-medium text-green-600">
                             <span>Web Developer</span>
                         </p>
-                        <div className="mb-2 max-sm:w-2/3 flex items-center justify-center">
+                        <div className="md:mb-2 mb-1 max-sm:w-2/3 flex items-center justify-center">
                             <p className="text-center">
                                 I specialize in the creation and deployment of email marketing campaigns.
                             </p>

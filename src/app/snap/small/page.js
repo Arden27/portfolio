@@ -21,9 +21,9 @@ export default function Small() {
             <NavBar mainRef={mainRef} />
             <section
                 id="home-section"
-                className="flex h-[100svh] w-screen snap-start items-center justify-center"
+                className="flex h-[100svh] w-screen snap-start items-center justify-center max-sm:pt-14"
             >
-                <div className="flex flex-col md:flex-row md:h-screen w-full md:items-center items-center justify-center">
+                <div className="flex flex-col md:flex-row md:h-screen h-full w-full md:items-center items-center justify-center">
                     {/* <Image
                         src="/img/profile_picture.png"
                         alt="Profile Picture"
@@ -32,28 +32,31 @@ export default function Small() {
                         width={2832}
                         height={4256}
                     /> */}
-                    <Image
-                        src="/img/about.jpeg"
-                        alt="Profile Picture"
-                        // sizes="50vh "
-                        className="h-[95%] md:h-2/3 w-auto object-cover"
-                        width={720}
-                        height={720}
-                    />
-                    <div className="ml-5">
+                    <div className="aspect-square flex items-center justify-center h-1/2 md:h-2/3">
+                        <Image
+                            src="/img/about.jpeg"
+                            alt="Profile Picture"
+                            // sizes="50vh "
+                            className="h-[95%] w-auto object-cover"
+                            width={720}
+                            height={720}
+                        />
+                    </div>
+                    <div className="md:ml-5 max-sm:p-4 max-sm:flex max-sm:flex-col max-sm:items-center max-sm:justify-center">
                         <div className="mb-1 text-lg font-semibold text-orange-600">
                             Hello, I'm
                         </div>
                         <h3 className="mb-1 text-3xl font-bold">
                             Artem Furman
                         </h3>
-                        <p className="mb-5 text-lg font-medium text-green-500">
-                            <span>Python Developer</span>
+                        <p className="mb-1 text-lg font-medium text-green-600">
+                            <span>Web Developer</span>
                         </p>
-                        <p className="mb-5">
-                            I specialize in the creation and deployment of email
-                            marketing campaigns.
-                        </p>
+                        <div className="mb-2 max-sm:w-2/3 flex items-center justify-center">
+                            <p className="text-center">
+                                I specialize in the creation and deployment of email marketing campaigns.
+                            </p>
+                        </div>
 
                         <PortfolioButton />
                     </div>

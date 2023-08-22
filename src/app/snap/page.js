@@ -1,6 +1,6 @@
 "use client";
 
-import NavBar from "./nav";
+import NavBar from "../../components/nav";
 import { useRef } from "react";
 
 export default function Home() {

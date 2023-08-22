@@ -1,338 +1,101 @@
-"use client"
+"use client";
 
-import Image from "next/image";
 import NavBar from "@/components/nav";
-import PortfolioButton from "@/components/portfolioButton";
-import { useRef } from "react";
+import SkillsNav from "@/components/skillsNav";
+import FrontendSkills from "@/components/frontendSkills";
+import BackendSkills from "@/components/backendSkills";
+import OtherSkills from "@/components/otherSkills";
 
-export default function Home() {
-	const mainRef = useRef();
+import { useRef } from "react";
+import Image from "next/image";
+
+export default function Small() {
+    const mainRef = useRef();
+    const skillsRef = useRef();
 
     return (
-        <main ref={mainRef} className="scroll-smooth snap-y snap-mandatory overflow-scroll m-0 h-[100svh] bg-gray-100 font-sans text-base text-gray-800">
+        <main
+            ref={mainRef}
+            className="box-border h-[100svh] w-screen snap-y snap-mandatory overflow-scroll scroll-smooth"
+        >
             <NavBar mainRef={mainRef} />
             <section
                 id="home-section"
-                className="snap-start flex h-[100svh] w-screen items-center justify-start p-12"
+                className="flex h-[100svh] w-screen snap-start items-center justify-center "
             >
-                <div className="flex flex-col md:flex-row md:h-screen w-full md:items-center items-start">
-                    <Image
+                <div className="flex h-5/6 w-full flex-col items-center justify-center md:h-screen md:flex-row">
+                    {/* <Image
                         src="/img/profile_picture.png"
                         alt="Profile Picture"
                         sizes="100vh"
                         className="h-[95%] w-auto object-cover hidden md:block"
                         width={2832}
                         height={4256}
-                    />
-                    <Image
-                        src="/img/about.jpeg"
-                        alt="Profile Picture"
-                        sizes="50vh"
-                        className="h-[95%] w-auto object-cover block md:hidden"
-                        width={720}
-                        height={720}
-                    />
-                    <div className="ml-5">
-                        <div className="mb-1 text-lg font-semibold text-orange-600">
+                    /> */}
+                    <div className="flex aspect-square h-2/3 items-center justify-center">
+                        <Image
+                            src="/img/about.jpeg"
+                            alt="Profile Picture"
+                            // sizes="50vh "
+                            className="h-[95%] w-auto object-cover"
+                            width={720}
+                            height={720}
+                        />
+                    </div>
+                    <div className="md:ml-5 max-sm:flex max-sm:h-1/3 max-sm:flex-col max-sm:items-center max-sm:justify-center max-sm:p-4">
+                        <div className="text-lg font-semibold text-orange-600 md:mb-1">
                             Hello, I'm
                         </div>
-                        <h3 className="mb-1 text-3xl font-bold">
+                        <h3 className="text-2xl md:text-3xl font-bold md:mb-1">
                             Artem Furman
                         </h3>
-                        <p className="mb-5 text-lg font-medium text-green-500">
-                            <span>Python Developer</span>
+                        <p className="text-md md:text-lg font-medium text-green-600 md:mb-1">
+                            <span>Web Developer</span>
                         </p>
-                        <p className="mb-5">
-                            I specialize in the creation and deployment of email
-                            marketing campaigns.
-                        </p>
-
-                        <PortfolioButton />
-                    </div>
-                </div>
-            </section>
-
-            <section
-                id="skills-section"
-                className="snap-start h-[100svh] w-screen flex flex-col space-y-6 pt-16"
-            >
-                <h2 className="m-0 p-0 text-center text-4xl font-bold text-black">
-                    Skills
-                </h2>
-                <div className="m-0 flex w-full flex-col flex-wrap items-center justify-around space-y-6 p-0 text-center md:flex-row md:space-y-0">
-                    <div className="m-0 flex w-full flex-col items-center md:w-2/5">
-                        <h3 className="m-0 p-0 text-2xl">Frontend</h3>
-                        <div className="flex flex-wrap justify-center">
-                            <div className="skill-card">
-                                <div className="skill-image-wrapper ">
-                                    {/* <img className="w-full" src="{% static 'chatbot/img/skills/html.png' %}" alt="HTML icon"> */}
-                                    <Image
-                                        src="/img/skills/html.png"
-                                        alt="HTML icon"
-                                        // sizes="100%"
-                                        className="skill-image"
-                                        width={200}
-                                        height={200}
-                                    />
-                                </div>
-                                <p className="text-center">HTML</p>
-                            </div>
-                            <div className="skill-card">
-                                <div className="skill-image-wrapper ">
-                                    <Image
-                                        src="/img/skills/css.png"
-                                        alt="CSS icon"
-                                        // sizes="100%"
-                                        className="skill-image"
-                                        width={72}
-                                        height={72}
-                                    />
-                                    {/* <img className="w-full" src="{% static 'chatbot/img/skills/css.png' %}" alt="css icon"> */}
-                                </div>
-                                <p className="text-center">CSS</p>
-                            </div>
-                            <div className="skill-card">
-                                <div className="skill-image-wrapper ">
-                                    <Image
-                                        src="/img/skills/js.png"
-                                        alt="JavaScript icon"
-                                        // sizes="100%"
-                                        className="skill-image"
-                                        width={72}
-                                        height={72}
-                                    />
-                                    {/* <img className="w-full" src="{% static 'chatbot/img/skills/js.png' %}" alt="js icon"> */}
-                                </div>
-                                <p className="text-center">JavaScript</p>
-                            </div>
-                            <div className="skill-card">
-                                <div className="skill-image-wrapper ">
-                                    <Image
-                                        src="/img/skills/react.png"
-                                        alt="React icon"
-                                        // sizes="100%"
-                                        className="skill-image"
-                                        width={72}
-                                        height={72}
-                                    />
-                                    {/* <img className="w-full" src="{% static 'chatbot/img/skills/react.png' %}" alt="react icon"> */}
-                                </div>
-                                <p className="text-center">React.js</p>
-                            </div>
-                            <div className="skill-card">
-                                <div className="skill-image-wrapper ">
-                                    <Image
-                                        src="/img/skills/tailwind.png"
-                                        alt="Tailwind icon"
-                                        // sizes="100%"
-                                        className="skill-image"
-                                        width={72}
-                                        height={72}
-                                    />
-                                    {/* <img className="w-full" src="{% static 'chatbot/img/skills/tailwind.png' %}" alt="Tailwind icon"> */}
-                                </div>
-                                <p className="text-center">Tailwind</p>
-                            </div>
-                            <div className="skill-card">
-                                <div className="skill-image-wrapper ">
-                                    <Image
-                                        src="/img/skills/kivy.png"
-                                        alt="Kivy icon"
-                                        // sizes="100%"
-                                        className="skill-image"
-                                        width={512}
-                                        height={512}
-                                    />
-                                    {/* <img className="w-full" src="{% static 'chatbot/img/skills/kivy.png' %}" alt="Kivy icon"> */}
-                                </div>
-                                <p className="text-center">Kivy</p>
-                            </div>
+                        <div className="mb-1 flex items-center justify-center md:mb-2 max-sm:w-4/5">
+                            <p className="max-sm:text-center">
+                                I specialize in the creation and deployment of
+                                email marketing campaigns.
+                            </p>
                         </div>
-                    </div>
-                    <div className="m-0 flex w-full flex-col items-center md:w-2/5">
-                        <h3 className="m-0 p-0 text-2xl">Backend</h3>
-                        <div className="flex flex-wrap justify-center">
-                            <div className="skill-card">
-                                <div className="skill-image-wrapper ">
-                                    <Image
-                                        src="/img/skills/python.png"
-                                        alt="Python icon"
-                                        // sizes="100%"
-                                        className="skill-image"
-                                        width={72}
-                                        height={72}
-                                    />
-                                    {/* <img className="w-full" src="{% static 'chatbot/img/skills/python.png' %}" alt="Python icon"> */}
-                                </div>
-                                <p className="text-center">Python</p>
-                            </div>
-                            <div className="skill-card">
-                                <div className="skill-image-wrapper ">
-                                    <Image
-                                        src="/img/skills/django.png"
-                                        alt="Django icon"
-                                        // sizes="100%"
-                                        className="skill-image"
-                                        width={96}
-                                        height={96}
-                                    />
-                                    {/* <img className="w-full" src="{% static 'chatbot/img/skills/django.png' %}" alt="Django icon"> */}
-                                </div>
-                                <p className="text-center">Django</p>
-                            </div>
-                            <div className="skill-card">
-                                <div className="skill-image-wrapper ">
-                                    <Image
-                                        src="/img/skills/pytorch.png"
-                                        alt="PyTorch icon"
-                                        // sizes="100%"
-                                        className="skill-image"
-                                        width={96}
-                                        height={96}
-                                    />
-                                    {/* <img className="w-full" src="{% static 'chatbot/img/skills/pytorch.png' %}" alt="PyTorch icon"> */}
-                                </div>
-                                <p className="text-center">PyTorch</p>
-                            </div>
-                            <div className="skill-card">
-                                <div className="skill-image-wrapper ">
-                                    <Image
-                                        src="/img/skills/mongodb.png"
-                                        alt="Mongo DB icon"
-                                        // sizes="100%"
-                                        className="skill-image"
-                                        width={72}
-                                        height={72}
-                                    />
-                                    {/* <img className="w-full" src="{% static 'chatbot/img/skills/mongodb.png' %}" alt="MongoDB icon"> */}
-                                </div>
-                                <p className="text-center">MongoDB</p>
-                            </div>
-                            <div className="skill-card">
-                                <div className="skill-image-wrapper ">
-                                    <Image
-                                        src="/img/skills/mysql.png"
-                                        alt="MySQL icon"
-                                        // sizes="100%"
-                                        className="skill-image"
-                                        width={72}
-                                        height={72}
-                                    />
-                                    {/* <img className="w-full" src="{% static 'chatbot/img/skills/mysql.png' %}" alt="MySQL icon"> */}
-                                </div>
-                                <p className="text-center">MySQL</p>
-                            </div>
-                            <div className="skill-card">
-                                <div className="skill-image-wrapper ">
-                                    <Image
-                                        src="/img/skills/solidity.png"
-                                        alt="S icon"
-                                        // sizes="100%"
-                                        className="skill-image"
-                                        width={96}
-                                        height={96}
-                                    />
-                                    {/* <img className="w-full" src="{% static 'chatbot/img/skills/solidity.png' %}" alt="Solidity icon"> */}
-                                </div>
-                                <p className="text-center">Solidity</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="m-0 flex w-full flex-row flex-wrap items-center justify-around p-0 text-center">
-                    <div className="m-0 flex w-full flex-col items-center md:w-2/5">
-                        <h3 className="m-0 p-0 text-2xl">Tools</h3>
-                        <div className="flex flex-wrap justify-center">
-                            <div className="skill-card">
-                                <div className="skill-image-wrapper ">
-                                    <Image
-                                        src="/img/skills/git.png"
-                                        alt="Git icon"
-                                        // sizes="100%"
-                                        className="skill-image"
-                                        width={72}
-                                        height={72}
-                                    />
-                                    {/* <img className="w-full" src="{% static 'chatbot/img/skills/git.png' %}" alt="Git icon"> */}
-                                </div>
-                                <p className="text-center">Git</p>
-                            </div>
-                            <div className="skill-card">
-                                <div className="skill-image-wrapper ">
-                                    <Image
-                                        src="/img/skills/vscode.png"
-                                        alt="VS Code icon"
-                                        // sizes="100%"
-                                        className="skill-image"
-                                        width={72}
-                                        height={72}
-                                    />
-                                    {/* <img className="w-full" src="{% static 'chatbot/img/skills/vscode.png' %}" alt="VSCode icon"> */}
-                                </div>
-                                <p className="text-center">VSCode</p>
-                            </div>
-                            <div className="skill-card">
-                                <div className="skill-image-wrapper ">
-                                    <Image
-                                        src="/img/skills/linux.png"
-                                        alt="Linux icon"
-                                        // sizes="100%"
-                                        className="skill-image"
-                                        width={72}
-                                        height={72}
-                                    />
-                                    {/* <img className="w-full" src="{% static 'chatbot/img/skills/linux.png' %}" alt="Linux icon"> */}
-                                </div>
-                                <p className="text-center">Linux</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
 
-            <section
-                id="portfolio-section"
-                className="snap-start h-[100svh] w-screen flex flex-wrap items-center justify-start p-12"
-            >
-                <h2 className="mb-10 w-full text-center text-3xl font-bold">
-                    Portfolio
-                </h2>
-                <div className="grid w-full grid-cols-3 gap-5">
-                    {/* {% for project in projects %}
-                <div className="flex flex-col items-center">
-                    <img src="{% static project.image %}" alt="{{ project.name }} screenshot" className="w-2/3 h-auto shadow-lg">
-                    <h3 className="text-2xl font-medium mt-5 mb-2">{{ project.name }}</h3>
-                    <p className="text-center">{{ project.description }}</p>
-                </div>
-            {% endfor %} */}
-                </div>
-            </section>
-
-            <section
-                id="about-section"
-                className="snap-start h-screen w-screen flex flex-wrap items-center justify-start p-12"
-            >
-                <h2 className="mb-10 w-full text-center text-3xl font-bold">
-                    About Me
-                </h2>
-                <div className="grid w-full grid-cols-2 gap-5">
-                    {/* <img src="{% static 'chatbot/img/profile_picture.png' %}" alt="Profile Picture" className="w-2/3 h-auto shadow-lg justify-self-center"> */}
-                    <div className="flex flex-col justify-center">
-                        <p className="mb-5">
-                            I am a full-stack developer specializing in Python.
-                            I have 5+ years of experience in the development and
-                            deployment of web applications. I am passionate
-                            about creating user-friendly, efficient, and
-                            scalable software.
-                        </p>
                         <a
-                            href="mailto:artem.furman@example.com"
-                            className="inline-block rounded-lg bg-orange-600 px-5 py-2 font-medium text-white transition-all duration-200 ease-in-out hover:border hover:border-orange-600 hover:bg-white hover:text-orange-600"
+                            href="#portfolio-section"
+                            className="inline-block cursor-pointer rounded-lg bg-orange-600 px-5 py-2 font-medium text-white transition-all duration-200 ease-in-out hover:border hover:border-orange-600 hover:bg-white hover:text-orange-600"
                         >
-                            Contact Me
+                            Portfolio
                         </a>
                     </div>
                 </div>
+            </section>
+            <section
+                id="skills-section"
+                className="flex h-[100svh] w-screen snap-start flex-col items-center justify-center pt-16 max-sm:pt-14"
+            >
+                <h1 className="mx-sm:mb-0 mb-2 text-center text-4xl font-bold">
+                    Skills
+                </h1>
+                <div
+                    className="sm:grid-rows-7 md:grid-rows-10 h-full w-full scroll-smooth sm:grid sm:grid-cols-1 sm:gap-4 md:grid-cols-2 md:px-6 md:pb-6 max-sm:flex max-sm:snap-x max-sm:snap-mandatory max-sm:flex-row max-sm:overflow-scroll max-sm:px-1 max-sm:pb-1"
+                    ref={skillsRef}
+                >
+                    <FrontendSkills />
+                    <BackendSkills />
+                    <OtherSkills />
+                </div>
+                <SkillsNav skillsRef={skillsRef} />
+            </section>
+            <section
+                id="portfolio-section"
+                className="flex h-[100svh] w-screen snap-start items-center justify-center text-4xl"
+            >
+                <h1>Portfolio</h1>
+            </section>
+            <section
+                id="about-section"
+                className="flex h-[100svh] w-screen snap-start items-center justify-center text-4xl"
+            >
+                <h1>About</h1>
             </section>
         </main>
     );

@@ -52,128 +52,53 @@ const NavBar = ({ mainRef }) => {
 
     return (
         <nav
-            className={`fixed top-0 flex h-12 w-full items-center justify-around bg-gray-100 bg-opacity-80 p-3 transition-shadow duration-300 ease-in-out md:justify-end ${
-                shadow ? "shadow-md" : ""
+            className={`fixed top-0 flex h-12 w-full items-center justify-around bg-gray-100 bg-opacity-80 p-3 transition-shadow duration-500 ease-in-out md:justify-end ${
+                shadow ? "shadow-lg" : ""
             }`}
         >
-            <a
-                href="#home-section"
-                className={`md:mx-4 ${
+            <div
+                onClick={() => window.location.hash = 'home-section'}
+                className={`md:mx-4 cursor-pointer ${
                     activeLink === "home-section"
                         ? "font-bold text-orange-600"
                         : ""
                 }`}
             >
                 Home
-            </a>
-            <a
-                href="#skills-section"
-                className={`md:mx-4 ${
+            </div>
+            <div
+                onClick={() => window.location.hash = 'skills-section'}
+                className={`md:mx-4 cursor-pointer ${
                     activeLink === "skills-section"
                         ? "font-bold text-orange-600"
                         : ""
                 }`}
             >
                 Skills
-            </a>
-            <a
-                href="#portfolio-section"
-                className={`md:mx-4 ${
+            </div>
+            <div
+                onClick={() => window.location.hash = 'portfolio-section'}
+                className={`md:mx-4 cursor-pointer ${
                     activeLink === "portfolio-section"
                         ? "font-bold text-orange-600"
                         : ""
                 }`}
             >
                 Portfolio
-            </a>
-            <a
-                href="#about-section"
-                className={`md:mx-4 md:mr-20 ${
+            </div>
+            <div
+                onClick={() => window.location.hash = 'about-section'}
+                className={`md:mx-4 md:mr-20 cursor-pointer ${
                     activeLink === "about-section"
                         ? "font-bold text-orange-600"
                         : ""
                 }`}
             >
                 About
-            </a>
+            </div>
         </nav>
+
     );
 };
 
 export default NavBar;
-// import { Link as ScrollLink } from "react-scroll";
-
-// const NavBar = () => {
-//     const [shadow, setShadow] = useState(false);
-
-//     const handleScroll = () => {
-//         setShadow(window.scrollY > 0);
-//     };
-
-//     useEffect(() => {
-//         window.addEventListener("scroll", handleScroll);
-
-//         return () => {
-//             window.removeEventListener("scroll", handleScroll);
-//         };
-//     }, []);
-
-//     const sections = [
-//         { name: "Home", id: "home-section" },
-//         { name: "Skills", id: "skills-section" },
-//         { name: "Portfolio", id: "portfolio-section" },
-//         { name: "About", id: "about-section", extraClass: "mr-20" },
-//     ];
-
-//     return (
-//         <nav
-//             className={`scroll-smooth fixed top-0 flex h-12 w-full items-center justify-end bg-gray-100 bg-opacity-80 p-3 transition-shadow duration-300 ease-in-out ${
-//                 shadow ? "shadow-xl" : ""
-//             }`}
-//         >
-//             {sections.map((section) => (
-//                 <ScrollLink
-//                     key={section.id}
-//                     activeClass="font-bold text-orange-600"
-//                     to={section.id}
-//                     spy={true}
-//                     smooth={true}
-//                     offset={0}
-//                     duration={300}
-//                     className={`mx-4 cursor-pointer ${
-//                         section.extraClass || ""
-//                     }`}
-//                 >
-//                     {section.name}
-//                 </ScrollLink>
-//             ))}
-//         </nav>
-//     );
-// };
-
-// export default NavBar;
-
-// const [activeLink, setActiveLink] = useState("home-section");
-// const [shadow, setShadow] = useState(false);
-
-// // const handleScroll = () => {
-// //     const sections = [
-// //         "home-section",
-// //         "skills-section",
-// //         "portfolio-section",
-// //         "about-section",
-// //     ];
-// //     let currentSection = "home-section";
-// //     let smallestDistance = Infinity;
-
-//     sections.forEach((id) => {
-//         const section = document.getElementById(id);
-//         const distance = Math.abs(window.pageYOffset - section.offsetTop);
-
-//         if (distance < smallestDistance) {
-//             smallestDistance = distance;
-//             currentSection = id;
-//         }
-//     });
-
-// setActiveLink(currentSection);

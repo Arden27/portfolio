@@ -15,6 +15,10 @@ module.exports = {
       screens: {
         'max-sm': {'max': '767px'},
       },
+      fontSize: {
+        clamp_name: "clamp(1.3rem, 3vw + 1px, 5rem)",
+        clamp_description: "clamp(0.75rem, 2vw + 1px, 1.5rem)",
+      },
     },
     
   },

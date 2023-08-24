@@ -38,14 +38,14 @@ export default function Small() {
                         <div className="text-lg font-semibold text-orange-600 md:mb-1">
                             Hello, I'm
                         </div>
-                        <h3 className="text-2xl md:text-3xl font-bold md:mb-1">
+                        <h3 className="text-clamp_name font-bold md:mb-1">
                             Artem Furman
                         </h3>
                         <p className="text-md md:text-lg font-medium text-green-600 md:mb-1">
                             <span>Web Developer</span>
                         </p>
                         <div className="mb-1 flex items-center justify-center md:mb-2 max-sm:w-4/5 md:w-4/4">
-                            <p className="max-sm:text-center">
+                            <p className="max-sm:text-center text-clamp_description">
                             I specialize in the creation and deployment of full-stack web applications, leveraging cutting-edge technologies
                             </p>
                         </div>

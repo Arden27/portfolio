@@ -21,7 +21,7 @@ export default function Small() {
             <NavBar mainRef={mainRef} />
             <section
                 id="home-section"
-                className="flex h-[100svh] w-screen snap-start items-center justify-center "
+                className="flex h-screen w-screen snap-start items-center justify-center "
             >
                 <div className="flex md:gap-10 w-full h-5/6 flex-col items-center justify-center md:h-screen md:flex-row">
                     <div className="flex aspect-square h-2/3 items-center justify-center">
@@ -60,7 +60,7 @@ export default function Small() {
             </section>
             <section
                 id="skills-section"
-                className="flex h-[100svh] w-screen snap-start flex-col items-center justify-center pt-16 max-sm:pt-14"
+                className="flex h-screen w-screen snap-start flex-col items-center justify-center pt-16 max-sm:pt-14"
             >
                 <h1 className="mx-sm:mb-0 mb-2 text-center text-4xl font-bold">
                     Skills
@@ -77,7 +77,7 @@ export default function Small() {
             </section>
             <section
                 id="portfolio-section"
-                className="flex h-[100svh] w-screen snap-start flex-col items-center justify-center pt-16 max-sm:pt-14"
+                className="flex h-screen w-screen snap-start flex-col items-center justify-center pt-16 max-sm:pt-14"
             >
                 <h1 className="text-center text-4xl font-bold">
                     Portfolio
@@ -105,7 +105,7 @@ export default function Small() {
             </section>
             <section
                 id="about-section"
-                className="flex h-[100svh] w-screen snap-start items-center justify-center text-4xl"
+                className="flex h-screen w-screen snap-start items-center justify-center text-4xl"
             >
                 <h1>About</h1>
             </section>

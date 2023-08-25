@@ -24,7 +24,7 @@ export default function Small() {
                 className="flex h-[100svh] w-screen snap-start items-center justify-center "
             >
                 <div className="flex md:gap-10 w-full h-5/6 flex-col items-center justify-center md:h-screen md:flex-row">
-                    <div className="flex aspect-square h-2/3 items-center justify-center">
+                    <div className="flex aspect-square max-sm:h-1/2 h-2/3 items-center justify-center">
                         <Image
                             src="/img/about.jpeg"
                             alt="Profile Picture"
@@ -34,7 +34,7 @@ export default function Small() {
                             height={720}
                         />
                     </div>
-                    <div className="max-sm:flex max-sm:h-1/3 md:w-1/3 max-sm:flex-col max-sm:items-center max-sm:justify-center max-sm:p-4">
+                    <div className="max-sm:flex bg-emerald-300 max-sm:h-1/2 md:w-1/3 max-sm:flex-col max-sm:items-center max-sm:justify-center max-sm:p-4">
                         <div className="text-lg font-semibold text-orange-600 md:mb-1">
                             Hello, I'm
                         </div>

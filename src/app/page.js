@@ -34,24 +34,24 @@ export default function Small() {
                             height={720}
                         />
                     </div>
-                    <div className="max-sm:flex bg-emerald-300 max-sm:h-1/2 md:w-1/3 max-sm:flex-col max-sm:items-center max-sm:justify-center max-sm:p-4">
-                        <div className="text-lg font-semibold text-orange-600 md:mb-1">
+                    <div className="max-sm:text-[10svh] max-sm:flex bg-emerald-300 max-sm:h-1/2 md:w-1/3 max-sm:flex-col max-sm:items-center max-sm:justify-center max-sm:p-4">
+                        <div className="text-[35%] md:text-lg font-semibold text-orange-600 md:mb-1">
                             Hello, I'm
                         </div>
-                        <h3 className="text-clamp_name font-bold md:mb-1">
+                        <h3 className="text-[50%] md:text-clamp_name font-bold md:mb-1">
                             Artem Furman
                         </h3>
-                        <p className="text-md md:text-lg font-medium text-green-600 md:mb-1">
+                        <p className="text-[40%] md:text-lg font-medium text-green-600 md:mb-1">
                             <span>Web Developer</span>
                         </p>
                         <div className="mb-1 flex items-center justify-center md:mb-2 max-sm:w-4/5 md:w-4/4">
-                            <p className="max-sm:text-center text-clamp_description">
+                            <p className="max-sm:text-center text-[30%] md:text-clamp_description">
                             I specialize in the creation and deployment of full-stack web applications, leveraging cutting-edge technologies
                             </p>
                         </div>
                         <a
                             href="#portfolio-section"
-                            className="inline-block cursor-pointer rounded-lg bg-orange-600 px-5 py-2 font-medium text-white transition-all duration-200 ease-in-out hover:border hover:border-orange-600 hover:bg-white hover:text-orange-600"
+                            className="max-sm:text-[30%] inline-block cursor-pointer rounded-lg bg-orange-600 px-5 py-2 font-medium text-white transition-all duration-200 ease-in-out hover:border hover:border-orange-600 hover:bg-white hover:text-orange-600"
                         >
                             Portfolio
                         </a>

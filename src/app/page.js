@@ -23,7 +23,7 @@ export default function Small() {
                 id="home-section"
                 className="flex h-[100svh] w-screen snap-start items-center justify-center "
             >
-                <div className="flex md:gap-10 max-sm:pt-12 w-full h-full flex-col items-center justify-center md:h-screen md:flex-row">
+                <div className="flex md:gap-10 max-sm:pt-12 max-sm:pb-2 w-full h-full flex-col items-center justify-center md:h-screen md:flex-row">
                     <div className="flex aspect-square max-sm:h-1/2 h-2/3 items-center justify-center">
                         <Image
                             src="/img/about.jpeg"
@@ -34,18 +34,18 @@ export default function Small() {
                             height={720}
                         />
                     </div>
-                    <div className="max-sm:text-[10svh] max-sm:flex bg-emerald-300 max-sm:h-1/2 md:w-1/3 max-sm:flex-col max-sm:items-center max-sm:justify-center max-sm:p-4">
-                        <div className="text-[35%] md:text-lg font-semibold text-orange-600 md:mb-1">
+                    <div className="max-sm:text-[10svh] max-sm:flex max-sm:h-1/2 md:w-1/3 max-sm:flex-col max-sm:items-center max-sm:justify-center max-sm:p-4">
+                        <div className="text-[35%] md:text-clamp_greating font-semibold text-orange-600">
                             Hello, I'm
                         </div>
-                        <h3 className="text-[50%] md:text-clamp_name font-bold md:mb-1">
+                        <h3 className="text-[50%] leading-[1.2] md:leading-[1.1] md:text-clamp_name font-bold">
                             Artem Furman
                         </h3>
-                        <p className="text-[40%] md:text-lg font-medium text-green-600 md:mb-1">
-                            <span>Web Developer</span>
+                        <p className="text-[40%] md:text-clamp_profession font-medium text-green-600 md:mb-1">
+                            Web Developer
                         </p>
                         <div className="mb-1 flex items-center justify-center md:mb-2 max-sm:w-4/5 md:w-4/4">
-                            <p className="max-sm:text-center text-[30%] md:text-clamp_description">
+                            <p className="max-sm:text-center text-[28%] md:text-clamp_description">
                             I specialize in the creation and deployment of full-stack web applications, leveraging cutting-edge technologies
                             </p>
                         </div>

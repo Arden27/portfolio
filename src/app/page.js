@@ -29,7 +29,7 @@ export default function Small() {
                             src="/img/about.jpeg"
                             alt="Profile Picture"
                             // sizes="50vh "
-                            className="h-[95%] w-auto object-cover"
+                            className="h-[95%] w-auto object-cover rounded-3xl"
                             width={720}
                             height={720}
                         />

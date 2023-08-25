@@ -16,7 +16,7 @@ export default function Small() {
     return (
         <main
             ref={mainRef}
-            className="box-border h-screen w-[100svw] snap-y snap-mandatory overflow-scroll scroll-smooth"
+            className="box-border h-screen w-screen snap-y snap-mandatory overflow-scroll scroll-smooth"
         >
             <NavBar mainRef={mainRef} />
             <section

@@ -50,6 +50,17 @@ const NavBar = ({ mainRef }) => {
         };
     }, [mainRef]);
 
+    const handleNavLinkClick = (sectionId) => {
+        setActiveLink(sectionId);
+        if (mainRef.current) {
+            const section = document.getElementById(sectionId);
+            mainRef.current.scrollTo({
+                top: section.offsetTop,
+                //behavior: "smooth", // Use smooth scrolling
+            });
+        }
+    };
+
     return (
         <nav
             className={`fixed top-0 flex h-12 w-full items-center justify-around bg-gray-100 bg-opacity-80 p-3 transition-shadow duration-500 ease-in-out md:justify-end ${
@@ -57,45 +68,38 @@ const NavBar = ({ mainRef }) => {
             }`}
         >
             <div
-                onClick={() => window.location.hash = 'home-section'}
+                onClick={() => handleNavLinkClick("home-section")}
                 className={`md:mx-4 cursor-pointer ${
-                    activeLink === "home-section"
-                        ? "font-bold text-orange-600"
-                        : ""
+                    activeLink === "home-section" ? "font-bold text-orange-600" : ""
                 }`}
             >
                 Home
             </div>
             <div
-                onClick={() => window.location.hash = 'skills-section'}
+                onClick={() => handleNavLinkClick("skills-section")}
                 className={`md:mx-4 cursor-pointer ${
-                    activeLink === "skills-section"
-                        ? "font-bold text-orange-600"
-                        : ""
+                    activeLink === "skills-section" ? "font-bold text-orange-600" : ""
                 }`}
             >
                 Skills
             </div>
             <div
-                onClick={() => window.location.hash = 'portfolio-section'}
+                onClick={() => handleNavLinkClick("portfolio-section")}
                 className={`md:mx-4 cursor-pointer ${
-                    activeLink === "portfolio-section"
-                        ? "font-bold text-orange-600"
-                        : ""
+                    activeLink === "portfolio-section" ? "font-bold text-orange-600" : ""
                 }`}
             >
                 Portfolio
             </div>
             <div
-                onClick={() => window.location.hash = 'about-section'}
+                onClick={() => handleNavLinkClick("about-section")}
                 className={`md:mx-4 md:mr-20 cursor-pointer ${
-                    activeLink === "about-section"
-                        ? "font-bold text-orange-600"
-                        : ""
+                    activeLink === "about-section" ? "font-bold text-orange-600" : ""
                 }`}
             >
                 About
             </div>
+            
         </nav>
 
     );

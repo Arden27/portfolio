@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 const NavBar = ({ mainRef }) => {
     const [activeLink, setActiveLink] = useState("home-section");
     const [shadow, setShadow] = useState(false);
+    const [scrollInitiator, setScrollInitiator] = useState(null); // Add this to track which link initiated the scroll
 
     const handleScroll = () => {
         if (!mainRef.current) return;
@@ -29,7 +30,10 @@ const NavBar = ({ mainRef }) => {
             }
         });
 
-        setActiveLink(currentSection);
+        // Only change the activeLink if the currentSection is not the scrollInitiator
+        if (currentSection !== scrollInitiator) {
+            setActiveLink(currentSection);
+        }
 
         if (mainRef.current.scrollTop > 0) {
             setShadow(true);
@@ -51,13 +55,20 @@ const NavBar = ({ mainRef }) => {
     }, [mainRef]);
 
     const handleNavLinkClick = (sectionId) => {
-        setActiveLink(sectionId);
+        setScrollInitiator(sectionId); // Set the scroll initiator
+    
         if (mainRef.current) {
             const section = document.getElementById(sectionId);
             mainRef.current.scrollTo({
                 top: section.offsetTop,
-                //behavior: "smooth", // Use smooth scrolling
+                behavior: "smooth", // Use smooth scrolling
             });
+    
+            // Set the active link after a short delay to prevent flicker and clear the scrollInitiator after scroll finishes
+            setTimeout(() => {
+                setActiveLink(sectionId);
+                setScrollInitiator(null);
+            }, 200); // Delayed by 50ms. You can adjust this value if needed.
         }
     };
 
@@ -70,7 +81,7 @@ const NavBar = ({ mainRef }) => {
             <div
                 onClick={() => handleNavLinkClick("home-section")}
                 className={`md:mx-4 cursor-pointer ${
-                    activeLink === "home-section" ? "font-bold text-orange-600" : ""
+                    activeLink === "home-section" ? "drop-shadow-md text-orange-600" : ""
                 }`}
             >
                 Home
@@ -78,7 +89,7 @@ const NavBar = ({ mainRef }) => {
             <div
                 onClick={() => handleNavLinkClick("skills-section")}
                 className={`md:mx-4 cursor-pointer ${
-                    activeLink === "skills-section" ? "font-bold text-orange-600" : ""
+                    activeLink === "skills-section" ? "drop-shadow-md text-orange-600" : ""
                 }`}
             >
                 Skills
@@ -86,7 +97,7 @@ const NavBar = ({ mainRef }) => {
             <div
                 onClick={() => handleNavLinkClick("portfolio-section")}
                 className={`md:mx-4 cursor-pointer ${
-                    activeLink === "portfolio-section" ? "font-bold text-orange-600" : ""
+                    activeLink === "portfolio-section" ? "drop-shadow-md text-orange-600" : ""
                 }`}
             >
                 Portfolio
@@ -94,7 +105,7 @@ const NavBar = ({ mainRef }) => {
             <div
                 onClick={() => handleNavLinkClick("about-section")}
                 className={`md:mx-4 md:mr-20 cursor-pointer ${
-                    activeLink === "about-section" ? "font-bold text-orange-600" : ""
+                    activeLink === "about-section" ? "drop-shadow-md text-orange-600" : ""
                 }`}
             >
                 About

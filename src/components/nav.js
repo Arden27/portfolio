@@ -80,7 +80,7 @@ const NavBar = ({ mainRef }) => {
         >
             <div
                 onClick={() => handleNavLinkClick("home-section")}
-                className={`md:mx-4 cursor-pointer ${
+                className={`md:mx-4 font-semibold cursor-pointer ${
                     activeLink === "home-section" ? "drop-shadow-md text-orange-600" : ""
                 }`}
             >
@@ -88,7 +88,7 @@ const NavBar = ({ mainRef }) => {
             </div>
             <div
                 onClick={() => handleNavLinkClick("skills-section")}
-                className={`md:mx-4 cursor-pointer ${
+                className={`md:mx-4 font-semibold cursor-pointer ${
                     activeLink === "skills-section" ? "drop-shadow-md text-orange-600" : ""
                 }`}
             >
@@ -96,7 +96,7 @@ const NavBar = ({ mainRef }) => {
             </div>
             <div
                 onClick={() => handleNavLinkClick("portfolio-section")}
-                className={`md:mx-4 cursor-pointer ${
+                className={`md:mx-4 font-semibold cursor-pointer ${
                     activeLink === "portfolio-section" ? "drop-shadow-md text-orange-600" : ""
                 }`}
             >
@@ -104,7 +104,7 @@ const NavBar = ({ mainRef }) => {
             </div>
             <div
                 onClick={() => handleNavLinkClick("about-section")}
-                className={`md:mx-4 md:mr-20 cursor-pointer ${
+                className={`md:mx-4 md:mr-20 font-semibold cursor-pointer ${
                     activeLink === "about-section" ? "drop-shadow-md text-orange-600" : ""
                 }`}
             >

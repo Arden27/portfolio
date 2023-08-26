@@ -12,7 +12,7 @@ const skills = [
 const FrontendSkills = () => {
     return (
         <div 
-            className="max-sm:pb-4 max-sm:px-1 flex flex-col max-sm:h-full max-sm:w-full max-sm:flex-shrink-0 max-sm:snap-center sm:col-span-1 sm:row-span-3 md:col-span-1 md:row-span-6"
+            className="max-sm:pb-4 max-sm:px-1 flex flex-col max-sm:h-[93%] max-sm:w-full max-sm:flex-shrink-0 max-sm:snap-center sm:col-span-1 sm:row-span-3 md:col-span-1 md:row-span-6"
             id="frontend-skills"
         >
             <h2 className="md:mb-2 text-center text-xl font-bold">Frontend</h2>

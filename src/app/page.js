@@ -24,8 +24,8 @@ export default function Small() {
                 id="home-section"
                 className="flex h-[100svh] w-screen snap-start items-center justify-center "
             >
-                <div className="flex md:gap-10 max-sm:pt-12 max-sm:pb-2 w-full h-full flex-col items-center justify-center md:h-screen md:flex-row">
-                    <div className="flex aspect-square max-sm:h-1/2 h-2/3 items-center justify-center">
+                <div className="flex md:gap-10 drop-shadow-xl max-sm:pt-12 max-sm:pb-2 w-full h-full flex-col items-center justify-center md:h-screen md:flex-row">
+                    <div className="flex drop-shadow-xl aspect-square max-sm:h-1/2 h-2/3 items-center justify-center">
                         <Image
                             src="/img/about.jpeg"
                             alt="Profile Picture"

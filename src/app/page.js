@@ -90,8 +90,6 @@ export default function Small() {
                     <ProjectBox title="Project 2"  />
                     <ProjectBox title="Project 3" placeSelfEnd={true} />
                     <ProjectBox title="Project 4" />
-                    {/* <div className={`md:group-hover:translate-x-full md:group-hover:-translate-x-full`}></div> */}
-
                 </div>
             </section>
             {/* <h2 className="mb-2 text-center text-xl font-bold">Project</h2>

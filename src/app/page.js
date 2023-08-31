@@ -5,6 +5,7 @@ import SkillsNav from "@/components/skillsNav";
 import FrontendSkills from "@/components/frontendSkills";
 import BackendSkills from "@/components/backendSkills";
 import OtherSkills from "@/components/otherSkills";
+import ProjectBox from "@/components/projectBox";
 
 import { useRef } from "react";
 import Image from "next/image";
@@ -51,7 +52,7 @@ export default function Small() {
                         </div>
                         <a
                             href="#portfolio-section"
-                            className="max-sm:text-[30%] inline-block cursor-pointer rounded-lg bg-orange-600 px-5 py-2 font-medium text-white transition-all duration-200 ease-in-out border border-transparent hover:border hover:border-orange-600 hover:bg-white hover:text-orange-600"
+                            className="max-sm:text-[30%] md:text-xl inline-block cursor-pointer rounded-lg bg-orange-600 px-5 py-2 font-medium text-white transition-all duration-200 ease-in-out border border-transparent hover:border hover:border-orange-600 hover:bg-white hover:text-orange-600"
                         >
                             Portfolio
                         </a>
@@ -83,26 +84,17 @@ export default function Small() {
                     Portfolio
                 </h1>
                 <div
-                    className="h-full w-full grid grid-cols-2 grid-rows-2 gap-4 pt-2 p-6"
+                    className="h-[95%] w-full max-sm:flex max-sm:snap-x max-sm:snap-mandatory max-sm:flex-row max-sm:overflow-scroll md:grid md:grid-cols-2 md:grid-rows-2 md:gap-4 md:pt-2 md:p-6"
                 >
-                    <div className="w-full h-full">
-                        <h2 className="mb-2 text-center text-xl font-bold">Project</h2>
-                        <div className="w-full h-5/6 rounded-2xl border-2 border-black bg-green-300"></div>    
-                    </div>
-                    <div className="w-full h-full">
-                        <h2 className="mb-2 text-center text-xl font-bold">Project</h2>
-                        <div className="w-full h-5/6 rounded-2xl border-2 border-black bg-green-300"></div>    
-                    </div>
-                    <div className="w-full h-full">
-                        <h2 className="mb-2 text-center text-xl font-bold">Project</h2>
-                        <div className="w-full h-5/6 rounded-2xl border-2 border-black bg-green-300"></div>    
-                    </div>
-                    <div className="w-full h-full">
-                        <h2 className="mb-2 text-center text-xl font-bold">Project</h2>
-                        <div className="w-full h-5/6 rounded-2xl border-2 border-black bg-green-300"></div>    
-                    </div>
+                    <ProjectBox title="Project 1" placeSelfEnd={true} translateDirection="-translate-x-full" />
+                    <ProjectBox title="Project 2" translateDirection="translate-x-full" />
+                    <ProjectBox title="Project 3" placeSelfEnd={true} translateDirection="-translate-x-full" />
+                    <ProjectBox title="Project 4" translateDirection="translate-x-full" />
+
                 </div>
             </section>
+            {/* <h2 className="mb-2 text-center text-xl font-bold">Project</h2>
+                <div className="w-full h-5/6 rounded-2xl border-2 border-black bg-green-200"></div>  */}
             <section
                 id="about-section"
                 className="flex h-[100svh] w-screen snap-start items-center justify-center text-4xl"

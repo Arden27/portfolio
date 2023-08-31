@@ -86,10 +86,11 @@ export default function Small() {
                 <div
                     className="h-[95%] w-full max-sm:flex max-sm:snap-x max-sm:snap-mandatory max-sm:flex-row max-sm:overflow-scroll md:grid md:grid-cols-2 md:grid-rows-2 md:gap-4 md:pt-2 md:p-6"
                 >
-                    <ProjectBox title="Project 1" placeSelfEnd={true} translateDirection="-translate-x-full" />
-                    <ProjectBox title="Project 2" translateDirection="translate-x-full" />
-                    <ProjectBox title="Project 3" placeSelfEnd={true} translateDirection="-translate-x-full" />
-                    <ProjectBox title="Project 4" translateDirection="translate-x-full" />
+                    <ProjectBox title="Project 1" placeSelfEnd={true} />
+                    <ProjectBox title="Project 2"  />
+                    <ProjectBox title="Project 3" placeSelfEnd={true} />
+                    <ProjectBox title="Project 4" />
+                    {/* <div className={`md:group-hover:translate-x-full md:group-hover:-translate-x-full`}></div> */}
 
                 </div>
             </section>

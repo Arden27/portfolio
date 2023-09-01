@@ -14,6 +14,7 @@ module.exports = {
       },
       screens: {
         'max-sm': {'max': '767px'},
+        'short': { 'raw': '(max-height: 639px)' },
       },
       fontSize: {
         clamp_greating: "clamp(1.3rem, 2vw + 1px, 5rem)",

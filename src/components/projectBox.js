@@ -18,14 +18,17 @@ export default function ProjectBox({ title, description, stack, placeSelfEnd }){
                   {tech}
                 </div>
                 {/* Image */}
-                <Image
-                  src={`/img/skills/${tech}.png`}
-                  alt={`${tech} Picture`}
-                  className="h-[95%] w-auto"
-                  width={200}
-                  height={200}
-                  priority
-                />
+                <div className="relative bg-indigo-300 aspect-square drop-shadow-lg block items-center justify-center max-h-20 h-2/3 rounded-2xl">
+                  {/* <Image
+                    src={`/img/skills/${tech}.png`}
+                    alt={`${tech} Picture`}
+                    className="h-[95%] w-auto"
+                    width={200}
+                    height={200}
+                    priority
+                  /> */}
+                </div>
+                
               </div>
             ))}
           </div>

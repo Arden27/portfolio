@@ -25,8 +25,8 @@ export default function Small() {
                 id="home-section"
                 className="flex h-[100svh] w-screen snap-start items-center justify-center "
             >
-                <div className="flex md:gap-10 drop-shadow-xl max-sm:pt-12 max-sm:pb-2 w-full h-full flex-col items-center justify-center md:h-screen md:flex-row">
-                    <div className="flex drop-shadow-xl aspect-square max-sm:h-1/2 h-2/3 items-center justify-center">
+                <div className="flex md:gap-10 max-sm:pt-12 max-sm:pb-2 w-full h-full flex-col items-center justify-center md:h-screen md:flex-row">
+                    <div className="flex aspect-square max-sm:h-1/2 h-2/3 items-center justify-center">
                         <Image
                             src="/img/about.jpeg"
                             alt="Profile Picture"
@@ -41,7 +41,7 @@ export default function Small() {
                         <div className="text-[35%] md:text-clamp_greating font-semibold text-orange-600">
                             Hello, I'm
                         </div>
-                        <h3 className="text-[50%] leading-[1.2] drop-shadow-lg md:leading-[1.1] md:text-clamp_name font-bold">
+                        <h3 className="text-[50%] leading-[1.2] md:leading-[1.1] md:text-clamp_name font-bold">
                             Artem Furman
                         </h3>
                         <p className="text-[40%] md:text-clamp_profession font-medium text-green-600 md:mb-1">

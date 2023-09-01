@@ -6,6 +6,7 @@ import FrontendSkills from "@/components/frontendSkills";
 import BackendSkills from "@/components/backendSkills";
 import OtherSkills from "@/components/otherSkills";
 import ProjectBox from "@/components/projectBox";
+import Projects from "@/components/projects";
 
 import { useRef } from "react";
 import Image from "next/image";
@@ -33,6 +34,7 @@ export default function Small() {
                             className="h-[95%] w-auto object-cover rounded-3xl"
                             width={720}
                             height={720}
+                            priority
                         />
                     </div>
                     <div className="max-sm:text-[10svh] max-sm:flex max-sm:h-1/2 md:w-1/3 max-sm:flex-col max-sm:items-center max-sm:justify-center max-sm:p-4">
@@ -83,14 +85,7 @@ export default function Small() {
                 <h1 className="text-center text-4xl font-bold">
                     Portfolio
                 </h1>
-                <div
-                    className="h-[95%] w-full max-sm:flex max-sm:snap-x max-sm:snap-mandatory max-sm:flex-row max-sm:overflow-scroll md:grid md:grid-cols-2 md:grid-rows-2 md:gap-4 md:pt-2 md:p-6"
-                >
-                    <ProjectBox title="Project 1" placeSelfEnd={true} />
-                    <ProjectBox title="Project 2"  />
-                    <ProjectBox title="Project 3" placeSelfEnd={true} />
-                    <ProjectBox title="Project 4" />
-                </div>
+                <Projects />
             </section>
             {/* <h2 className="mb-2 text-center text-xl font-bold">Project</h2>
                 <div className="w-full h-5/6 rounded-2xl border-2 border-black bg-green-200"></div>  */}
@@ -99,6 +94,17 @@ export default function Small() {
                 className="flex h-[100svh] w-screen snap-start items-center justify-center text-4xl"
             >
                 <h1>About</h1>
+                <div className="flex drop-shadow-xl aspect-square max-sm:h-1/2 h-2/3 items-center justify-center">
+                    <Image
+                        src="/img/about.jpeg"
+                        alt="Profile Picture"
+                        // sizes="50vh "
+                        className="h-[95%] w-auto object-cover rounded-3xl"
+                        width={720}
+                        height={720}
+                        priority
+                    />
+                </div>
             </section>
         </main>
     );

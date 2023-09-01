@@ -20,6 +20,7 @@ module.exports = {
         clamp_name: "clamp(1.3rem, 3vw + 1px, 5rem)",
         clamp_profession: "clamp(1.3rem, 2vw + 1px, 5rem)",
         clamp_description: "clamp(1rem, 1.5vw + 1px, 1.5rem)",
+        clamp_project_description: "clamp(0.8rem, 1vw + 1px, 1.5rem)",
       },
     },
     

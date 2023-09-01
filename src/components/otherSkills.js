@@ -12,7 +12,7 @@ const skillGroups = [
     {
         title: 'Tools',
         skills: [
-            { src: "/img/skills/git.png", alt: "Git icon", name: "Git" },
+            { src: "/img/skills/git.png", alt: "Git icon", name: "Gittatata" },
             { src: "/img/skills/vscode.png", alt: "VSCode icon", name: "VSCode" },
             { src: "/img/skills/linux.png", alt: "Linux icon", name: "Linux" }
         ]

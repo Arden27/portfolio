@@ -7,25 +7,45 @@ export default function ProjectBox({ title, description, stack, placeSelfEnd }){
         <div className="h-4/5 overflow-scroll">
           {description}
         </div>
-          <div className="h-[13%] w-full flex flex-row flex-wrap justify-around">
-            {stack.map((tech, index) => (
-              <div className="relative h-full group/tech hover:cursor-pointer" key={index}>
-                {/* Text to show on hover */}
-                <div className="absolute bg-white border rounded-lg  w-auto bottom-full text-center opacity-0 group-hover/tech:opacity-100 transition -translate-x-1/2 left-1/2">
-                  {tech}
-                </div>
-                {/* Image */}
-                <div className="relative bg-indigo-300 aspect-square h-2/3 rounded-2xl">
-                  <Image
-                    src={`/img/skills/${tech}.png`}
-                    alt={`${tech} icon`}
-                    className="h-[95%] w-auto"
-                    fill
-                  />
-                </div>
+        <div className="h-[13%] w-full bg-amber-200 flex flex-row  items-center justify-around">
+          {stack.map((tech, index) => (
+            <div className="relative h-full w-auto group/tech hover:cursor-pointer" key={index}>
+              {/* Text to show on hover */}
+              <div className="absolute bg-white border rounded-lg  w-auto bottom-full text-center opacity-0 group-hover/tech:opacity-100 transition -translate-x-1/2 left-1/2">
+                {tech}
               </div>
-            ))}
-          </div>
+              {/* Image */}
+              <div className="relative bg-indigo-300 flex items-center justify-center aspect-square h-2/3 rounded-2xl">
+                <Image
+                  src={`/img/skills/${tech}.png`}
+                  alt={`${tech} icon`}
+                  className="h-full w-auto"
+                  width={200}
+                  height={200}
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="h-[13%] w-full bg-amber-200 flex flex-row  items-center justify-around">
+          {stack.map((tech, index) => (
+            <div className="relative h-full w-auto group/tech hover:cursor-pointer" key={index}>
+              {/* Text to show on hover */}
+              <div className="absolute bg-white border rounded-lg  w-auto bottom-full text-center opacity-0 group-hover/tech:opacity-100 transition -translate-x-1/2 left-1/2">
+                {tech}
+              </div>
+              {/* Image */}
+              <div className="relative bg-indigo-300 block aspect-square h-2/3 rounded-2xl">
+                <Image
+                  src={`/img/skills/${tech}.png`}
+                  alt={`${tech} icon`}
+                  className="h-full w-auto object-cover object-center"
+                  fill={true}
+                />
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
       
       <div className={`${placeSelfEnd ? 'md:group-hover:-translate-x-full' : 'md:group-hover:translate-x-full'} max-sm:hidden h-full md:absolute md:inset-0 rounded-2xl border-2 border-black bg-green-300 md:transition-transform md:duration-700 md:ease-in-out md:flex md:items-center md:justify-center`}>

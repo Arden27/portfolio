@@ -24,6 +24,17 @@ module.exports = {
         clamp_description: "clamp(1rem, 1.5vw + 1px, 1.5rem)",
         clamp_project_description: "clamp(0.8rem, 1vw + 1px, 1.5rem)",
       },
+      // for dynamic gradient background
+      keyframes: {
+        gradientChange: {
+          '0%': { 'background-position': '0% 50%' },
+          '50%': { 'background-position': '100% 50%' },
+          '100%': { 'background-position': '0% 50%' },
+        },
+      },
+      animation: {
+        'gradient-change': 'gradientChange 15s ease infinite',
+      },
     },
     
   },

@@ -12,6 +12,7 @@ const getRandomColor = () => {
 };
 
 const App = () => {
+  const transitionTime = 5000; // in milliseconds
   const [backgroundGradientFrom, setBackgroundGradientFrom] = useState(getRandomColor());
   const [backgroundGradientTo, setBackgroundGradientTo] = useState(getRandomColor());
   const [foregroundGradientFrom, setForegroundGradientFrom] = useState(getRandomColor());
@@ -31,7 +32,7 @@ const App = () => {
         setForegroundGradientTo(getRandomColor());
         setOpacity(1);
       }
-    }, 5000);
+    }, transitionTime);
 
     return () => {
       clearTimeout(timer);
@@ -40,7 +41,7 @@ const App = () => {
 
   const foregroundStyle = {
     opacity: opacity,
-    transition: 'opacity 5s ease-in-out',
+    transition: `opacity ${transitionTime / 1000}s ease-in-out`,
     backgroundImage: `linear-gradient(270deg, ${foregroundGradientFrom}, ${foregroundGradientTo})`,
     backgroundSize: '200% 200%',
     position: 'absolute',

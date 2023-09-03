@@ -31,9 +31,31 @@ module.exports = {
           '50%': { 'background-position': '100% 50%' },
           '100%': { 'background-position': '0% 50%' },
         },
+        slideUpThenLeft: {
+          '0%': { transform: 'translateY(-20px) translateX(0)' },
+          '100%': { transform: 'translateY(-20px) translateX(-100%)' },
+        },
+        slideRightThenDown: {
+          '0%': { transform: 'translateY(-20px) translateX(-100%)' },
+          '80%': { transform: 'translateY(-20px) translateX(0)' },
+          '100%': { transform: 'translateY(0) translateX(0)' },
+        },
+        slideUpThenRight: {
+          '0%': { transform: 'translateY(-20px) translateX(0)' },
+          '100%': { transform: 'translateY(-20px) translateX(100%)' },
+        },
+        slideLeftThenDown: {
+          '0%': { transform: 'translateY(-20px) translateX(100%)' },
+          '80%': { transform: 'translateY(-20px) translateX(0)' },
+          '100%': { transform: 'translateY(0) translateX(0)' },
+        }
       },
       animation: {
         'gradient-change': 'gradientChange 15s ease infinite',
+        'slideUpThenLeft': 'slideUpThenLeft 1s ease-in-out 1 forwards',
+        'slideRightThenDown': 'slideRightThenDown 0.8s ease-in-out 1 forwards',
+        'slideUpThenRight': 'slideUpThenRight 1s ease-in-out 1 forwards',
+        'slideLeftThenDown': 'slideLeftThenDown 0.8s ease-in-out 1 forwards',
       },
     },
     

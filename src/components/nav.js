@@ -68,44 +68,44 @@ const NavBar = ({ mainRef }) => {
             setTimeout(() => {
                 setActiveLink(sectionId);
                 setScrollInitiator(null);
-            }, 200); // Delayed by 50ms. You can adjust this value if needed.
+            }, 500); // Delayed by 50ms. You can adjust this value if needed.
         }
     };
 
     return (
         <nav
-            className={`fixed top-0 flex h-12 w-full items-center justify-around bg-gray-100/80 z-10 p-3 transition-shadow duration-500 ease-in-out md:justify-end ${
-                shadow ? "shadow-lg" : ""
+            className={`fixed top-0 flex h-12 w-full items-center justify-around bg-transparent z-10 p-3 transition-shadow duration-500 ease-in-out md:justify-end ${
+                shadow ? "shadow-lg" : "bg-transparent"
             }`}
         >
             <div
                 onClick={() => handleNavLinkClick("home-section")}
-                className={`md:mx-4 font-semibold cursor-pointer ${
-                    activeLink === "home-section" ? "drop-shadow-md text-orange-600" : ""
+                className={`relative md:mx-2 cursor-pointer border px-3 p-1 rounded-xl transition ease-in duration-500 ${
+                    activeLink === "home-section" ? " bg-gray-100/30 border-black text-white" : "border-transparent text-gray-100/80"
                 }`}
             >
                 Home
             </div>
             <div
                 onClick={() => handleNavLinkClick("skills-section")}
-                className={`md:mx-4 font-semibold cursor-pointer ${
-                    activeLink === "skills-section" ? "drop-shadow-md text-orange-600" : ""
+                className={`relative md:mx-2 cursor-pointer border px-3 p-1 rounded-xl transition ease-in duration-500  ${
+                    activeLink === "skills-section" ? " bg-gray-100/30 border-black text-white" : "border-transparent text-gray-100/80"
                 }`}
             >
                 Skills
             </div>
             <div
                 onClick={() => handleNavLinkClick("portfolio-section")}
-                className={`md:mx-4 font-semibold cursor-pointer ${
-                    activeLink === "portfolio-section" ? "drop-shadow-md text-orange-600" : ""
+                className={`relative md:mx-2 cursor-pointer border px-3 p-1 rounded-xl transition ease-in duration-500 ${
+                    activeLink === "portfolio-section" ? " bg-gray-100/30 border-black text-white" : "border-transparent text-gray-100/80"
                 }`}
             >
                 Portfolio
             </div>
             <div
                 onClick={() => handleNavLinkClick("about-section")}
-                className={`md:mx-4 md:mr-20 font-semibold cursor-pointer ${
-                    activeLink === "about-section" ? "drop-shadow-md text-orange-600" : ""
+                className={`relative md:mx-2 md:mr-20 cursor-pointer border px-3 p-1 rounded-xl transition ease-in duration-500 ${
+                    activeLink === "about-section" ? " bg-gray-100/30 border-black text-white" : "border-transparent text-gray-100/80"
                 }`}
             >
                 About

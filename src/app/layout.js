@@ -1,5 +1,6 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
+import DynamicBackground from '@/components/dynamicBackground'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -10,8 +11,17 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html className="bg-gray-100 overflow-hidden" lang="en">
-      <body className={inter.className}>{children}</body>
+    <html className="overflow-hidden" lang="en">
+      <body className={inter.className}>
+        <div className="relative">
+          <div className="absolute inset-0 z-0">
+            <DynamicBackground />
+          </div>
+          <div className="relative z-10">
+            {children}
+          </div>
+        </div>
+      </body>
     </html>
-  )
+  );
 }

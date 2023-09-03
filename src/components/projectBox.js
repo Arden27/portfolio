@@ -3,21 +3,26 @@ import { useState } from "react";
 
 export default function ProjectBox({ title, description, stack, placeSelfEnd }){
   const [easeIn, setEaseIn] = useState(true);
+
+  const getOpacityClass = () => {
+    return easeIn ? 'duration-[800ms] md:ease-in' : 'duration-[800ms] md:ease-in';
+  };
+
     return(
     <div className={`group md:relative md:aspect-square max-sm:w-full max-sm:flex-shrink-0 max-sm:snap-center h-full ${placeSelfEnd ? 'place-self-end' : ''} md:hover:cursor-pointer`}>
-      <div className=""
+      <div className="h-full"
         onMouseEnter={() => setEaseIn(true)}
         onMouseLeave={() => setEaseIn(false)}
       >
-        <div className={`${placeSelfEnd ? 'md:group-hover:-translate-x-full' : 'md:group-hover:translate-x-full'} max-sm:hidden h-full md:absolute md:inset-0 rounded-2xl border-2 border-black bg-gray-100/25 group-hover:bg-gray-100/50 md:transition md:duration-[800ms] md:ease-in-out md:flex md:items-center md:justify-center`}>
+        <div className={`${placeSelfEnd ? 'md:group-hover:-translate-x-full' : 'md:group-hover:translate-x-full'} max-sm:hidden h-full md:absolute md:inset-0 rounded-2xl border border-black bg-gray-100/25 group-hover:bg-gray-100/50 md:transition md:duration-[800ms] md:ease-in-out md:flex md:items-center md:justify-center`}>
           <h2 className="mb-2 text-center text-xl font-medium peer-hover:opacity-100">{title}</h2>
         </div>
-        <div className={`text-center peer  ${easeIn ? 'duration-[500ms] md:ease-linear' : 'duration-[800ms] md:ease-in'} text-clamp_project_description p-2 md:absolute md:inset-0 w-full h-full flex flex-col justify-between rounded-2xl border-2 border-black bg-gray-100/25 group-hover:bg-gray-100/50`}>
-          <h3 className={`opacity-0 group-hover:opacity-100 transition-opacity ${easeIn ? 'duration-[500ms] md:ease-linear' : 'duration-[800ms] md:ease-in'} mb-1 font-medium`}>{title}</h3>
-          <div className={`opacity-0 group-hover:opacity-100 transition-opacity ${easeIn ? 'duration-[500ms] md:ease-linear' : 'duration-[800ms] md:ease-in'} h-4/5 overflow-scroll font-normal`}>
+        <div className={`text-center peer  ${getOpacityClass()} text-clamp_project_description p-2 md:absolute md:inset-0 w-full h-full flex flex-col justify-between rounded-2xl border border-black md:bg-gray-100/25 max-sm:bg-gray-100/50 md:group-hover:bg-gray-100/50`}>
+          <h3 className={`md:opacity-0 md:group-hover:opacity-100 transition-opacity ${getOpacityClass()} mb-1 font-medium`}>{title}</h3>
+          <div className={`md:opacity-0 md:group-hover:opacity-100 transition-opacity ${getOpacityClass()} : 'duration-[800ms] md:ease-in'} h-4/5 overflow-scroll font-normal`}>
             {description}
           </div>
-          <div className={`opacity-0 group-hover:opacity-100 transition-opacity ${easeIn ? 'duration-[500ms] md:ease-linear' : 'duration-[800ms] md:ease-in'} h-[13%] w-full flex flex-row  items-center justify-around`}>
+          <div className={`md:opacity-0 md:group-hover:opacity-100 transition-opacity ${getOpacityClass()} h-[13%] w-full flex flex-row  items-center justify-around`}>
             {stack.map((tech, index) => (
               <div className="relative h-full w-auto group/tech hover:cursor-pointer" key={index}>
                 {/* Text to show on hover */}

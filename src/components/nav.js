@@ -81,7 +81,7 @@ const NavBar = ({ mainRef }) => {
             <div
                 onClick={() => handleNavLinkClick("home-section")}
                 className={`relative md:mx-2 cursor-pointer border px-3 p-1 rounded-xl transition ease-in duration-500 ${
-                    activeLink === "home-section" ? " bg-gray-100/30 border-black text-white" : "border-transparent text-gray-100/80"
+                    activeLink === "home-section" ? " bg-gray-100/30 border-black text-white/80" : "border-transparent text-gray-100/80"
                 }`}
             >
                 Home
@@ -89,7 +89,7 @@ const NavBar = ({ mainRef }) => {
             <div
                 onClick={() => handleNavLinkClick("skills-section")}
                 className={`relative md:mx-2 cursor-pointer border px-3 p-1 rounded-xl transition ease-in duration-500  ${
-                    activeLink === "skills-section" ? " bg-gray-100/30 border-black text-white" : "border-transparent text-gray-100/80"
+                    activeLink === "skills-section" ? " bg-gray-100/30 border-black text-white/80" : "border-transparent text-gray-100/80"
                 }`}
             >
                 Skills
@@ -97,7 +97,7 @@ const NavBar = ({ mainRef }) => {
             <div
                 onClick={() => handleNavLinkClick("portfolio-section")}
                 className={`relative md:mx-2 cursor-pointer border px-3 p-1 rounded-xl transition ease-in duration-500 ${
-                    activeLink === "portfolio-section" ? " bg-gray-100/30 border-black text-white" : "border-transparent text-gray-100/80"
+                    activeLink === "portfolio-section" ? " bg-gray-100/30 border-black text-white/80" : "border-transparent text-gray-100/80"
                 }`}
             >
                 Portfolio
@@ -105,7 +105,7 @@ const NavBar = ({ mainRef }) => {
             <div
                 onClick={() => handleNavLinkClick("about-section")}
                 className={`relative md:mx-2 md:mr-20 cursor-pointer border px-3 p-1 rounded-xl transition ease-in duration-500 ${
-                    activeLink === "about-section" ? " bg-gray-100/30 border-black text-white" : "border-transparent text-gray-100/80"
+                    activeLink === "about-section" ? " bg-gray-100/30 border-black text-white/80" : "border-transparent text-gray-100/80"
                 }`}
             >
                 About

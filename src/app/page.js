@@ -5,8 +5,8 @@ import SkillsNav from "@/components/skillsNav";
 import FrontendSkills from "@/components/frontendSkills";
 import BackendSkills from "@/components/backendSkills";
 import OtherSkills from "@/components/otherSkills";
-import ProjectBox from "@/components/projectBox";
 import Projects from "@/components/projects";
+import Animate from "@/components/animate";
 
 import { useRef } from "react";
 import Image from "next/image";
@@ -94,17 +94,23 @@ export default function Small() {
                 className="flex h-[100svh] w-screen snap-start items-center justify-center text-4xl"
             >
                 <h1>About</h1>
-                <div className="flex drop-shadow-xl aspect-square max-sm:h-1/2 h-2/3 items-center justify-center">
+                <div className="flex drop-shadow-xl aspect-square max-sm:h-1/2 h-[50px] items-center justify-center">
                     <Image
                         src="/img/about.jpeg"
                         alt="Profile Picture"
                         // sizes="50vh "
-                        className="h-[95%] w-auto object-cover rounded-3xl"
+                        className="h-[95%] w-auto object-cover rounded-full"
                         width={720}
                         height={720}
                         priority
                     />
                 </div>
+
+                <Animate />
+                <Animate />
+                <Animate />
+                <Animate />
+
             </section>
         </main>
     );

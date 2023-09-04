@@ -14,10 +14,13 @@ export default function Chat(){
     }
 
     return (
-        <div className="z-50" >
+        <div className="z-50">
             <div className={`${open ? "" : "hidden"} p-1 flex flex-col z-50 border rounded-xl border-black h-[85svh] w-[90vw] fixed bottom-16 right-6 bg-gray-100/50`}>
                 <div className="flex-grow bg-red-100/80 border rounded-xl border-black mb-1">messages box</div>
-                <div className="h-14 w-full bg-green-200/80 border rounded-xl border-black">chatinput box</div>
+                <div className="flex h-14 w-full bg-green-200/80 border rounded-xl border-black">
+                    <input className="flex-grow p-2 rounded-l-xl" type="text" placeholder="Type a message" />
+                    <button className="bg-blue-500 text-white p-2 rounded-r-xl">Send</button>
+                </div>
             </div>
             <button 
                 className="z-50 fixed bottom-1 right-5"

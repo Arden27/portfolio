@@ -41,10 +41,10 @@ export default function Chat() {
   return (
     <div className="z-50">
       <div
-        className={`${open ? "" : "hidden"} p-1 flex flex-col z-50 border rounded-xl border-black h-[85vh] w-[90vw] fixed bottom-16 right-6 bg-gray-100/50`}
+        className={`${open ? "" : "hidden"} p-1 flex flex-col z-50 border rounded-xl border-black h-[85vh] w-[90vw] sm:w-[50vw] md:w-[35vw] fixed bottom-16 right-6 bg-gray-100/50`}
       >
         <div
-          className="flex-grow overflow-y-auto bg-red-100/80 border rounded-xl border-black mb-1 flex flex-col-reverse"
+          className="flex-grow overflow-y-auto bg-gray-100/50 border rounded-xl border-black mb-1 flex flex-col-reverse"
           ref={messagesContainerRef}
         >
             {messages.map((message, index) => (

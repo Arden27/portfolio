@@ -91,18 +91,12 @@ export default function Small() {
                 <div className="w-full h-5/6 rounded-2xl border-2 border-black bg-green-200"></div>  */}
             <section
                 id="about-section"
-                className="flex flex-col h-[100svh] w-screen snap-start items-center justify-center text-4xl"
+                className="flex h-[100svh] w-screen snap-start flex-col items-center justify-center pt-16 max-sm:pt-14"
             >
-                <h1>About</h1>
-                <div className="relative aspect-square rounded-full h-1/3 items-center justify-center">
-                    <Image
-                        src="/img/about.jpeg"
-                        alt="Profile Picture"
-                        // sizes="50vh "
-                        className="h-[95%] w-auto object-cover rounded-full"
-                        fill
-                    />
-                </div>
+                <h1 className="border rounded-xl p-2 px-4 bg-gray-100/50 border-black text-center text-4xl">
+                    Portfolio
+                </h1>
+                <Projects />
             </section>
         </main>
     );

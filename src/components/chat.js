@@ -41,7 +41,7 @@ export default function Chat() {
   return (
     <div className="z-50">
       <div
-        className={`${open ? "" : "hidden"} p-1 flex flex-col z-50 border rounded-xl border-black h-[83vh] w-[90vw] sm:w-[50vw] md:w-[35vw] fixed bottom-[9vh] right-6 bg-gray-100/50`}
+        className={`${open ? "" : "hidden"} p-1 flex flex-col z-50 border rounded-xl border-black h-[83svh] w-[90vw] sm:w-[50vw] md:w-[35vw] fixed bottom-[9svh] right-6 bg-gray-100/50`}
       >
         <div
           className="flex-grow overflow-y-auto bg-gray-100/50 border rounded-xl border-black mb-1 flex flex-col-reverse"
@@ -74,7 +74,7 @@ export default function Chat() {
       </div>
       <button className="z-50 fixed bottom-1 right-5" onClick={() => handleChatButton()}>
         <ChatIcon
-          className="border border-black rounded-xl bg-gray-100/50 hover:bg-gray-100/80 p-1 px-2 transform scale-x-[-1] w-[9vh] h-auto"
+          className="border border-black rounded-xl bg-gray-100/50 hover:bg-gray-100/80 p-1 px-2 transform scale-x-[-1] w-[9svh] h-auto"
           fill={chatIconColor}
         />
       </button>

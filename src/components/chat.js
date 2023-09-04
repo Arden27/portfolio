@@ -22,11 +22,11 @@ export default function Chat() {
   };
 
   const handleSendMessage = () => {
-    setMessages((prevMessages) => [...prevMessages, { text: newMessage, type: "sent" }]);
+    setMessages((prevMessages) => [{ text: newMessage, type: "sent" }, ...prevMessages]); // new message at the beginning
     setNewMessage("");
-
+  
     setTimeout(() => {
-      setMessages((prevMessages) => [...prevMessages, { text: newMessage, type: "received" }]);
+      setMessages((prevMessages) => [{ text: newMessage, type: "received" }, ...prevMessages]); // simulated reply at the beginning
     }, 1000);
   };
 
@@ -36,17 +36,17 @@ export default function Chat() {
         className={`${open ? "" : "hidden"} p-1 flex flex-col z-50 border rounded-xl border-black h-[85vh] w-[90vw] fixed bottom-16 right-6 bg-gray-100/50`}
       >
         <div
-            className="flex-grow overflow-y-auto bg-red-100/80 border rounded-xl border-black mb-1 flex flex-col justify-end"
-            ref={messagesContainerRef}
+          className="flex-grow overflow-y-auto bg-red-100/80 border rounded-xl border-black mb-1 flex flex-col-reverse"
+          ref={messagesContainerRef}
         >
-            {messages.map((message, index) => (
-                <div
-                key={index}
-                className={`p-2 m-2 rounded-xl ${message.type === "sent" ? "bg-blue-300 text-white self-start" : "bg-green-300 self-end"}`}
-                >
-                {message.text}
-                </div>
-            ))}
+          {messages.map((message, index) => (
+            <div
+              key={index}
+              className={`w-4/5 p-2 m-2 rounded-xl break-words ${message.type === "sent" ? "bg-blue-300 text-white self-start" : "bg-green-300 self-end"}`}
+            >
+              {message.text}
+            </div>
+          ))}
         </div>
         <div className="flex h-14 w-full bg-green-200/80 border rounded-xl border-black">
           <input

@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
           <div className="absolute inset-0 z-0">
             <DynamicBackground />
           </div>
-          <div className="fixed z-10 h-[100svh]">
+          <div className="relative z-10 h-[100svh]">
             {children}
           </div>
           <div className='z-20'>

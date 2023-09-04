@@ -22,12 +22,20 @@ export default function Chat() {
   };
 
   const handleSendMessage = () => {
+    if (newMessage.trim() === '') return;  // Prevent sending empty messages
+
     setMessages((prevMessages) => [{ text: newMessage, type: "sent" }, ...prevMessages]); // new message at the beginning
     setNewMessage("");
   
     setTimeout(() => {
       setMessages((prevMessages) => [{ text: newMessage, type: "received" }, ...prevMessages]); // simulated reply at the beginning
     }, 1000);
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      handleSendMessage();
+    }
   };
 
   return (
@@ -42,9 +50,9 @@ export default function Chat() {
             {messages.map((message, index) => (
                 <div
                     key={index}
-                    className={`max-w-4/5 p-2 m-2 break-words 
-                    ${message.type === "sent" ? "bg-blue-300 text-white self-start rounded-tr-xl rounded-tl-xl rounded-br-xl" 
-                    : "bg-green-300 self-end rounded-tr-xl rounded-tl-xl rounded-bl-xl"}`}
+                    className={`max-w-[80%] p-2 m-2 break-words 
+                    ${message.type === "sent" ? "bg-blue-500 text-white self-start rounded-tr-xl rounded-tl-xl rounded-br-xl" 
+                    : "bg-green-400 self-end rounded-tr-xl rounded-tl-xl rounded-bl-xl"}`}
                 >
                     {message.text}
                 </div>
@@ -57,6 +65,7 @@ export default function Chat() {
             placeholder="Type a message"
             value={newMessage}
             onChange={(e) => setNewMessage(e.target.value)}
+            onKeyDown={handleKeyPress}
           />
           <button className="bg-blue-500 text-white p-2 rounded-r-xl" onClick={handleSendMessage}>
             Send

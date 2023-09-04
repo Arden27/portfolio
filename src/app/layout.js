@@ -12,13 +12,13 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html className="overflow-hidden h-[100dvh]" lang="en">
-      <body className={` h-[100dvh]`}>
-        <div className="relative h-[100dvh]">
+    <html className="overflow-hidden h-[100svh]" lang="en">
+      <body className={` h-[100svh]`}>
+        <div className="relative h-[100svh]">
           <div className="absolute inset-0 z-0">
             <DynamicBackground />
           </div>
-          <div className="relative z-10 h-[100dvh]">
+          <div className="relative z-10 h-[100svh]">
             {children}
           </div>
           <div className='z-20'>

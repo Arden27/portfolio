@@ -13,8 +13,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html className="overflow-hidden h-[100dvh]" lang="en">
-      <body className={`${inter.className} h-[100dvh]`}>
-        <div className="relative">
+      <body className={` h-[100dvh]`}>
+        <div className="relative h-[100dvh]">
           <div className="absolute inset-0 z-0">
             <DynamicBackground />
           </div>

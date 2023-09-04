@@ -39,14 +39,16 @@ export default function Chat() {
           className="flex-grow overflow-y-auto bg-red-100/80 border rounded-xl border-black mb-1 flex flex-col-reverse"
           ref={messagesContainerRef}
         >
-          {messages.map((message, index) => (
-            <div
-              key={index}
-              className={`w-4/5 p-2 m-2 rounded-xl break-words ${message.type === "sent" ? "bg-blue-300 text-white self-start" : "bg-green-300 self-end"}`}
-            >
-              {message.text}
-            </div>
-          ))}
+            {messages.map((message, index) => (
+                <div
+                    key={index}
+                    className={`max-w-4/5 p-2 m-2 break-words 
+                    ${message.type === "sent" ? "bg-blue-300 text-white self-start rounded-tr-xl rounded-tl-xl rounded-br-xl" 
+                    : "bg-green-300 self-end rounded-tr-xl rounded-tl-xl rounded-bl-xl"}`}
+                >
+                    {message.text}
+                </div>
+            ))}
         </div>
         <div className="flex h-14 w-full bg-green-200/80 border rounded-xl border-black">
           <input

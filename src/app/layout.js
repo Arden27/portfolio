@@ -1,6 +1,7 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
 import DynamicBackground from '@/components/dynamicBackground'
+import Chat from '@/components/chat'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -19,6 +20,9 @@ export default function RootLayout({ children }) {
           </div>
           <div className="relative z-10">
             {children}
+          </div>
+          <div className='z-20'>
+            <Chat className="z-20"/>
           </div>
         </div>
       </body>

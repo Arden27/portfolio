@@ -6,7 +6,7 @@ import SendIcon from "../../public/img/send.svg";
 import { artem_context } from "@/components/chatContext"
 
 
-const chatIconColor = "rgba(249, 115, 22, .8)";
+const chatIconColor = "rgba(249, 115, 22, .5)";
 
 export default function Chat() {
   const [open, setOpen] = useState(false);
@@ -94,13 +94,13 @@ export default function Chat() {
             {[...messages].reverse().map((message, index) => (
                 <div
                     key={index}
-                    className={`max-w-[80%] p-2 m-2 break-words ${message.type === "sent" ? "bg-blue-500/90 text-white self-end rounded-tr-xl rounded-tl-xl rounded-bl-xl" : "bg-gray-100/90 border-2 border-blue-500 self-start rounded-tr-xl rounded-tl-xl rounded-br-xl"}`}
+                    className={`max-w-[80%] p-2 m-2 break-words ${message.type === "sent" ? "bg-blue-600/90 text-white self-end rounded-tr-xl rounded-tl-xl rounded-bl-xl" : "bg-gray-100/90 border-2 border-blue-600 self-start rounded-tr-xl rounded-tl-xl rounded-br-xl"}`}
                 >
                     {message.text}
                 </div>
             ))}
         </div>
-        <div className="flex h-14 w-full border bg-gray-100/80 rounded-xl border-black">
+        <div className="flex h-14 w-full border  rounded-xl border-black">
           <input
             className="flex-grow p-2 rounded-l-xl bg-gray-100/80"
             type="text"
@@ -109,7 +109,7 @@ export default function Chat() {
             onChange={(e) => setNewMessage(e.target.value)}
             onKeyDown={handleKeyPress}
           />
-          <button className="text-white p-1 pr-2 h-full rounded-r-xl" onClick={handleSendMessage}>
+          <button className="text-white p-1 pr-2 h-full rounded-r-xl bg-gray-100/80" onClick={handleSendMessage}>
             <SendIcon
                 className=" h-[70%] w-auto"
                 fill={chatIconColor}

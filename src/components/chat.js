@@ -1,7 +1,9 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react";
-import ChatIcon from "../../public/img/chat.svg";
+import ChatIcon from "../../public/img/chat.svg";  // You'll need to replace this import to match your actual setup
+import { artem_context } from "@/components/chatContext"
+
 
 const chatIconColor = "rgba(249, 115, 22, .8)";
 
@@ -21,15 +23,56 @@ export default function Chat() {
     setOpen(!open);
   };
 
-  const handleSendMessage = () => {
-    if (newMessage.trim() === '') return;  // Prevent sending empty messages
-
-    setMessages((prevMessages) => [{ text: newMessage, type: "sent" }, ...prevMessages]); // new message at the beginning
+  const handleSendMessage = async () => {
+    if (newMessage.trim() === '') return;
     setNewMessage("");
   
-    setTimeout(() => {
-      setMessages((prevMessages) => [{ text: newMessage, type: "received" }, ...prevMessages]); // simulated reply at the beginning
-    }, 1000);
+    // First update the local state
+    setMessages((prevMessages) => [...prevMessages, { text: newMessage, type: "sent" }]);
+    
+    
+    
+    try {
+      console.log("Attempting to call OpenAI API...");
+  
+      // The API expects the messages in the order they were exchanged
+      const apiFormattedMessages = [
+        { role: "system", content: artem_context },
+        ...messages.map(msg => ({ role: msg.type === "sent" ? "user" : "assistant", content: msg.text })),
+        { role: "user", content: newMessage } // Add the new user message to the end
+      ];
+  
+      const payload = {
+        model: "gpt-3.5-turbo",
+        messages: apiFormattedMessages
+      };
+    
+      console.log("Payload to be sent:", JSON.stringify(payload, null, 2));
+    
+      const response = await fetch("https://api.openai.com/v1/chat/completions", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${process.env.NEXT_PUBLIC_OPENAI_API_KEY}`
+        },
+        body: JSON.stringify(payload),
+      });
+    
+      if (response.ok) {
+        const data = await response.json();
+        const assistant_response = data.choices[0].message.content;
+  
+        // Update the state to include the assistant's reply
+        setMessages((prevMessages) => [...prevMessages, { text: assistant_response, type: "received" }]);
+      } else {
+        console.log(`Received a non-OK HTTP status from OpenAI API: ${response.status}`);
+      }
+    } catch (error) {
+      console.error("Error calling the OpenAI API: ", error);
+    }
+    
+    // Clear the input field
+    
   };
 
   const handleKeyPress = (e) => {
@@ -47,12 +90,10 @@ export default function Chat() {
           className="flex-grow overflow-y-auto bg-gray-100/50 border rounded-xl border-black mb-1 flex flex-col-reverse"
           ref={messagesContainerRef}
         >
-            {messages.map((message, index) => (
+            {[...messages].reverse().map((message, index) => (
                 <div
                     key={index}
-                    className={`max-w-[80%] p-2 m-2 break-words 
-                    ${message.type === "sent" ? "bg-blue-500 text-white self-start rounded-tr-xl rounded-tl-xl rounded-br-xl" 
-                    : "bg-green-400 self-end rounded-tr-xl rounded-tl-xl rounded-bl-xl"}`}
+                    className={`max-w-[80%] p-2 m-2 break-words ${message.type === "sent" ? "bg-blue-500 text-white self-start rounded-tr-xl rounded-tl-xl rounded-br-xl" : "bg-green-400 self-end rounded-tr-xl rounded-tl-xl rounded-bl-xl"}`}
                 >
                     {message.text}
                 </div>
@@ -72,7 +113,7 @@ export default function Chat() {
           </button>
         </div>
       </div>
-      <button className="z-50 fixed bottom-1 right-5" onClick={() => handleChatButton()}>
+      <button className="z-50 fixed bottom-1 right-5" onClick={handleChatButton}>
         <ChatIcon
           className="border border-black rounded-xl bg-gray-100/50 hover:bg-gray-100/80 p-1 px-2 transform scale-x-[-1] w-[9svh] h-auto"
           fill={chatIconColor}

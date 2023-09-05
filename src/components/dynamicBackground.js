@@ -36,6 +36,17 @@ const DynamicBackground = () => {
 
   // Other states
   const [opacity, setOpacity] = useState(1);
+  const [rendered, setRendered] = useState(false); // NEW state variable
+
+  useEffect(() => {
+    const initialTimer = setTimeout(() => {
+      setRendered(true);  // Trigger the Tailwind transition
+    }, 200);  // Feel free to adjust this time
+
+    return () => {
+      clearTimeout(initialTimer);
+    };
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -77,7 +88,7 @@ const DynamicBackground = () => {
   };
 
   return (
-    <div className="min-h-screen relative">
+    <div className={`opacity-0 ${rendered ? 'opacity-50' : ''} transition-opacity duration-[10000ms] ease-in-out min-h-screen relative`}>
       <div style={backgroundStyle}></div>
       <div style={foregroundStyle}></div>
     </div>

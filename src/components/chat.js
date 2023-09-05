@@ -1,7 +1,8 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react";
-import ChatIcon from "../../public/img/chat.svg";  // You'll need to replace this import to match your actual setup
+import ChatIcon from "../../public/img/chat.svg";
+import SendIcon from "../../public/img/send.svg";
 import { artem_context } from "@/components/chatContext"
 
 
@@ -84,32 +85,35 @@ export default function Chat() {
   return (
     <div className="z-50">
       <div
-        className={`${open ? "" : "hidden"} p-1 flex flex-col z-50 border rounded-xl border-black h-[83svh] w-[90vw] sm:w-[50vw] md:w-[35vw] fixed bottom-[9svh] right-6 bg-gray-100/50`}
+        className={`${open ? "" : "hidden"} p-1 flex flex-col z-50  h-[83svh] w-[90vw] sm:w-[50vw] md:w-[35vw] fixed bottom-[9svh] right-6`}
       >
         <div
-          className="flex-grow overflow-y-auto bg-gray-100/50 border rounded-xl border-black mb-1 flex flex-col-reverse"
+          className={"flex-grow overflow-y-auto bg-gray-100/80 border rounded-xl border-black mb-1 flex flex-col-reverse"}
           ref={messagesContainerRef}
         >
             {[...messages].reverse().map((message, index) => (
                 <div
                     key={index}
-                    className={`max-w-[80%] p-2 m-2 break-words ${message.type === "sent" ? "bg-blue-500 text-white self-start rounded-tr-xl rounded-tl-xl rounded-br-xl" : "bg-green-400 self-end rounded-tr-xl rounded-tl-xl rounded-bl-xl"}`}
+                    className={`max-w-[80%] p-2 m-2 break-words ${message.type === "sent" ? "bg-blue-500/90 text-white self-end rounded-tr-xl rounded-tl-xl rounded-bl-xl" : "bg-gray-100/90 border-2 border-blue-500 self-start rounded-tr-xl rounded-tl-xl rounded-br-xl"}`}
                 >
                     {message.text}
                 </div>
             ))}
         </div>
-        <div className="flex h-14 w-full bg-green-200/80 border rounded-xl border-black">
+        <div className="flex h-14 w-full border bg-gray-100/80 rounded-xl border-black">
           <input
-            className="flex-grow p-2 rounded-l-xl"
+            className="flex-grow p-2 rounded-l-xl bg-gray-100/80"
             type="text"
             placeholder="Type a message"
             value={newMessage}
             onChange={(e) => setNewMessage(e.target.value)}
             onKeyDown={handleKeyPress}
           />
-          <button className="bg-blue-500 text-white p-2 rounded-r-xl" onClick={handleSendMessage}>
-            Send
+          <button className="text-white p-1 pr-2 h-full rounded-r-xl" onClick={handleSendMessage}>
+            <SendIcon
+                className=" h-[70%] w-auto"
+                fill={chatIconColor}
+            />
           </button>
         </div>
       </div>
@@ -117,6 +121,7 @@ export default function Chat() {
         <ChatIcon
           className="border border-black rounded-xl bg-gray-100/50 hover:bg-gray-100/80 p-1 px-2 transform scale-x-[-1] w-[9svh] h-auto"
           fill={chatIconColor}
+          stroke='3'
         />
       </button>
     </div>

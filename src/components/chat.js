@@ -85,7 +85,7 @@ export default function Chat() {
   return (
     <div className="z-50">
       <div
-        className={`${open ? "" : "hidden"} p-1 flex flex-col z-50  h-[83svh] w-[90vw] sm:w-[50vw] md:w-[35vw] fixed bottom-[9svh] right-6`}
+        className={`${open ? "" : "hidden"} p-1 flex flex-col z-50  h-[83svh] w-[90vw] sm:w-[50vw] md:w-[30vw] md:h-[65vh] fixed bottom-[9svh] right-6`}
       >
         <div
           className={"flex-grow overflow-y-auto bg-gray-100/80 border rounded-xl border-black mb-1 flex flex-col-reverse"}

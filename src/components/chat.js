@@ -102,6 +102,7 @@ export default function Chat() {
         </div>
         <div className="flex h-14 w-full border  rounded-xl border-black">
           <input
+            name="newMessage"
             className="flex-grow p-2 rounded-l-xl bg-gray-100/80"
             type="text"
             placeholder="Type a message"

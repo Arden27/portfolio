@@ -30,7 +30,7 @@ const projects = [
 export default function Projects(){
     return(
         <div
-            className="h-[95%] w-full max-sm:flex max-sm:snap-x max-sm:snap-mandatory max-sm:flex-row max-sm:overflow-scroll md:grid md:grid-cols-2 md:grid-rows-2 md:gap-4 md:pt-2 p-6"
+            className="h-[95%] w-full max-sm:flex max-sm:snap-x max-sm:snap-mandatory max-sm:flex-row max-sm:overflow-scroll md:grid md:grid-cols-2 md:grid-rows-2 md:gap-4 md:pt-2 p-4 md:p-6"
         >
             {projects.map((project, index) => (
                 <ProjectBox key={index} title={project.title} description={project.description} stack={project.stack} placeSelfEnd={project.placeSelfEnd} />

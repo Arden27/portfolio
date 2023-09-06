@@ -20,17 +20,19 @@ export default function Small() {
         const handleScroll = () => {
             const aboutSection = document.getElementById("about-section");
             if (aboutSection) {
-                const rect = aboutSection.getBoundingClientRect();
-    
-                if (rect.top <= window.innerHeight && rect.bottom >= 0) {
-                    console.log("About section is in view!");
-                    setIsAboutInView(true);
-                } else {
-                    console.log("About section is not in view!");
-                    setIsAboutInView(false);
-                }
+              const rect = aboutSection.getBoundingClientRect();
+          
+              // Calculate whether at least half of the About section is visible
+              const halfHeight = rect.height / 2;
+              const halfVisible =
+                rect.top <= window.innerHeight - halfHeight && rect.bottom >= halfHeight;
+          
+              if (halfVisible) {
+                console.log("About section is in view!");
+                setIsAboutInView(true);
+              }
             }
-        };
+          };
     
         const mainElement = mainRef.current;
         if (mainElement) {
@@ -128,8 +130,8 @@ export default function Small() {
                 {/* transition translate duration-[3000ms] ease-in-out ${isAboutInView ? 'translate-x-0' : 'translate-x-[0]'} */}
                 <div className={`relative h-[calc(100%-10rem)] w-full flex flex-row items-center justify-center`}>
                     <div className="relative bg-gray-100/50 h-1/2 w-full p-4 pr-3 border rounded-2xl border-black max-sm:text-[10svh] max-sm:flex max-sm:h-1/2 max-sm:w-4/5 md:w-1/3 max-sm:flex-col max-sm:items-center max-sm:justify-center max-sm:p-2 max-sm:px-1">
-                        <div className={`absolute h-full w-full top-1/2 left-1/2 transition transform duration-[3000ms] ease-in-out origin-top-left ${isAboutInView ? 'scale-75 -translate-x-1/2 -translate-y-1/2 ' : ''}`}>
-                            <div className={`relative bg-gray-100/50 p-2 border rounded-full border-black aspect-square max-sm:h-1/5 h-2/5 items-center justify-center transform -translate-y-1/2 -translate-x-1/2`}>
+                        <div className={`absolute h-full w-full top-1/2 left-1/2 transition transform duration-[3000ms] ease-in-out origin-top-left ${isAboutInView ? 'scale-[.5] md:-translate-x-1/2 md:-translate-y-1/2 max-sm:-translate-y-[60%] ' : ''}`}>
+                            <div className={`relative bg-gray-100/50 p-2 border rounded-full border-black aspect-square h-full items-center justify-center transform -translate-y-1/2 -translate-x-1/2`}>
                                 <Image
                                     src="/img/about.jpeg"
                                     alt="Profile Picture"

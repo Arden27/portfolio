@@ -42,22 +42,22 @@ const SkillsNav = ({ skillsRef }) => {
     }, [skillsRef]);
 
     return (
-        <nav className="md:hidden text-3xl flex max-sm:h-2 w-full items-end justify-center bg-transparent bg-opacity-80 pb-3 transition-shadow duration-300 ease-in-out md:justify-end">
+        <nav className="md:hidden relative bottom-4 text-3xl flex max-sm:h-2 w-full items-end justify-center bg-transparent bg-opacity-80 pb-3 transition-shadow duration-300 ease-in-out">
             <div
                 onClick={() => window.location.hash = 'frontend-skills'}
-                className={`mx-2 cursor-pointer ${activeLink === "frontend-skills" ? "font-bold text-orange-600" : ""}`}
+                className={`mx-2 cursor-pointer ${activeLink === "frontend-skills" ? "font-bold" : ""}`}
             >
                 {activeLink === "frontend-skills" ? '⦿' : '○'}
             </div>
             <div
                 onClick={() => window.location.hash = 'backend-skills'}
-                className={`mx-2 cursor-pointer ${activeLink === "backend-skills" ? "font-bold text-orange-600" : ""}`}
+                className={`mx-2 cursor-pointer ${activeLink === "backend-skills" ? "font-bold" : ""}`}
             >
                 {activeLink === "backend-skills" ? '⦿' : '○'}
             </div>
             <div
                 onClick={() => window.location.hash = 'other-skills'}
-                className={`mx-2 cursor-pointer ${activeLink === "other-skills" ? "font-bold text-orange-600" : ""}`}
+                className={`mx-2 cursor-pointer ${activeLink === "other-skills" ? "font-bold" : ""}`}
             >
                 {activeLink === "other-skills" ? '⦿' : '○'}
             </div>

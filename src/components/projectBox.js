@@ -17,7 +17,7 @@ export default function ProjectBox({ title, description, stack, placeSelfEnd }){
         <div className={`${placeSelfEnd ? 'md:group-hover:-translate-x-full' : 'md:group-hover:translate-x-full'} max-sm:hidden h-full md:absolute md:inset-0 rounded-2xl border border-black bg-gray-100/25 group-hover:bg-gray-100/50 md:transition md:duration-[800ms] md:ease-in-out md:flex md:items-center md:justify-center`}>
           <h2 className="mb-2 text-center text-xl font-medium peer-hover:opacity-100">{title}</h2>
         </div>
-        <div className={`text-center peer  ${getOpacityClass()} text-clamp_project_description p-2 md:absolute md:inset-0 w-full h-full flex flex-col justify-between rounded-2xl border border-black md:bg-gray-100/25 max-sm:bg-gray-100/50 md:group-hover:bg-gray-100/50`}>
+        <div className={`text-center peer  ${getOpacityClass()} max-sm:text-[5vw] md:text-clamp_project_description p-2 md:absolute md:inset-0 w-full h-full flex flex-col justify-between rounded-2xl border border-black md:bg-gray-100/25 max-sm:bg-gray-100/50 md:group-hover:bg-gray-100/50`}>
           <h3 className={`md:opacity-0 md:group-hover:opacity-100 transition-opacity ${getOpacityClass()} mb-1 font-medium`}>{title}</h3>
           <div className={`md:opacity-0 md:group-hover:opacity-100 transition-opacity ${getOpacityClass()} : 'duration-[800ms] md:ease-in'} h-4/5 overflow-scroll font-normal`}>
             {description}
@@ -26,7 +26,7 @@ export default function ProjectBox({ title, description, stack, placeSelfEnd }){
             {stack.map((tech, index) => (
               <div className="relative h-full w-auto group/tech hover:cursor-pointer" key={index}>
                 {/* Text to show on hover */}
-                <div className="absolute bg-white border rounded-lg  w-auto bottom-full text-center opacity-0 group-hover/tech:opacity-100 transition -translate-x-1/2 left-1/2">
+                <div className="absolute w-auto bottom-full text-center opacity-0 group-hover/tech:opacity-100 transition -translate-x-1/2 left-1/2">
                   {tech}
                 </div>
                 {/* Image */}

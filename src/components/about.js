@@ -4,6 +4,8 @@ import Contacts from "./contacts";
 
 export default function About({ mainRef }){
     const [isAboutInView, setIsAboutInView] = useState(false);
+    const [showAbout, setShowAbout] = useState(false);
+    const [showContacts, setShowContacts] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -17,8 +19,18 @@ export default function About({ mainRef }){
                 rect.top <= window.innerHeight - halfHeight && rect.bottom >= halfHeight;
           
               if (halfVisible) {
-                console.log("About section is in view!");
                 setIsAboutInView(true);
+                const showAboutTimer = setTimeout(() => {
+                    setShowAbout(true);  
+                  }, 1500); 
+                const showContactsTimer = setTimeout(() => {
+                    setShowContacts(true);  
+                  }, 3000); 
+              
+                  return () => {
+                    clearTimeout(showAboutTimer);
+                    clearTimeout(showContactsTimer);
+                  };
               }
             }
           };
@@ -46,12 +58,15 @@ export default function About({ mainRef }){
                     fill
                 />
             </div>
-            <div className="relative bg-gray-100/50 bottom-4 p-4 border rounded-2xl border-black max-sm:flex max-sm:w-4/5 md:w-1/3 max-sm:flex-col max-sm:items-center">
+            <div className={`relative bg-gray-100/50 bottom-4 p-4 border rounded-2xl border-black max-sm:flex max-sm:w-4/5 md:w-1/3 max-sm:flex-col max-sm:items-center transition duration-[1500ms] ease-in ${showAbout ? 'opacity-100' : 'opacity-0'}`}>
                 <h3 className="text-center">
-                    I've created a chatbot avatar that mimics my personality. You can use it to ask any questions about my background and skills. Please feel free to leave any comments or suggestions regarding my portfolio
+                    I've created a chatbot avatar that mimics my personality. You can use it to ask any questions about my background and skills. Please feel free to leave comments or suggestions regarding my portfolio
                 </h3>
             </div>
-            <Contacts />
+            <div className={`transition duration-[4000ms] ease-in ${showContacts ? 'opacity-100' : 'opacity-0'}`}>
+                <Contacts />
+            </div>
+            
         </div>
     )
 }

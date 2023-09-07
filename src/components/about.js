@@ -63,7 +63,7 @@ export default function About({ mainRef }){
                     I've created a chatbot avatar that mimics my personality. You can use it to ask any questions about my background and skills. Please feel free to leave comments or suggestions regarding my portfolio
                 </h3>
             </div>
-            <div className={`transition duration-[4000ms] ease-in ${showContacts ? 'opacity-100' : 'opacity-0'}`}>
+            <div className={`transition duration-[2500ms] ease-in ${showContacts ? 'opacity-100' : 'opacity-0'}`}>
                 <Contacts />
             </div>
             

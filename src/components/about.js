@@ -47,7 +47,7 @@ export default function About({ mainRef }){
         };
     }, []);
     return(
-        <div className={`relative h-full w-full flex flex-col items-center p-2`}>
+        <div className={`relative w-full flex flex-col items-center justify-center p-2`}>
             {/* ${isAboutInView ? 'scale-[.60] -translate-y-[67%]' : ''} */}
             <div className={`relative z-10 bg-gray-100/50 p-2 border rounded-full border-black aspect-square h-[25vh] items-center justify-center transition transform duration-[2000ms] ease-in-out ${isAboutInView ? '' : 'scale-[1.6] translate-y-[67%]'}`}>
                 <Image

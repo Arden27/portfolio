@@ -47,7 +47,7 @@ export default function Page() {
             
             <section
                 id="about-section"
-                className="flex h-[100svh] w-screen snap-start flex-col items-center pt-16 max-sm:pt-14"
+                className="flex h-[100svh] w-screen snap-start flex-col items-center md:justify-center pt-16 max-sm:pt-14"
             >
                 <h1 className="max-sm:text-clamp_sm_section_name border rounded-xl px-2 md:p-2 md:px-4 bg-gray-100/50 border-black text-center text-4xl">
                     About

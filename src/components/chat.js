@@ -6,7 +6,10 @@ import SendIcon from "../../public/img/send.svg";
 import { artem_context } from "@/components/chatContext"
 
 
-const chatIconColor = "rgba(249, 115, 22, .5)";
+// const chatIconColor = "rgba(249, 115, 22, .5)";
+const chatIconColor = "rgba(109, 40, 217, .5)";
+
+const SendIconNotActive = "rgba(156, 163, 175, .8)";
 
 export default function Chat() {
   const [open, setOpen] = useState(false);
@@ -94,26 +97,26 @@ export default function Chat() {
             {[...messages].reverse().map((message, index) => (
                 <div
                     key={index}
-                    className={`max-w-[80%] p-2 m-2 break-words ${message.type === "sent" ? "bg-blue-600/90 text-white self-end rounded-tr-xl rounded-tl-xl rounded-bl-xl" : "bg-gray-100/90 border-2 border-blue-600 self-start rounded-tr-xl rounded-tl-xl rounded-br-xl"}`}
+                    className={`max-w-[80%] p-2 m-2 break-words ${message.type === "sent" ? "text-white bg-violet-700/70 self-end rounded-tr-xl rounded-tl-xl rounded-bl-xl" : "bg-gray-100/90 border-2 border-violet-700/70 self-start rounded-tr-xl rounded-tl-xl rounded-br-xl"}`}
                 >
                     {message.text}
                 </div>
             ))}
         </div>
-        <div className="flex h-14 w-full border  rounded-xl border-black">
+        <div className="flex items-center h-14 w-full border bg-gray-100/80 rounded-xl border-black">
           <input
             name="newMessage"
-            className="flex-grow p-2 rounded-l-xl bg-gray-100/80"
+            className="flex-grow p-2 h-[90%] rounded-xl bg-transparent outline-violet-700"
             type="text"
             placeholder="Type a message"
             value={newMessage}
             onChange={(e) => setNewMessage(e.target.value)}
             onKeyDown={handleKeyPress}
           />
-          <button className="text-white p-1 pr-2 h-full rounded-r-xl bg-gray-100/80" onClick={handleSendMessage}>
+          <button className="text-white p-1 pr-2 h-full rounded-r-xl bg-transparent" onClick={handleSendMessage}>
             <SendIcon
                 className=" h-[70%] w-auto"
-                fill={chatIconColor}
+                fill={newMessage ? chatIconColor : SendIconNotActive}
             />
           </button>
         </div>

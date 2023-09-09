@@ -38,8 +38,6 @@ export default function Chat() {
     
     
     try {
-      console.log("Attempting to call OpenAI API...");
-  
       // The API expects the messages in the order they were exchanged
       const apiFormattedMessages = [
         { role: "system", content: artem_context },
@@ -51,8 +49,6 @@ export default function Chat() {
         model: "gpt-3.5-turbo",
         messages: apiFormattedMessages
       };
-    
-      console.log("Payload to be sent:", JSON.stringify(payload, null, 2));
     
       const response = await fetch("https://api.openai.com/v1/chat/completions", {
         method: "POST",

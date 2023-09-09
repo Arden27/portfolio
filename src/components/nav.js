@@ -6,10 +6,12 @@ const NavBar = ({ mainRef }) => {
     const [activeLink, setActiveLink] = useState("home-section");
     const [shadow, setShadow] = useState(false);
     const [scrollInitiator, setScrollInitiator] = useState(null); // Add this to track which link initiated the scroll
+    const [scrolling, setScrolling] = useState(false);
 
     const isSafari = typeof navigator !== 'undefined' && /^((?!chrome|android).)*safari/i.test(navigator.userAgent) && !/Mobi|Android/i.test(navigator.userAgent);
 
     const handleScroll = () => {
+        if (scrolling) return;
         if (!mainRef.current) return;
         const sections = [
             "home-section",
@@ -57,17 +59,23 @@ const NavBar = ({ mainRef }) => {
     }, [mainRef]);
 
     const handleNavLinkClick = (sectionId) => {
-        setScrollInitiator(sectionId); // Set the scroll initiator
-    
+        setScrolling(true); // Set scrolling to true at the start of the function
+        setScrollInitiator(sectionId);
+
         if (mainRef.current) {
             const section = document.getElementById(sectionId);
             mainRef.current.scrollTo({
                 top: section.offsetTop,
                 behavior: 'smooth',
             });
-    
+
             setActiveLink(sectionId);
             setScrollInitiator(null);
+
+            // Set scrolling back to false after a timeout
+            setTimeout(() => {
+                setScrolling(false);
+            }, 500); // Adjust the timeout duration if necessary
         }
     };
 

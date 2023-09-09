@@ -61,25 +61,21 @@ const NavBar = ({ mainRef }) => {
     
         if (mainRef.current) {
             const section = document.getElementById(sectionId);
-            mainRef.current.scrollTo({
-                top: section.offsetTop,
-                behavior: "smooth", // Use smooth scrolling
-            });
+            mainRef.current.scrollTop = section.offsetTop;
     
-            // Set the active link after a short delay to prevent flicker and clear the scrollInitiator after scroll finishes
-            setTimeout(() => {
-                setActiveLink(sectionId);
-                setScrollInitiator(null);
-            }, 500); // Delayed by 50ms. You can adjust this value if needed.
+            setActiveLink(sectionId);
+            setScrollInitiator(null);
         }
     };
 
     return (
-        <nav
-            className={`fixed top-0 flex h-12 w-full items-center justify-around bg-transparent z-10 p-3 transition-shadow duration-500 ease-in-out md:justify-end ${
-                shadow && !isSafari ? "shadow-lg" : "bg-transparent"
-            }`}
-        >
+        <div
+        className="fixed top-0 w-full z-10 p-3 transition-shadow duration-500 ease-in-out"
+        style={{
+            boxShadow: `0 10px 15px -3px rgba(0, 0, 0, ${shadow ? 0.1 : 0}), 0 4px 6px -2px rgba(0, 0, 0, ${shadow ? 0.1 : 0})`
+        }}
+    >
+        <nav className="flex h-12 items-center justify-around bg-transparent md:justify-end">
             <div
                 onClick={() => handleNavLinkClick("home-section")}
                 className={`relative md:mx-2 cursor-pointer border px-3 p-1 rounded-xl transition ease-in duration-500 ${
@@ -114,7 +110,7 @@ const NavBar = ({ mainRef }) => {
             </div>
             
         </nav>
-
+        </div>
     );
 };
 

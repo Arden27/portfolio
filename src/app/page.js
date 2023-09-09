@@ -14,7 +14,7 @@ export default function Page() {
     return (
         <main
             ref={mainRef}
-            className="z-20 relative box-border h-[100svh] w-screen snap-y snap-mandatory overflow-scroll scroll-smooth"
+            className="z-20 relative box-border h-[100svh] w-screen snap-y snap-mandatory overflow-scroll"
         >
             <NavBar mainRef={mainRef} />
 

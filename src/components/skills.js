@@ -12,7 +12,7 @@ export default function Skills() {
     return (
         <>
             <div
-                className="sm:grid-rows-7 md:grid-rows-10 h-full w-full max-w-[1440px] max-h-[800px] scroll-smooth sm:grid sm:grid-cols-1 sm:gap-4 md:grid-cols-2 md:px-6 md:pb-6 max-sm:flex max-sm:snap-x max-sm:snap-mandatory max-sm:flex-row max-sm:overflow-scroll max-sm:px-1 max-sm:pb-1"
+                className="sm:grid-rows-7 md:grid-rows-10 h-full w-full max-w-[1440px] max-h-[800px] sm:grid sm:grid-cols-1 sm:gap-4 md:grid-cols-2 md:px-6 md:pb-6 max-sm:flex max-sm:snap-x max-sm:snap-mandatory max-sm:flex-row max-sm:overflow-scroll max-sm:px-1 max-sm:pb-1"
                 ref={skillsRef}
             >
                 <FrontendSkills />

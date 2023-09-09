@@ -61,7 +61,10 @@ const NavBar = ({ mainRef }) => {
     
         if (mainRef.current) {
             const section = document.getElementById(sectionId);
-            mainRef.current.scrollTop = section.offsetTop;
+            mainRef.current.scrollTo({
+                top: section.offsetTop,
+                behavior: 'smooth',
+            });
     
             setActiveLink(sectionId);
             setScrollInitiator(null);
@@ -70,7 +73,7 @@ const NavBar = ({ mainRef }) => {
 
     return (
         <div
-        className="fixed top-0 w-full z-10 p-3 transition-shadow duration-500 ease-in-out"
+        className="fixed top-0 w-full z-10 transition-shadow duration-500 ease-in-out"
         style={{
             boxShadow: `0 10px 15px -3px rgba(0, 0, 0, ${shadow ? 0.1 : 0}), 0 4px 6px -2px rgba(0, 0, 0, ${shadow ? 0.1 : 0})`
         }}

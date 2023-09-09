@@ -7,6 +7,8 @@ const NavBar = ({ mainRef }) => {
     const [shadow, setShadow] = useState(false);
     const [scrollInitiator, setScrollInitiator] = useState(null); // Add this to track which link initiated the scroll
 
+    const isSafari = typeof navigator !== 'undefined' && /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
     const handleScroll = () => {
         if (!mainRef.current) return;
         const sections = [
@@ -75,7 +77,7 @@ const NavBar = ({ mainRef }) => {
     return (
         <nav
             className={`fixed top-0 flex h-12 w-full items-center justify-around bg-transparent z-10 p-3 transition-shadow duration-500 ease-in-out md:justify-end ${
-                shadow ? "shadow-lg" : "bg-transparent"
+                shadow && !isSafari ? "shadow-lg" : "bg-transparent"
             }`}
         >
             <div

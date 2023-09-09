@@ -3,7 +3,10 @@
 import { useState, useEffect, useRef } from "react";
 import ChatIcon from "../../public/img/chat.svg";
 import SendIcon from "../../public/img/send.svg";
-import { artem_context } from "@/components/chatContext"
+import { artem_context } from "@/components/chatContext";
+
+import  {useSelector, useDispatch } from 'react-redux';
+import { openChat, closeChat } from "@/redux/store";
 
 
 // const chatIconColor = "rgba(249, 115, 22, .5)";
@@ -13,9 +16,12 @@ const SendIconNotActive = "rgba(156, 163, 175, .8)";
 
 export default function Chat() {
   const [open, setOpen] = useState(false);
+  const isChatOpen = useSelector((state) => state.isChatOpen)
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
   const messagesContainerRef = useRef(null);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (messagesContainerRef.current) {
@@ -88,7 +94,7 @@ export default function Chat() {
   return (
     <div className="z-50">
       <div
-        className={`${open ? "" : "hidden"} p-1 flex flex-col z-50  h-[83svh] w-[90vw] sm:w-[50vw] md:w-[30vw] md:h-[65vh] fixed bottom-[9svh] right-6`}
+        className={`${isChatOpen ? "" : "hidden"} p-1 flex flex-col z-50  h-[83svh] w-[90vw] sm:w-[50vw] md:w-[30vw] md:h-[65vh] fixed bottom-[9svh] right-6`}
       >
         <div
           className={"flex-grow overflow-y-auto bg-gray-100/80 border rounded-xl border-black mb-1 flex flex-col-reverse"}
@@ -121,7 +127,12 @@ export default function Chat() {
           </button>
         </div>
       </div>
-      <button className="z-50 fixed bottom-1 right-5" onClick={handleChatButton}>
+      <button 
+        className="z-50 fixed bottom-1 right-5" 
+        onClick={() => {
+          isChatOpen ? dispatch(closeChat()) : dispatch(openChat());
+        }}
+      >
         <ChatIcon
           className="border border-black rounded-xl bg-gray-100/50 hover:bg-gray-100/80 p-1 px-2 transform scale-x-[-1] w-[9svh] h-auto"
           fill={chatIconColor}

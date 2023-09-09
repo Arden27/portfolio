@@ -1,3 +1,4 @@
+import Providers from "@/redux/provider";
 import './globals.css'
 import { Inter } from 'next/font/google'
 //import DynamicBackground from '@/components/dynamicBackground'
@@ -20,17 +21,19 @@ export default function RootLayout({ children }) {
   return (
     <html className="overflow-hidden bg-slate-500" lang="en">
       <body className={`${inter.className} fixed`}>
-        <div className="relative">
-          <div className="absolute inset-0 z-0">
-            <DynamicBackground />
+        <Providers>
+          <div className="relative">
+            <div className="absolute inset-0 z-0">
+              <DynamicBackground />
+            </div>
+            <div className="relative z-10">
+              {children}
+            </div>
+            <div className='z-20'>
+              <Chat className="z-20"/>
+            </div>
           </div>
-          <div className="relative z-10">
-            {children}
-          </div>
-          <div className='z-20'>
-            <Chat className="z-20"/>
-          </div>
-        </div>
+        </Providers>
       </body>
     </html>
   );

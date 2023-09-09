@@ -5,7 +5,7 @@ import ChatIcon from "../../public/img/chat.svg";
 import SendIcon from "../../public/img/send.svg";
 import { artem_context } from "@/components/chatContext";
 
-import  {useSelector, useDispatch } from 'react-redux';
+import  { useSelector, useDispatch } from 'react-redux';
 import { openChat, closeChat } from "@/redux/store";
 
 
@@ -15,7 +15,6 @@ const chatIconColor = "rgba(109, 40, 217, .5)";
 const SendIconNotActive = "rgba(156, 163, 175, .8)";
 
 export default function Chat() {
-  const [open, setOpen] = useState(false);
   const isChatOpen = useSelector((state) => state.isChatOpen)
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
@@ -28,10 +27,6 @@ export default function Chat() {
       messagesContainerRef.current.scrollTop = messagesContainerRef.current.scrollHeight;
     }
   }, [messages]);
-
-  const handleChatButton = () => {
-    setOpen(!open);
-  };
 
   const handleSendMessage = async () => {
     if (newMessage.trim() === '') return;

@@ -1,11 +1,16 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Contacts from "./contacts";
+import { useSelector, useDispatch } from "react-redux";
+import { closeChat, openChat } from "@/redux/store";
 
 export default function About({ mainRef }){
     const [isAboutInView, setIsAboutInView] = useState(false);
     const [showAbout, setShowAbout] = useState(false);
     const [showContacts, setShowContacts] = useState(false);
+    const isChatOpen = useSelector((state) => state.isChatOpen)
+
+    const dispatch = useDispatch();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -60,7 +65,7 @@ export default function About({ mainRef }){
             </div>
             <div className={`relative bg-gray-100/50 bottom-4 p-4 border rounded-2xl border-black max-sm:flex max-sm:w-4/5 md:w-1/3 max-sm:flex-col max-sm:items-center transition duration-[1500ms] ease-in ${showAbout ? 'opacity-100' : 'opacity-0'}`}>
                 <h3 className="text-center">
-                    I've created a chatbot avatar that mimics my personality. You can use it to ask any questions about my background and skills. Please feel free to leave comments or suggestions regarding my portfolio
+                    I've created a <span className="text-violet-700 font-semibold cursor-pointer" onClick={() => {isChatOpen ? dispatch(closeChat()) : dispatch(openChat())}}>chatbot avatar</span> that mimics my personality. You can use it to ask any questions about my background and skills. Please feel free to leave comments or suggestions regarding my portfolio
                 </h3>
             </div>
             <div className={`transition duration-[2500ms] ease-in ${showContacts ? 'opacity-100' : 'opacity-0'}`}>

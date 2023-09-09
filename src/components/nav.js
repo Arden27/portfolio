@@ -7,7 +7,7 @@ const NavBar = ({ mainRef }) => {
     const [shadow, setShadow] = useState(false);
     const [scrollInitiator, setScrollInitiator] = useState(null); // Add this to track which link initiated the scroll
 
-    const isSafari = typeof navigator !== 'undefined' && /^((?!chrome|android).)*safari/i.test(navigator.userAgent) && !navigator.userAgentData.mobile;
+    const isSafari = typeof navigator !== 'undefined' && /^((?!chrome|android).)*safari/i.test(navigator.userAgent) && !/Mobi|Android/i.test(navigator.userAgent);
 
     const handleScroll = () => {
         if (!mainRef.current) return;

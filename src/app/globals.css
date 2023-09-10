@@ -11,3 +11,33 @@
 .skill-image {
   @apply h-full w-auto object-cover;
 }
+
+/* Hide scrollbar by default */
+::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+/* Show scrollbar on hover and while scrolling */
+::-webkit-scrollbar-thumb:hover,
+::-webkit-scrollbar-thumb:active {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Customize scrollbar appearance */
+::-webkit-scrollbar-track {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.scrollable-element::-webkit-scrollbar {
+  width: 2px;
+  height: 0px;
+}
+
+.scrollable-element::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.5);
+}

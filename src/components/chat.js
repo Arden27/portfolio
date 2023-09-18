@@ -19,8 +19,16 @@ export default function Chat() {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
   const messagesContainerRef = useRef(null);
+  const inputRef = useRef(null);
+  const [isTyping, setIsTyping] = useState(false);
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (isChatOpen && inputRef.current) {
+        inputRef.current.focus();
+    }
+  }, [isChatOpen]);
 
   useEffect(() => {
     if (messagesContainerRef.current) {
@@ -28,12 +36,15 @@ export default function Chat() {
     }
   }, [messages]);
 
-  const handleSendMessage = async () => {
+  const handleSendMessage = () => {
     if (newMessage.trim() === '') return;
     setNewMessage("");
   
     // First update the local state
     setMessages((prevMessages) => [...prevMessages, { text: newMessage, type: "sent" }]);
+    
+    setTimeout(async () =>{
+      setIsTyping(true);
     
     
     
@@ -65,12 +76,15 @@ export default function Chat() {
   
         // Update the state to include the assistant's reply
         setMessages((prevMessages) => [...prevMessages, { text: assistant_response, type: "received" }]);
+
+        setIsTyping(false)
       } else {
         console.log(`Received a non-OK HTTP status from OpenAI API: ${response.status}`);
       }
     } catch (error) {
       console.error("Error calling the OpenAI API: ", error);
     }
+    },500)
     
     // Clear the input field
     
@@ -91,10 +105,11 @@ export default function Chat() {
           className={"flex-grow overflow-y-auto bg-gray-100/80 border rounded-xl border-black mb-1 flex flex-col-reverse"}
           ref={messagesContainerRef}
         >
+            {isTyping && <div className="max-w-[80%] p-2 px-3 m-2 break-words bg-gray-200/90 border-2 border-violet-700/70 self-start rounded-tr-xl rounded-tl-xl rounded-br-xl">○○○</div>}
             {[...messages].reverse().map((message, index) => (
                 <div
                     key={index}
-                    className={`max-w-[80%] p-2 m-2 break-words ${message.type === "sent" ? "text-white bg-violet-700/70 self-end rounded-tr-xl rounded-tl-xl rounded-bl-xl" : "bg-gray-100/90 border-2 border-violet-700/70 self-start rounded-tr-xl rounded-tl-xl rounded-br-xl"}`}
+                    className={`max-w-[80%] p-2 m-2 break-words ${message.type === "sent" ? "text-white border-2 border-transparent bg-violet-700/70 self-end rounded-tr-xl rounded-tl-xl rounded-bl-xl" : "bg-gray-100/90 border-2 border-violet-700/70 self-start rounded-tr-xl rounded-tl-xl rounded-br-xl"}`}
                 >
                     {message.text}
                 </div>
@@ -102,6 +117,7 @@ export default function Chat() {
         </div>
         <div className="flex items-center h-14 w-full border bg-gray-100/80 rounded-xl border-black">
           <input
+            ref={inputRef}
             name="newMessage"
             className="flex-grow p-2 h-[90%] rounded-xl bg-transparent outline-violet-700"
             type="text"

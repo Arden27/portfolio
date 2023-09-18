@@ -20,6 +20,8 @@ export default function Chat() {
   const [newMessage, setNewMessage] = useState("");
   const messagesContainerRef = useRef(null);
   const inputRef = useRef(null);
+  const node = useRef();
+  const buttonRef = useRef(null);
   const [isTyping, setIsTyping] = useState(false);
 
   const dispatch = useDispatch();
@@ -29,6 +31,26 @@ export default function Chat() {
         inputRef.current.focus();
     }
   }, [isChatOpen]);
+
+  const handleClickOutside = (e) => {
+    if (
+      node.current.contains(e.target) ||
+      buttonRef.current.contains(e.target)
+    ) {
+      return;
+    }
+    dispatch(closeChat())
+  };
+
+  useEffect(() => {
+    // Add when mounted
+    document.addEventListener("mousedown", handleClickOutside);
+    
+    // Return function to be called when unmounted
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   useEffect(() => {
     if (messagesContainerRef.current) {
@@ -45,45 +67,42 @@ export default function Chat() {
     
     setTimeout(async () =>{
       setIsTyping(true);
+      try {
+        // The API expects the messages in the order they were exchanged
+        const apiFormattedMessages = [
+          { role: "system", content: artem_context },
+          ...messages.map(msg => ({ role: msg.type === "sent" ? "user" : "assistant", content: msg.text })),
+          { role: "user", content: newMessage } // Add the new user message to the end
+        ];
     
+        const payload = {
+          model: "gpt-3.5-turbo",
+          messages: apiFormattedMessages
+        };
+      
+        const response = await fetch("https://api.openai.com/v1/chat/completions", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${process.env.NEXT_PUBLIC_OPENAI_API_KEY}`
+          },
+          body: JSON.stringify(payload),
+        });
+      
+        if (response.ok) {
+          const data = await response.json();
+          const assistant_response = data.choices[0].message.content;
     
-    
-    try {
-      // The API expects the messages in the order they were exchanged
-      const apiFormattedMessages = [
-        { role: "system", content: artem_context },
-        ...messages.map(msg => ({ role: msg.type === "sent" ? "user" : "assistant", content: msg.text })),
-        { role: "user", content: newMessage } // Add the new user message to the end
-      ];
-  
-      const payload = {
-        model: "gpt-3.5-turbo",
-        messages: apiFormattedMessages
-      };
-    
-      const response = await fetch("https://api.openai.com/v1/chat/completions", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${process.env.NEXT_PUBLIC_OPENAI_API_KEY}`
-        },
-        body: JSON.stringify(payload),
-      });
-    
-      if (response.ok) {
-        const data = await response.json();
-        const assistant_response = data.choices[0].message.content;
-  
-        // Update the state to include the assistant's reply
-        setMessages((prevMessages) => [...prevMessages, { text: assistant_response, type: "received" }]);
+          // Update the state to include the assistant's reply
+          setMessages((prevMessages) => [...prevMessages, { text: assistant_response, type: "received" }]);
 
-        setIsTyping(false)
-      } else {
-        console.log(`Received a non-OK HTTP status from OpenAI API: ${response.status}`);
+          setIsTyping(false)
+        } else {
+          console.log(`Received a non-OK HTTP status from OpenAI API: ${response.status}`);
+        }
+      } catch (error) {
+        console.error("Error calling the OpenAI API: ", error);
       }
-    } catch (error) {
-      console.error("Error calling the OpenAI API: ", error);
-    }
     },500)
     
     // Clear the input field
@@ -97,7 +116,7 @@ export default function Chat() {
   };
 
   return (
-    <div className="z-50">
+    <div ref={node} className="z-50">
       <div
         className={`${isChatOpen ? "" : "hidden"} p-1 flex flex-col z-50  h-[83svh] w-[90vw] sm:w-[50vw] md:w-[30vw] md:h-[65vh] fixed bottom-[9svh] right-6`}
       >
@@ -136,6 +155,7 @@ export default function Chat() {
       </div>
       <button 
         className="z-50 fixed bottom-1 right-5" 
+        ref={buttonRef}
         onClick={() => {
           isChatOpen ? dispatch(closeChat()) : dispatch(openChat());
         }}

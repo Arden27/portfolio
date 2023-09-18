@@ -5,6 +5,7 @@ import Projects from "@/components/projects";
 import About from "@/components/about";
 import Home from "@/components/home";
 import Skills from "@/components/skills";
+import Chat from "@/components/chat";
 
 import { useRef } from "react";
 
@@ -17,6 +18,7 @@ export default function Page() {
             className="z-20 relative box-border h-[100svh] w-screen snap-y snap-mandatory overflow-scroll scroll-smooth"
         >
             <NavBar mainRef={mainRef} />
+            <Chat />
 
             <section
                 id="home-section"

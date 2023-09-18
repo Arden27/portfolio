@@ -23,6 +23,8 @@ export default function Chat() {
   const node = useRef();
   const buttonRef = useRef(null);
   const [isTyping, setIsTyping] = useState(false);
+  const knockKnock = useSelector((state) => state.knockKnock);
+  const [showMessage, setShowMessage] = useState(false)
 
   const dispatch = useDispatch();
 
@@ -52,10 +54,26 @@ export default function Chat() {
     };
   }, []);
 
+  useEffect(() => {
+    if(knockKnock){
+      setMessages((prevMessages) => [...prevMessages, { role: "assistant", content: "Knock knock" }]);
+    }
+  }, [knockKnock]);
+
   // scroll the chat window to the bottom whenever a new message is added to the messages state.
   useEffect(() => {
     if (messagesContainerRef.current) {
       messagesContainerRef.current.scrollTop = messagesContainerRef.current.scrollHeight;
+    }
+  }, [messages]);
+
+  useEffect(() => {
+    if (!isChatOpen && messages.length > 0 && messages[messages.length-1].role === 'assistant') {
+      setShowMessage(true);
+      setTimeout(() => {
+        setShowMessage(false)
+      }, 4000)
+      // print(messages[messages.length-1].content)
     }
   }, [messages]);
 
@@ -156,6 +174,12 @@ export default function Chat() {
             />
           </button>
         </div>
+      </div>
+      <div 
+        className={`p-2 max-w-[40%] z-50 break-words md:max-w-[25%] fixed bottom-20 right-5 border rounded-tl-xl rounded-bl-xl rounded-tr-xl border-violet-700/70 bg-gray-100/70
+        ${showMessage && !isChatOpen ? "block" : "transition-opacity duration-[4000ms] opacity-0"}`}
+      >
+        {messages.length > 0 && messages[messages.length-1].content}
       </div>
       <button 
         className="z-50 fixed bottom-1 right-5" 

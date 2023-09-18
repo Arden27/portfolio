@@ -5,6 +5,7 @@ import { configureStore, createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   isChatOpen: false,
+  knockKnock: false,
 };
 
 // const preloadedState = {
@@ -23,11 +24,14 @@ const appSlice = createSlice({
     closeChat: (state) => {
       state.isChatOpen = false;
     },
+    knock: (state) => {
+      state.knockKnock = true;
+    },
     resetStore: () => initialState,
   },
 });
 
-export const { openChat, closeChat, resetStore } = appSlice.actions;
+export const { openChat, closeChat, knock, resetStore } = appSlice.actions;
 
 const store = configureStore({
   reducer: appSlice.reducer,

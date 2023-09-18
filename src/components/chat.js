@@ -52,6 +52,7 @@ export default function Chat() {
     };
   }, []);
 
+  // scroll the chat window to the bottom whenever a new message is added to the messages state.
   useEffect(() => {
     if (messagesContainerRef.current) {
       messagesContainerRef.current.scrollTop = messagesContainerRef.current.scrollHeight;
@@ -63,7 +64,7 @@ export default function Chat() {
     setNewMessage("");
   
     // First update the local state
-    setMessages((prevMessages) => [...prevMessages, { text: newMessage, type: "sent" }]);
+    setMessages((prevMessages) => [...prevMessages, { role: "user", content: newMessage }]);
     
     setTimeout(async () =>{
       setIsTyping(true);
@@ -71,9 +72,11 @@ export default function Chat() {
         // The API expects the messages in the order they were exchanged
         const apiFormattedMessages = [
           { role: "system", content: artem_context },
-          ...messages.map(msg => ({ role: msg.type === "sent" ? "user" : "assistant", content: msg.text })),
+          ...messages,
           { role: "user", content: newMessage } // Add the new user message to the end
         ];
+
+        console.log(apiFormattedMessages)
     
         const payload = {
           model: "gpt-3.5-turbo",
@@ -94,7 +97,7 @@ export default function Chat() {
           const assistant_response = data.choices[0].message.content;
     
           // Update the state to include the assistant's reply
-          setMessages((prevMessages) => [...prevMessages, { text: assistant_response, type: "received" }]);
+          setMessages((prevMessages) => [...prevMessages, { role: "assistant", content: assistant_response }]);
 
           setIsTyping(false)
         } else {
@@ -128,9 +131,9 @@ export default function Chat() {
             {[...messages].reverse().map((message, index) => (
                 <div
                     key={index}
-                    className={`max-w-[80%] p-2 m-2 break-words ${message.type === "sent" ? "text-white border-2 border-transparent bg-violet-700/70 self-end rounded-tr-xl rounded-tl-xl rounded-bl-xl" : "bg-gray-100/90 border-2 border-violet-700/70 self-start rounded-tr-xl rounded-tl-xl rounded-br-xl"}`}
+                    className={`max-w-[80%] p-2 m-2 break-words ${message.role === "user" ? "text-white border-2 border-transparent bg-violet-700/70 self-end rounded-tr-xl rounded-tl-xl rounded-bl-xl" : "bg-gray-100/90 border-2 border-violet-700/70 self-start rounded-tr-xl rounded-tl-xl rounded-br-xl"}`}
                 >
-                    {message.text}
+                    {message.content}
                 </div>
             ))}
         </div>
@@ -144,6 +147,7 @@ export default function Chat() {
             value={newMessage}
             onChange={(e) => setNewMessage(e.target.value)}
             onKeyDown={handleKeyPress}
+            autoComplete="off"
           />
           <button className="text-white p-1 pr-2 h-full rounded-r-xl bg-transparent" onClick={handleSendMessage}>
             <SendIcon

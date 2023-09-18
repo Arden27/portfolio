@@ -12,7 +12,7 @@ const skillGroups = [
     {
         title: 'Tools',
         skills: [
-            { src: "/img/skills/git.png", alt: "Git icon", name: "Gittatata" },
+            { src: "/img/skills/git.png", alt: "Git icon", name: "Git" },
             { src: "/img/skills/vscode.png", alt: "VSCode icon", name: "VSCode" },
             { src: "/img/skills/linux.png", alt: "Linux icon", name: "Linux" }
         ]
@@ -20,9 +20,9 @@ const skillGroups = [
     {
         title: 'Soft',
         skills: [
-            { src: "/img/skills/git.png", alt: "Git icon", name: "Git" },
-            { src: "/img/skills/creativity.png", alt: "Creativity icon", name: "Creativity" },
-            { src: "/img/skills/linux.png", alt: "Linux icon", name: "Linux" }
+            { src: "/img/skills/punctuation.png", alt: "Punctuation icon", name: "Punctual" },
+            { src: "/img/skills/creativity.png", alt: "Creativity icon", name: "Creative" },
+            { src: "/img/skills/communication.png", alt: "Communication icon", name: "Communicative" }
         ]
     },
     // ... you can add more groups as needed

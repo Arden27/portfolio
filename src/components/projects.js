@@ -6,7 +6,7 @@ const projects = [
         description: "A robust e-commerce platform dedicated to the sale of premium honey products. Designed the UI/UX and implemented features such as product categorization, search functionality, and secure payment gateway. Collaborated closely with a local honey producer to translate business requirements into technical solutions.",
         stack: ['tailwind', 'js', 'next', 'react', 'redux', 'python', 'django'],
         placeSelfEnd: true,
-        link: "https://artman.pythonanywhere.com/receiptapp",
+        link: "https://honey-marketplace.vercel.app/sklep",
         isLocal: false,
     },
     {

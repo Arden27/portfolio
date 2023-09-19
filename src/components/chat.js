@@ -23,6 +23,8 @@ export default function Chat() {
   const node = useRef();
   const buttonRef = useRef(null);
   const [isTyping, setIsTyping] = useState(false);
+  const knockKnock = useSelector((state) => state.knockKnock);
+  const [showMessage, setShowMessage] = useState(false)
 
   const dispatch = useDispatch();
 
@@ -52,10 +54,30 @@ export default function Chat() {
     };
   }, []);
 
+  useEffect(() => {
+    if(knockKnock && messages.length === 0){
+      setMessages((prevMessages) => [...prevMessages, { role: "assistant", content: "Knock knock 😇" }]);
+    }
+  }, [knockKnock]);
+
   // scroll the chat window to the bottom whenever a new message is added to the messages state.
   useEffect(() => {
-    if (messagesContainerRef.current) {
+    if (messagesContainerRef.current && isChatOpen) {
       messagesContainerRef.current.scrollTop = messagesContainerRef.current.scrollHeight;
+    }
+    if(isChatOpen && messages.length === 0){
+      setTimeout(() => {
+        setMessages((prevMessages) => [...prevMessages, { role: "assistant", content: "Hello 😉" }]);
+      }, 2000)
+    }
+  }, [messages, isChatOpen]);
+
+  useEffect(() => {
+    if (!isChatOpen && messages.length > 0 && messages[messages.length-1].role === 'assistant') {
+      setShowMessage(true);
+      setTimeout(() => {
+        setShowMessage(false)
+      }, 4000)
     }
   }, [messages]);
 
@@ -127,7 +149,7 @@ export default function Chat() {
           className={"scrollable-chat flex-grow overflow-y-auto bg-gray-100/80 border rounded-xl border-black mb-1 flex flex-col-reverse"}
           ref={messagesContainerRef}
         >
-            {isTyping && <div className="max-w-[80%] p-2 px-3 m-2 break-words bg-gray-200/90 border-2 border-violet-700/70 self-start rounded-tr-xl rounded-tl-xl rounded-br-xl">○○○</div>}
+            {isTyping && <div className="animate-pulse max-w-[80%] p-2 px-3 m-2 break-words bg-gray-200/90 border-2 border-violet-700/70 self-start rounded-tr-xl rounded-tl-xl rounded-br-xl">○○○</div>}
             {[...messages].reverse().map((message, index) => (
                 <div
                     key={index}
@@ -157,6 +179,12 @@ export default function Chat() {
           </button>
         </div>
       </div>
+      <div 
+        className={`scrollable-chat p-2 max-w-[40%] max-h-[40%] overflow-scroll z-50 break-words md:max-w-[25%] fixed bottom-20 right-5 border rounded-tl-xl rounded-bl-xl rounded-tr-xl border-violet-700/70 bg-gray-100/70
+        ${showMessage && !isChatOpen ? "block" : "hidden transition-opacity duration-[4000ms] opacity-0"}`}
+      >
+        {messages.length > 0 && messages[messages.length-1].content}
+      </div>
       <button 
         className="z-50 fixed bottom-1 right-5" 
         ref={buttonRef}
@@ -165,7 +193,8 @@ export default function Chat() {
         }}
       >
         <ChatIcon
-          className="border border-black rounded-xl bg-gray-100/50 hover:bg-gray-100/80 p-1 px-2 transform scale-x-[-1] w-[9svh] h-auto"
+          className={`border border-black rounded-xl bg-gray-100/50 hover:bg-gray-100/80 p-1 px-2 transform scale-x-[-1] w-[9svh] h-auto 
+          ${showMessage ? "animate-pulse" : ""}`}
           fill={chatIconColor}
           stroke='3'
         />

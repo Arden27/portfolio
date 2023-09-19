@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Contacts from "./contacts";
 import { useSelector, useDispatch } from "react-redux";
-import { closeChat, openChat } from "@/redux/store";
+import { closeChat, openChat, knock } from "@/redux/store";
 
 export default function About({ mainRef }){
     const [isAboutInView, setIsAboutInView] = useState(false);
@@ -31,10 +31,14 @@ export default function About({ mainRef }){
                 const showContactsTimer = setTimeout(() => {
                     setShowContacts(true);  
                   }, 3000); 
+                const knockTimer = setTimeout(() => {
+                    dispatch(knock());
+                    }, 3000)
               
                   return () => {
                     clearTimeout(showAboutTimer);
                     clearTimeout(showContactsTimer);
+                    clearTimeout(knockTimer);
                   };
               }
             }

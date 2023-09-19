@@ -2,7 +2,8 @@ import Providers from "@/redux/provider";
 import './globals.css'
 import { Inter } from 'next/font/google'
 //import DynamicBackground from '@/components/dynamicBackground'
-import Chat from '@/components/chat'
+//import Chat from '@/components/chat'
+//import { useSelector } from "react-redux";
 
 import dynamic from 'next/dynamic';
 
@@ -18,6 +19,7 @@ export const metadata = {
 }
 
 export default function RootLayout({ children }) {
+  //const knockKnock = useSelector((state) => state.knockKnock);
   return (
     <html className="overflow-hidden bg-slate-500" lang="en">
       <body className={`${inter.className} fixed`}>
@@ -29,9 +31,9 @@ export default function RootLayout({ children }) {
             <div className="relative z-10">
               {children}
             </div>
-            <div className='z-20'>
+            {/* <div className='z-20'>
               <Chat className="z-20"/>
-            </div>
+            </div> */}
           </div>
         </Providers>
       </body>

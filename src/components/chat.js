@@ -15,7 +15,7 @@ const chatIconColor = "rgba(109, 40, 217, .5)";
 const SendIconNotActive = "rgba(156, 163, 175, .8)";
 
 export default function Chat() {
-  const isChatOpen = useSelector((state) => state.isChatOpen)
+  const isChatOpen = useSelector((state) => state.isChatOpen);
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
   const messagesContainerRef = useRef(null);
@@ -24,7 +24,8 @@ export default function Chat() {
   const buttonRef = useRef(null);
   const [isTyping, setIsTyping] = useState(false);
   const knockKnock = useSelector((state) => state.knockKnock);
-  const [showMessage, setShowMessage] = useState(false)
+  const [showMessage, setShowMessage] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const dispatch = useDispatch();
 
@@ -129,12 +130,15 @@ export default function Chat() {
           // Update the state to include the assistant's reply
           setMessages((prevMessages) => [...prevMessages, { role: "assistant", content: assistant_response }]);
 
-          setIsTyping(false)
+          setIsTyping(false);
         } else {
           console.log(`Received a non-OK HTTP status from OpenAI API: ${response.status}`);
+          setIsTyping(false);
         }
       } catch (error) {
         console.error("Error calling the OpenAI API: ", error);
+        setIsTyping(false);
+        setErrorMessage(error);
       }
     },500)
     
@@ -158,6 +162,7 @@ export default function Chat() {
           ref={messagesContainerRef}
         >
             {isTyping && <div className="animate-pulse max-w-[80%] p-2 px-3 m-2 break-words bg-gray-200/90 border-2 border-violet-700/70 self-start rounded-tr-xl rounded-tl-xl rounded-br-xl">○○○</div>}
+            {errorMessage && <div className="animate-pulse max-w-[80%] p-2 px-3 m-2 break-words text-red-400 bg-gray-200/90 border-2 border-violet-700/70 self-start rounded-tr-xl rounded-tl-xl rounded-br-xl">{errorMessage}</div>}
             {[...messages].reverse().map((message, index) => (
                 <div
                     key={index}

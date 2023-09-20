@@ -104,14 +104,22 @@ export default function Chat() {
           model: "gpt-3.5-turbo",
           messages: apiFormattedMessages
         };
-      
-        const response = await fetch("https://api.openai.com/v1/chat/completions", {
-          method: "POST",
+        // for client-side api request with exposed key
+        // const response = await fetch("https://api.openai.com/v1/chat/completions", {
+        //   method: "POST",
+        //   headers: {
+        //     "Content-Type": "application/json",
+        //     "Authorization": `Bearer ${process.env.NEXT_PUBLIC_OPENAI_API_KEY}`
+        //   },
+        //   body: JSON.stringify(payload),
+        // });
+
+        const response = await fetch("/api/openai", { 
+          method: "POST", 
           headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${process.env.NEXT_PUBLIC_OPENAI_API_KEY}`
+            "Content-Type": "application/json"
           },
-          body: JSON.stringify(payload),
+          body: JSON.stringify({ messages: apiFormattedMessages })
         });
       
         if (response.ok) {

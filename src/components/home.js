@@ -3,7 +3,7 @@ import Image from "next/image"
 export default function Home() {
     return(
         <div className="flex md:gap-10 max-sm:pt-12 max-sm:pb-2 w-full max-w-7xl h-full flex-col items-center justify-center md:h-screen md:flex-row">
-            <div className="bg-gray-100/50 p-2 border rounded-2xl border-black flex aspect-square max-sm:h-1/2 h-2/3 items-center justify-center">
+            <div className="bg-gray-100/50 p-2 border rounded-2xl border-black flex aspect-square max-sm:h-1/2 h-2/3 md:max-h-[50vw] items-center justify-center">
                 <Image
                     src="/img/about.jpeg"
                     alt="Profile Picture"

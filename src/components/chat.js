@@ -85,6 +85,7 @@ export default function Chat() {
   const handleSendMessage = () => {
     if (newMessage.trim() === '') return;
     setNewMessage("");
+    setErrorMessage('')
   
     // First update the local state
     setMessages((prevMessages) => [...prevMessages, { role: "user", content: newMessage }]);
@@ -132,13 +133,13 @@ export default function Chat() {
 
           setIsTyping(false);
         } else {
-          console.log(`Received a non-OK HTTP status from OpenAI API: ${response.status}`);
           setIsTyping(false);
+          setErrorMessage('Error calling chat API: ' + response.status.toString());
+          
         }
       } catch (error) {
-        console.error("Error calling the OpenAI API: ", error);
         setIsTyping(false);
-        setErrorMessage(error);
+        setErrorMessage("Error calling the server: " + error.toString());
       }
     },500)
     

@@ -6,6 +6,7 @@ import SendIcon from "../../public/img/send.svg";
 
 import  { useSelector, useDispatch } from 'react-redux';
 import { openChat, closeChat } from "@/redux/store";
+import moment from 'moment-timezone';
 
 
 // const chatIconColor = "rgba(249, 115, 22, .5)";
@@ -89,7 +90,8 @@ export default function Chat() {
     setNewMessage("");
     setErrorMessage('')
 
-    const sentAt = new Date().toISOString();
+    const sentAt = moment().tz("Europe/Warsaw").format('YYYY-MM-DDTHH:mm:ss.SSS[Z]');
+    console.log(sentAt)
   
     // First update the local state
     setMessages((prevMessages) => [...prevMessages, { role: "user", content: newMessage }]);
@@ -115,7 +117,8 @@ export default function Chat() {
           const data = await response.json();
           const assistant_response = data.choices[0].message.content;
           
-          const receivedAt = new Date().toISOString();
+          const receivedAt = moment().tz("Europe/Warsaw").format('YYYY-MM-DDTHH:mm:ss.SSS[Z]');
+          console.log(receivedAt)
 
           // Update the state to include the assistant's reply
           setMessages((prevMessages) => [...prevMessages, { role: "assistant", content: assistant_response }]);

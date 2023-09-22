@@ -89,6 +89,8 @@ export default function Chat() {
     if (newMessage.trim() === '') return;
     setNewMessage("");
     setErrorMessage('')
+
+    const sentAt = new Date().toISOString();
   
     // First update the local state
     setMessages((prevMessages) => [...prevMessages, { role: "user", content: newMessage }]);
@@ -124,13 +126,15 @@ export default function Chat() {
           headers: {
             "Content-Type": "application/json"
           },
-          body: JSON.stringify({ messages: apiFormattedMessages, sessionId: sessionId })
+          body: JSON.stringify({ messages: apiFormattedMessages })
         });
       
         if (response.ok) {
           const data = await response.json();
           const assistant_response = data.choices[0].message.content;
-    
+          
+          const receivedAt = new Date().toISOString();
+
           // Update the state to include the assistant's reply
           setMessages((prevMessages) => [...prevMessages, { role: "assistant", content: assistant_response }]);
           setIsTyping(false);
@@ -143,7 +147,9 @@ export default function Chat() {
             body: JSON.stringify({
               userMessage: newMessage,
               assistantMessage: assistant_response,
-              sessionId: sessionId
+              sessionId: sessionId,
+              sentAt: sentAt,
+              receivedAt: receivedAt
             })
           });
         } else {

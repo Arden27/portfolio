@@ -133,17 +133,23 @@ export default function Chat() {
     
           // Update the state to include the assistant's reply
           setMessages((prevMessages) => [...prevMessages, { role: "assistant", content: assistant_response }]);
-
           setIsTyping(false);
+          // Here you call the database endpoint
+          await fetch("/api/db/chat", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+              userMessage: newMessage,
+              assistantMessage: assistant_response,
+              sessionId: sessionId
+            })
+          });
         } else {
           setIsTyping(false);
           setErrorMessage('Error calling chat API: ' + response.status.toString());
-          
-        }
-        if (!response.ok) {
           console.error("OpenAI Error:", await response.text());
-          res.status(500).json({ error: 'Failed to communicate with OpenAI' });
-          return;
         }
       } catch (error) {
         setIsTyping(false);

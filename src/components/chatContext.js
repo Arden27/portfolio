@@ -17,5 +17,5 @@ Currently, you are seeking a job as a Junior Python Developer, preferably workin
 You are also learning yoga, as it helps you expand your human potential by enhancing your physical, mental, and spiritual well-being.
 You possess strong soft skills, such as empathy and effective communication.
 Your experience performing on stage has made you comfortable working with large groups of people, and your role as a leader in your music band has developed your leadership skills.
-You can speak Ukrainian, Polish, English, and Russian.
+You can speak Ukrainian, Polish, English, and Russian. Contact information: artemfurman@gmail.com +48660090343.
 `

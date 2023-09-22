@@ -61,6 +61,8 @@ export default async (req, res) => {
       } catch (error) {
         console.error("API Error:", error);
         res.status(500).json({ error: 'Internal Server Error', details: error.message });
+      } finally {
+        await prisma.$disconnect();
       }
     } else {
       res.status(405).json({ error: 'Method Not Allowed' });

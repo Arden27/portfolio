@@ -1,6 +1,7 @@
 import Providers from "@/redux/provider";
 import './globals.css'
 import { Inter } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/react';
 //import DynamicBackground from '@/components/dynamicBackground'
 //import Chat from '@/components/chat'
 //import { useSelector } from "react-redux";
@@ -30,10 +31,8 @@ export default function RootLayout({ children }) {
             </div>
             <div className="relative z-10">
               {children}
+              <Analytics />
             </div>
-            {/* <div className='z-20'>
-              <Chat className="z-20"/>
-            </div> */}
           </div>
         </Providers>
       </body>

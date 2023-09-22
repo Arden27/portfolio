@@ -26,6 +26,9 @@ export default function Chat() {
   const knockKnock = useSelector((state) => state.knockKnock);
   const [showMessage, setShowMessage] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const [sessionId, setSessionId] = useState(() => {
+    return Math.floor(Math.random() * 1000000).toString(); // Gives a random integer between 0 and 999999
+  });
 
   const dispatch = useDispatch();
 
@@ -121,7 +124,7 @@ export default function Chat() {
           headers: {
             "Content-Type": "application/json"
           },
-          body: JSON.stringify({ messages: apiFormattedMessages })
+          body: JSON.stringify({ messages: apiFormattedMessages, sessionId: sessionId })
         });
       
         if (response.ok) {
@@ -136,6 +139,11 @@ export default function Chat() {
           setIsTyping(false);
           setErrorMessage('Error calling chat API: ' + response.status.toString());
           
+        }
+        if (!response.ok) {
+          console.error("OpenAI Error:", await response.text());
+          res.status(500).json({ error: 'Failed to communicate with OpenAI' });
+          return;
         }
       } catch (error) {
         setIsTyping(false);

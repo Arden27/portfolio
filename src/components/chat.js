@@ -3,7 +3,6 @@
 import { useState, useEffect, useRef } from "react";
 import ChatIcon from "../../public/img/chat.svg";
 import SendIcon from "../../public/img/send.svg";
-import { artem_context } from "@/components/chatContext";
 
 import  { useSelector, useDispatch } from 'react-redux';
 import { openChat, closeChat } from "@/redux/store";
@@ -99,34 +98,17 @@ export default function Chat() {
       setIsTyping(true);
       try {
         // The API expects the messages in the order they were exchanged
-        const apiFormattedMessages = [
-          { role: "system", content: artem_context },
+        const updatedMessages = [
           ...messages,
           { role: "user", content: newMessage } // Add the new user message to the end
         ];
-
-        console.log(apiFormattedMessages)
-    
-        const payload = {
-          model: "gpt-3.5-turbo",
-          messages: apiFormattedMessages
-        };
-        // for client-side api request with exposed key
-        // const response = await fetch("https://api.openai.com/v1/chat/completions", {
-        //   method: "POST",
-        //   headers: {
-        //     "Content-Type": "application/json",
-        //     "Authorization": `Bearer ${process.env.NEXT_PUBLIC_OPENAI_API_KEY}`
-        //   },
-        //   body: JSON.stringify(payload),
-        // });
 
         const response = await fetch("/api/openai", { 
           method: "POST", 
           headers: {
             "Content-Type": "application/json"
           },
-          body: JSON.stringify({ messages: apiFormattedMessages })
+          body: JSON.stringify({ messages: updatedMessages })
         });
       
         if (response.ok) {

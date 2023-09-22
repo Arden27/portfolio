@@ -1,11 +1,17 @@
 // pages/api/openai.js
+import { aiPrompt } from "@/components/aiPrompt";
 
 export default async (req, res) => {
   if (req.method === 'POST') {
     try {
+      const apiFormattedMessages = [
+        { role: "system", content: aiPrompt },
+        ...req.body.messages
+      ];
+
       const payload = {
         model: "gpt-3.5-turbo",
-        messages: req.body.messages
+        messages: apiFormattedMessages
       };
 
       const response = await fetch("https://api.openai.com/v1/chat/completions", {

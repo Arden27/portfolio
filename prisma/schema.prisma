@@ -20,8 +20,7 @@ model Message {
   id            String       @id @default(uuid())
   content       String
   role          String
-  sentAt        DateTime?    // Time when the message was sent from the client side
-  receivedAt    DateTime?    // Time when the response was received from OpenAI
+  time          DateTime?
   createdAt     DateTime     @default(now())
   chatSessionId String
   chatSession   ChatSession  @relation(fields: [chatSessionId], references: [id])

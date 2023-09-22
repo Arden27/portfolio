@@ -22,7 +22,7 @@ export default async (req, res) => {
         data: {
             content: req.body.userMessage,
             role: 'user',
-            sentAt: new Date(req.body.sentAt),
+            time: new Date(req.body.sentAt),
             chatSession: {
                 connect: { id: sessionId }
             }
@@ -32,7 +32,7 @@ export default async (req, res) => {
         data: {
             content: req.body.assistantMessage,
             role: 'assistant',
-            receivedAt: new Date(req.body.receivedAt),
+            time: new Date(req.body.receivedAt),
             chatSession: {
                 connect: { id: sessionId }
             }

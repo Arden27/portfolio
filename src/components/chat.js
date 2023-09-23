@@ -137,6 +137,7 @@ export default function Chat() {
               receivedAt: receivedAt
             })
           });
+          console.log('added to db');
         } else {
           setIsTyping(false);
           setErrorMessage('Error calling chat API: ' + response.status.toString());

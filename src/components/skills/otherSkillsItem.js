@@ -6,7 +6,7 @@ const OtherSkillsItem = ({ src, alt, name }) => {
             <div className="relative  aspect-square  block items-center justify-center max-h-20 max-sm:h-2/2 h-2/3 rounded-2xl">
                 <Image src={src} alt={alt} fill sizes="20vw" />
             </div>
-            <p className="">{name}</p>
+            <p className="text-gray-700">{name}</p>
         </div>
     );
 }

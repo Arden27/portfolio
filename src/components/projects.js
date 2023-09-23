@@ -14,7 +14,7 @@ const projects = [
         description: "A financial management app aimed at simplifying the expense tracking process. Current features include the ability to add, edit, and categorize receipts. Future releases are planned to incorporate OCR technology for automatic receipt scanning and data extraction.",
         stack: ['tailwind', 'js', 'next', 'react', 'redux', 'python', 'django'],
         placeSelfEnd: false,
-        link: "https://artman.pythonanywhere.com/receiptapp?portfolio=true",
+        link: "https://artman.pythonanywhere.com/receiptapp/login?portfolio=true",
         isLocal: false,
     },
     {

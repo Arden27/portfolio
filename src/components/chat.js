@@ -173,7 +173,7 @@ export default function Chat() {
             {[...messages].reverse().map((message, index) => (
                 <div
                     key={index}
-                    className={`max-w-[80%] p-2 m-2 break-words ${message.role === "user" ? "text-white border-2 border-transparent bg-violet-700/70 self-end rounded-tr-xl rounded-tl-xl rounded-bl-xl" : "bg-gray-100/90 border-2 border-violet-700/70 self-start rounded-tr-xl rounded-tl-xl rounded-br-xl"}`}
+                    className={`max-w-[80%] p-2 m-2 break-words ${message.role === "user" ? "text-white border-2 border-transparent bg-violet-700/70 self-end rounded-tr-xl rounded-tl-xl rounded-bl-xl" : "bg-gray-100/90 border-2 border-violet-700/70 self-start rounded-tr-xl rounded-tl-xl rounded-br-xl text-gray-700"}`}
                 >
                     {message.content}
                 </div>
@@ -213,7 +213,7 @@ export default function Chat() {
         }}
       >
         <ChatIcon
-          className={`border border-black rounded-xl bg-gray-100/50 hover:bg-gray-100/80 p-1 px-2 transform scale-x-[-1] w-[9svh] h-auto 
+          className={`border border-gray-600 rounded-xl bg-gray-100/50 hover:bg-gray-100/80 p-1 px-2 transform scale-x-[-1] w-[9svh] h-auto 
           ${showMessage ? "animate-pulse" : ""}`}
           fill={chatIconColor}
           stroke='3'

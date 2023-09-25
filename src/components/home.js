@@ -31,7 +31,7 @@ export default function Home() {
                 </div>
                 <a
                     href="#portfolio-section"
-                    className="max-sm:text-[30%] md:text-xl drop-shadow-xl inline-block cursor-pointer rounded-lg bg-gray-200/75 px-5 py-2 text-gray-700 transition-all duration-200 ease-in-out border border-gray-700 hover:border hover:border-orange-600 hover:bg-gray-100 hover:text-orange-600"
+                    className="max-sm:text-[30%] md:text-xl drop-shadow-xl inline-block cursor-pointer rounded-lg bg-gray-200/75 px-5 py-2 text-gray-700 transition-all duration-200 ease-in-out border border-gray-700 hover:border hover:border-violet-800 hover:bg-gray-200 hover:text-violet-800"
                 >
                     Portfolio
                 </a>

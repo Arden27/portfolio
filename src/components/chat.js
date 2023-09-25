@@ -162,10 +162,10 @@ export default function Chat() {
   return (
     <div ref={node} className="z-50">
       <div
-        className={`${isChatOpen ? "" : "hidden"} p-1 flex flex-col z-50  h-[83svh] w-[90vw] sm:w-[50vw] md:w-[30vw] md:h-[65vh] fixed bottom-[9svh] right-6`}
+        className={`${isChatOpen ? "" : "hidden"} p-1 flex flex-col z-50  h-[83svh] w-[90vw] sm:w-[50vw] md:w-[30vw] md:h-[65vh] fixed max-sm:left-1/2 max-sm:transform max-sm:-translate-x-1/2 bottom-[9svh] md:right-1`}
       >
         <div
-          className={"scrollable-chat flex-grow overflow-y-auto bg-gray-100/80 border rounded-xl border-black mb-1 flex flex-col-reverse"}
+          className={"scrollable-chat flex-grow overflow-y-auto bg-gray-100/80 border rounded-xl border-gray-700 mb-1 flex flex-col-reverse"}
           ref={messagesContainerRef}
         >
             {isTyping && <div className="animate-pulse max-w-[80%] p-2 px-3 m-2 break-words bg-gray-200/90 border-2 border-violet-700/70 self-start rounded-tr-xl rounded-tl-xl rounded-br-xl">○○○</div>}
@@ -173,13 +173,13 @@ export default function Chat() {
             {[...messages].reverse().map((message, index) => (
                 <div
                     key={index}
-                    className={`max-w-[80%] p-2 m-2 break-words ${message.role === "user" ? "text-white border-2 border-transparent bg-violet-700/70 self-end rounded-tr-xl rounded-tl-xl rounded-bl-xl" : "bg-gray-100/90 border-2 border-violet-700/70 self-start rounded-tr-xl rounded-tl-xl rounded-br-xl text-gray-700"}`}
+                    className={`max-w-[80%] p-2 m-2 break-words ${message.role === "user" ? "text-white border-2 border-transparent bg-violet-700/70 self-end rounded-tr-xl rounded-tl-xl rounded-bl-xl" : "bg-gray-100/90 border-2 border-violet-700/70 self-start rounded-tr-xl rounded-tl-xl rounded-br-xl text-gray-800"}`}
                 >
                     {message.content}
                 </div>
             ))}
         </div>
-        <div className="flex items-center h-14 w-full border bg-gray-100/80 rounded-xl border-black">
+        <div className="flex items-center h-14 w-full border bg-gray-100/80 rounded-xl border-gray-700">
           <input
             ref={inputRef}
             name="newMessage"
@@ -200,13 +200,13 @@ export default function Chat() {
         </div>
       </div>
       <div 
-        className={`scrollable-chat p-2 max-w-[40%] max-h-[40%] overflow-scroll z-50 break-words md:max-w-[25%] fixed bottom-20 right-5 border rounded-tl-xl rounded-bl-xl rounded-tr-xl border-violet-700/70 bg-gray-100/70
+        className={`scrollable-chat p-2 max-w-[40%] max-h-[40%] overflow-scroll z-50 break-words md:max-w-[25%] fixed bottom-[9svh] right-5 border rounded-tl-xl rounded-bl-xl rounded-tr-xl border-violet-700/70 bg-gray-100/70 text-gray-800
         ${showMessage && !isChatOpen ? "block" : "hidden transition-opacity duration-[4000ms] opacity-0"}`}
       >
         {messages.length > 0 && messages[messages.length-1].content}
       </div>
       <button 
-        className="z-50 fixed bottom-1 right-5" 
+        className="z-50 fixed bottom-1 right-1" 
         ref={buttonRef}
         onClick={() => {
           isChatOpen ? dispatch(closeChat()) : dispatch(openChat());

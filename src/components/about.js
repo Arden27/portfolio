@@ -33,7 +33,7 @@ export default function About({ mainRef }){
                   }, 3000); 
                 const knockTimer = setTimeout(() => {
                     dispatch(knock());
-                    }, 3000)
+                    }, 5000)
               
                   return () => {
                     clearTimeout(showAboutTimer);

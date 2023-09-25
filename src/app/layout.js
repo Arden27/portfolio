@@ -1,5 +1,6 @@
 import Providers from "@/redux/provider";
-import './globals.css'
+// import './globals.css'
+import '@/style/globals.css'
 import { Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/react';
 //import DynamicBackground from '@/components/dynamicBackground'

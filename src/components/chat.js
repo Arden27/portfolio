@@ -16,6 +16,7 @@ const SendIconNotActive = "rgba(156, 163, 175, .8)";
 
 export default function Chat() {
   const isChatOpen = useSelector((state) => state.isChatOpen);
+  const [wasOpened, setWasOpened] = useState(false);
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
   const messagesContainerRef = useRef(null);
@@ -80,10 +81,19 @@ export default function Chat() {
     if (!isChatOpen && messages.length > 0 && messages[messages.length-1].role === 'assistant') {
       setShowMessage(true);
       setTimeout(() => {
-        setShowMessage(false)
+        setShowMessage(false);
       }, 4000)
     }
   }, [messages]);
+
+  const handleChatButton = () => {
+    if (isChatOpen) {
+      dispatch(closeChat());
+    } else {
+      setWasOpened(true);
+      dispatch(openChat());
+    }
+  }
 
   const handleSendMessage = () => {
     if (newMessage.trim() === '') return;
@@ -162,7 +172,8 @@ export default function Chat() {
   return (
     <div ref={node} className="z-50">
       <div
-        className={`${isChatOpen ? "" : "hidden"} p-1 flex flex-col z-50  h-[83svh] w-[90vw] sm:w-[50vw] md:w-[30vw] md:h-[65vh] fixed max-sm:left-1/2 max-sm:transform max-sm:-translate-x-1/2 bottom-[9svh] md:right-1`}
+        className={`p-1 flex-col z-50  h-[83svh] w-[90vw] sm:w-[50vw] md:w-[30vw] md:h-[65vh] fixed bottom-[9svh] right-1
+        ${isChatOpen ? "slide-in-right flex" : wasOpened ? "slide-out-right flex" : "hidden"}`} //max-sm:left-1/2 max-sm:transform max-sm:-translate-x-1/2
       >
         <div
           className={"scrollable-chat flex-grow overflow-y-auto bg-gray-100/80 border rounded-xl border-gray-700 mb-1 flex flex-col-reverse"}
@@ -208,9 +219,10 @@ export default function Chat() {
       <button 
         className="z-50 fixed bottom-1 right-1" 
         ref={buttonRef}
-        onClick={() => {
-          isChatOpen ? dispatch(closeChat()) : dispatch(openChat());
-        }}
+        onClick={handleChatButton}
+        // onClick={() => {
+        //   isChatOpen ? dispatch(closeChat()) : dispatch(openChat());
+        // }}
       >
         <ChatIcon
           className={`border border-gray-600 rounded-xl bg-gray-100/50 hover:bg-gray-100/80 p-1 px-2 transform scale-x-[-1] w-[9svh] h-auto 

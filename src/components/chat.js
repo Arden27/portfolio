@@ -14,7 +14,8 @@ const chatIconColor = "rgba(109, 40, 217, .5)";
 
 const SendIconNotActive = "rgba(156, 163, 175, .8)";
 
-export default function Chat() {
+export default function Chat({ isChatVisible }) {
+  const [showChat, setShowChat] = useState(false);
   const isChatOpen = useSelector((state) => state.isChatOpen);
   const [wasOpened, setWasOpened] = useState(false);
   const [messages, setMessages] = useState([]);
@@ -169,8 +170,18 @@ export default function Chat() {
     }
   };
 
+  useEffect(() => {
+    console.log(isChatVisible)
+  }, [])
+
+  useEffect(() => {
+    setShowChat(true)
+    console.log("isChatVisible:", isChatVisible)
+    console.log("showChat:", showChat)
+  }, [isChatVisible])
+
   return (
-    <div ref={node} className="z-50">
+    <div ref={node} className={`z-50 transition delay-1000 duration-[1500ms] ${showChat ? 'opacity-100' : 'opacity-0'}`}>
       <div
         className={`p-1 flex-col z-50  h-[83svh] w-[90vw] sm:w-[50vw] md:w-[30vw] md:h-[65vh] fixed bottom-[9svh] right-1
         ${isChatOpen ? "slide-in-right flex" : wasOpened ? "slide-out-right flex" : "hidden"}`} //max-sm:left-1/2 max-sm:transform max-sm:-translate-x-1/2

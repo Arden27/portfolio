@@ -19,7 +19,7 @@ export default function Page() {
             className="z-20 relative box-border h-[100svh] w-screen snap-y snap-mandatory overflow-scroll scroll-smooth"
         >
             <NavBar mainRef={mainRef} isHomeVisible={isVisible} />
-            <Chat />
+            <Chat isChatVisible={isVisible} />
 
             <section
                 id="home-section"

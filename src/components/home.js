@@ -2,8 +2,7 @@ import Image from "next/image"
 import { useState, useEffect, useRef } from "react";
 import Spinner from '../../public/img/spinner.svg'
 
-export default function Home() {
-    const [isVisible, setIsVisible] = useState(false);
+export default function Home({ isVisible, setIsVisible }) {
     const imageWrapperRef = useRef(null);
 
     useEffect(() => {

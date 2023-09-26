@@ -7,24 +7,25 @@ import Home from "@/components/home";
 import Skills from "@/components/skills";
 import Chat from "@/components/chat";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 export default function Page() {
     const mainRef = useRef();
+    const [isVisible, setIsVisible] = useState(false);
 
     return (
         <main
             ref={mainRef}
             className="z-20 relative box-border h-[100svh] w-screen snap-y snap-mandatory overflow-scroll scroll-smooth"
         >
-            <NavBar mainRef={mainRef} />
+            <NavBar mainRef={mainRef} isHomeVisible={isVisible} />
             <Chat />
 
             <section
                 id="home-section"
                 className="flex h-[100svh] w-screen snap-start items-center justify-center "
             >
-                <Home />
+                <Home isVisible={isVisible} setIsVisible={setIsVisible}/>
             </section>
 
             <section

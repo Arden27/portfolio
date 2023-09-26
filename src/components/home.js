@@ -28,7 +28,7 @@ export default function Home() {
 
     return(
         <div className="flex md:gap-10 max-sm:pt-12 max-sm:pb-2 w-full max-w-7xl h-full flex-col items-center justify-center md:h-screen md:flex-row">
-            <div ref={imageWrapperRef} className={`transition-opacity duration-[800ms] ${isVisible ? 'opacity-100' : 'opacity-0'} bg-gray-100/50 p-2 border rounded-2xl border-gray-700 flex aspect-square max-sm:h-1/2 h-2/3 md:max-h-[50vw] items-center justify-center`}>
+            <div ref={imageWrapperRef} className={`transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'} bg-gray-100/50 p-2 border rounded-2xl border-gray-700 flex aspect-square max-sm:h-1/2 h-2/3 md:max-h-[50vw] items-center justify-center`}>
                 <Image
                     src="/img/about.jpeg"
                     alt="Profile Picture"
@@ -39,7 +39,7 @@ export default function Home() {
                     priority
                 />
             </div>
-            <div className="bg-gray-100/50 p-4 pr-3 border rounded-2xl border-gray-700 max-sm:text-[10svh] max-sm:flex max-sm:h-1/2 max-sm:w-4/5 md:w-1/3 max-sm:flex-col max-sm:items-center max-sm:justify-center max-sm:p-2 max-sm:px-1">
+            <div className={`transition duration-1000 transform ${isVisible ? 'scale-100 opacity-100' : 'scale-90 opacity-0'} bg-gray-100/50 p-4 pr-3 border rounded-2xl border-gray-700 max-sm:text-[10svh] max-sm:flex max-sm:h-1/2 max-sm:w-4/5 md:w-1/3 max-sm:flex-col max-sm:items-center max-sm:justify-center max-sm:p-2 max-sm:px-1`}>
                 <div className="text-[35%] md:text-clamp_greating font-extralight leading-[1.2] text-gray-600">
                     Hello, I'm
                 </div>

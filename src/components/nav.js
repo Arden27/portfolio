@@ -2,10 +2,10 @@
 
 import { useEffect, useState } from "react";
 
-const NavBar = ({ mainRef, isHomeVisible }) => {
+const NavBar = ({ isHomeVisible }) => {
     const [activeLink, setActiveLink] = useState("home-section");
     const [shadow, setShadow] = useState(false);
-    const [scrollInitiator, setScrollInitiator] = useState(null); // Add this to track which link initiated the scroll
+    const [scrollInitiator, setScrollInitiator] = useState(null);
 
     const isSafari = typeof navigator !== 'undefined' && /^((?!chrome|android).)*safari/i.test(navigator.userAgent) && !/Mobi|Android/i.test(navigator.userAgent);
 
@@ -16,16 +16,18 @@ const NavBar = ({ mainRef, isHomeVisible }) => {
         if (isHomeVisible) {
             setTimeout(() => {
                 setNavItemsVisible(true);
-            }, 50); // Start showing items after a 50ms delay.
+            }, 50);
     
             setTimeout(() => {
                 setInitialRender(false);
-            }, 1000); // Assuming the cumulative delay for all items is 700ms, we set this to 1000ms to be sure.
+            }, 1000);
         }
     }, [isHomeVisible]);
 
     const handleScroll = () => {
-        if (!mainRef.current) return;
+        const mainContainer = document.getElementById("mainContainer");
+        if (!mainContainer) return;
+
         const sections = [
             "home-section",
             "skills-section",
@@ -38,7 +40,7 @@ const NavBar = ({ mainRef, isHomeVisible }) => {
         sections.forEach((id) => {
             const section = document.getElementById(id);
             const distance = Math.abs(
-                mainRef.current.scrollTop - section.offsetTop,
+                mainContainer.scrollTop - section.offsetTop
             );
 
             if (distance < smallestDistance) {
@@ -47,12 +49,11 @@ const NavBar = ({ mainRef, isHomeVisible }) => {
             }
         });
 
-        // Only change the activeLink if the currentSection is not the scrollInitiator
         if (currentSection !== scrollInitiator) {
             setActiveLink(currentSection);
         }
 
-        if (mainRef.current.scrollTop > 0) {
+        if (mainContainer.scrollTop > 0) {
             setShadow(true);
         } else {
             setShadow(false);
@@ -60,38 +61,40 @@ const NavBar = ({ mainRef, isHomeVisible }) => {
     };
 
     useEffect(() => {
-        if (mainRef.current) {
-            mainRef.current.addEventListener("scroll", handleScroll);
+        const mainContainer = document.getElementById("mainContainer");
+        if (mainContainer) {
+            mainContainer.addEventListener("scroll", handleScroll);
         }
 
         return () => {
-            if (mainRef.current) {
-                mainRef.current.removeEventListener("scroll", handleScroll);
+            if (mainContainer) {
+                mainContainer.removeEventListener("scroll", handleScroll);
             }
         };
-    }, [mainRef]);
+    }, []);
 
     const handleNavLinkClick = (sectionId) => {
-        setScrollInitiator(sectionId); // Set the scroll initiator
-    
-        if (mainRef.current) {
-            const section = document.getElementById(sectionId);
-            mainRef.current.scrollTo({
+        setScrollInitiator(sectionId);
+
+        const section = document.getElementById(sectionId);
+        const mainContainer = document.getElementById("mainContainer");
+
+        if (section && mainContainer) {
+            mainContainer.scrollTo({
                 top: section.offsetTop,
-                behavior: "smooth", // Use smooth scrolling
+                behavior: "smooth",
             });
-    
-            // Set the active link after a short delay to prevent flicker and clear the scrollInitiator after scroll finishes
+
             setTimeout(() => {
                 setActiveLink(sectionId);
                 setScrollInitiator(null);
-            }, 500); // Delayed by 50ms. You can adjust this value if needed.
+            }, 500);
         }
     };
 
     return (
         <nav
-            className={`fixed top-0 flex h-12 w-full items-center justify-around bg-transparent z-10 p-3 transition-shadow duration-500 ease-in-out md:justify-end ${
+            className={`fixed z-40 top-0 flex h-12 w-full items-center justify-around bg-transparent p-3 transition-shadow duration-500 ease-in-out md:justify-end ${
                 shadow && !isSafari ? "shadow-lg" : "bg-transparent"
             }`}
         >

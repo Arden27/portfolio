@@ -13,22 +13,20 @@ export default function Page() {
     const mainRef = useRef();
     const [isVisible, setIsVisible] = useState(false);
 
-    return (
-        <main
-            ref={mainRef}
-            className="z-20 relative box-border h-[100svh] w-screen snap-y snap-mandatory overflow-scroll scroll-smooth"
-        >
-            <NavBar mainRef={mainRef} isHomeVisible={isVisible} />
-            <Chat isChatVisible={isVisible} />
+    return [
+            
+            <Chat isChatVisible={isVisible} />,
 
             <section
+                key="home"
                 id="home-section"
                 className="flex h-[100svh] w-screen snap-start items-center justify-center "
             >
                 <Home isVisible={isVisible} setIsVisible={setIsVisible}/>
-            </section>
+            </section>,
 
             <section
+                key="skills"
                 id="skills-section"
                 className="flex h-[100svh] w-screen snap-start flex-col items-center justify-center pt-16 max-sm:pt-14"
             >
@@ -36,9 +34,10 @@ export default function Page() {
                     Skills
                 </h1>
                 <Skills />
-            </section>
+            </section>,
 
             <section
+                key="portfolio"
                 id="portfolio-section"
                 className="flex h-[100svh] w-screen snap-start flex-col items-center justify-center pt-16 max-sm:pt-14"
             >
@@ -46,9 +45,10 @@ export default function Page() {
                     Portfolio
                 </h1>
                 <Projects />
-            </section>
+            </section>,
             
             <section
+                key="about"
                 id="about-section"
                 className="flex h-[100svh] w-screen snap-start flex-col items-center md:justify-center pt-16 max-sm:pt-14"
             >
@@ -57,6 +57,5 @@ export default function Page() {
                 </h1>
                 <About mainRef={mainRef} />
             </section>
-        </main>
-    );
+    ];
 }

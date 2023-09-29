@@ -6,6 +6,7 @@ import { Analytics } from '@vercel/analytics/react';
 //import DynamicBackground from '@/components/dynamicBackground'
 //import Chat from '@/components/chat'
 //import { useSelector } from "react-redux";
+import NavBar from "@/components/nav";
 
 import dynamic from 'next/dynamic';
 
@@ -26,11 +27,14 @@ export default function RootLayout({ children }) {
     <html className="overflow-hidden bg-slate-500" lang="en">
       <body className={`${inter.className} fixed`}>
         <Providers>
+          <NavBar isHomeVisible={true} />
           <div className="relative">
             <div className="absolute inset-0 z-0">
               <DynamicBackground />
             </div>
-            <div className="relative z-10">
+            <div 
+              id="mainContainer"
+              className="z-20 relative box-border h-[100svh] w-screen snap-y snap-mandatory overflow-scroll scroll-smooth">
               {children}
               <Analytics />
             </div>

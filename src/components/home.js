@@ -41,13 +41,13 @@ export default function Home({ isVisible, setIsVisible }) {
                 />
             </div>
             <div className={`transition duration-1000 transform ${isVisible ? 'scale-100 opacity-100' : 'scale-90 opacity-0'} bg-gray-100/50 p-4 pr-3 border rounded-2xl border-gray-700 max-sm:text-[10svh] max-sm:flex max-sm:h-1/2 max-sm:w-4/5 md:w-1/3 max-sm:flex-col max-sm:items-center max-sm:justify-center max-sm:p-2 max-sm:px-1`}>
-                <div className="text-[35%] md:text-clamp_greating font-extralight leading-[1.2] text-gray-600">
+                <div className="text-[35%] md:text-clamp_greating font-extralight leading-[1.2] text-gray-800">
                     Hello, I'm
                 </div>
-                <h3 className="text-[50%] leading-[1.2] md:leading-[1.1] md:text-clamp_name font-medium text-gray-800">
+                <h3 className="text-[50%] leading-[1.2] md:leading-[1.1] md:text-clamp_name font-medium text-gray-700">
                     Artem Furman
                 </h3>
-                <p className="text-[40%] md:text-clamp_profession font-light leading-[1.2] md:mb-1 text-gray-700">
+                <p className="text-[40%] md:text-clamp_profession font-light leading-[1.2] md:mb-1 text-gray-800">
                     Web Developer
                 </p>
                 <div className="mb-1 flex items-center justify-center md:mb-2 max-sm:w-4/5 md:w-4/4">

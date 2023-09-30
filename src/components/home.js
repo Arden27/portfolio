@@ -51,7 +51,7 @@ export default function Home({ isVisible, setIsVisible }) {
                     Web Developer
                 </p>
                 <div className="mb-1 flex items-center justify-center md:mb-2 max-sm:w-4/5 md:w-4/4">
-                    <p className="max-sm:text-center text-[28%] md:text-clamp_description font-light leading-[1.2] text-gray-600">
+                    <p className="max-sm:text-center text-[28%] md:text-clamp_description font-light leading-[1.2] text-gray-700">
                     I specialize in the creation and deployment of full-stack web applications, leveraging cutting-edge technologies
                     </p>
                 </div>

@@ -101,7 +101,6 @@ export default function Chat({ isChatVisible }) {
     setErrorMessage('')
 
     const sentAt = moment().tz("Europe/Warsaw").format('YYYY-MM-DDTHH:mm:ss.SSS[Z]');
-    console.log(sentAt)
   
     // First update the local state
     setMessages((prevMessages) => [...prevMessages, { role: "user", content: newMessage }]);
@@ -143,7 +142,6 @@ export default function Chat({ isChatVisible }) {
           const assistant_response = data.choices[0].message.content;
           
           const receivedAt = moment().tz("Europe/Warsaw").format('YYYY-MM-DDTHH:mm:ss.SSS[Z]');
-          console.log(receivedAt)
 
           // Update the state to include the assistant's reply
           setMessages((prevMessages) => [...prevMessages, { role: "assistant", content: assistant_response }]);
@@ -162,7 +160,6 @@ export default function Chat({ isChatVisible }) {
               receivedAt: receivedAt
             })
           });
-          console.log('added to db');
         }
       } catch (error) {
         setIsTyping(false);

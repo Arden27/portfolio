@@ -122,8 +122,23 @@ export default function Chat({ isChatVisible }) {
           },
           body: JSON.stringify({ messages: updatedMessages })
         });
-      
-        if (response.ok) {
+
+        if (response.status === 429) {
+          const data = await response.json();
+          const regex = /Please try again in (\d+)s\./;
+          const matches = data.error.message.match(regex);
+          if (matches && matches[1]) {
+            const waitTimeSeconds = parseInt(matches[1]);
+            console.error("Rate limit reached. Please wait for", waitTimeSeconds, "seconds...");
+            setErrorMessage(`Rate limit reached. Please wait for ${waitTimeSeconds} seconds...`);
+          }
+          setIsTyping(false);
+        } else if (!response.ok) {
+          setIsTyping(false);
+          setErrorMessage('Error calling chat API: ' + response.status.toString());
+          console.error("OpenAI Error:", await response.text());
+        } else {
+          // ... (your current code for successful response)
           const data = await response.json();
           const assistant_response = data.choices[0].message.content;
           
@@ -148,10 +163,6 @@ export default function Chat({ isChatVisible }) {
             })
           });
           console.log('added to db');
-        } else {
-          setIsTyping(false);
-          setErrorMessage('Error calling chat API: ' + response.status.toString());
-          console.error("OpenAI Error:", await response.text());
         }
       } catch (error) {
         setIsTyping(false);

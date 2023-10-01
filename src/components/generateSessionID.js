@@ -1,4 +1,4 @@
-export const generateSessionID = (length = 10) => {
+export const generateSessionId = (length = 10) => {
     // Character set containing numbers, letters (both cases), and some symbols
     const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_-+=';
     let id = '';

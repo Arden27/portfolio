@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import ChatIcon from "../../public/img/chat.svg";
 import SendIcon from "../../public/img/send.svg";
-import { generateSessionID } from "./generateSessionID";
+import { generateSessionId } from "./generateSessionId";
 
 import  { useSelector, useDispatch } from 'react-redux';
 import { openChat, closeChat } from "@/redux/store";
@@ -28,11 +28,31 @@ export default function Chat({ isChatVisible }) {
   const knockKnock = useSelector((state) => state.knockKnock);
   const [showMessage, setShowMessage] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
-  const [sessionId, setSessionId] = useState(() => {
-    return generateSessionID()
-  });
+  const [sessionId, setSessionId] = useState(null);
+
+  useEffect(() => {
+    const existingSessionId = localStorage.getItem("sessionId");
+    if (existingSessionId) {
+      setSessionId(existingSessionId);
+    } else {
+      const newSessionId = generateSessionId();
+      localStorage.setItem("sessionId", newSessionId);
+      setSessionId(newSessionId);
+    }
+  }, []);
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    const storedMessages = localStorage.getItem("messages");
+    if (storedMessages) {
+      setMessages(JSON.parse(storedMessages));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("messages", JSON.stringify(messages));
+  }, [messages]);
 
   useEffect(() => {
     if (isChatOpen && inputRef.current) {
@@ -167,9 +187,6 @@ export default function Chat({ isChatVisible }) {
         setErrorMessage("Error calling the server: " + error.toString());
       }
     },500)
-    
-    // Clear the input field
-    
   };
 
   const handleKeyPress = (e) => {
@@ -229,9 +246,6 @@ export default function Chat({ isChatVisible }) {
         className="z-50 fixed bottom-1 right-1" 
         ref={buttonRef}
         onClick={handleChatButton}
-        // onClick={() => {
-        //   isChatOpen ? dispatch(closeChat()) : dispatch(openChat());
-        // }}
       >
         <ChatIcon
           className={`border border-gray-600 rounded-xl bg-gray-100/50 hover:bg-gray-100/80 p-1 px-2 transform scale-x-[-1] w-[9svh] h-auto 

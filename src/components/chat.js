@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import ChatIcon from "../../public/img/chat.svg";
 import SendIcon from "../../public/img/send.svg";
+import { generateSessionID } from "./generateSessionID";
 
 import  { useSelector, useDispatch } from 'react-redux';
 import { openChat, closeChat } from "@/redux/store";
@@ -28,7 +29,7 @@ export default function Chat({ isChatVisible }) {
   const [showMessage, setShowMessage] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [sessionId, setSessionId] = useState(() => {
-    return Math.floor(Math.random() * 1000000).toString(); // Gives a random integer between 0 and 999999
+    return generateSessionID()
   });
 
   const dispatch = useDispatch();

@@ -32,7 +32,7 @@ export default function Page() {
                 id="skills-section"
                 className="flex h-[100svh] w-screen snap-start flex-col items-center justify-center pt-16 max-sm:pt-14"
             >
-                <h1 className="max-sm:text-clamp_sm_section_name border rounded-xl px-2 md:p-2 md:px-4 bg-gray-100/50 border-gray-700 mx-sm:mb-0 mb-2 text-center text-gray-700 text-4xl">
+                <h1 className="max-sm:text-clamp_sm_section_name border rounded-xl px-2 md:p-2 md:px-4 bg-gray-100/50 border-primary mx-sm:mb-0 mb-2 text-center text-gray-700 text-4xl">
                     Skills
                 </h1>
                 <Skills />
@@ -42,7 +42,7 @@ export default function Page() {
                 id="portfolio-section"
                 className="flex h-[100svh] w-screen snap-start flex-col items-center justify-center pt-16 max-sm:pt-14"
             >
-                <h1 className="max-sm:text-clamp_sm_section_name border rounded-xl px-2 md:p-2 md:px-4 bg-gray-100/50 border-gray-700 text-center text-gray-700 text-4xl">
+                <h1 className="max-sm:text-clamp_sm_section_name border rounded-xl px-2 md:p-2 md:px-4 bg-gray-100/50 border-primary text-center text-gray-700 text-4xl">
                     Portfolio
                 </h1>
                 <Projects />
@@ -52,7 +52,7 @@ export default function Page() {
                 id="about-section"
                 className="flex h-[100svh] w-screen snap-start flex-col items-center md:justify-center pt-16 max-sm:pt-14"
             >
-                <h1 className="max-sm:text-clamp_sm_section_name border rounded-xl px-2 md:p-2 md:px-4 bg-gray-100/50 border-gray-700 text-center text-gray-700 text-4xl">
+                <h1 className="max-sm:text-clamp_sm_section_name border rounded-xl px-2 md:p-2 md:px-4 bg-gray-100/50 border-primary text-center text-gray-700 text-4xl">
                     About
                 </h1>
                 <About mainRef={mainRef} />

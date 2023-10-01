@@ -8,10 +8,13 @@ module.exports = {
   ],
   theme: {
     extend: {
+      borderColor: {
+        'primary': 'rgb(156, 163, 175)',
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
       screens: {
         'max-sm': {'max': '767px'},

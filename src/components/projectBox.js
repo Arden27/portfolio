@@ -2,6 +2,8 @@ import Image from "next/image";
 import { useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { openChat, closeChat } from "@/redux/store";
+import GitHubIcon from '../../public/img/github.svg'
+import OpenIcon from '../../public/img/open.svg'
 
 export default function ProjectBox({ title, description, stack, placeSelfEnd, link, isLocal }){
   const [easeIn, setEaseIn] = useState(true);
@@ -25,17 +27,35 @@ export default function ProjectBox({ title, description, stack, placeSelfEnd, li
 
   return(
     
-      <div className={`group md:relative md:aspect-square max-sm:w-full max-sm:flex-shrink-0 max-sm:snap-center h-full ${placeSelfEnd ? 'place-self-end' : ''} md:hover:cursor-pointer`}>
+      <div className={`group md:relative md:aspect-square max-sm:w-full max-sm:flex-shrink-0 max-sm:snap-center h-full ${placeSelfEnd ? 'place-self-end' : ''}`}>
         
-        <div className="h-full"
-          onMouseEnter={() => setEaseIn(true)}
-          onMouseLeave={() => setEaseIn(false)}
-          onClick={handleClick}
-        >
-          <div className={`${placeSelfEnd ? 'md:group-hover:-translate-x-full' : 'md:group-hover:translate-x-full'} max-sm:hidden h-full md:absolute md:inset-0 rounded-2xl border border-gray-700 bg-gray-100/25 group-hover:bg-gray-100/50 md:transition md:duration-[800ms] md:ease-in-out md:flex md:items-center md:justify-center`}>
-            <h2 className="mb-2 text-center text-xl font-medium peer-hover:opacity-100 text-gray-900">{title}</h2>
+        
+          <div className={`${placeSelfEnd ? 'md:group-hover:-translate-x-full' : 'md:group-hover:translate-x-full'} flex-col max-sm:hidden h-full md:absolute md:inset-0 rounded-2xl border border-primary bg-gray-100/25 group-hover:bg-gray-100/50 md:transition md:duration-[800ms] md:ease-in-out md:flex md:items-center md:justify-center`}>
+            <h2 className=" mb-2 text-center text-xl font-medium peer-hover:opacity-100 text-gray-900">
+              {title}
+            </h2>
+            <div className="opacity-0 flex absolute bottom-5 transition-opacity duration-500 group-hover:opacity-100 gap-2">
+              <div
+                  onClick={handleClick}
+                  className="flex flex-row items-center md:text-xl drop-shadow-xl cursor-pointer rounded-lg bg-gray-300/50 px-5 py-2 text-gray-700 transition-all duration-200 ease-in-out border border-primary hover:border hover:border-violet-800 hover:bg-gray-200 hover:text-violet-800"
+              >
+                <h4>Visit</h4>
+                <OpenIcon  />
+              </div>
+              <div
+                  onClick={handleClick}
+                  className="flex flex-row items-center md:text-xl drop-shadow-xl cursor-pointer rounded-lg bg-gray-300/50 px-5 py-2 text-gray-700 transition-all duration-200 ease-in-out border border-primary hover:border hover:border-violet-800 hover:bg-gray-200 hover:text-violet-800"
+              >
+                  <h4>Code</h4>
+                  <GitHubIcon />
+              </div>
+            </div>
           </div>
-          <div className={`text-center peer  ${getOpacityClass()} max-sm:text-[5vw] md:text-clamp_project_description p-2 md:absolute md:inset-0 w-full h-full flex flex-col justify-between rounded-2xl border border-gray-700 md:bg-gray-100/25 max-sm:bg-gray-100/50 md:group-hover:bg-gray-100/50`}>
+          <div className={`text-center peer  ${getOpacityClass()} max-sm:text-[5vw] md:text-clamp_project_description p-2 md:absolute md:inset-0 w-full h-full flex flex-col justify-between rounded-2xl border border-primary md:bg-gray-100/25 max-sm:bg-gray-100/50 md:group-hover:bg-gray-100/50 md:hover:cursor-pointer`}
+            onMouseEnter={() => setEaseIn(true)}
+            onMouseLeave={() => setEaseIn(false)}
+            onClick={handleClick}
+          >
             <h3 className={`md:opacity-0 md:group-hover:opacity-100 transition-opacity ${getOpacityClass()} mb-1 font-medium text-gray-800`}>{title}</h3>
             <div className={`scrollable-element overscroll-auto md:opacity-0 max-sm:text-clamp_sm_project_description md:group-hover:opacity-100 transition-opacity ${getOpacityClass()} : 'duration-[800ms] md:ease-in'} h-4/5 overflow-scroll font-normal text-gray-700`}>
               {description}
@@ -81,7 +101,6 @@ export default function ProjectBox({ title, description, stack, placeSelfEnd, li
               ))}
             </div> */}
           </div>
-        </div>
         
       </div>
     

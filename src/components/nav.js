@@ -101,7 +101,7 @@ const NavBar = ({ mainRef, isHomeVisible }) => {
                     relative md:mx-2 cursor-pointer border px-3 p-1 rounded-xl 
                     transition-all duration-500 
                     ${navItemsVisible ? 'scale-100 opacity-100' : 'scale-0 opacity-0'}
-                    ${activeLink === "home-section" ? "bg-gray-100/30 border-gray-700 text-white/80" : "border-transparent text-gray-100/80"}
+                    ${activeLink === "home-section" ? "bg-gray-100/30 border-primary text-white/80" : "border-transparent text-gray-100/80"}
                 `}
                 style={initialRender && navItemsVisible ? { transitionDelay: '150ms' } : {}}
             >
@@ -114,7 +114,7 @@ const NavBar = ({ mainRef, isHomeVisible }) => {
                     relative md:mx-2 cursor-pointer border px-3 p-1 rounded-xl 
                     transition-all duration-500 
                     ${navItemsVisible ? 'scale-100 opacity-100' : 'scale-0 opacity-0'}
-                    ${activeLink === "skills-section" ? "bg-gray-100/30 border-gray-700 text-white/80" : "border-transparent text-gray-100/80"}
+                    ${activeLink === "skills-section" ? "bg-gray-100/30 border-primary text-white/80" : "border-transparent text-gray-100/80"}
                 `}
                 style={initialRender && navItemsVisible ? { transitionDelay: '300ms' } : {}}
             >
@@ -127,7 +127,7 @@ const NavBar = ({ mainRef, isHomeVisible }) => {
                     relative md:mx-2 cursor-pointer border px-3 p-1 rounded-xl 
                     transition-all duration-500 
                     ${navItemsVisible ? 'scale-100 opacity-100' : 'scale-0 opacity-0'}
-                    ${activeLink === "portfolio-section" ? "bg-gray-100/30 border-gray-700 text-white/80" : "border-transparent text-gray-100/80"}
+                    ${activeLink === "portfolio-section" ? "bg-gray-100/30 border-primary text-white/80" : "border-transparent text-gray-100/80"}
                 `}
                 style={initialRender && navItemsVisible ? { transitionDelay: '500ms' } : {}}
             >
@@ -140,7 +140,7 @@ const NavBar = ({ mainRef, isHomeVisible }) => {
                     relative md:mx-2 md:mr-20 cursor-pointer border px-3 p-1 rounded-xl 
                     transition-all duration-500 
                     ${navItemsVisible ? 'scale-100 opacity-100' : 'scale-0 opacity-0'}
-                    ${activeLink === "about-section" ? "bg-gray-100/30 border-gray-700 text-white/80" : "border-transparent text-gray-100/80"}
+                    ${activeLink === "about-section" ? "bg-gray-100/30 border-primary text-white/80" : "border-transparent text-gray-100/80"}
                 `}
                 style={initialRender && navItemsVisible ? { transitionDelay: '700ms' } : {}}
             >

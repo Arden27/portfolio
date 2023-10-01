@@ -29,7 +29,7 @@ export default function Home({ isVisible, setIsVisible }) {
     return(
         <div className="flex md:gap-10 max-sm:pt-12 max-sm:pb-2 w-full max-w-7xl h-full flex-col items-center justify-center md:h-screen md:flex-row">
             {!isVisible && <div className="absolute inset-0 flex items-center justify-center"><Spinner /></div>}
-            <div ref={imageWrapperRef} className={`transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'} bg-gray-100/50 p-2 border rounded-2xl border-gray-700 flex aspect-square max-sm:h-1/2 h-2/3 md:max-h-[50vw] items-center justify-center`}>
+            <div ref={imageWrapperRef} className={`transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'} bg-gray-100/50 p-2 border rounded-2xl border-primary flex aspect-square max-sm:h-1/2 h-2/3 md:max-h-[50vw] items-center justify-center`}>
                 <Image
                     src="/img/about.jpeg"
                     alt="Profile Picture"
@@ -40,7 +40,7 @@ export default function Home({ isVisible, setIsVisible }) {
                     priority
                 />
             </div>
-            <div className={`transition duration-1000 transform ${isVisible ? 'scale-100 opacity-100' : 'scale-90 opacity-0'} bg-gray-100/50 p-4 pr-3 border rounded-2xl border-gray-700 max-sm:text-[10svh] max-sm:flex max-sm:h-1/2 max-sm:w-4/5 md:w-1/3 max-sm:flex-col max-sm:items-center max-sm:justify-center max-sm:p-2 max-sm:px-1`}>
+            <div className={`transition duration-1000 transform ${isVisible ? 'scale-100 opacity-100' : 'scale-90 opacity-0'} bg-gray-100/50 p-4 pr-3 border rounded-2xl border-primary max-sm:text-[10svh] max-sm:flex max-sm:h-1/2 max-sm:w-4/5 md:w-1/3 max-sm:flex-col max-sm:items-center max-sm:justify-center max-sm:p-2 max-sm:px-1`}>
                 <div className="text-[35%] md:text-clamp_greating font-extralight leading-[1.2] text-gray-800">
                     Hello, I'm
                 </div>
@@ -57,7 +57,7 @@ export default function Home({ isVisible, setIsVisible }) {
                 </div>
                 <a
                     href="#portfolio-section"
-                    className="max-sm:text-[30%] md:text-xl drop-shadow-xl inline-block cursor-pointer rounded-lg bg-gray-200/75 px-5 py-2 text-gray-700 transition-all duration-200 ease-in-out border border-gray-700 hover:border hover:border-violet-800 hover:bg-gray-200 hover:text-violet-800"
+                    className="max-sm:text-[30%] md:text-xl drop-shadow-xl inline-block cursor-pointer rounded-lg bg-gray-200/75 px-5 py-2 text-gray-700 transition-all duration-200 ease-in-out border border-primary hover:border hover:border-violet-800 hover:bg-gray-200 hover:text-violet-800"
                 >
                     Portfolio
                 </a>

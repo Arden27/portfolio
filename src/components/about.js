@@ -58,7 +58,7 @@ export default function About({ mainRef }){
     return(
         <div className={`relative w-full flex flex-col items-center justify-center p-2`}>
             {/* ${isAboutInView ? 'scale-[.60] -translate-y-[67%]' : ''} */}
-            <div className={`relative z-10 bg-gray-100/50 p-2 border rounded-full border-gray-700 aspect-square h-[25vh] items-center justify-center transition transform duration-[2000ms] ease-in-out ${isAboutInView ? '' : 'scale-[1.6] translate-y-[67%]'}`}>
+            <div className={`relative z-10 bg-gray-100/50 p-2 border rounded-full border-primary aspect-square h-[25vh] items-center justify-center transition transform duration-[2000ms] ease-in-out ${isAboutInView ? '' : 'scale-[1.6] translate-y-[67%]'}`}>
                 <Image
                     src="/img/about.jpeg"
                     alt="Profile Picture"
@@ -67,7 +67,7 @@ export default function About({ mainRef }){
                     fill
                 />
             </div>
-            <div className={`relative bg-gray-100/50 bottom-4 p-4 border rounded-2xl border-gray-700 max-sm:flex max-sm:w-4/5 md:w-1/3 max-sm:flex-col max-sm:items-center transition duration-[1500ms] ease-in ${showAbout ? 'opacity-100' : 'opacity-0'}`}>
+            <div className={`relative bg-gray-100/50 bottom-4 p-4 border rounded-2xl border-primary max-sm:flex max-sm:w-4/5 md:w-1/3 max-sm:flex-col max-sm:items-center transition duration-[1500ms] ease-in ${showAbout ? 'opacity-100' : 'opacity-0'}`}>
                 <h3 className="text-center text-gray-800">
                     I've created a <span className="text-violet-700 font-semibold cursor-pointer" onClick={() => {isChatOpen ? dispatch(closeChat()) : dispatch(openChat())}}>chatbot avatar</span> that mimics my personality. You can use it to ask any questions about my background and skills. Please feel free to leave comments or suggestions regarding my portfolio
                 </h3>

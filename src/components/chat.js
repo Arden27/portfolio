@@ -202,7 +202,7 @@ export default function Chat({ isChatVisible }) {
         ${isChatOpen ? "slide-in-right flex" : wasOpened ? "slide-out-right flex" : "hidden"}`} //max-sm:left-1/2 max-sm:transform max-sm:-translate-x-1/2
       >
         <div
-          className={"scrollable-chat flex-grow overflow-y-auto bg-gray-100/80 border rounded-xl border-gray-700 mb-1 flex flex-col-reverse"}
+          className={"scrollable-chat flex-grow overflow-y-auto bg-gray-100/80 border rounded-xl border-primary mb-1 flex flex-col-reverse"}
           ref={messagesContainerRef}
         >
             {isTyping && <div className="animate-pulse max-w-[80%] p-2 px-3 m-2 break-words bg-gray-200/90 border-2 border-violet-700/70 self-start rounded-tr-xl rounded-tl-xl rounded-br-xl">○○○</div>}
@@ -216,7 +216,7 @@ export default function Chat({ isChatVisible }) {
                 </div>
             ))}
         </div>
-        <div className="flex items-center h-14 w-full border bg-gray-100/80 rounded-xl border-gray-700">
+        <div className="flex items-center h-14 w-full border bg-gray-100/80 rounded-xl border-primary">
           <input
             ref={inputRef}
             name="newMessage"

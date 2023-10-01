@@ -5,7 +5,7 @@ import { openChat, closeChat } from "@/redux/store";
 import GitHubIcon from '../../public/img/github.svg'
 import OpenIcon from '../../public/img/open.svg'
 
-export default function ProjectBox({ title, description, stack, placeSelfEnd, link, isLocal }){
+export default function ProjectBox({ title, description, stack, placeSelfEnd, link, code, isLocal }){
   const [easeIn, setEaseIn] = useState(true);
   const isChatOpen = useSelector((state) => state.isChatOpen);
 
@@ -15,13 +15,19 @@ export default function ProjectBox({ title, description, stack, placeSelfEnd, li
     return easeIn ? 'duration-[800ms] md:ease-in' : 'duration-[800ms] md:ease-in';
   };
 
-  const handleClick = () => {
+  const handleVisitClick = () => {
     if (isLocal) {
         isChatOpen ? dispatch(closeChat()) : dispatch(openChat());
     } else {
         if (typeof window !== 'undefined') {
             window.open(link, '_blank');
         }
+    }
+  };
+
+  const handleCodeClick = () => {
+    if (typeof window !== 'undefined') {
+        window.open(code, '_blank');
     }
   };
 
@@ -34,17 +40,17 @@ export default function ProjectBox({ title, description, stack, placeSelfEnd, li
             <h2 className=" mb-2 text-center text-xl font-medium peer-hover:opacity-100 text-gray-900">
               {title}
             </h2>
-            <div className="opacity-0 flex absolute bottom-5 transition-opacity duration-500 group-hover:opacity-100 gap-2">
+            <div className="opacity-0 flex absolute bottom-5 transition-opacity duration-1000 ease-in-out group-hover:opacity-100 gap-2">
               <div
-                  onClick={handleClick}
-                  className="flex flex-row items-center md:text-xl drop-shadow-xl cursor-pointer rounded-lg bg-gray-300/50 px-5 py-2 text-gray-700 transition-all duration-200 ease-in-out border border-primary hover:border hover:border-violet-800 hover:bg-gray-200 hover:text-violet-800"
+                  onClick={handleVisitClick}
+                  className="gap-1 flex flex-row items-center md:text-xl drop-shadow-xl cursor-pointer rounded-lg bg-gray-300/50 px-5 py-2 text-gray-700 transition-all duration-200 ease-in-out border border-primary hover:border-violet-800 hover:text-violet-800"
               >
                 <h4>Visit</h4>
                 <OpenIcon  />
               </div>
               <div
-                  onClick={handleClick}
-                  className="flex flex-row items-center md:text-xl drop-shadow-xl cursor-pointer rounded-lg bg-gray-300/50 px-5 py-2 text-gray-700 transition-all duration-200 ease-in-out border border-primary hover:border hover:border-violet-800 hover:bg-gray-200 hover:text-violet-800"
+                  onClick={handleCodeClick}
+                  className="gap-1 flex flex-row items-center md:text-xl drop-shadow-xl cursor-pointer rounded-lg bg-gray-300/50 px-5 py-2 text-gray-700 transition-all duration-200 ease-in-out border border-primary hover:border-violet-800 hover:text-violet-800"
               >
                   <h4>Code</h4>
                   <GitHubIcon />
@@ -54,7 +60,7 @@ export default function ProjectBox({ title, description, stack, placeSelfEnd, li
           <div className={`text-center peer  ${getOpacityClass()} max-sm:text-[5vw] md:text-clamp_project_description p-2 md:absolute md:inset-0 w-full h-full flex flex-col justify-between rounded-2xl border border-primary md:bg-gray-100/25 max-sm:bg-gray-100/50 md:group-hover:bg-gray-100/50 md:hover:cursor-pointer`}
             onMouseEnter={() => setEaseIn(true)}
             onMouseLeave={() => setEaseIn(false)}
-            onClick={handleClick}
+            onClick={handleVisitClick}
           >
             <h3 className={`md:opacity-0 md:group-hover:opacity-100 transition-opacity ${getOpacityClass()} mb-1 font-medium text-gray-800`}>{title}</h3>
             <div className={`scrollable-element overscroll-auto md:opacity-0 max-sm:text-clamp_sm_project_description md:group-hover:opacity-100 transition-opacity ${getOpacityClass()} : 'duration-[800ms] md:ease-in'} h-4/5 overflow-scroll font-normal text-gray-700`}>

@@ -10,6 +10,7 @@ module.exports = {
     extend: {
       borderColor: {
         'primary': 'rgb(156, 163, 175)',
+        // 'primary': 'rgb(107, 114, 128)',
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

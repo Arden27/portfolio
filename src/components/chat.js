@@ -248,7 +248,7 @@ export default function Chat({ isChatVisible }) {
         onClick={handleChatButton}
       >
         <ChatIcon
-          className={`border border-gray-600 rounded-xl bg-gray-100/50 hover:bg-gray-100/80 p-1 px-2 transform scale-x-[-1] w-[9svh] h-auto 
+          className={`border border-primary rounded-xl bg-gray-100/50 hover:bg-gray-100/80 p-1 px-2 transform scale-x-[-1] w-[9svh] h-auto 
           ${showMessage ? "animate-pulse" : ""}`}
           fill={chatIconColor}
           stroke='3'

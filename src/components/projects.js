@@ -7,6 +7,7 @@ const projects = [
         stack: ['tailwind', 'js', 'next', 'react', 'redux', 'python', 'django'],
         placeSelfEnd: true,
         link: "https://honey-marketplace.vercel.app/sklep",
+        code: "https://github.com/Arden27/honey_marketplace",
         isLocal: false,
     },
     {
@@ -15,6 +16,7 @@ const projects = [
         stack: ['tailwind', 'js', 'next', 'react', 'redux', 'python', 'django'],
         placeSelfEnd: false,
         link: "https://artman.pythonanywhere.com/receiptapp/login?portfolio=true",
+        code: "https://github.com/Arden27/avatar/tree/master/frontend/react/receipts-frontend",
         isLocal: false,
     },
     {
@@ -23,6 +25,7 @@ const projects = [
         stack: ['html', 'css', 'js', 'jquery', 'python', 'django'],
         placeSelfEnd: true,
         link: "https://artman.pythonanywhere.com/flaws",
+        code: "https://github.com/Arden27/avatar/tree/master/flawtocrypto",
         isLocal: false,
     },
     {
@@ -30,6 +33,7 @@ const projects = [
         description: "A virtual chatbot avatar that mimics my personality and can answer questions about me, serving as an interactive resume. Employed Natural Language Processing (NLP) techniques to create a more engaging and informative experience for users interested in my background and skills.",
         stack: ['tailwind', 'js', 'next', 'react', 'redux', 'openai'],
         placeSelfEnd: false,
+        code: "https://github.com/Arden27/portfolio",
         isLocal: true,
     },
 ]

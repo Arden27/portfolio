@@ -1,9 +1,27 @@
 // pages/api/openai.js
-import { aiPrompt } from "@/components/aiPrompt";
+import crypto from 'crypto'
+import { encryptedAIPrompt } from "@/components/encryptedAIPrompt";
+
+// Decryption function
+function decrypt(text, key) {
+  let textParts = text.split(':');
+  const iv = Buffer.from(textParts.shift(), 'hex');
+  const encryptedText = Buffer.from(textParts.join(':'), 'hex');
+  const decipher = crypto.createDecipheriv('aes-256-cbc', Buffer.from(key, 'hex'), iv);
+  let decrypted = decipher.update(encryptedText);
+  decrypted = Buffer.concat([decrypted, decipher.final()]);
+  return decrypted.toString();
+}
+
+function getDecryptedAIPrompt() {
+  const key = process.env.PROMPT_DECRYPTION_KEY; // Your decryption key from .env
+  return decrypt(encryptedAIPrompt, key);
+}
 
 export default async (req, res) => {
   if (req.method === 'POST') {
     try {
+      const aiPrompt = getDecryptedAIPrompt();
       const apiFormattedMessages = [
         { role: "system", content: aiPrompt },
         ...req.body.messages

@@ -1,9 +1,9 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react";
+import { generateSessionId } from "./generSessionId";
 import ChatIcon from "../../public/img/chat.svg";
 import SendIcon from "../../public/img/send.svg";
-import { generateSessionId } from "./generateSessionId";
 
 import  { useSelector, useDispatch } from 'react-redux';
 import { openChat, closeChat } from "@/redux/store";

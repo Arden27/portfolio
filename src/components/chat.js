@@ -12,7 +12,6 @@ import moment from 'moment-timezone';
 
 // const chatIconColor = "rgba(249, 115, 22, .5)";
 const chatIconColor = "rgba(109, 40, 217, .5)";
-
 const SendIconNotActive = "rgba(156, 163, 175, .8)";
 
 export default function Chat({ isChatVisible }) {

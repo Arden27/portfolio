@@ -31,6 +31,8 @@ module.exports = {
         clamp_sm_skills_category_name: "clamp(0.5rem, 4vh + 1px, 1.5rem)",
         clamp_project_description: "clamp(0.8rem, 1.1vw + 1px, 1.5rem)",
         clamp_sm_project_description: "clamp(0.5rem, 3.3vh + 1px, 1.5rem)",
+        clamp_project_name: "clamp(0.5rem, 3vh + 1px, 3rem)",
+        clamp_project_button: "clamp(0.5rem, 2.5vh + 1px, 1.5rem)",
       },
       // for dynamic gradient background
       keyframes: {

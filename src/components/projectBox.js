@@ -5,6 +5,8 @@ import { openChat, closeChat } from "@/redux/store";
 import GitHubIcon from '../../public/img/github.svg'
 import OpenIcon from '../../public/img/open.svg'
 
+const iconColor = 'rgb(55, 65, 81)';
+
 export default function ProjectBox({ title, description, stack, placeSelfEnd, link, code, isLocal }){
   const [easeIn, setEaseIn] = useState(true);
   const isChatOpen = useSelector((state) => state.isChatOpen);
@@ -37,23 +39,23 @@ export default function ProjectBox({ title, description, stack, placeSelfEnd, li
         
         
           <div className={`${placeSelfEnd ? 'md:group-hover:-translate-x-full' : 'md:group-hover:translate-x-full'} flex-col max-sm:hidden h-full md:absolute md:inset-0 rounded-2xl border border-primary bg-gray-100/25 group-hover:bg-gray-100/50 md:transition md:duration-[800ms] md:ease-in-out md:flex md:items-center md:justify-center`}>
-            <h2 className=" mb-2 text-center text-xl font-medium peer-hover:opacity-100 text-gray-900">
+            <h2 className="text-center text-clamp_project_name font-medium transition duration-1000 ease-in-out peer-hover:opacity-100 group-hover:text-gray-600 text-gray-800">
               {title}
             </h2>
             <div className="opacity-0 flex absolute bottom-5 transition-opacity duration-1000 ease-in-out group-hover:opacity-100 gap-2">
               <div
                   onClick={handleVisitClick}
-                  className="gap-1 flex flex-row items-center md:text-xl drop-shadow-xl cursor-pointer rounded-lg bg-gray-300/50 px-5 py-2 text-gray-700 transition-all duration-200 ease-in-out border border-primary hover:border-violet-800 hover:text-violet-800"
+                  className="gap-1 w-[14vh] flex flex-row items-center justify-center drop-shadow-xl cursor-pointer rounded-lg bg-gray-300/50 p-[1vh] text-gray-700 transition-all duration-200 ease-in-out border border-primary hover:border-violet-800 hover:text-violet-800"
               >
-                <h4>Visit</h4>
-                <OpenIcon  />
+                <h4 className="md:text-clamp_project_button">Visit</h4>
+                <OpenIcon className='w-[4vh]' fill='none'/>
               </div>
               <div
                   onClick={handleCodeClick}
-                  className="gap-1 flex flex-row items-center md:text-xl drop-shadow-xl cursor-pointer rounded-lg bg-gray-300/50 px-5 py-2 text-gray-700 transition-all duration-200 ease-in-out border border-primary hover:border-violet-800 hover:text-violet-800"
+                  className="gap-1 w-[14vh] flex flex-row items-center justify-center drop-shadow-xl cursor-pointer rounded-lg bg-gray-300/50 p-[1vh] text-gray-700 transition-all duration-200 ease-in-out border border-primary hover:border-violet-800 hover:text-violet-800"
               >
-                  <h4>Code</h4>
-                  <GitHubIcon />
+                <h4 className="md:text-clamp_project_button">Code</h4>
+                <GitHubIcon className='w-[4vh]' fill={iconColor}/>
               </div>
             </div>
           </div>

@@ -45,17 +45,20 @@ export default function ProjectBox({ title, description, stack, placeSelfEnd, li
             <div className="opacity-0 flex absolute bottom-5 transition-opacity duration-1000 ease-in-out group-hover:opacity-100 gap-2">
               <div
                   onClick={handleVisitClick}
-                  className="gap-1 w-[14vh] flex flex-row items-center justify-center drop-shadow-xl cursor-pointer rounded-lg bg-gray-300/50 p-[1vh] text-gray-700 transition-all duration-200 ease-in-out border border-primary hover:border-violet-800 hover:text-violet-800"
+                  className="gap-1 w-[14vh] flex flex-row items-center justify-center drop-shadow-xl cursor-pointer rounded-lg bg-gray-300/50 p-[1vh] pl-[2vh] text-gray-700 transition-all duration-200 ease-in-out border border-primary hover:border-violet-800 hover:text-violet-800"
               >
                 <h4 className="md:text-clamp_project_button">Visit</h4>
                 <OpenIcon className='w-[4vh]' fill='none'/>
+                
               </div>
               <div
                   onClick={handleCodeClick}
-                  className="gap-1 w-[14vh] flex flex-row items-center justify-center drop-shadow-xl cursor-pointer rounded-lg bg-gray-300/50 p-[1vh] text-gray-700 transition-all duration-200 ease-in-out border border-primary hover:border-violet-800 hover:text-violet-800"
+                  className="w-[14vh] flex flex-row items-center justify-center drop-shadow-xl cursor-pointer rounded-lg bg-gray-300/50 p-[1vh] text-gray-700 transition-all duration-200 ease-in-out border border-primary hover:border-violet-800 hover:text-violet-800"
               >
                 <h4 className="md:text-clamp_project_button">Code</h4>
                 <GitHubIcon className='w-[4vh]' fill={iconColor}/>
+                
+                
               </div>
             </div>
           </div>

@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import Typed from "typed.js";
 import Image from "next/image";
 import Contacts from "./contacts";
 import { useSelector, useDispatch } from "react-redux";
@@ -11,6 +12,42 @@ export default function About({ mainRef }){
     const isChatOpen = useSelector((state) => state.isChatOpen)
 
     const dispatch = useDispatch();
+
+    const typedRef = useRef(null);
+
+    useEffect(() => {
+        if (showAbout && typedRef.current) {
+            const options = {
+                strings: [`I've created a <span id="chatbot-link" class="text-violet-700 font-semibold cursor-pointer">chatbot avatar</span> that mimics my personality. You can use it to ask any questions about my background and skills. Please feel free to leave comments or suggestions regarding my portfolio.`],
+                typeSpeed: 25, // typing speed
+                backSpeed: 0, // backspacing speed
+                backDelay: 500, // delay before backspacing
+                startDelay: 0, // delay to start typing once initialized
+                loop: false, // loop the animation
+                showCursor: false, // show blinking cursor
+                smartBackspace: true, // allow smart backspacing
+                onComplete: () => {
+                    const chatbotLink = document.getElementById('chatbot-link');
+                    if (chatbotLink) {
+                        chatbotLink.addEventListener('click', handleChatbotLinkClick);
+                    }
+                }
+            };
+            const typed = new Typed(typedRef.current, options);
+    
+            return () => {
+                typed.destroy();
+                const chatbotLink = document.getElementById('chatbot-link');
+                if (chatbotLink) {
+                    chatbotLink.removeEventListener('click', handleChatbotLinkClick);
+                }
+            };
+        }
+    }, [showAbout]);
+    
+    const handleChatbotLinkClick = () => {
+        isChatOpen ? dispatch(closeChat()) : dispatch(openChat());
+    };
 
     useEffect(() => {
         const handleScroll = () => {
@@ -68,9 +105,7 @@ export default function About({ mainRef }){
                 />
             </div>
             <div className={`relative bg-gray-100/50 bottom-4 p-4 border rounded-2xl border-primary max-sm:flex max-sm:w-4/5 md:w-1/3 max-sm:flex-col max-sm:items-center transition duration-[1500ms] ease-in ${showAbout ? 'opacity-100' : 'opacity-0'}`}>
-                <h3 className="text-center text-gray-800">
-                    I've created a <span className="text-violet-700 font-semibold cursor-pointer" onClick={() => {isChatOpen ? dispatch(closeChat()) : dispatch(openChat())}}>chatbot avatar</span> that mimics my personality. You can use it to ask any questions about my background and skills. Please feel free to leave comments or suggestions regarding my portfolio
-                </h3>
+                <h3 className="text-center text-gray-800" ref={typedRef}></h3>
             </div>
             <div className={`transition duration-[2500ms] ease-in ${showContacts ? 'opacity-100' : 'opacity-0'}`}>
                 <Contacts />

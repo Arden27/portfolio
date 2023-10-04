@@ -71,7 +71,7 @@ export default function ProjectBox({ title, description, stack, placeSelfEnd, li
             
             <div className={`md:opacity-0 md:group-hover:opacity-100 transition-opacity ${getOpacityClass()} h-[13%] w-full flex flex-row items-center justify-around`}>
               {stack.map((tech, index) => (
-                <div className="relative h-full w-auto group/tech hover:cursor-pointer" key={index}>
+                <div className="relative h-full flex items-center w-auto group/tech hover:cursor-pointer" key={index}>
                   {/* Text to show on hover */}
                   <div className="absolute w-auto bottom-full text-center opacity-0 group-hover/tech:opacity-100 transition -translate-x-1/2 left-1/2 text-gray-700">
                     {tech}

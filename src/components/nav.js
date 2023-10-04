@@ -4,10 +4,10 @@ import { useEffect, useState } from "react";
 
 const NavBar = ({ mainRef, isHomeVisible }) => {
     const [activeLink, setActiveLink] = useState("home-section");
-    const [shadow, setShadow] = useState(false);
+    //const [shadow, setShadow] = useState(false);
     const [scrollInitiator, setScrollInitiator] = useState(null); // Add this to track which link initiated the scroll
 
-    const isSafari = typeof navigator !== 'undefined' && /^((?!chrome|android).)*safari/i.test(navigator.userAgent) && !/Mobi|Android/i.test(navigator.userAgent);
+    // const isSafari = typeof navigator !== 'undefined' && /^((?!chrome|android).)*safari/i.test(navigator.userAgent) && !/Mobi|Android/i.test(navigator.userAgent);
 
     const [navItemsVisible, setNavItemsVisible] = useState(false);
     const [initialRender, setInitialRender] = useState(true);
@@ -52,11 +52,11 @@ const NavBar = ({ mainRef, isHomeVisible }) => {
             setActiveLink(currentSection);
         }
 
-        if (mainRef.current.scrollTop > 0) {
-            setShadow(true);
-        } else {
-            setShadow(false);
-        }
+        // if (mainRef.current.scrollTop > 0) {
+        //     setShadow(true);
+        // } else {
+        //     setShadow(false);
+        // }
     };
 
     useEffect(() => {
@@ -91,9 +91,7 @@ const NavBar = ({ mainRef, isHomeVisible }) => {
 
     return (
         <nav
-            className={`fixed top-0 flex h-12 w-full items-center justify-around bg-transparent z-10 p-3 transition-shadow duration-500 ease-in-out md:justify-end ${
-                shadow && !isSafari ? "shadow-lg" : "bg-transparent"
-            }`}
+            className={`fixed top-0 flex h-12 w-full items-center justify-around bg-transparent z-10 p-3 transition-shadow duration-500 ease-in-out md:justify-end`}
         >
             <div
                 onClick={() => handleNavLinkClick("home-section")}

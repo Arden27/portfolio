@@ -62,10 +62,9 @@ export default function ProjectBox({ title, description, stack, placeSelfEnd, li
               </div>
             </div>
           </div>
-          <div className={`text-center peer  ${getOpacityClass()} max-sm:text-[5vw] md:text-clamp_project_description p-2 md:absolute md:inset-0 w-full h-full flex flex-col justify-between rounded-2xl border border-primary md:bg-gray-100/25 max-sm:bg-gray-100/50 md:group-hover:bg-gray-100/50 md:hover:cursor-pointer`}
+          <div className={`text-center peer  ${getOpacityClass()} max-sm:text-[5vw] md:text-clamp_project_description p-2 md:absolute md:inset-0 w-full h-full flex flex-col justify-between rounded-2xl border border-primary md:bg-gray-100/25 max-sm:bg-gray-100/50 md:group-hover:bg-gray-100/50`}
             onMouseEnter={() => setEaseIn(true)}
             onMouseLeave={() => setEaseIn(false)}
-            onClick={handleVisitClick}
           >
             <h3 className={`md:opacity-0 md:group-hover:opacity-100 transition-opacity ${getOpacityClass()} mb-1 font-medium text-gray-800`}>{title}</h3>
             <div className={`scrollable-element overscroll-auto md:opacity-0 max-sm:text-clamp_sm_project_description md:group-hover:opacity-100 transition-opacity ${getOpacityClass()} : 'duration-[800ms] md:ease-in'} h-4/5 overflow-scroll font-normal text-gray-700`}>

@@ -57,8 +57,6 @@ export default function ProjectBox({ title, description, stack, placeSelfEnd, li
               >
                 <h4 className="md:text-clamp_project_button">Code</h4>
                 <GitHubIcon className='w-[4vh]' fill={iconColor}/>
-                
-                
               </div>
             </div>
           </div>
@@ -67,10 +65,11 @@ export default function ProjectBox({ title, description, stack, placeSelfEnd, li
             onMouseLeave={() => setEaseIn(false)}
           >
             <h3 className={`md:opacity-0 md:group-hover:opacity-100 transition-opacity ${getOpacityClass()} mb-1 font-medium text-gray-800`}>{title}</h3>
-            <div className={`scrollable-element overscroll-auto md:opacity-0 max-sm:text-clamp_sm_project_description md:group-hover:opacity-100 transition-opacity ${getOpacityClass()} : 'duration-[800ms] md:ease-in'} h-4/5 overflow-scroll font-normal text-gray-700`}>
+            <div className={`scrollable-element overscroll-auto md:opacity-0 max-sm:text-clamp_sm_project_description md:group-hover:opacity-100 transition-opacity ${getOpacityClass()} : 'duration-[800ms] md:ease-in'} max-sm:h-3/5 md:h-4/5 overflow-scroll font-normal text-gray-700`}>
               {description}
             </div>
-            <div className={`md:opacity-0 md:group-hover:opacity-100 transition-opacity ${getOpacityClass()} h-[13%] w-full flex flex-row  items-center justify-around`}>
+            
+            <div className={`md:opacity-0 md:group-hover:opacity-100 transition-opacity ${getOpacityClass()} h-[13%] w-full flex flex-row items-center justify-around`}>
               {stack.map((tech, index) => (
                 <div className="relative h-full w-auto group/tech hover:cursor-pointer" key={index}>
                   {/* Text to show on hover */}
@@ -89,6 +88,23 @@ export default function ProjectBox({ title, description, stack, placeSelfEnd, li
                   </div>
                 </div>
               ))}
+            </div>
+            <div className="max-sm:flex md:hidden h-[13%] items-center justify-center gap-2">
+              <div
+                  onClick={handleVisitClick}
+                  className="gap-1 w-[35%] flex flex-row items-center justify-center drop-shadow-xl cursor-pointer rounded-lg bg-gray-300/50 p-[1vh] pl-[2vh] text-gray-700 transition-all duration-200 ease-in-out border border-primary hover:border-violet-800 hover:text-violet-800"
+              >
+                <h4 className="md:text-clamp_project_button">Visit</h4>
+                <OpenIcon className='w-[]' fill='none'/>
+                
+              </div>
+              <div
+                  onClick={handleCodeClick}
+                  className="gap-1 w-[35%] flex flex-row items-center justify-center drop-shadow-xl cursor-pointer rounded-lg bg-gray-300/50 p-[1vh] text-gray-700 transition-all duration-200 ease-in-out border border-primary hover:border-violet-800 hover:text-violet-800"
+              >
+                <h4 className="md:text-clamp_project_button">Code</h4>
+                <GitHubIcon className='w-[]' fill={iconColor}/>
+              </div>
             </div>
 
             {/* <div className="h-[13%] w-full bg-amber-200 flex flex-row  items-center justify-around">

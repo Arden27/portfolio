@@ -57,7 +57,7 @@ export default function Home({ isVisible, setIsVisible }) {
                 </div>
                 <a
                     href="#portfolio-section"
-                    className="max-sm:text-[30%] md:text-xl drop-shadow-xl inline-block cursor-pointer rounded-lg bg-gray-200/75 px-5 py-2 text-gray-700 transition-all duration-200 ease-in-out border border-primary hover:border hover:border-violet-800 hover:text-violet-800"
+                    className="max-sm:text-[30%] md:text-xl drop-shadow-xl inline-block cursor-pointer rounded-lg bg-gray-300/75 px-5 py-2 text-gray-700 transition-all duration-200 ease-in-out border border-primary hover:border hover:border-violet-800 hover:text-violet-800"
                 >
                     Portfolio
                 </a>

@@ -16,7 +16,7 @@ const projects = [
         stack: ['tailwind', 'js', 'next', 'react', 'redux', 'python', 'django'],
         placeSelfEnd: false,
         link: "https://artman.pythonanywhere.com/receiptapp/login?portfolio=true",
-        code: "https://github.com/Arden27/avatar/tree/master/frontend/react/receipts-frontend",
+        code: "https://github.com/Arden27/receipts",
         isLocal: false,
     },
     {
@@ -25,7 +25,7 @@ const projects = [
         stack: ['html', 'css', 'js', 'jquery', 'python', 'django'],
         placeSelfEnd: true,
         link: "https://artman.pythonanywhere.com/flaws",
-        code: "https://github.com/Arden27/avatar/tree/master/flawtocrypto",
+        code: "https://github.com/Arden27/flaw-to-crypto",
         isLocal: false,
     },
     {

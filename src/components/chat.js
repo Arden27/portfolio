@@ -9,8 +9,6 @@ import  { useSelector, useDispatch } from 'react-redux';
 import { openChat, closeChat } from "@/redux/store";
 import moment from 'moment-timezone';
 
-
-// const chatIconColor = "rgba(249, 115, 22, .5)";
 const chatIconColor = "rgba(109, 40, 217, .5)";
 const SendIconNotActive = "rgba(156, 163, 175, .8)";
 
@@ -157,7 +155,7 @@ export default function Chat({ isChatVisible }) {
           setErrorMessage('Error calling chat API: ' + response.status.toString());
           console.error("OpenAI Error:", await response.text());
         } else {
-          // ... (your current code for successful response)
+          // code for successful response
           const data = await response.json();
           const assistant_response = data.choices[0].message.content;
           

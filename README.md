@@ -1,34 +1,56 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Portfolio
 
-## Getting Started
+This is my portfolio Next.js app. It features a Chatbot Avatar that mimics my personality; you can use it to ask any questions about my background and skills. Check out [LIVE](https://artemfurman.tech). 
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+- Dynamic gradient background. ([code](https://github.com/Arden27/portfolio/blob/main/src/components/dynamicBackground.js))
+- Chatbot avatar. ([code](https://github.com/Arden27/portfolio/blob/main/src/components/chat.js))
+- PostgreSQL chat conversation logging through Prisma.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Upcoming updates
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+- Ultimating logging for analytics.
+- Re-write snap scrolling with JS instead of CSS buggie Snap.
+- PostgreSQL chat conversation logging through Prisma.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Installation
 
-## Learn More
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/Arden27/portfolio.git
+    ```
+2. Navigate to the project directory:
+    ```bash
+    cd portfolio
+    ```
+3. Install the required packages:
+    ```bash
+    npm install
+    ```
+4. Run development server:
+    ```bash
+    npx next dev
+    ```
+5. Install the required packages:
+    ```bash
+    npm install
+    ```
+6. Create React build:
+    ```bash
+    npm run build
+    ```
+7. The React app will be served y Django:
+    ```bash
+    cd ..
+    python manage.py runserver
+    ```
+8. Open your web browser and navigate to [http://127.0.0.1:8000/](http://127.0.0.1:8000/) to use the application.
 
-To learn more about Next.js, take a look at the following resources:
+## Contributing
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Feel free to fork this repository, create a new feature branch, and send us a pull request. For bugs and feature requests, please create an issue.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## License
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+MIT License. See `LICENSE` for more information.

@@ -1,16 +1,20 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react";
-import { generateSessionId } from "./generSessionId";
-import ChatIcon from "../../public/img/chat.svg";
-import SendIcon from "../../public/img/send.svg";
+import { generateSessionId } from "@/components/generSessionId";
+
+
+import MessageList from "./messageList";
+import InputArea from "./inputArea";
+import PopMessage from "./popMessage";
+import ChatButton from "./chatButton";
 
 import  { useSelector, useDispatch } from 'react-redux';
 import { openChat, closeChat } from "@/redux/store";
 import moment from 'moment-timezone';
 
 const chatIconColor = "rgba(109, 40, 217, .5)";
-const SendIconNotActive = "rgba(156, 163, 175, .8)";
+
 
 export default function Chat({ isChatVisible }) {
   const isChatOpen = useSelector((state) => state.isChatOpen);
@@ -198,59 +202,25 @@ export default function Chat({ isChatVisible }) {
         className={`p-1 drop-shadow-xl flex-col z-50  h-[83svh] w-[90vw] sm:w-[50vw] md:w-[30vw] md:h-[65vh] fixed bottom-[9svh] right-1
         ${isChatOpen ? "slide-in-right flex" : wasOpened ? "slide-out-right flex" : "hidden"}`} //max-sm:left-1/2 max-sm:transform max-sm:-translate-x-1/2
       >
-        <div
-          className={"scrollable-chat flex-grow overflow-y-auto bg-gray-100/80 border rounded-xl border-primary mb-1 flex flex-col-reverse"}
-          ref={messagesContainerRef}
-        >
-            {isTyping && <div className="animate-pulse max-w-[80%] p-2 px-3 m-2 break-words bg-gray-200/90 border-2 border-violet-700/70 self-start rounded-tr-xl rounded-tl-xl rounded-br-xl">○○○</div>}
-            {errorMessage && <div className="animate-pulse max-w-[80%] p-2 px-3 m-2 break-words text-red-400 bg-gray-200/90 border-2 border-violet-700/70 self-start rounded-tr-xl rounded-tl-xl rounded-br-xl">{errorMessage}</div>}
-            {[...messages].reverse().map((message, index) => (
-                <div
-                    key={index}
-                    className={`max-w-[80%] p-2 m-2 break-words ${message.role === "user" ? "text-white border-2 border-transparent bg-violet-700/70 self-end rounded-tr-xl rounded-tl-xl rounded-bl-xl" : "bg-gray-100/90 border-2 border-violet-700/70 self-start rounded-tr-xl rounded-tl-xl rounded-br-xl text-gray-800"}`}
-                >
-                    {message.content}
-                </div>
-            ))}
-        </div>
-        <div className="flex items-center h-14 w-full border bg-gray-100/80 rounded-xl border-primary">
-          <input
-            ref={inputRef}
-            name="newMessage"
-            className="flex-grow p-2 h-[90%] rounded-xl bg-transparent outline-violet-700"
-            type="text"
-            placeholder="Type a message"
-            value={newMessage}
-            onChange={(e) => setNewMessage(e.target.value)}
-            onKeyDown={handleKeyPress}
-            autoComplete="off"
-          />
-          <button className="text-white p-1 pr-2 h-full rounded-r-xl bg-transparent" onClick={handleSendMessage}>
-            <SendIcon
-                className=" h-[70%] w-auto"
-                fill={newMessage ? chatIconColor : SendIconNotActive}
-            />
-          </button>
-        </div>
-      </div>
-      <div 
-        className={`scrollable-chat p-2 max-w-[40%] max-h-[40%] overflow-scroll z-50 break-words md:max-w-[25%] fixed bottom-[9svh] right-5 border rounded-tl-xl rounded-bl-xl rounded-tr-xl border-violet-700/70 bg-gray-100/70 text-gray-800
-        ${showMessage && !isChatOpen ? "block" : "hidden transition-opacity duration-[4000ms] opacity-0"}`}
-      >
-        {messages.length > 0 && messages[messages.length-1].content}
-      </div>
-      <button 
-        className="z-50 fixed bottom-1 right-1" 
-        ref={buttonRef}
-        onClick={handleChatButton}
-      >
-        <ChatIcon
-          className={`border border-primary rounded-xl bg-gray-100/50 hover:bg-gray-100/80 p-1 px-2 transform scale-x-[-1] w-[9svh] h-auto 
-          ${showMessage ? "animate-pulse" : ""}`}
-          fill={chatIconColor}
-          stroke='3'
+        <MessageList messages={messages} isTyping={isTyping} errorMessage={errorMessage} ref={messagesContainerRef} />
+        <InputArea 
+          newMessage={newMessage} 
+          setNewMessage={setNewMessage}
+          handleKeyPress={handleKeyPress}
+          handleSendMessage={handleSendMessage}
+          ref={inputRef}
         />
-      </button>
+      </div>
+      <PopMessage 
+        showMessage={showMessage} 
+        isChatOpen={isChatOpen}
+        messages={messages}
+      />
+      <ChatButton 
+        handleChatButton={handleChatButton}  
+        showMessage={showMessage}
+        ref={buttonRef}
+      />
     </div>
   );
 }

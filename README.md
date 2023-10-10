@@ -5,7 +5,7 @@ This is my portfolio Next.js app. It features a Chatbot Avatar that mimics my pe
 ## Features
 
 - Dynamic gradient background. ([code](https://github.com/Arden27/portfolio/blob/main/src/components/dynamicBackground.js))
-- Chatbot avatar. ([code](https://github.com/Arden27/portfolio/blob/main/src/components/chat.js))
+- Chatbot avatar. ([code](https://github.com/Arden27/portfolio/blob/main/src/components/chat/chat.js))
 - PostgreSQL chat conversation logging through Prisma.
 
 ## Upcoming updates

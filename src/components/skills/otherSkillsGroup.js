@@ -1,16 +1,16 @@
-import OtherSkillsItem from "./otherSkillsItem";
+import OtherSkillsItem from "./OtherSkillsItem";
 
 const OtherSkillsGroup = ({ title, skills }) => {
-    return (
-        <div className="bg-gray-100/50 rounded-2xl h-full border border-primary flex flex-col items-center">
-            <p className="text-gray-700 text-lg">{title}</p>
-            <div className="px-2 h-full w-full flex items-center justify-around">
-                {skills.map((skill, index) => (
-                    <OtherSkillsItem key={index} {...skill} />
-                ))}
-            </div>
-        </div>
-    );
-}
+  return (
+    <div className="flex h-full flex-col items-center rounded-2xl border border-primary bg-gray-100/50">
+      <p className="text-lg text-gray-700">{title}</p>
+      <div className="flex h-full w-full items-center justify-around px-2">
+        {skills.map((skill, index) => (
+          <OtherSkillsItem key={index} {...skill} />
+        ))}
+      </div>
+    </div>
+  );
+};
 
 export default OtherSkillsGroup;

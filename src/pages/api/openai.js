@@ -1,6 +1,6 @@
 // pages/api/openai.js
 import crypto from 'crypto'
-import { encryptedAIPrompt } from "@/components/encryptedAIPrompt";
+import { encryptedAIPrompt } from "@/components/chat/encryptedAIPrompt";
 
 // Decryption function
 function decrypt(text, key) {

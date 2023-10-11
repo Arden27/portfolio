@@ -4,7 +4,10 @@ import SendIcon from "@/../public/img/send.svg";
 const SendIconNotActive = "rgba(156, 163, 175, .8)";
 const chatIconColor = "rgba(109, 40, 217, .5)";
 
-function InputArea({ newMessage, setNewMessage, handleKeyPress, handleSendMessage }, ref) {
+function InputArea(
+  { newMessage, setNewMessage, handleKeyPress, handleSendMessage },
+  ref,
+) {
   return (
     <div className="flex h-14 w-full items-center rounded-xl border border-primary bg-gray-100/80">
       <input
@@ -31,4 +34,4 @@ function InputArea({ newMessage, setNewMessage, handleKeyPress, handleSendMessag
   );
 }
 
-export default React.forwardRef(InputArea)
+export default React.forwardRef(InputArea);

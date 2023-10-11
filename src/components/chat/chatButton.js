@@ -20,4 +20,4 @@ function ChatButton({ handleChatButton, showMessage }, ref) {
   );
 }
 
-export default React.forwardRef(ChatButton)
+export default React.forwardRef(ChatButton);

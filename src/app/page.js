@@ -1,11 +1,11 @@
 "use client";
 
-import NavBar from "@/components/TNav";
-import Projects from "@/components/projects/TProjects";
-import About from "@/components/TAbout";
-import Home from "@/components/THome";
-import Skills from "@/components/skills/TSkills";
-import Chat from "@/components/chat/TChat";
+import NavBar from "@/components/Nav";
+import Projects from "@/components/projects/Projects";
+import About from "@/components/About";
+import Home from "@/components/Home";
+import Skills from "@/components/skills/Skills";
+import Chat from "@/components/chat/Chat";
 
 import { useRef, useState } from "react";
 

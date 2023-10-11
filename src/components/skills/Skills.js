@@ -1,9 +1,9 @@
 "use client";
 
-import SkillsNav from "@/components/skills/TSkillsNav";
-import FrontendSkills from "@/components/skills/TFrontendSkills";
-import BackendSkills from "@/components/skills/TBackendSkills";
-import OtherSkills from "@/components/skills/TOtherSkills";
+import SkillsNav from "@/components/skills/SkillsNav";
+import FrontendSkills from "@/components/skills/FrontendSkills";
+import BackendSkills from "@/components/skills/BackendSkills";
+import OtherSkills from "@/components/skills/OtherSkills";
 
 import { useRef } from "react";
 

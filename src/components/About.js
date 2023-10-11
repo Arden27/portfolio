@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import Contacts from "./TContacts";
+import Contacts from "./Contacts";
 import { useSelector, useDispatch } from "react-redux";
 import { closeChat, openChat, knock } from "@/redux/store";
 

@@ -3,10 +3,10 @@
 import { useState, useEffect, useRef } from "react";
 import { generateSessionId } from "@/components/generSessionId";
 
-import MessageList from "./TMessageList";
-import InputArea from "./TInputArea";
-import PopMessage from "./TPopMessage";
-import ChatButton from "./TChatButton";
+import MessageList from "./MessageList";
+import InputArea from "./InputArea";
+import PopMessage from "./PopMessage";
+import ChatButton from "./ChatButton";
 
 import { useSelector, useDispatch } from "react-redux";
 import { openChat, closeChat } from "@/redux/store";

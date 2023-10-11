@@ -1,4 +1,4 @@
-import OtherSkillsGroup from "./TOtherSkillsGroup";
+import OtherSkillsGroup from "./OtherSkillsGroup";
 
 const skillGroups = [
   {

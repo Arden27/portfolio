@@ -1,4 +1,4 @@
-import SkillCard from "./TSkillCard";
+import SkillCard from "./SkillCard";
 
 const skills = [
   { src: "/img/skills/html.png", alt: "HTML icon", name: "HTML" },

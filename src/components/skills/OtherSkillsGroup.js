@@ -1,4 +1,4 @@
-import OtherSkillsItem from "./TOtherSkillsItem";
+import OtherSkillsItem from "./OtherSkillsItem";
 
 const OtherSkillsGroup = ({ title, skills }) => {
   return (

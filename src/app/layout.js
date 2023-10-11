@@ -10,7 +10,7 @@ import { Analytics } from "@vercel/analytics/react";
 import dynamic from "next/dynamic";
 
 const DynamicBackground = dynamic(
-  () => import("../components/DynamicBackground"),
+  () => import("../components/TDynamicBackground"),
   {
     ssr: false,
   },

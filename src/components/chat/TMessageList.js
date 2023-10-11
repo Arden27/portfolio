@@ -1,5 +1,5 @@
 import React from "react";
-import Message from "./Message";
+import Message from "./TMessage";
 
 function MessageList({ messages, isTyping, errorMessage }, ref) {
   return (

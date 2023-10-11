@@ -1,4 +1,4 @@
-import ProjectBox from "./ProjectBox";
+import ProjectBox from "./TProjectBox";
 
 const projects = [
   {

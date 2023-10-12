@@ -1,11 +1,19 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
+import { generateSessionId } from "@/utils/generateSessionId";
 // import { loadState, saveState } from './localStorage';
 
 // const persistedState = loadState();
+const getInitialSessionId = () => {
+  if (typeof window !== 'undefined') {
+    return localStorage.getItem("sessionId") || generateSessionId();
+  }
+  return null;  // Return null or some other value if on server-side
+};
 
 const initialState = {
   isChatOpen: false,
   knockKnock: false,
+  sessionId: getInitialSessionId(),
 };
 
 // const preloadedState = {
@@ -45,5 +53,9 @@ const store = configureStore({
 //     cart: store.getState().cart,
 //   });
 // });
+
+store.subscribe(() => {
+  localStorage.setItem("sessionId", store.getState().sessionId);
+});
 
 export default store;

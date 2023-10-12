@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 // custom hooks
-import useSessionId from "./hooks/useSessionId";
+//import useSessionId from "./hooks/useSessionId";
 import useMessages from "./hooks/useMessages";
 import useOutsideClick from "./hooks/useOutsideClick";
 import usePopupMessage from "./hooks/usePopupMessage";
@@ -20,6 +20,7 @@ import { openChat, closeChat } from "@/redux/store";
 
 export default function Chat({ isChatVisible }) {
   const isChatOpen = useSelector((state) => state.isChatOpen);
+  const sessionId = useSelector((state) => state.sessionId);
   const [wasOpened, setWasOpened] = useState(false);
   const [messages, updateMessages] = useMessages();
   const [newMessage, setNewMessage] = useState("");
@@ -27,10 +28,8 @@ export default function Chat({ isChatVisible }) {
   const inputRef = useRef(null);
   const node = useRef();
   const buttonRef = useRef(null);
-  //const [isTyping, setIsTyping] = useState(false);
   const knockKnock = useSelector((state) => state.knockKnock);
-  //const [errorMessage, setErrorMessage] = useState("");
-  const sessionId = useSessionId();
+  //const sessionId = useSessionId();
   const showMessage = usePopupMessage(messages, isChatOpen);
   const {sendMessage, isTyping, errorMessage} = useSendMessage(sessionId)
 

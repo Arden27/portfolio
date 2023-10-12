@@ -2,10 +2,11 @@
 
 import { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
+
 // custom hooks
 import useSessionId from "./useSessionId";
-import { generateSessionId } from "@/components/generSessionId";
-
+import useMessages from "./useMessages";
+// components
 import MessageList from "./MessageList";
 import InputArea from "./InputArea";
 import PopMessage from "./PopMessage";
@@ -19,7 +20,7 @@ const chatIconColor = "rgba(109, 40, 217, .5)";
 export default function Chat({ isChatVisible }) {
   const isChatOpen = useSelector((state) => state.isChatOpen);
   const [wasOpened, setWasOpened] = useState(false);
-  const [messages, setMessages] = useState([]);
+  const [messages, updateMessages] = useMessages();
   const [newMessage, setNewMessage] = useState("");
   const messagesContainerRef = useRef(null);
   const inputRef = useRef(null);
@@ -32,13 +33,6 @@ export default function Chat({ isChatVisible }) {
   const sessionId = useSessionId();
 
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    const storedMessages = localStorage.getItem("messages");
-    if (storedMessages) {
-      setMessages(JSON.parse(storedMessages));
-    }
-  }, []);
 
   useEffect(() => {
     if (isChatOpen && inputRef.current) {
@@ -68,14 +62,7 @@ export default function Chat({ isChatVisible }) {
 
   useEffect(() => {
     if (knockKnock && messages.length === 0) {
-      setMessages((prevMessages) => {
-        const updatedMessages = [
-          ...prevMessages,
-          { role: "assistant", content: "Knock knock 😇" },
-        ];
-        localStorage.setItem("messages", JSON.stringify(messages));
-        return updatedMessages;
-      });
+      updateMessages({ role: "assistant", content: "Knock knock 😇" });
     }
   }, [knockKnock]);
 
@@ -87,14 +74,7 @@ export default function Chat({ isChatVisible }) {
     }
     if (isChatOpen && messages.length === 0) {
       setTimeout(() => {
-        setMessages((prevMessages) => {
-          const updatedMessages = [
-            ...prevMessages,
-            { role: "assistant", content: "Hello 😉" },
-          ];
-          localStorage.setItem("messages", JSON.stringify(messages));
-          return updatedMessages;
-        });
+        updateMessages({ role: "assistant", content: "Hello 😉" });
       }, 2000);
     }
   }, [messages, isChatOpen]);
@@ -131,14 +111,7 @@ export default function Chat({ isChatVisible }) {
       .format("YYYY-MM-DDTHH:mm:ss.SSS[Z]");
 
     // First update the local state
-    setMessages((prevMessages) => {
-      const updatedMessages = [
-        ...prevMessages,
-        { role: "user", content: newMessage },
-      ];
-      localStorage.setItem("messages", JSON.stringify(messages));
-      return updatedMessages;
-    });
+    updateMessages({ role: "user", content: newMessage });
 
     setTimeout(async () => {
       setIsTyping(true);
@@ -189,14 +162,7 @@ export default function Chat({ isChatVisible }) {
             .format("YYYY-MM-DDTHH:mm:ss.SSS[Z]");
 
           // Update the state to include the assistant's reply
-          setMessages((prevMessages) => {
-            const updatedMessages = [
-              ...prevMessages,
-              { role: "assistant", content: assistant_response },
-            ];
-            localStorage.setItem("messages", JSON.stringify(messages));
-            return updatedMessages;
-          });
+          updateMessages({ role: "assistant", content: assistant_response });
           setIsTyping(false);
           // Here you call the database endpoint
           await fetch("/api/db/chat", {

@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 // custom hooks
 import useSessionId from "./useSessionId";
 import useMessages from "./useMessages";
+import useOutsideClick from "./useOutsideClick";
 // components
 import MessageList from "./MessageList";
 import InputArea from "./InputArea";
@@ -14,8 +15,6 @@ import ChatButton from "./ChatButton";
 
 import { openChat, closeChat } from "@/redux/store";
 import moment from "moment-timezone";
-
-const chatIconColor = "rgba(109, 40, 217, .5)";
 
 export default function Chat({ isChatVisible }) {
   const isChatOpen = useSelector((state) => state.isChatOpen);
@@ -40,25 +39,9 @@ export default function Chat({ isChatVisible }) {
     }
   }, [isChatOpen]);
 
-  const handleClickOutside = (e) => {
-    if (
-      node.current.contains(e.target) ||
-      buttonRef.current.contains(e.target)
-    ) {
-      return;
-    }
-    dispatch(closeChat());
-  };
-
-  useEffect(() => {
-    // Add when mounted
-    document.addEventListener("mousedown", handleClickOutside);
-
-    // Return function to be called when unmounted
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
+  // close chat window on click outside, node and buttonRef are areas to ignore
+  const handleOutsideClick = () => dispatch(closeChat());
+  useOutsideClick([node, buttonRef], handleOutsideClick);
 
   useEffect(() => {
     if (knockKnock && messages.length === 0) {

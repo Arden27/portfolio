@@ -4,9 +4,9 @@ import { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 // custom hooks
-import useSessionId from "./useSessionId";
-import useMessages from "./useMessages";
-import useOutsideClick from "./useOutsideClick";
+import useSessionId from "./hooks/useSessionId";
+import useMessages from "./hooks/useMessages";
+import useOutsideClick from "./hooks/useOutsideClick";
 // components
 import MessageList from "./MessageList";
 import InputArea from "./InputArea";

@@ -11,7 +11,6 @@ import InputArea from "./InputArea";
 import PopMessage from "./PopMessage";
 import ChatButton from "./ChatButton";
 
-
 import { openChat, closeChat } from "@/redux/store";
 import moment from "moment-timezone";
 
@@ -42,10 +41,6 @@ export default function Chat({ isChatVisible }) {
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("messages", JSON.stringify(messages));
-  }, [messages]);
-
-  useEffect(() => {
     if (isChatOpen && inputRef.current) {
       inputRef.current.focus();
     }
@@ -73,10 +68,14 @@ export default function Chat({ isChatVisible }) {
 
   useEffect(() => {
     if (knockKnock && messages.length === 0) {
-      setMessages((prevMessages) => [
-        ...prevMessages,
-        { role: "assistant", content: "Knock knock 😇" },
-      ]);
+      setMessages((prevMessages) => {
+        const updatedMessages = [
+          ...prevMessages,
+          { role: "assistant", content: "Knock knock 😇" },
+        ];
+        localStorage.setItem("messages", JSON.stringify(messages));
+        return updatedMessages;
+      });
     }
   }, [knockKnock]);
 
@@ -88,10 +87,14 @@ export default function Chat({ isChatVisible }) {
     }
     if (isChatOpen && messages.length === 0) {
       setTimeout(() => {
-        setMessages((prevMessages) => [
-          ...prevMessages,
-          { role: "assistant", content: "Hello 😉" },
-        ]);
+        setMessages((prevMessages) => {
+          const updatedMessages = [
+            ...prevMessages,
+            { role: "assistant", content: "Hello 😉" },
+          ];
+          localStorage.setItem("messages", JSON.stringify(messages));
+          return updatedMessages;
+        });
       }, 2000);
     }
   }, [messages, isChatOpen]);
@@ -128,10 +131,14 @@ export default function Chat({ isChatVisible }) {
       .format("YYYY-MM-DDTHH:mm:ss.SSS[Z]");
 
     // First update the local state
-    setMessages((prevMessages) => [
-      ...prevMessages,
-      { role: "user", content: newMessage },
-    ]);
+    setMessages((prevMessages) => {
+      const updatedMessages = [
+        ...prevMessages,
+        { role: "user", content: newMessage },
+      ];
+      localStorage.setItem("messages", JSON.stringify(messages));
+      return updatedMessages;
+    });
 
     setTimeout(async () => {
       setIsTyping(true);
@@ -182,10 +189,14 @@ export default function Chat({ isChatVisible }) {
             .format("YYYY-MM-DDTHH:mm:ss.SSS[Z]");
 
           // Update the state to include the assistant's reply
-          setMessages((prevMessages) => [
-            ...prevMessages,
-            { role: "assistant", content: assistant_response },
-          ]);
+          setMessages((prevMessages) => {
+            const updatedMessages = [
+              ...prevMessages,
+              { role: "assistant", content: assistant_response },
+            ];
+            localStorage.setItem("messages", JSON.stringify(messages));
+            return updatedMessages;
+          });
           setIsTyping(false);
           // Here you call the database endpoint
           await fetch("/api/db/chat", {

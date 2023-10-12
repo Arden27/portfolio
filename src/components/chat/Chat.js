@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 import useSessionId from "./hooks/useSessionId";
 import useMessages from "./hooks/useMessages";
 import useOutsideClick from "./hooks/useOutsideClick";
+import usePopupMessage from "./hooks/usePopupMessage";
 // components
 import MessageList from "./MessageList";
 import InputArea from "./InputArea";
@@ -27,9 +28,9 @@ export default function Chat({ isChatVisible }) {
   const buttonRef = useRef(null);
   const [isTyping, setIsTyping] = useState(false);
   const knockKnock = useSelector((state) => state.knockKnock);
-  const [showMessage, setShowMessage] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const sessionId = useSessionId();
+  const showMessage = usePopupMessage(messages, isChatOpen);
 
   const dispatch = useDispatch();
 
@@ -61,19 +62,6 @@ export default function Chat({ isChatVisible }) {
       }, 2000);
     }
   }, [messages, isChatOpen]);
-
-  useEffect(() => {
-    if (
-      !isChatOpen &&
-      messages.length > 0 &&
-      messages[messages.length - 1].role === "assistant"
-    ) {
-      setShowMessage(true);
-      setTimeout(() => {
-        setShowMessage(false);
-      }, 4000);
-    }
-  }, [messages]);
 
   const handleChatButton = () => {
     if (isChatOpen) {

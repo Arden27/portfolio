@@ -1,6 +1,9 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { useSelector, useDispatch } from "react-redux";
+// custom hooks
+import useSessionId from "./useSessionId";
 import { generateSessionId } from "@/components/generSessionId";
 
 import MessageList from "./MessageList";
@@ -8,7 +11,7 @@ import InputArea from "./InputArea";
 import PopMessage from "./PopMessage";
 import ChatButton from "./ChatButton";
 
-import { useSelector, useDispatch } from "react-redux";
+
 import { openChat, closeChat } from "@/redux/store";
 import moment from "moment-timezone";
 
@@ -27,18 +30,7 @@ export default function Chat({ isChatVisible }) {
   const knockKnock = useSelector((state) => state.knockKnock);
   const [showMessage, setShowMessage] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const [sessionId, setSessionId] = useState(null);
-
-  useEffect(() => {
-    const existingSessionId = localStorage.getItem("sessionId");
-    if (existingSessionId) {
-      setSessionId(existingSessionId);
-    } else {
-      const newSessionId = generateSessionId();
-      localStorage.setItem("sessionId", newSessionId);
-      setSessionId(newSessionId);
-    }
-  }, []);
+  const sessionId = useSessionId();
 
   const dispatch = useDispatch();
 

@@ -8,6 +8,7 @@ import useSessionId from "./hooks/useSessionId";
 import useMessages from "./hooks/useMessages";
 import useOutsideClick from "./hooks/useOutsideClick";
 import usePopupMessage from "./hooks/usePopupMessage";
+import useSendMessage from "./hooks/useSendMessage";
 // components
 import MessageList from "./MessageList";
 import InputArea from "./InputArea";
@@ -15,7 +16,7 @@ import PopMessage from "./PopMessage";
 import ChatButton from "./ChatButton";
 
 import { openChat, closeChat } from "@/redux/store";
-import moment from "moment-timezone";
+//import moment from "moment-timezone";
 
 export default function Chat({ isChatVisible }) {
   const isChatOpen = useSelector((state) => state.isChatOpen);
@@ -26,11 +27,12 @@ export default function Chat({ isChatVisible }) {
   const inputRef = useRef(null);
   const node = useRef();
   const buttonRef = useRef(null);
-  const [isTyping, setIsTyping] = useState(false);
+  //const [isTyping, setIsTyping] = useState(false);
   const knockKnock = useSelector((state) => state.knockKnock);
-  const [errorMessage, setErrorMessage] = useState("");
+  //const [errorMessage, setErrorMessage] = useState("");
   const sessionId = useSessionId();
   const showMessage = usePopupMessage(messages, isChatOpen);
+  const {sendMessage, isTyping, errorMessage} = useSendMessage(sessionId)
 
   const dispatch = useDispatch();
 
@@ -72,90 +74,17 @@ export default function Chat({ isChatVisible }) {
     }
   };
 
-  const handleSendMessage = () => {
+  const handleSendMessage = async () => {
     if (newMessage.trim() === "") return;
     setNewMessage("");
-    setErrorMessage("");
-
-    const sentAt = moment()
-      .tz("Europe/Warsaw")
-      .format("YYYY-MM-DDTHH:mm:ss.SSS[Z]");
-
-    // First update the local state
     updateMessages({ role: "user", content: newMessage });
-
-    setTimeout(async () => {
-      setIsTyping(true);
-      try {
-        // The API expects the messages in the order they were exchanged
-        const updatedMessages = [
-          ...messages,
-          { role: "user", content: newMessage }, // Add the new user message to the end
-        ];
-
-        const response = await fetch("/api/openai", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ messages: updatedMessages }),
-        });
-
-        if (response.status === 429) {
-          const data = await response.json();
-          const regex = /Please try again in (\d+)s\./;
-          const matches = data.error.message.match(regex);
-          if (matches && matches[1]) {
-            const waitTimeSeconds = parseInt(matches[1]);
-            console.error(
-              "Rate limit reached. Please wait for",
-              waitTimeSeconds,
-              "seconds...",
-            );
-            setErrorMessage(
-              `Rate limit reached. Please wait for ${waitTimeSeconds} seconds...`,
-            );
-          }
-          setIsTyping(false);
-        } else if (!response.ok) {
-          setIsTyping(false);
-          setErrorMessage(
-            "Error calling chat API: " + response.status.toString(),
-          );
-          console.error("OpenAI Error:", await response.text());
-        } else {
-          // code for successful response
-          const data = await response.json();
-          const assistant_response = data.choices[0].message.content;
-
-          const receivedAt = moment()
-            .tz("Europe/Warsaw")
-            .format("YYYY-MM-DDTHH:mm:ss.SSS[Z]");
-
-          // Update the state to include the assistant's reply
-          updateMessages({ role: "assistant", content: assistant_response });
-          setIsTyping(false);
-          // Here you call the database endpoint
-          await fetch("/api/db/chat", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              userMessage: newMessage,
-              assistantMessage: assistant_response,
-              sessionId: sessionId,
-              sentAt: sentAt,
-              receivedAt: receivedAt,
-            }),
-          });
-        }
-      } catch (error) {
-        setIsTyping(false);
-        setErrorMessage("Error calling the server: " + error.toString());
-      }
-    }, 500);
-  };
+    try {
+      const assistant_response = await sendMessage(messages, newMessage);
+      updateMessages({ role: "assistant", content: assistant_response });
+    } catch (error) {
+      console.error('Error sending message:', error);
+    }
+  }
 
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {

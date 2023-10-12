@@ -1,9 +1,11 @@
 import { useState } from "react";
 import moment from "moment-timezone";
+import useSaveToDB from "./useSaveToDB";
 
 export default function useSendMessage(sessionId) {
   const [isTyping, setIsTyping] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const { saveToDB } = useSaveToDB(sessionId);
 
   function sendMessage(messages, newMessage) {
     return new Promise(async (resolve, reject) => {
@@ -62,24 +64,13 @@ export default function useSendMessage(sessionId) {
           } else {
             const data = await response.json();
             const assistant_response = data.choices[0].message.content;
+            
             const receivedAt = moment()
               .tz("Europe/Warsaw")
               .format("YYYY-MM-DDTHH:mm:ss.SSS[Z]");
 
+            saveToDB(newMessage, assistant_response, sentAt, receivedAt);
             setIsTyping(false);
-            await fetch("/api/db/chat", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                userMessage: newMessage,
-                assistantMessage: assistant_response,
-                sessionId: sessionId,
-                sentAt: sentAt,
-                receivedAt: receivedAt,
-              }),
-            });
             resolve(assistant_response);
           }
         } catch (error) {

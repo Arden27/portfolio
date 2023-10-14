@@ -4,11 +4,11 @@ import { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 // custom hooks
-//import useSessionId from "./hooks/useSessionId";
 import useMessages from "./hooks/useMessages";
 import useOutsideClick from "./hooks/useOutsideClick";
 import usePopupMessage from "./hooks/usePopupMessage";
 import useSendMessage from "./hooks/useSendMessage";
+import useSaveLogToDB from "@/hooks/useSaveLogToDB";
 // components
 import MessageList from "./MessageList";
 import InputArea from "./InputArea";
@@ -16,7 +16,6 @@ import PopMessage from "./PopMessage";
 import ChatButton from "./ChatButton";
 
 import { openChat, closeChat } from "@/redux/store";
-//import moment from "moment-timezone";
 
 export default function Chat({ isChatVisible }) {
   const isChatOpen = useSelector((state) => state.isChatOpen);
@@ -29,11 +28,22 @@ export default function Chat({ isChatVisible }) {
   const node = useRef();
   const buttonRef = useRef(null);
   const knockKnock = useSelector((state) => state.knockKnock);
-  //const sessionId = useSessionId();
   const showMessage = usePopupMessage(messages, isChatOpen);
-  const {sendMessage, isTyping, errorMessage} = useSendMessage(sessionId)
+  const { sendMessage, isTyping, errorMessage } = useSendMessage();
+  
+  const { saveLogToDB } = useSaveLogToDB("Chat");
 
   const dispatch = useDispatch();
+
+  const initialLoadRef = useRef(true)
+  
+  useEffect(() => {
+    if(initialLoadRef.current){
+      initialLoadRef.current = false;
+      saveLogToDB("hello from chat");
+    }
+    
+  }, [])
 
   useEffect(() => {
     if (isChatOpen && inputRef.current) {
@@ -81,9 +91,9 @@ export default function Chat({ isChatVisible }) {
       const assistant_response = await sendMessage(messages, newMessage);
       updateMessages({ role: "assistant", content: assistant_response });
     } catch (error) {
-      console.error('Error sending message:', error);
+      console.error("Error sending message:", error);
     }
-  }
+  };
 
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {

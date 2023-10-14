@@ -9,9 +9,12 @@ import Chat from "@/components/chat/Chat";
 
 import { useRef, useState } from "react";
 
+//import useSaveLog from "@/hooks/useSaveLog";
+
 export default function Page() {
   const mainRef = useRef();
   const [isVisible, setIsVisible] = useState(false);
+  //const saveLog = useSaveLog()
 
   return (
     <main

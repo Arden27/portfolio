@@ -1,5 +1,8 @@
-export default function useSaveToDB(sessionId) {
-    async function saveToDB(newMessage, assistant_response, sentAt, receivedAt) {
+import { useSelector } from "react-redux";
+
+export default function useSaveMessagesToDB() {
+    const sessionId = useSelector((state) => state.sessionId)
+    async function saveMessagesToDB(newMessage, assistant_response, sentAt, receivedAt) {
       try {
         const response = await fetch("/api/db/chat", {
           method: "POST",
@@ -24,6 +27,6 @@ export default function useSaveToDB(sessionId) {
       }
     }
   
-    return { saveToDB };
+    return { saveMessagesToDB };
   }
   

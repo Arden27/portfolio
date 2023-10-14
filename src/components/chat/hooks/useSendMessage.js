@@ -1,11 +1,13 @@
 import { useState } from "react";
 import moment from "moment-timezone";
-import useSaveToDB from "./useSaveToDB";
+import useSaveMessagesToDB from "./useSaveMessagesToDB";
+import { useSelector } from "react-redux";
 
-export default function useSendMessage(sessionId) {
+export default function useSendMessage() {
+  const sessionId = useSelector((state) => state.sessionId)
   const [isTyping, setIsTyping] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const { saveToDB } = useSaveToDB(sessionId);
+  const { saveMessagesToDB } = useSaveMessagesToDB(sessionId);
 
   function sendMessage(messages, newMessage) {
     return new Promise(async (resolve, reject) => {
@@ -69,7 +71,7 @@ export default function useSendMessage(sessionId) {
               .tz("Europe/Warsaw")
               .format("YYYY-MM-DDTHH:mm:ss.SSS[Z]");
 
-            saveToDB(newMessage, assistant_response, sentAt, receivedAt);
+            saveMessagesToDB(newMessage, assistant_response, sentAt, receivedAt);
             setIsTyping(false);
             resolve(assistant_response);
           }

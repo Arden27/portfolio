@@ -30,20 +30,19 @@ export default function Chat({ isChatVisible }) {
   const knockKnock = useSelector((state) => state.knockKnock);
   const showMessage = usePopupMessage(messages, isChatOpen);
   const { sendMessage, isTyping, errorMessage } = useSendMessage();
-  
-  const { saveLogToDB } = useSaveLogToDB("Chat");
+
+  const { saveLogToDB } = useSaveLogToDB();
 
   const dispatch = useDispatch();
 
-  const initialLoadRef = useRef(true)
-  
-  useEffect(() => {
-    if(initialLoadRef.current){
-      initialLoadRef.current = false;
-      saveLogToDB("hello from chat");
-    }
-    
-  }, [])
+  // const initialLoadRef = useRef(true)
+
+  // useEffect(() => {
+  //   if(initialLoadRef.current){
+  //     initialLoadRef.current = false;
+  //     saveLogToDB("hello from chat");
+  //   }
+  // }, [])
 
   useEffect(() => {
     if (isChatOpen && inputRef.current) {
@@ -52,7 +51,12 @@ export default function Chat({ isChatVisible }) {
   }, [isChatOpen]);
 
   // close chat window on click outside, node and buttonRef are areas to ignore
-  const handleOutsideClick = () => dispatch(closeChat());
+  const handleOutsideClick = () => {
+    if(isChatOpen){
+      dispatch(closeChat());
+    saveLogToDB("chat closed by click outside");
+    }
+  };
   useOutsideClick([node, buttonRef], handleOutsideClick);
 
   useEffect(() => {
@@ -77,9 +81,11 @@ export default function Chat({ isChatVisible }) {
   const handleChatButton = () => {
     if (isChatOpen) {
       dispatch(closeChat());
+      saveLogToDB("chat closed");
     } else {
       setWasOpened(true);
       dispatch(openChat());
+      saveLogToDB("chat opened");
     }
   };
 

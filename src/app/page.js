@@ -7,14 +7,17 @@ import Home from "@/components/Home";
 import Skills from "@/components/skills/Skills";
 import Chat from "@/components/chat/Chat";
 
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 
-//import useSaveLog from "@/hooks/useSaveLog";
+import useSaveLogToDB from "@/hooks/useSaveLogToDB";
+import useLogUserExit from "@/hooks/useLogUserExit";
 
 export default function Page() {
+  useLogUserExit();
+
+  useSaveLogToDB("Page rendered")
   const mainRef = useRef();
   const [isVisible, setIsVisible] = useState(false);
-  //const saveLog = useSaveLog()
 
   return (
     <main

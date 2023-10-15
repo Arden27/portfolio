@@ -2,7 +2,7 @@ import moment from "moment-timezone";
 import { useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 
-export default function useSaveLogToDB(optionalRenderedComponentName) {
+export default function useSaveLogToDB(optionalOnRenderLogMessage) {
   const initialLoadRef = useRef(true); // to prevent double logging on double invocation
   const sessionId = useSelector((state) => state.sessionId)
 
@@ -36,9 +36,9 @@ export default function useSaveLogToDB(optionalRenderedComponentName) {
   }
   // optional logging of component render
   useEffect(() => {
-    if(optionalRenderedComponentName && initialLoadRef.current){
+    if(optionalOnRenderLogMessage && initialLoadRef.current){
       initialLoadRef.current = false;
-      saveLogToDB(`component ${optionalRenderedComponentName} rendered`);
+      saveLogToDB(optionalOnRenderLogMessage);
     }
   }, []);
 

@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { openChat, closeChat } from "@/redux/store";
 import GitHubIcon from "@/../public/img/github.svg";
 import OpenIcon from "@/../public/img/open.svg";
+import useSaveLogToDB from "@/hooks/useSaveLogToDB";
 
 const iconColor = "rgb(55, 65, 81)";
 
@@ -18,6 +19,7 @@ export default function ProjectBox({
 }) {
   const [easeIn, setEaseIn] = useState(true);
   const isChatOpen = useSelector((state) => state.isChatOpen);
+  const {saveLogToDB} = useSaveLogToDB();
 
   const dispatch = useDispatch();
 
@@ -30,9 +32,11 @@ export default function ProjectBox({
   const handleVisitClick = () => {
     if (isLocal) {
       isChatOpen ? dispatch(closeChat()) : dispatch(openChat());
+      saveLogToDB(`${title} Chat opened fron project click`)
     } else {
       if (typeof window !== "undefined") {
         window.open(link, "_blank");
+        saveLogToDB(`${title} Project opened`)
       }
     }
   };
@@ -40,6 +44,7 @@ export default function ProjectBox({
   const handleCodeClick = () => {
     if (typeof window !== "undefined") {
       window.open(code, "_blank");
+      saveLogToDB(`${title} Code opened`)
     }
   };
 

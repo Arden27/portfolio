@@ -15,7 +15,7 @@ import useSendExitLog from "@/hooks/useSendExitLog";
 export default function Page() {
   useSendExitLog(); // to 'fire-and-forget' log about user leaving the page
 
-  useSaveLogToDB("Page rendered") // to log user enter
+  useSaveLogToDB("Website opened") // to log user enter
   const mainRef = useRef();
   const [isVisible, setIsVisible] = useState(false);
 

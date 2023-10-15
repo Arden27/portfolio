@@ -1,26 +1,26 @@
-// hook for sending fire-and-forget log to the server 
-// when user closes the page/browser of navigates to another page
-// shoud be added at the root page of the app
+// Hook for sending a "fire-and-forget" log to the server when the user closes the 
+// page/browser or navigates to another page. This hook should be added at the root page of the app.
 
 import { useEffect, useRef } from "react";
 import moment from "moment-timezone";
 import { useSelector } from "react-redux";
 
-export default function useLogUserExit() {
-  // Check if we are on the client side
+export default function useSendExitLog() {
+  // Ensure we are on the client side (used for server-side rendered applications)
   if (typeof window === "undefined") return;
 
   const sessionId = useSelector((state) => state.sessionId);
   const sessionIdRef = useRef(null);
 
-  // sessionRef with useEffect used to set sessionId in case if
-  // redux hook fired before redux creates the id
+  // Use a ref with useEffect to set sessionId. This ensures that we capture the most recent 
+  // sessionId even if the Redux update happens after the hook's initialization.
   useEffect(() => {
     if (sessionId !== null && sessionId !== undefined) {
       sessionIdRef.current = sessionId;
     }
   }, [sessionId]);
 
+  // Send a log when the user is about to leave the page
   useEffect(() => {
     function sendUserLeftLog() {
       const logAt = moment()
@@ -32,19 +32,21 @@ export default function useLogUserExit() {
         logAt: logAt,
       };
 
-      // the navigator.sendBecon by default send text/plain;charset=UTF-8
+      // The navigator.sendBeacon by default sends text/plain;charset=UTF-8.
       // By wrapping the data in a Blob and specifying the MIME type as application/json, 
-      // you're explicitly setting the content type to be JSON. 
-      // This way, the server knows how to interpret the incoming data correctly.
+      // we explicitly set the content type to be JSON. This way, the server knows how to interpret the incoming data correctly.
       const blob = new Blob([JSON.stringify(data)], {
         type: "application/json",
       });
-      // to fire-and-forget log
+
+      // Use navigator.sendBeacon for a fire-and-forget log
       navigator.sendBeacon("/api/db/log", blob);
     }
-    // event listener with "beforeunload" param used to catch the 
-    // user closing browser/tab or navigates to another page
+
+    // Add an event listener for the "beforeunload" event to detect when the user is about to leave the page.
     window.addEventListener("beforeunload", sendUserLeftLog);
+
+    // Cleanup the event listener when the component is unmounted.
     return () => window.removeEventListener("beforeunload", sendUserLeftLog);
   }, []);
 }

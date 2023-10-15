@@ -7,16 +7,7 @@ export default function useSaveLogToDB(optionalOnRenderLogMessage) {
   const sessionId = useSelector((state) => state.sessionId)
 
   function saveLogToDB(logMessage) {
-    if (typeof window === undefined) {
-      console.log("WINDOW is UNDEFINED in saveLogToDB function, returned");
-      return;
-    } else {
-        console.log("TYPEOF WINDOW in saveLogToDB function: ", typeof window)
-    }
-
-    if (!sessionId) {
-        console.log('Missing sessionId');
-      }
+    if (typeof window === undefined) return;
     
     const logAt = moment()
       .tz("Europe/Warsaw")

@@ -7,15 +7,15 @@ import Home from "@/components/Home";
 import Skills from "@/components/skills/Skills";
 import Chat from "@/components/chat/Chat";
 
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 
 import useSaveLogToDB from "@/hooks/useSaveLogToDB";
-import useLogUserExit from "@/hooks/useLogUserExit";
+import useSendExitLog from "@/hooks/useSendExitLog";
 
 export default function Page() {
-  useLogUserExit();
+  useSendExitLog(); // to 'fire-and-forget' log about user leaving the page
 
-  useSaveLogToDB("Page rendered")
+  useSaveLogToDB("Page rendered") // to log user enter
   const mainRef = useRef();
   const [isVisible, setIsVisible] = useState(false);
 

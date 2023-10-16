@@ -1,9 +1,11 @@
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 import Spinner from "../../public/img/spinner.svg";
+import useSaveLogToDB from "@/hooks/useSaveLogToDB";
 
 export default function Home({ isVisible, setIsVisible }) {
   const imageWrapperRef = useRef(null);
+  const {saveLogToDB} = useSaveLogToDB();
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -72,6 +74,7 @@ export default function Home({ isVisible, setIsVisible }) {
         <a
           href="#portfolio-section"
           className="inline-block cursor-pointer rounded-lg border border-primary bg-gray-300/75 px-5 py-2 text-gray-700 drop-shadow-xl transition-all duration-200 ease-in-out hover:border hover:border-violet-800 hover:text-violet-800 md:text-xl max-sm:text-[30%]"
+          onClick={() => saveLogToDB("Portfolio button clicked")}
         >
           Portfolio
         </a>

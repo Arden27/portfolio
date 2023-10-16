@@ -10,10 +10,10 @@ import usePopupMessage from "./hooks/usePopupMessage";
 import useSendMessage from "./hooks/useSendMessage";
 import useSaveLogToDB from "@/hooks/useSaveLogToDB";
 // components
-import MessageList from "./MessageList";
-import InputArea from "./InputArea";
-import PopMessage from "./PopMessage";
-import ChatButton from "./ChatButton";
+import MessageList from "./components/MessageList";
+import InputArea from "./components/InputArea";
+import PopMessage from "./components/PopMessage";
+import ChatButton from "./components/ChatButton";
 
 import { openChat, closeChat } from "@/redux/store";
 

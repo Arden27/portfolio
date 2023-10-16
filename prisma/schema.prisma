@@ -7,6 +7,7 @@
 // to deploy megration to production build
 // npx prisma migrate deploy
 
+
 generator client {
   provider = "prisma-client-js"
 }

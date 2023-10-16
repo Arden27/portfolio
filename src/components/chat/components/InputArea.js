@@ -9,11 +9,11 @@ function InputArea(
   ref,
 ) {
   return (
-    <div className="flex h-14 w-full items-center rounded-xl border border-primary bg-gray-100/80">
+    <div className="flex h-14 pl-1 w-full items-center rounded-xl border border-primary bg-gray-100/80">
       <input
         ref={ref}
         name="newMessage"
-        className="h-[90%] flex-grow rounded-xl bg-transparent p-2 outline-violet-700"
+        className="h-[90%] flex-grow rounded-xl bg-transparent p-2 focus:outline-none" //focus:ring-2 focus:ring-violet-700
         type="text"
         placeholder="Type a message"
         value={newMessage}

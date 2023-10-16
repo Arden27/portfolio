@@ -10,12 +10,12 @@ function MessageList({ messages, isTyping, errorMessage }, ref) {
       ref={ref}
     >
       {isTyping && (
-        <div className="m-2 max-w-[80%] animate-pulse self-start break-words rounded-br-xl rounded-tl-xl rounded-tr-xl border-2 border-violet-700/70 bg-gray-200/90 p-2 px-3">
+        <div className="m-2 max-w-[80%] animate-pulse self-start break-words rounded-br-xl rounded-tl-xl rounded-tr-xl border border-violet-700/70 bg-gray-200/90 p-2 px-3">
           ○○○
         </div>
       )}
       {errorMessage && (
-        <div className="m-2 max-w-[80%] animate-pulse self-start break-words rounded-br-xl rounded-tl-xl rounded-tr-xl border-2 border-violet-700/70 bg-gray-200/90 p-2 px-3 text-red-400">
+        <div className="m-2 max-w-[80%] animate-pulse self-start break-words rounded-br-xl rounded-tl-xl rounded-tr-xl border border-violet-700/70 bg-gray-200/90 p-2 px-3 text-red-400">
           {errorMessage}
         </div>
       )}

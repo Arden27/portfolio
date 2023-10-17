@@ -2,7 +2,7 @@
 // page/browser or navigates to another page. This hook should be added at the root page of the app.
 
 import { useEffect, useRef } from "react";
-import moment from "moment-timezone";
+import generateTimestamp from "@/utils/generateTimestamp";
 import { useSelector } from "react-redux";
 
 export default function useSendExitLog() {
@@ -23,9 +23,7 @@ export default function useSendExitLog() {
   // Send a log when the user is about to leave the page
   useEffect(() => {
     function sendUserLeftLog() {
-      const logAt = moment()
-        .tz("Europe/Warsaw")
-        .format("YYYY-MM-DDTHH:mm:ss.SSS[Z]");
+      const logAt = generateTimestamp()
       const data = {
         logMessage: "User left",
         sessionId: sessionIdRef.current,

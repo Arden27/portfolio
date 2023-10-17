@@ -19,7 +19,6 @@ import { openChat, closeChat } from "@/redux/store";
 
 export default function Chat({ isChatVisible }) {
   const isChatOpen = useSelector((state) => state.isChatOpen);
-  const sessionId = useSelector((state) => state.sessionId);
   const [wasOpened, setWasOpened] = useState(false);
   const [messages, updateMessages] = useMessages();
   const [newMessage, setNewMessage] = useState("");

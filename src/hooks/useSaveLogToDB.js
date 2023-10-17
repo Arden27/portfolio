@@ -1,4 +1,4 @@
-import moment from "moment-timezone";
+import generateTimestamp from "@/utils/generateTimestamp";
 import { useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 
@@ -9,9 +9,7 @@ export default function useSaveLogToDB(optionalOnRenderLogMessage) {
   function saveLogToDB(logMessage) {
     if (typeof window === undefined) return;
     
-    const logAt = moment()
-      .tz("Europe/Warsaw")
-      .format("YYYY-MM-DDTHH:mm:ss.SSS[Z]");
+    const logAt = generateTimestamp();
 
     fetch("/api/db/log", {
       method: "POST",

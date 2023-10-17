@@ -1,5 +1,5 @@
 import { useState } from "react";
-import moment from "moment-timezone";
+import generateTimestamp from "@/utils/generateTimestamp";
 import useSaveMessagesToDB from "./useSaveMessagesToDB";
 import { useSelector } from "react-redux";
 
@@ -18,9 +18,7 @@ export default function useSendMessage() {
 
       setErrorMessage("");
 
-      const sentAt = moment()
-        .tz("Europe/Warsaw")
-        .format("YYYY-MM-DDTHH:mm:ss.SSS[Z]");
+      const sentAt = generateTimestamp();
 
       setTimeout(async () => {
         setIsTyping(true);
@@ -67,9 +65,7 @@ export default function useSendMessage() {
             const data = await response.json();
             const assistant_response = data.choices[0].message.content;
             
-            const receivedAt = moment()
-              .tz("Europe/Warsaw")
-              .format("YYYY-MM-DDTHH:mm:ss.SSS[Z]");
+            const receivedAt = generateTimestamp();
 
             saveMessagesToDB(newMessage, assistant_response, sentAt, receivedAt);
             setIsTyping(false);

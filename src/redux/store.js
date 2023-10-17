@@ -4,16 +4,17 @@ import { generateSessionId } from "@/utils/generateSessionId";
 
 // const persistedState = loadState();
 const getInitialSessionId = () => {
-  if (typeof window !== 'undefined') {
+  if (typeof window !== "undefined") {
     return localStorage.getItem("sessionId") || generateSessionId();
   }
-  return null;  // Return null or some other value if on server-side
+  return null; // Return null or some other value if on server-side
 };
 
 const initialState = {
   isChatOpen: false,
   knockKnock: false,
   sessionId: getInitialSessionId(),
+  logs: [],
 };
 
 // const preloadedState = {
@@ -25,7 +26,6 @@ const appSlice = createSlice({
   name: "app",
   initialState,
   reducers: {
-    
     openChat: (state) => {
       state.isChatOpen = true;
     },
@@ -35,11 +35,18 @@ const appSlice = createSlice({
     knock: (state) => {
       state.knockKnock = true;
     },
+    addLog: (state, action) => {
+      newLog = {
+        logMessage: action.payload.message,
+        logAt: action.payload.logAt,
+      };
+      state.logs.push(mewLog);
+    },
     resetStore: () => initialState,
   },
 });
 
-export const { openChat, closeChat, knock, resetStore } = appSlice.actions;
+export const { openChat, closeChat, knock, addLog, resetStore } = appSlice.actions;
 
 const store = configureStore({
   reducer: appSlice.reducer,

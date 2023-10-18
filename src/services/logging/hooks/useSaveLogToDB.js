@@ -7,7 +7,6 @@ export default function useSaveLogToDB(optionalOnRenderLogMessage) {
   const dispatch = useDispatch();
   const initialLoadRef = useRef(true); // to prevent double logging on double invocation
   const sessionId = useSelector((state) => state.sessionId);
-  //const logs = useSelector((state) => state.logs);
 
   function saveLogToDB(logMessage, immediate = false) {
     if (typeof window === undefined) return;
@@ -27,8 +26,7 @@ export default function useSaveLogToDB(optionalOnRenderLogMessage) {
         }),
       });
     } else {
-      const batchedMessage = `${logMessage}` + " (batched)";
-      dispatch(addLog({ message: batchedMessage, logAt: logAt }));
+      dispatch(addLog({ message: logMessage, logAt: logAt }));
     }
   }
   // optional logging of component render

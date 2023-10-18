@@ -8,7 +8,7 @@ import useMessages from "./hooks/useMessages";
 import useOutsideClick from "./hooks/useOutsideClick";
 import usePopupMessage from "./hooks/usePopupMessage";
 import useSendMessage from "./hooks/useSendMessage";
-import useSaveLogToDB from "@/hooks/useSaveLogToDB";
+import useSaveLogToDB from "@/services/logging/hooks/useSaveLogToDB";
 // components
 import MessageList from "./components/MessageList";
 import InputArea from "./components/InputArea";

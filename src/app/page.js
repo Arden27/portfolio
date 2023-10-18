@@ -9,16 +9,15 @@ import Chat from "@/components/chat/Chat";
 
 import { useRef, useState } from "react";
 
-import useLoggingService from "@/hooks/useLoggingService";
-import useSaveLogToDB from "@/hooks/useSaveLogToDB";
-//import useSendExitLog from "@/hooks/useSendExitLog";
-import useSendExitLogBatch from "@/hooks/useSendExitLogBatch";
+import useLoggingService from "@/services/logging/hooks/useLoggingService";
+import useSaveLogToDB from "@/services/logging/hooks/useSaveLogToDB";
+import useSendExitLogBatch from "@/services/logging/hooks/useSendExitLogBatch";
 
 export default function Page() {
-  useLoggingService();
-  useSendExitLogBatch(); // to 'fire-and-forget' log about user leaving the page
-
+  useLoggingService(); // start logging service
+  useSendExitLogBatch(); // to 'fire-and-forget' log "user left" and batched logs on user closing the tab/browser
   useSaveLogToDB("Website opened") // to log user enter
+
   const mainRef = useRef();
   const [isVisible, setIsVisible] = useState(false);
 

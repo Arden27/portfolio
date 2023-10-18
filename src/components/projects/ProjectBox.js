@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { openChat, closeChat } from "@/redux/store";
 import GitHubIcon from "@/../public/img/github.svg";
 import OpenIcon from "@/../public/img/open.svg";
-import useSaveLogToDB from "@/hooks/useSaveLogToDB";
+import useSaveLogToDB from "@/services/logging/hooks/useSaveLogToDB";
 
 const iconColor = "rgb(55, 65, 81)";
 

@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { startLoggingService } from '@/services/loggingService';
+import { startLoggingService } from '@/services/logging/loggingService';
 import store from '@/redux/store';
 
 export default function useLoggingService() {

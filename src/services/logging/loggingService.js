@@ -1,17 +1,16 @@
-
 import { sliceLogs } from "@/redux/store";
 
-const defaultInterval = 20000;// Default interval: 60 seconds
+const defaultInterval = 10000; // Default interval: 60 seconds
 
 export function startLoggingService(store, interval = defaultInterval) {
-  if (typeof window === 'undefined') {
-
+  if (typeof window === "undefined") {
     return;
   }
-  
+
   console.log("starting logging service");
   setInterval(() => {
     const currentLogs = store.getState().logs;
+    console.log("log batch before send", currentLogs);
     if (currentLogs.length > 0) {
       // Send logs to the backend
       fetch("/api/db/batchLog", {
@@ -25,10 +24,9 @@ export function startLoggingService(store, interval = defaultInterval) {
         }),
       }).then((response) => {
         if (response.ok) {
-            
           store.dispatch(sliceLogs(currentLogs.length));
           console.log(`batch with ${currentLogs.length} logs sent succesfully`);
-          console.log(`batch after slice: `, store.getState().logs);
+          console.log(`batch after send: `, store.getState().logs);
         } else {
           console.error("Failed to send logs");
         }

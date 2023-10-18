@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 import Spinner from "../../public/img/spinner.svg";
-import useSaveLogToDB from "@/hooks/useSaveLogToDB";
+import useSaveLogToDB from "@/services/logging/hooks/useSaveLogToDB";
 
 export default function Home({ isVisible, setIsVisible }) {
   const imageWrapperRef = useRef(null);

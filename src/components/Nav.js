@@ -12,7 +12,6 @@ const NavBar = ({ mainRef, isHomeVisible }) => {
   const [navItemsVisible, setNavItemsVisible] = useState(false);
   const [initialRender, setInitialRender] = useState(true);
 
-  
   useEffect(() => {
     if (isHomeVisible) {
       setTimeout(() => {

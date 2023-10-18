@@ -42,14 +42,14 @@ const appSlice = createSlice({
       };
       state.logs.push(newLog);
     },
-    resetLogs: (state) => {
-      state.logs = []
+    sliceLogs: (state, action) => {
+      state.logs = state.logs.slice(action.payload);
     },
     resetStore: () => initialState,
   },
 });
 
-export const { openChat, closeChat, knock, addLog, resetLogs, resetStore } = appSlice.actions;
+export const { openChat, closeChat, knock, addLog, sliceLogs, resetStore } = appSlice.actions;
 
 const store = configureStore({
   reducer: appSlice.reducer,

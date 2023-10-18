@@ -36,17 +36,20 @@ const appSlice = createSlice({
       state.knockKnock = true;
     },
     addLog: (state, action) => {
-      newLog = {
+      const newLog = {
         logMessage: action.payload.message,
         logAt: action.payload.logAt,
       };
-      state.logs.push(mewLog);
+      state.logs.push(newLog);
+    },
+    resetLogs: (state) => {
+      state.logs = []
     },
     resetStore: () => initialState,
   },
 });
 
-export const { openChat, closeChat, knock, addLog, resetStore } = appSlice.actions;
+export const { openChat, closeChat, knock, addLog, resetLogs, resetStore } = appSlice.actions;
 
 const store = configureStore({
   reducer: appSlice.reducer,

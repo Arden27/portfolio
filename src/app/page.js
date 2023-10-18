@@ -9,11 +9,14 @@ import Chat from "@/components/chat/Chat";
 
 import { useRef, useState } from "react";
 
+import useLoggingService from "@/hooks/useLoggingService";
 import useSaveLogToDB from "@/hooks/useSaveLogToDB";
-import useSendExitLog from "@/hooks/useSendExitLog";
+//import useSendExitLog from "@/hooks/useSendExitLog";
+import useSendExitLogBatch from "@/hooks/useSendExitLogBatch";
 
 export default function Page() {
-  useSendExitLog(); // to 'fire-and-forget' log about user leaving the page
+  useLoggingService();
+  useSendExitLogBatch(); // to 'fire-and-forget' log about user leaving the page
 
   useSaveLogToDB("Website opened") // to log user enter
   const mainRef = useRef();

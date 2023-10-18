@@ -53,7 +53,7 @@ export default function Chat({ isChatVisible }) {
   const handleOutsideClick = () => {
     if(isChatOpen){
       dispatch(closeChat());
-    saveLogToDB("chat closed by click outside");
+    saveLogToDB("chat closed by click outside", true);
     }
   };
   useOutsideClick([node, buttonRef], handleOutsideClick);

@@ -3,6 +3,7 @@
 import { useEffect, useState, useRef } from "react";
 import NavButton from "./NavButton";
 import useSaveLogToDB from "@/services/logging/hooks/useSaveLogToDB";
+import useDebouncedSectionChangeLog from "./useDebouncedSectionChangeLog";
 
 const navButtons = [
   {
@@ -27,18 +28,8 @@ const navButtons = [
   },
 ];
 
-function debounce(func, delay) {
-  let debounceTimer;
-  return function (...args) {
-    const context = this;
-    clearTimeout(debounceTimer);
-    debounceTimer = setTimeout(() => func.apply(context, args), delay);
-  };
-}
-
 export default function NavBar({ mainRef, homeRef, skillsRef, portfolioRef, aboutRef, isHomeVisible }) {
   const [activeLink, setActiveLink] = useState("home-section");
-  //const [shadow, setShadow] = useState(false);
   const [scrollInitiator, setScrollInitiator] = useState(null); // Add this to track which link initiated the scroll
 
   // const isSafari = typeof navigator !== 'undefined' && /^((?!chrome|android).)*safari/i.test(navigator.userAgent) && !/Mobi|Android/i.test(navigator.userAgent);
@@ -47,12 +38,8 @@ export default function NavBar({ mainRef, homeRef, skillsRef, portfolioRef, abou
   const [initialRender, setInitialRender] = useState(true);
 
   const { saveLogToDB } = useSaveLogToDB();
-
-  //const [sectionRefs, setSectionRefs] = useState({});
-
+  const { debouncedSectionChangeLog } = useDebouncedSectionChangeLog(saveLogToDB);
   const sectionRefs = useRef({});
-
-  const [lastLoggedSection, setLastLoggedSection] = useState(null);
 
   useEffect(() => {
     sectionRefs.current = {
@@ -75,13 +62,6 @@ export default function NavBar({ mainRef, homeRef, skillsRef, portfolioRef, abou
     }
   }, [isHomeVisible]);
 
-  const logSectionChange = debounce((section) => {
-    if (section !== lastLoggedSection) {
-      saveLogToDB(`scrolled to ${section}`);
-      setLastLoggedSection(section);
-    }
-  }, 300);
-
   const handleScroll = () => {
     if (!mainRef.current) return;
     let currentSection = "home-section";
@@ -102,7 +82,7 @@ export default function NavBar({ mainRef, homeRef, skillsRef, portfolioRef, abou
     if (currentSection !== scrollInitiator) {
       setActiveLink(currentSection);
     }
-    logSectionChange(currentSection);
+    debouncedSectionChangeLog(currentSection);
   };
 
   useEffect(() => {

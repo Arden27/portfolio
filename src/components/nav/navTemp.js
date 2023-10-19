@@ -63,6 +63,17 @@ function NavButton({
   );
 }
 
+let prevScrollTop = 0;
+
+// function debounce(func, delay) {
+//   let debounceTimer;
+//   return function (...args) {
+//     const context = this;
+//     clearTimeout(debounceTimer);
+//     debounceTimer = setTimeout(() => func.apply(context, args), delay);
+//   };
+// }
+
 export default function NavBar({ mainRef, isHomeVisible }) {
   const [activeLink, setActiveLink] = useState("home-section");
   //const [shadow, setShadow] = useState(false);
@@ -72,6 +83,19 @@ export default function NavBar({ mainRef, isHomeVisible }) {
 
   const [navItemsVisible, setNavItemsVisible] = useState(false);
   const [initialRender, setInitialRender] = useState(true);
+
+  const [lastLoggedSection, setLastLoggedSection] = useState(null);
+
+  const [sectionRefs, setSectionRefs] = useState({});
+
+  useEffect(() => {
+    setSectionRefs({
+      "home-section": document.getElementById("home-section"),
+      "skills-section": document.getElementById("skills-section"),
+      "portfolio-section": document.getElementById("portfolio-section"),
+      "about-section": document.getElementById("about-section"),
+    });
+  }, []);
 
   const { saveLogToDB } = useSaveLogToDB();
 
@@ -87,31 +111,51 @@ export default function NavBar({ mainRef, isHomeVisible }) {
     }
   }, [isHomeVisible]);
 
+  // const logSectionChange = debounce((section) => {
+  //   if (section !== lastLoggedSection) {
+  //     saveLogToDB(`scrolled to ${section}`);
+  //     setLastLoggedSection(section);
+  //   }
+  // }, 300);
+
   const handleScroll = () => {
     if (!mainRef.current) return;
-    const sections = [
-      "home-section",
-      "skills-section",
-      "portfolio-section",
-      "about-section",
-    ];
+    // const sections = [
+    //   "home-section",
+    //   "skills-section",
+    //   "portfolio-section",
+    //   "about-section",
+    // ];
+    const currentScrollTop = mainRef.current.scrollTop;
+
+    // Only proceed if the user has scrolled a certain amount (e.g., more than 20px) or changed direction
+    if (
+      Math.abs(currentScrollTop - prevScrollTop) < 20 &&
+      currentScrollTop !== 0
+    ) {
+      return;
+    }
+
     let currentSection = "home-section";
     let smallestDistance = Infinity;
 
-    sections.forEach((id) => {
-      const section = document.getElementById(id);
-      const distance = Math.abs(mainRef.current.scrollTop - section.offsetTop);
+    for (const id in sectionRefs) {
+      const distance = Math.abs(currentScrollTop - sectionRefs[id].offsetTop);
 
       if (distance < smallestDistance) {
         smallestDistance = distance;
         currentSection = id;
       }
-    });
+    }
 
     // Only change the activeLink if the currentSection is not the scrollInitiator
     if (currentSection !== scrollInitiator) {
       setActiveLink(currentSection);
     }
+
+    // logSectionChange(currentSection);
+
+    prevScrollTop = currentScrollTop;
   };
 
   useEffect(() => {

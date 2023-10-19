@@ -62,7 +62,7 @@ export default function About({ mainRef }) {
     >
       {/* ${isAboutInView ? 'scale-[.60] -translate-y-[67%]' : ''} */}
       <div
-        className={`relative z-10 aspect-square h-[25vh] transform items-center justify-center rounded-full border border-primary bg-gray-100/50 p-2 transition duration-[2000ms] ease-in-out ${
+        className={`relative z-10 aspect-square h-[25vh] transform items-center justify-center rounded-full border border-gray-700 bg-gray-100/50 p-2 transition duration-[2000ms] ease-in-out ${
           isAboutInView ? "" : "translate-y-[67%] scale-[1.6]"
         }`}
       >

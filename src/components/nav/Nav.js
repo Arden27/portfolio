@@ -27,6 +27,15 @@ const navButtons = [
   },
 ];
 
+function debounce(func, delay) {
+  let debounceTimer;
+  return function (...args) {
+    const context = this;
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(() => func.apply(context, args), delay);
+  };
+}
+
 export default function NavBar({ mainRef, homeRef, skillsRef, portfolioRef, aboutRef, isHomeVisible }) {
   const [activeLink, setActiveLink] = useState("home-section");
   //const [shadow, setShadow] = useState(false);
@@ -42,6 +51,8 @@ export default function NavBar({ mainRef, homeRef, skillsRef, portfolioRef, abou
   //const [sectionRefs, setSectionRefs] = useState({});
 
   const sectionRefs = useRef({});
+
+  const [lastLoggedSection, setLastLoggedSection] = useState(null);
 
   useEffect(() => {
     sectionRefs.current = {
@@ -64,14 +75,15 @@ export default function NavBar({ mainRef, homeRef, skillsRef, portfolioRef, abou
     }
   }, [isHomeVisible]);
 
+  const logSectionChange = debounce((section) => {
+    if (section !== lastLoggedSection) {
+      saveLogToDB(`scrolled to ${section}`);
+      setLastLoggedSection(section);
+    }
+  }, 300);
+
   const handleScroll = () => {
     if (!mainRef.current) return;
-    // const sections = [
-    //   "home-section",
-    //   "skills-section",
-    //   "portfolio-section",
-    //   "about-section",
-    // ];
     let currentSection = "home-section";
     let smallestDistance = Infinity;
 
@@ -90,6 +102,7 @@ export default function NavBar({ mainRef, homeRef, skillsRef, portfolioRef, abou
     if (currentSection !== scrollInitiator) {
       setActiveLink(currentSection);
     }
+    logSectionChange(currentSection);
   };
 
   useEffect(() => {
@@ -127,16 +140,16 @@ export default function NavBar({ mainRef, homeRef, skillsRef, portfolioRef, abou
     <nav
       className={`fixed top-0 z-10 flex h-12 w-full items-center justify-around bg-transparent p-3 transition-shadow duration-500 ease-in-out md:justify-end md:pr-20`}
     >
-      {navButtons.map((button, index) => (
+      {navButtons.map(({name, section, transitionDelay}, index) => (
         <NavButton
           key={index}
-          name={button.name}
-          section={button.section}
+          name={name}
+          section={section}
           navItemsVisible={navItemsVisible}
           activeLink={activeLink}
           initialRender={initialRender}
           handleNavLinkClick={handleNavLinkClick}
-          transitionDelay={button.transitionDelay}
+          transitionDelay={transitionDelay}
         />
       ))}
     </nav>

@@ -1,8 +1,69 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import useSaveLogToDB from "@/services/logging/hooks/useSaveLogToDB";
 
-const NavBar = ({ mainRef, isHomeVisible }) => {
+const navButtons = [
+  {
+    name: "Home",
+    section: "home-section",
+    transitionDelay: "150ms",
+  },
+  {
+    name: "Skills",
+    section: "skills-section",
+    transitionDelay: "300ms",
+  },
+  {
+    name: "Portfolio",
+    section: "portfolio-section",
+    transitionDelay: "500ms",
+  },
+  {
+    name: "About",
+    section: "about-section",
+    transitionDelay: "700ms",
+  },
+];
+
+function NavButton({
+  name,
+  section,
+  navItemsVisible,
+  activeLink,
+  initialRender,
+  handleNavLinkClick,
+  transitionDelay,
+}) {
+  return (
+    <div
+      onClick={() => handleNavLinkClick(section)}
+      className={`
+                    relative cursor-pointer rounded-xl border p-1 px-3 transition-all 
+                    duration-500 md:mx-2 
+                    ${
+                      navItemsVisible
+                        ? "scale-100 opacity-100"
+                        : "scale-0 opacity-0"
+                    }
+                    ${
+                      activeLink === section
+                        ? "border-primary bg-gray-100/30 text-white/80"
+                        : "border-transparent text-gray-100/80"
+                    }
+                `}
+      style={
+        initialRender && navItemsVisible
+          ? { transitionDelay: transitionDelay }
+          : {}
+      }
+    >
+      {name}
+    </div>
+  );
+}
+
+export default function NavBar({ mainRef, isHomeVisible }) {
   const [activeLink, setActiveLink] = useState("home-section");
   //const [shadow, setShadow] = useState(false);
   const [scrollInitiator, setScrollInitiator] = useState(null); // Add this to track which link initiated the scroll
@@ -11,6 +72,8 @@ const NavBar = ({ mainRef, isHomeVisible }) => {
 
   const [navItemsVisible, setNavItemsVisible] = useState(false);
   const [initialRender, setInitialRender] = useState(true);
+
+  const { saveLogToDB } = useSaveLogToDB();
 
   useEffect(() => {
     if (isHomeVisible) {
@@ -49,12 +112,6 @@ const NavBar = ({ mainRef, isHomeVisible }) => {
     if (currentSection !== scrollInitiator) {
       setActiveLink(currentSection);
     }
-
-    // if (mainRef.current.scrollTop > 0) {
-    //     setShadow(true);
-    // } else {
-    //     setShadow(false);
-    // }
   };
 
   useEffect(() => {
@@ -70,6 +127,7 @@ const NavBar = ({ mainRef, isHomeVisible }) => {
   }, [mainRef]);
 
   const handleNavLinkClick = (sectionId) => {
+    saveLogToDB(`${sectionId} nav link clicked`);
     setScrollInitiator(sectionId); // Set the scroll initiator
 
     if (mainRef.current) {
@@ -89,101 +147,20 @@ const NavBar = ({ mainRef, isHomeVisible }) => {
 
   return (
     <nav
-      className={`fixed top-0 z-10 flex h-12 w-full items-center justify-around bg-transparent p-3 transition-shadow duration-500 ease-in-out md:justify-end`}
+      className={`fixed top-0 z-10 flex h-12 w-full items-center justify-around bg-transparent p-3 transition-shadow duration-500 ease-in-out md:justify-end md:pr-20`}
     >
-      <div
-        onClick={() => handleNavLinkClick("home-section")}
-        className={`
-                    relative cursor-pointer rounded-xl border p-1 px-3 transition-all 
-                    duration-500 md:mx-2 
-                    ${
-                      navItemsVisible
-                        ? "scale-100 opacity-100"
-                        : "scale-0 opacity-0"
-                    }
-                    ${
-                      activeLink === "home-section"
-                        ? "border-primary bg-gray-100/30 text-white/80"
-                        : "border-transparent text-gray-100/80"
-                    }
-                `}
-        style={
-          initialRender && navItemsVisible ? { transitionDelay: "150ms" } : {}
-        }
-      >
-        Home
-      </div>
-
-      <div
-        onClick={() => handleNavLinkClick("skills-section")}
-        className={`
-                    relative cursor-pointer rounded-xl border p-1 px-3 transition-all 
-                    duration-500 md:mx-2 
-                    ${
-                      navItemsVisible
-                        ? "scale-100 opacity-100"
-                        : "scale-0 opacity-0"
-                    }
-                    ${
-                      activeLink === "skills-section"
-                        ? "border-primary bg-gray-100/30 text-white/80"
-                        : "border-transparent text-gray-100/80"
-                    }
-                `}
-        style={
-          initialRender && navItemsVisible ? { transitionDelay: "300ms" } : {}
-        }
-      >
-        Skills
-      </div>
-
-      <div
-        onClick={() => handleNavLinkClick("portfolio-section")}
-        className={`
-                    relative cursor-pointer rounded-xl border p-1 px-3 transition-all 
-                    duration-500 md:mx-2 
-                    ${
-                      navItemsVisible
-                        ? "scale-100 opacity-100"
-                        : "scale-0 opacity-0"
-                    }
-                    ${
-                      activeLink === "portfolio-section"
-                        ? "border-primary bg-gray-100/30 text-white/80"
-                        : "border-transparent text-gray-100/80"
-                    }
-                `}
-        style={
-          initialRender && navItemsVisible ? { transitionDelay: "500ms" } : {}
-        }
-      >
-        Portfolio
-      </div>
-
-      <div
-        onClick={() => handleNavLinkClick("about-section")}
-        className={`
-                    relative cursor-pointer rounded-xl border p-1 px-3 transition-all duration-500 
-                    md:mx-2 md:mr-20 
-                    ${
-                      navItemsVisible
-                        ? "scale-100 opacity-100"
-                        : "scale-0 opacity-0"
-                    }
-                    ${
-                      activeLink === "about-section"
-                        ? "border-primary bg-gray-100/30 text-white/80"
-                        : "border-transparent text-gray-100/80"
-                    }
-                `}
-        style={
-          initialRender && navItemsVisible ? { transitionDelay: "700ms" } : {}
-        }
-      >
-        About
-      </div>
+      {navButtons.map((button, index) => (
+        <NavButton
+          key={index}
+          name={button.name}
+          section={button.section}
+          navItemsVisible={navItemsVisible}
+          activeLink={activeLink}
+          initialRender={initialRender}
+          handleNavLinkClick={handleNavLinkClick}
+          transitionDelay={button.transitionDelay}
+        />
+      ))}
     </nav>
   );
-};
-
-export default NavBar;
+}

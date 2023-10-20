@@ -10,13 +10,16 @@ import Chat from "@/components/chat/Chat";
 import { useRef, useState } from "react";
 
 import useLoggingService from "@/services/logging/hooks/useLoggingService";
-import useSaveLogToDB from "@/services/logging/hooks/useSaveLogToDB";
-import useSendExitLogBatch from "@/services/logging/hooks/useSendExitLogBatch";
+import useWindowSizeLogger from "@/services/logging/hooks/useWindowSizeLogger";
+// import useSaveLogToDB from "@/services/logging/hooks/useSaveLogToDB";
+// import useSendExitLogBatch from "@/services/logging/hooks/useSendExitLogBatch";
 
 export default function Page() {
-  useLoggingService(); // start logging service
-  useSendExitLogBatch(); // to 'fire-and-forget' log "user left" and batched logs on user closing the tab/browser
-  useSaveLogToDB("Website opened") // to log user enter
+  useLoggingService("User entered", "User left")
+  useWindowSizeLogger();
+  // useLoggingService("Website opened", "User left"); // start logging service
+  // useSendExitLogBatch(); // to 'fire-and-forget' log "user left" and batched logs on user closing the tab/browser
+  // useSaveLogToDB("Website opened") // to log user enter
 
   const mainRef = useRef();
   const homeRef = useRef();

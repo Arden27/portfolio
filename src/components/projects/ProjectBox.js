@@ -32,7 +32,7 @@ export default function ProjectBox({
   const handleVisitClick = () => {
     if (isLocal) {
       isChatOpen ? dispatch(closeChat()) : dispatch(openChat());
-      saveLogToDB(`${title} Chat opened fron project click`)
+      saveLogToDB(`${title} Chat opened from project click`)
     } else {
       if (typeof window !== "undefined") {
         window.open(link, "_blank");

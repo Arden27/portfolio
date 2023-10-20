@@ -33,7 +33,7 @@ export default function useSaveLogToDB(optionalOnRenderLogMessage) {
   useEffect(() => {
     if (optionalOnRenderLogMessage && initialLoadRef.current) {
       initialLoadRef.current = false;
-      saveLogToDB(optionalOnRenderLogMessage, true);
+      saveLogToDB(optionalOnRenderLogMessage, false);
     }
   }, []);
 

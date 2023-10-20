@@ -98,7 +98,7 @@ export default function NavBar({ mainRef, homeRef, skillsRef, portfolioRef, abou
   }, [mainRef]);
 
   const handleNavLinkClick = (sectionId) => {
-    saveLogToDB(`${sectionId} nav link clicked`);
+    saveLogToDB(`Clicked ${sectionId} nav-button`);
     setScrollInitiator(sectionId); // Set the scroll initiator
 
     if (mainRef.current) {

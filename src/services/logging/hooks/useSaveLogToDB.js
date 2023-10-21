@@ -1,3 +1,5 @@
+// hook to add log to the log batch or optionally send immediately 
+
 import generateTimestamp from "@/utils/generateTimestamp";
 import { useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -8,6 +10,9 @@ export default function useSaveLogToDB(optionalOnRenderLogMessage) {
   const initialLoadRef = useRef(true); // to prevent double logging on double invocation
   const sessionId = useSelector((state) => state.log.sessionId);
 
+  // function for log sending
+  // if immdiate === true message will be send to endpoint right away, 
+  // otherway will be added to the log batch to send later by logging service
   function saveLogToDB(logMessage, immediate = false) {
     if (typeof window === undefined) return;
 
@@ -29,7 +34,8 @@ export default function useSaveLogToDB(optionalOnRenderLogMessage) {
       dispatch(addLog({ message: logMessage, logAt: logAt }));
     }
   }
-  // optional logging of component render
+  // optional log on component render
+  // can only be added to the log batch to prevent race condition
   useEffect(() => {
     if (optionalOnRenderLogMessage && initialLoadRef.current) {
       initialLoadRef.current = false;

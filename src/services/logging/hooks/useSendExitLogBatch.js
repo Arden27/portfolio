@@ -36,7 +36,7 @@ export default function useSendExitLogBatch(onExitMessage) {
       }
 
       const data = {
-        sessionId: sessionIdRef.current, // Use the ref here
+        sessionId: sessionIdRef.current,
         logs: dataLogs,
       };
 

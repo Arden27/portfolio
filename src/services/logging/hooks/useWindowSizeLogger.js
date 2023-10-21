@@ -1,5 +1,7 @@
+// hook for sending logs about window resizing with debounce
+
 import { useState, useEffect, useRef } from 'react';
-import useSaveLogToDB from './useSaveLogToDB';  // Assuming the path to your hook
+import useSaveLogToDB from './useSaveLogToDB';
 
 function useWindowSizeLogger() {
   const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });

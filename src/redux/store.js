@@ -1,6 +1,7 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 import { generateSessionId } from "@/utils/generateSessionId";
 
+// get session id from localSotrage or create one
 const getInitialSessionId = () => {
   if (typeof window !== "undefined") {
     return localStorage.getItem("sessionId") || generateSessionId();
@@ -39,13 +40,14 @@ export const { openChat, closeChat, setWasChatOpened, knock } = appSlice.actions
 // Log Slice
 const logInitialState = {
   sessionId: getInitialSessionId(),
-  logs: [],
+  logs: [], // queue of logs
 };
 
 const logSlice = createSlice({
   name: "log",
   initialState: logInitialState,
   reducers: {
+    // add log to the queue
     addLog: (state, action) => {
       const newLog = {
         logMessage: action.payload.message,
@@ -53,6 +55,7 @@ const logSlice = createSlice({
       };
       state.logs.push(newLog);
     },
+    // remove sent logs from log queue
     sliceLogs: (state, action) => {
       state.logs = state.logs.slice(action.payload);
     },

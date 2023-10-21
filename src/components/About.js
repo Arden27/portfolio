@@ -1,18 +1,25 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Contacts from "./Contacts";
 import { useSelector, useDispatch } from "react-redux";
-import { closeChat, openChat, knock } from "@/redux/store";
+import { closeChat, openChat, setWasChatOpened, knock } from "@/redux/store";
 import useSaveLogToDB from "@/services/logging/hooks/useSaveLogToDB";
 
-export default function About({ mainRef }) {
+export default function About({ mainRef, handleChatLinkRef }) {
   const [isAboutInView, setIsAboutInView] = useState(false);
   const [showAbout, setShowAbout] = useState(false);
   const [showContacts, setShowContacts] = useState(false);
   const isChatOpen = useSelector((state) => state.app.isChatOpen);
   const { saveLogToDB } = useSaveLogToDB();
+  const chatRef = useRef(null);
 
   const dispatch = useDispatch();
+    
+  useEffect(() => {
+    if(chatRef.current){
+      handleChatLinkRef(chatRef)
+    }
+  }, [chatRef]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -60,11 +67,13 @@ export default function About({ mainRef }) {
   }, []);
 
   const handleChatClick = () => {
-    saveLogToDB("chat opened from about-section");
     if (isChatOpen) {
       dispatch(closeChat());
+      saveLogToDB("chat closed from about-section");
     } else {
       dispatch(openChat());
+      dispatch(setWasChatOpened());
+      saveLogToDB("chat opened from about-section");
     }
   };
 
@@ -94,6 +103,7 @@ export default function About({ mainRef }) {
         <h3 className="text-center text-gray-800">
           I've created a{" "}
           <span
+            ref={chatRef}
             className="cursor-pointer font-semibold text-violet-700"
             onClick={handleChatClick}
           >

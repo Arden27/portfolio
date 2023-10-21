@@ -11,7 +11,8 @@ const getInitialSessionId = () => {
 // App Slice
 const appInitialState = {
   isChatOpen: false,
-  knockKnock: false
+  wasChatOpened: false,
+  knockKnock: false,
 };
 
 const appSlice = createSlice({
@@ -24,18 +25,21 @@ const appSlice = createSlice({
     closeChat: (state) => {
       state.isChatOpen = false;
     },
+    setWasChatOpened: (state) => {
+      state.wasChatOpened = true;
+    },
     knock: (state) => {
       state.knockKnock = true;
-    }
-  }
+    },
+  },
 });
 
-export const { openChat, closeChat, knock } = appSlice.actions;
+export const { openChat, closeChat, setWasChatOpened, knock } = appSlice.actions;
 
 // Log Slice
 const logInitialState = {
   sessionId: getInitialSessionId(),
-  logs: []
+  logs: [],
 };
 
 const logSlice = createSlice({
@@ -45,14 +49,14 @@ const logSlice = createSlice({
     addLog: (state, action) => {
       const newLog = {
         logMessage: action.payload.message,
-        logAt: action.payload.logAt
+        logAt: action.payload.logAt,
       };
       state.logs.push(newLog);
     },
     sliceLogs: (state, action) => {
       state.logs = state.logs.slice(action.payload);
-    }
-  }
+    },
+  },
 });
 
 export const { addLog, sliceLogs } = logSlice.actions;
@@ -60,11 +64,11 @@ export const { addLog, sliceLogs } = logSlice.actions;
 // Combine reducers
 const rootReducer = {
   app: appSlice.reducer,
-  log: logSlice.reducer
+  log: logSlice.reducer,
 };
 
 const store = configureStore({
-  reducer: rootReducer
+  reducer: rootReducer,
 });
 
 // For this localStorage subscription, you'd need to access nested state

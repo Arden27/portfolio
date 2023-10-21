@@ -11,15 +11,10 @@ import { useRef, useState } from "react";
 
 import useLoggingService from "@/services/logging/hooks/useLoggingService";
 import useWindowSizeLogger from "@/services/logging/hooks/useWindowSizeLogger";
-// import useSaveLogToDB from "@/services/logging/hooks/useSaveLogToDB";
-// import useSendExitLogBatch from "@/services/logging/hooks/useSendExitLogBatch";
 
 export default function Page() {
-  useLoggingService("User entered", "User left")
+  useLoggingService("User entered", "User left");
   useWindowSizeLogger();
-  // useLoggingService("Website opened", "User left"); // start logging service
-  // useSendExitLogBatch(); // to 'fire-and-forget' log "user left" and batched logs on user closing the tab/browser
-  // useSaveLogToDB("Website opened") // to log user enter
 
   const mainRef = useRef();
   const homeRef = useRef();
@@ -27,14 +22,26 @@ export default function Page() {
   const portfolioRef = useRef();
   const aboutRef = useRef();
   const [isVisible, setIsVisible] = useState(false);
+  const [chatLinkRef, setChatLinkRef] = useState()
+
+  const handleChatLinkRef = (ref) => {
+    setChatLinkRef(ref);
+  };
 
   return (
     <main
       ref={mainRef}
       className="relative z-20 box-border h-[100svh] w-screen snap-y snap-mandatory overflow-scroll scroll-smooth"
     >
-      <NavBar mainRef={mainRef} homeRef={homeRef} skillsRef={skillsRef} portfolioRef={portfolioRef} aboutRef={aboutRef} isHomeVisible={isVisible} />
-      <Chat isChatVisible={isVisible} />
+      <NavBar
+        mainRef={mainRef}
+        homeRef={homeRef}
+        skillsRef={skillsRef}
+        portfolioRef={portfolioRef}
+        aboutRef={aboutRef}
+        isHomeVisible={isVisible}
+      />
+      <Chat isChatVisible={isVisible} chatLinkRef={chatLinkRef} />
 
       <section
         id="home-section"
@@ -74,7 +81,7 @@ export default function Page() {
         <h1 className="rounded-xl border border-primary bg-gray-100/50 px-3 text-center text-clamp_sm_section_name text-gray-700 md:p-1 md:px-4 md:text-clamp_section_name">
           About
         </h1>
-        <About mainRef={mainRef} />
+        <About mainRef={mainRef} handleChatLinkRef={handleChatLinkRef} />
       </section>
     </main>
   );

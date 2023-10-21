@@ -15,11 +15,11 @@ import InputArea from "./components/InputArea";
 import PopMessage from "./components/PopMessage";
 import ChatButton from "./components/ChatButton";
 
-import { openChat, closeChat } from "@/redux/store";
+import { openChat, closeChat, setWasChatOpened } from "@/redux/store";
 
-export default function Chat({ isChatVisible }) {
+export default function Chat({ isChatVisible, chatLinkRef }) {
   const isChatOpen = useSelector((state) => state.app.isChatOpen);
-  const [wasOpened, setWasOpened] = useState(false);
+  const wasChatOpened = useSelector((state) => state.app.wasChatOpened);
   const [messages, updateMessages] = useMessages();
   const [newMessage, setNewMessage] = useState("");
   const messagesContainerRef = useRef(null);
@@ -34,15 +34,6 @@ export default function Chat({ isChatVisible }) {
 
   const dispatch = useDispatch();
 
-  // const initialLoadRef = useRef(true)
-
-  // useEffect(() => {
-  //   if(initialLoadRef.current){
-  //     initialLoadRef.current = false;
-  //     saveLogToDB("hello from chat");
-  //   }
-  // }, [])
-
   useEffect(() => {
     if (isChatOpen && inputRef.current) {
       inputRef.current.focus();
@@ -51,12 +42,12 @@ export default function Chat({ isChatVisible }) {
 
   // close chat window on click outside, node and buttonRef are areas to ignore
   const handleOutsideClick = () => {
-    if(isChatOpen){
+    if (isChatOpen){
       dispatch(closeChat());
-    saveLogToDB("chat closed by click outside");
+      saveLogToDB("chat closed from click-outside");
     }
   };
-  useOutsideClick([node, buttonRef], handleOutsideClick);
+  useOutsideClick([node, buttonRef, chatLinkRef], handleOutsideClick);
 
   useEffect(() => {
     if (knockKnock && messages.length === 0) {
@@ -82,7 +73,7 @@ export default function Chat({ isChatVisible }) {
       dispatch(closeChat());
       saveLogToDB("chat closed");
     } else {
-      setWasOpened(true);
+      dispatch(setWasChatOpened());
       dispatch(openChat());
       saveLogToDB("chat opened");
     }
@@ -118,7 +109,7 @@ export default function Chat({ isChatVisible }) {
         ${
           isChatOpen
             ? "slide-in-right flex"
-            : wasOpened
+            : wasChatOpened
             ? "slide-out-right flex"
             : "hidden"
         }`} //max-sm:left-1/2 max-sm:transform max-sm:-translate-x-1/2

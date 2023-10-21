@@ -8,7 +8,7 @@ export function startLoggingService(store, interval = defaultInterval) {
   }
 
   setInterval(() => {
-    const currentLogs = store.getState().logs;
+    const currentLogs = store.getState().log.logs;
     if (currentLogs.length > 0) {
       // Send logs to the backend
       fetch("/api/db/batchLog", {
@@ -17,7 +17,7 @@ export function startLoggingService(store, interval = defaultInterval) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          sessionId: store.getState().sessionId,
+          sessionId: store.getState().log.sessionId,
           logs: currentLogs,
         }),
       }).then((response) => {

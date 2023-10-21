@@ -9,8 +9,8 @@ export default function useSendExitLogBatch(onExitMessage) {
   // Ensure we are on the client side (used for server-side rendered applications)
   if (typeof window === "undefined") return;
 
-  const sessionId = useSelector((state) => state.sessionId);
-  const logs = useSelector((state) => state.logs);
+  const sessionId = useSelector((state) => state.log.sessionId);
+  const logs = useSelector((state) => state.log.logs);
   const sessionIdRef = useRef(null);
 
   // Use a ref with useEffect to set sessionId. This ensures that we capture the most recent

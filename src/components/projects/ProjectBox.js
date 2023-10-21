@@ -18,7 +18,7 @@ export default function ProjectBox({
   isLocal,
 }) {
   const [easeIn, setEaseIn] = useState(true);
-  const isChatOpen = useSelector((state) => state.isChatOpen);
+  const isChatOpen = useSelector((state) => state.app.isChatOpen);
   const {saveLogToDB} = useSaveLogToDB();
 
   const dispatch = useDispatch();

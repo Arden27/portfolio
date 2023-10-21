@@ -4,7 +4,7 @@ import useSaveMessagesToDB from "./useSaveMessagesToDB";
 import { useSelector } from "react-redux";
 
 export default function useSendMessage() {
-  const sessionId = useSelector((state) => state.sessionId)
+  const sessionId = useSelector((state) => state.log.sessionId)
   const [isTyping, setIsTyping] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const { saveMessagesToDB } = useSaveMessagesToDB(sessionId);

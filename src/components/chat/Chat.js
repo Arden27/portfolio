@@ -18,7 +18,7 @@ import ChatButton from "./components/ChatButton";
 import { openChat, closeChat } from "@/redux/store";
 
 export default function Chat({ isChatVisible }) {
-  const isChatOpen = useSelector((state) => state.isChatOpen);
+  const isChatOpen = useSelector((state) => state.app.isChatOpen);
   const [wasOpened, setWasOpened] = useState(false);
   const [messages, updateMessages] = useMessages();
   const [newMessage, setNewMessage] = useState("");
@@ -26,7 +26,7 @@ export default function Chat({ isChatVisible }) {
   const inputRef = useRef(null);
   const node = useRef();
   const buttonRef = useRef(null);
-  const knockKnock = useSelector((state) => state.knockKnock);
+  const knockKnock = useSelector((state) => state.app.knockKnock);
   const showMessage = usePopupMessage(messages, isChatOpen);
   const { sendMessage, isTyping, errorMessage } = useSendMessage();
 

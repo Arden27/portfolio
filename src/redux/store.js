@@ -1,8 +1,6 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 import { generateSessionId } from "@/utils/generateSessionId";
-// import { loadState, saveState } from './localStorage';
 
-// const persistedState = loadState();
 const getInitialSessionId = () => {
   if (typeof window !== "undefined") {
     return localStorage.getItem("sessionId") || generateSessionId();
@@ -10,21 +8,15 @@ const getInitialSessionId = () => {
   return null; // Return null or some other value if on server-side
 };
 
-const initialState = {
+// App Slice
+const appInitialState = {
   isChatOpen: false,
-  knockKnock: false,
-  sessionId: getInitialSessionId(),
-  logs: [],
+  knockKnock: false
 };
-
-// const preloadedState = {
-//   ...initialState,
-//   ...persistedState,
-// };
 
 const appSlice = createSlice({
   name: "app",
-  initialState,
+  initialState: appInitialState,
   reducers: {
     openChat: (state) => {
       state.isChatOpen = true;
@@ -34,38 +26,50 @@ const appSlice = createSlice({
     },
     knock: (state) => {
       state.knockKnock = true;
-    },
+    }
+  }
+});
+
+export const { openChat, closeChat, knock } = appSlice.actions;
+
+// Log Slice
+const logInitialState = {
+  sessionId: getInitialSessionId(),
+  logs: []
+};
+
+const logSlice = createSlice({
+  name: "log",
+  initialState: logInitialState,
+  reducers: {
     addLog: (state, action) => {
       const newLog = {
         logMessage: action.payload.message,
-        logAt: action.payload.logAt,
+        logAt: action.payload.logAt
       };
       state.logs.push(newLog);
     },
     sliceLogs: (state, action) => {
       state.logs = state.logs.slice(action.payload);
-    },
-    resetStore: () => initialState,
-  },
+    }
+  }
 });
 
-export const { openChat, closeChat, knock, addLog, sliceLogs, resetStore } = appSlice.actions;
+export const { addLog, sliceLogs } = logSlice.actions;
+
+// Combine reducers
+const rootReducer = {
+  app: appSlice.reducer,
+  log: logSlice.reducer
+};
 
 const store = configureStore({
-  reducer: appSlice.reducer,
-  // preloadedState: preloadedState
+  reducer: rootReducer
 });
 
-// Save state to localStorage whenever it changes
-// store.subscribe(() => {
-//   saveState({
-//     items: store.getState().items,
-//     cart: store.getState().cart,
-//   });
-// });
-
+// For this localStorage subscription, you'd need to access nested state
 store.subscribe(() => {
-  localStorage.setItem("sessionId", store.getState().sessionId);
+  localStorage.setItem("sessionId", store.getState().log.sessionId);
 });
 
 export default store;

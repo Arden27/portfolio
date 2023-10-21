@@ -3,12 +3,14 @@ import Image from "next/image";
 import Contacts from "./Contacts";
 import { useSelector, useDispatch } from "react-redux";
 import { closeChat, openChat, knock } from "@/redux/store";
+import useSaveLogToDB from "@/services/logging/hooks/useSaveLogToDB";
 
 export default function About({ mainRef }) {
   const [isAboutInView, setIsAboutInView] = useState(false);
   const [showAbout, setShowAbout] = useState(false);
   const [showContacts, setShowContacts] = useState(false);
-  const isChatOpen = useSelector((state) => state.isChatOpen);
+  const isChatOpen = useSelector((state) => state.app.isChatOpen);
+  const { saveLogToDB } = useSaveLogToDB();
 
   const dispatch = useDispatch();
 
@@ -56,6 +58,16 @@ export default function About({ mainRef }) {
       }
     };
   }, []);
+
+  const handleChatClick = () => {
+    saveLogToDB("chat opened from about-section");
+    if (isChatOpen) {
+      dispatch(closeChat());
+    } else {
+      dispatch(openChat());
+    }
+  };
+
   return (
     <div
       className={`relative flex w-full flex-col items-center justify-center p-2`}
@@ -83,9 +95,7 @@ export default function About({ mainRef }) {
           I've created a{" "}
           <span
             className="cursor-pointer font-semibold text-violet-700"
-            onClick={() => {
-              isChatOpen ? dispatch(closeChat()) : dispatch(openChat());
-            }}
+            onClick={handleChatClick}
           >
             chatbot avatar
           </span>{" "}
